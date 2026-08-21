@@ -172,10 +172,6 @@ def parse_items(xml_bytes):
         link = (item.findtext("link") or "").strip()
         if not title or not link:
             continue
-        if len(re.sub(r"\s", "", title)) < 9:
-            continue  # "명확성 강화법 강화" 같은 조각 제목
-        if re.search(r"\(\d{6}\)\s*$", title):
-            continue  # "SK하이닉스(000660)" — 기사가 아니라 종목 시세 페이지
         src_el = item.find("source")
         source = (src_el.text or "").strip() if src_el is not None else ""
         # 구글 뉴스는 " - 매체명"을 붙이는데, 간혹 두 번 붙는다
@@ -186,6 +182,11 @@ def parse_items(xml_bytes):
             if not m or len(m.group(0)) > 27:
                 break
             clean = STRIP_SOURCE.sub("", clean).strip()
+        # 아래 검사는 매체명을 걷어낸 뒤에 해야 한다
+        if len(re.sub(r"\s", "", clean)) < 9:
+            continue  # "명확성 강화법 강화" 같은 조각 제목
+        if re.search(r"\(\d{6}\)\s*$", clean):
+            continue  # "SK하이닉스(000660)" — 기사가 아니라 종목 시세 페이지
         pub = item.findtext("pubDate") or ""
         try:
             from email.utils import parsedate_to_datetime
