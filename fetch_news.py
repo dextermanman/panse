@@ -292,16 +292,25 @@ def fetch_market():
             except Exception as e:  # noqa: BLE001
                 print(f"  ! 시세 파싱 실패 {sym}: {e}", file=sys.stderr)
 
-    # 비트코인 시세 및 24시간 변동률 (바이낸스)
+    # 비트코인 시세 (Coinbase & Upbit)
     fx_chg = {}
-    btc_raw = fetch("https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT", retries=2, timeout=6)
+    btc_raw = fetch("https://api.coinbase.com/v2/prices/BTC-USD/spot", retries=2, timeout=6)
     if btc_raw:
         try:
             bdata = json.loads(btc_raw)
-            out["btc"] = round(float(bdata["lastPrice"]), 0)
-            fx_chg["btc"] = round(float(bdata["priceChangePercent"]), 2)
+            out["btc"] = round(float(bdata["data"]["amount"]), 0)
         except Exception as e:  # noqa: BLE001
-            print(f"  ! 비트코인 파싱 실패: {e}", file=sys.stderr)
+            print(f"  ! 비트코인 파싱 실패 (Coinbase): {e}", file=sys.stderr)
+    if not out.get("btc"):
+        upbit_raw = fetch("https://api.upbit.com/v1/ticker?markets=KRW-BTC", retries=2, timeout=6)
+        if upbit_raw:
+            try:
+                udata = json.loads(upbit_raw)[0]
+                krw_price = float(udata["trade_price"])
+                out["btc"] = round(krw_price / 1385.0, 0)
+                fx_chg["btc"] = round(float(udata["signed_change_rate"]) * 100, 2)
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! 비트코인 파싱 실패 (Upbit): {e}", file=sys.stderr)
 
     fx = fetch_naver_fx()
     fx_time = None
