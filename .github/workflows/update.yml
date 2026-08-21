@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: update
-  cancel-in-progress: true
+  cancel-in-progress: false  # 배포 도중 잘리면 그 주기 갱신이 통째로 누락된다
 
 jobs:
   update:

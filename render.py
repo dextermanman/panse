@@ -275,7 +275,7 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .board{list-style:none; margin:0; padding:0; background:var(--surface);
   border:1px solid var(--hairline); border-radius:20px; box-shadow:var(--shadow), var(--inner-glow); overflow:hidden}
 .board li + li{border-top:1px solid var(--hairline-2)}
-.bd-row{display:grid; grid-template-columns:4px 105px 1fr auto 24px 14px; align-items:center;
+.bd-row{display:grid; grid-template-columns:4px 105px 1fr auto 48px 14px; align-items:center;
   gap:0 12px; padding:0; cursor:pointer; width:100%; text-align:left;
   border:0; background:transparent; transition:background .15s ease}
 .bd-row:hover{background:var(--tint)}
@@ -287,8 +287,9 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .bd-new{font-size:10.5px; font-weight:700; color:var(--breaking);
   background:var(--breaking-bg); padding:2px 7px; border-radius:980px; font-variant-numeric:tabular-nums}
 .bd-total{font-size:11px; color:var(--ink-3); font-variant-numeric:tabular-nums}
-.sparkline{display:flex; align-items:flex-end; gap:1.5px; height:18px; padding:2px 0}
-.sp-bar{width:2px; background:var(--accent); border-radius:1px; opacity:0.75; min-height:2px}
+.sparkline{display:flex; align-items:flex-end; gap:.5px; height:18px; padding:2px 0}
+.sp-bar{flex:none; width:1.5px; background:var(--accent); border-radius:1px;
+  opacity:.75; min-height:2px}
 .bd-go{font-size:15px; color:var(--ink-3); padding-right:14px; transition:transform .15s ease, color .15s ease}
 .bd-row:hover .bd-go{color:var(--ink-2); transform:translateX(3px)}
 
@@ -584,7 +585,9 @@ $DETAILS
     return Math.floor(h / 24) + "일 전";
   }
   function paintTimes(){
-    document.querySelectorAll("[data-ts]").forEach(function(el){
+    /* 북마크 버튼도 data-ts를 메타데이터로 갖고 있어 제외해야 한다
+       (제외하지 않으면 🔖 라벨이 "4분 전"으로 덮어써진다) */
+    document.querySelectorAll("[data-ts]:not(.bm-btn)").forEach(function(el){
       el.textContent = rel(Number(el.getAttribute("data-ts")));
     });
   }
