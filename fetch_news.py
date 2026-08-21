@@ -272,14 +272,11 @@ def fetch_naver_fx():
             "jpykrw_chg": jpy_chg, "fx_time": stamp.group(1) if stamp else None,
             "gold_prev_close": _naver_gold_prev_close(text)}
 HISTORY = Path(__file__).with_name("market_history.json")
-SERIES = ("gold", "silver", "usdkrw", "jpykrw")
+SERIES = ("gold", "silver", "btc", "usdkrw", "jpykrw")
 
 
 def fetch_market():
-    """금·은 현물(USD/온스)과 원/달러·원/100엔 환율, 그리고 24시간 등락률.
-
-    어느 API도 등락률을 주지 않으므로 30분마다 값을 이력에 쌓아 직접 계산한다.
-    """
+    """금·은·비트코인(USD)과 원/달러·원/100엔 환율, 그리고 24시간 등락률."""
     now_ts = int(datetime.now(KST).timestamp())
     try:
         hist = json.loads(HISTORY.read_text(encoding="utf-8"))
@@ -295,8 +292,19 @@ def fetch_market():
             except Exception as e:  # noqa: BLE001
                 print(f"  ! 시세 파싱 실패 {sym}: {e}", file=sys.stderr)
 
+    # 비트코인 시세 및 24시간 변동률 (바이낸스)
+    fx_chg = {}
+    btc_raw = fetch("https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT", retries=2, timeout=6)
+    if btc_raw:
+        try:
+            bdata = json.loads(btc_raw)
+            out["btc"] = round(float(bdata["lastPrice"]), 0)
+            fx_chg["btc"] = round(float(bdata["priceChangePercent"]), 2)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! 비트코인 파싱 실패: {e}", file=sys.stderr)
+
     fx = fetch_naver_fx()
-    fx_chg, fx_time = {}, None
+    fx_time = None
     if fx:
         for k in ("usdkrw", "jpykrw"):
             if fx.get(k) is not None:
@@ -333,7 +341,7 @@ def fetch_market():
             return None
         return round((out[key] - old[key]) / old[key] * 100, 2)
 
-    print(f"  금 ${out.get('gold')} · 은 ${out.get('silver')} · "
+    print(f"  금 ${out.get('gold')} · 은 ${out.get('silver')} · 비트코인 ${out.get('btc')} · "
           f"달러 {out.get('usdkrw')}원 · 100엔 {out.get('jpykrw')}원")
     changes = {f"{k}_chg": (fx_chg[k] if k in fx_chg else chg(k)) for k in SERIES}
     prev_gold = (fx or {}).get("gold_prev_close")
