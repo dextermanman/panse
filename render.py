@@ -213,29 +213,24 @@ main{max-width:1180px; margin:0 auto; padding:0 24px calc(76px + env(safe-area-i
 .brief-tag .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent)}
 .brief-title{font-size:14.5px; font-weight:600; line-height:1.45; color:var(--ink)}
 
-/* ---------- 메뉴판 (보드) ---------- */
-.board{list-style:none; margin:0; padding:0; background:var(--surface);
-  border:1px solid var(--hairline); border-radius:20px; box-shadow:var(--shadow), var(--inner-glow); overflow:hidden}
-
 /* ---------- 속보 카드 ---------- */
 .b-list{list-style:none; margin:0; padding:0}
 .b-list li + li{border-top:1px solid var(--hairline-2)}
-.b-item{display:flex; align-items:center; gap:12px; padding:13px 20px; transition:background .15s ease}
+.b-item{display:flex; align-items:center; gap:14px; padding:13px 22px; transition:background .15s ease}
 .b-item:hover{background:var(--tint)}
-.b-time{flex:none; width:52px; font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
-.b-title{flex:1; min-width:0; font-size:15.5px; font-weight:550; line-height:1.5}
-.b-list li:first-child .b-item{padding:20px 20px 22px; align-items:flex-start}
+.b-title{flex:1; min-width:0; font-size:15.5px; font-weight:550; line-height:1.5; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.b-list li:first-child .b-item{padding:20px 22px 22px; align-items:flex-start}
 .b-list li:first-child .b-title{font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
-  font-size:21px; font-weight:600; line-height:1.45; letter-spacing:-.015em}
-.b-list li:first-child .b-time{padding-top:5px}
-.b-tag{flex:none; display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
+  font-size:21px; font-weight:600; line-height:1.45; letter-spacing:-.015em; white-space:normal}
+.b-tag-wrap{flex:none; display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--ink-3)}
+.b-tag{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
   color:var(--ink-2); background:var(--surface-2); padding:3px 8px; border-radius:6px}
 .b-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
-.b-src{flex:none; font-size:11px; color:var(--ink-3); width:82px; text-align:right;
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-.bm-btn{flex:none; opacity:0.4; font-size:15px; cursor:pointer; padding:6px 8px; border-radius:8px; transition:all .15s ease}
-.bm-btn:hover{opacity:1; background:var(--surface-2)}
-.bm-btn.active{opacity:1; color:#FF9500}
+.b-src{font-size:11.5px; color:var(--ink-3); max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.b-time{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums; white-space:nowrap}
+.b-item .bm-btn{flex:none; opacity:0.4; font-size:15px; cursor:pointer; padding:6px 8px; border-radius:8px; transition:all .15s ease}
+.b-item .bm-btn:hover{opacity:1; background:var(--surface-2)}
+.b-item .bm-btn.active{opacity:1; color:#FF9500}
 
 /* ---------- 메뉴판 (주제별 보드 & 스파크라인) ---------- */
 .board{list-style:none; margin:0; padding:0; background:var(--surface);
@@ -261,17 +256,19 @@ main{max-width:1180px; margin:0 auto; padding:0 24px calc(76px + env(safe-area-i
 /* ---------- 전체 흐름 ---------- */
 .feed{list-style:none; margin:0; padding:0}
 .feed li + li{border-top:1px solid var(--hairline-2)}
-.f-row{display:grid; grid-template-columns:52px 115px 1fr 88px 32px; gap:12px;
-  align-items:center; padding:12px 20px; transition:background .15s ease}
+.f-row{display:flex; align-items:center; gap:14px; padding:13px 22px; transition:background .15s ease}
 .f-row:hover{background:var(--tint)}
-.f-time{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.f-title{flex:1; min-width:0; font-size:15px; font-weight:550; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.f-row:hover .f-title{color:var(--blue)}
+.f-meta-wrap{flex:none; display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--ink-3)}
 .f-tag{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
   color:var(--ink-2); background:var(--surface-2); padding:2px 8px; border-radius:6px; width:fit-content}
 .f-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent); flex:none}
-.f-title{font-size:15px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-.f-row:hover .f-title{color:var(--blue)}
-.f-src{font-size:11.5px; color:var(--ink-3); text-align:right; overflow:hidden;
-  text-overflow:ellipsis; white-space:nowrap}
+.f-src{font-size:11.5px; color:var(--ink-3); max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.f-time{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums; white-space:nowrap}
+.f-row .bm-btn{flex:none; opacity:0.4; font-size:15px; cursor:pointer; padding:6px 8px; border-radius:8px; transition:all .15s ease}
+.f-row .bm-btn:hover{opacity:1; background:var(--surface-2)}
+.f-row .bm-btn.active{opacity:1; color:#FF9500}
 .more{display:block; width:100%; padding:15px; border:0; border-top:1px solid var(--hairline);
   background:var(--surface); color:var(--blue); font-size:13.5px; font-weight:500;
   cursor:pointer; transition:background .15s ease}
