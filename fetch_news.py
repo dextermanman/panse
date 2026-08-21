@@ -72,7 +72,7 @@ BLOCK_SOURCES = ("vietnam.vn", "노조신문", "timess.co.kr", "앱스토리", "
 BLOCK_TITLE = re.compile(
     r"(순매수|순매도|상한가|하한가|특징주|장마감|개장|급등주|테마주|주가 ?급|"
     r"경진대회|경진 대회|성료|위촉|간담회|공모전|채용|특강|박람회|설명회|시상|수상자|"
-    r"MOU 체결|업무협약|기념식|출범식|세미나 개최|포럼 개최|이벤트|할인|증정|사은품|교육생 모집|수강생 모집|아카데미|워크숍|공고)"
+    r"MOU 체결|업무협약|기념식|출범식|세미나 개최|포럼 개최|이벤트|할인|증정|사은품|교육생 모집|수강생 모집|아카데미|워크숍|공고|고래사냥|내일장|오늘장|추천주|유망주|관심종목|리딩방|종목 추천|종목은|활용교육|교육 실시|수료식|> ?뉴스$|> ?보도자료)"
 )
 
 # 주제별 오탐 제거 (예: 스마트폰 배터리는 이차전지 뉴스가 아님)
@@ -172,9 +172,20 @@ def parse_items(xml_bytes):
         link = (item.findtext("link") or "").strip()
         if not title or not link:
             continue
+        if len(re.sub(r"\s", "", title)) < 9:
+            continue  # "명확성 강화법 강화" 같은 조각 제목
+        if re.search(r"\(\d{6}\)\s*$", title):
+            continue  # "SK하이닉스(000660)" — 기사가 아니라 종목 시세 페이지
         src_el = item.find("source")
         source = (src_el.text or "").strip() if src_el is not None else ""
-        clean = STRIP_SOURCE.sub("", title).strip() if source else title
+        # 구글 뉴스는 " - 매체명"을 붙이는데, 간혹 두 번 붙는다
+        # (예: "... - 조선비즈 - Chosunbiz"). 짧은 꼬리만 최대 두 번 잘라낸다.
+        clean = title
+        for _ in range(2):
+            m = STRIP_SOURCE.search(clean)
+            if not m or len(m.group(0)) > 27:
+                break
+            clean = STRIP_SOURCE.sub("", clean).strip()
         pub = item.findtext("pubDate") or ""
         try:
             from email.utils import parsedate_to_datetime
