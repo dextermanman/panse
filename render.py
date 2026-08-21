@@ -391,12 +391,11 @@ footer{border-top:1px solid var(--hairline); margin-top:36px; padding-top:18px;
 
 <div class="top">
   <div class="top-in">
-    <span class="brand">세상돌아가는 판세</span>
+    <a class="brand" href="/" id="brand-refresh" title="세상돌아가는 판세 (새로고침)">세상돌아가는 판세</a>
     <span class="nav-new" id="navnew"></span>
     <span class="top-right">
       <span class="stamp"><span class="dot-live"></span>$UPDATED_HM<span class="stamp-sfx"> 갱신 · 30분마다</span></span>
       <button class="btn" id="theme-toggle" type="button" aria-label="테마 전환">🌓 모드</button>
-      <button class="btn" id="refresh" type="button">새로고침</button>
     </span>
 $METALS
   </div>
@@ -413,7 +412,7 @@ $MENU
   <header class="masthead">
     <div class="masthead-in">
       <div>
-        <h1 class="wordmark hl">세상돌아가는 판세</h1>
+        <h1 class="wordmark hl"><a href="/" id="wordmark-refresh" title="세상돌아가는 판세 (새로고침)">세상돌아가는 판세</a></h1>
         <p class="wordmark-sub">$SUBTITLE</p>
       </div>
       <div class="masthead-date">
@@ -582,7 +581,11 @@ $DETAILS
     cd.textContent = m + "분 " + (s < 10 ? "0" : "") + s + "초";
   }
   tick(); setInterval(tick, 1000);
-  document.getElementById("refresh").addEventListener("click", function(){ doReload(); });
+
+  var brandEl = document.getElementById("brand-refresh");
+  var wordmarkEl = document.getElementById("wordmark-refresh");
+  if (brandEl) brandEl.addEventListener("click", function(e){ e.preventDefault(); doReload(); });
+  if (wordmarkEl) wordmarkEl.addEventListener("click", function(e){ e.preventDefault(); doReload(); });
 
   /* 전체 흐름 더보기 */
   var LIMIT = 18, expanded = false;
