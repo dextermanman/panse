@@ -37,49 +37,55 @@ PAGE = Template(r"""<!DOCTYPE html>
 </script>
 <style>
 :root, :root[data-theme="light"]{
-  --ground:#FAF9F6; --surface:rgba(255,255,255,0.92); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
-  --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
-  --ink:#1D1D1F; --ink-2:#555558; --ink-3:#86868B;
-  --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
-  --shadow:0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
-  --shadow-hover:0 8px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
-  --nav:rgba(250,249,246,0.92); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
-  --up:#FF3B30; --down:#0071E3;
+  /* Financial Luxury & Warm Paper (라이트) */
+  --ground:#F8F6F0; --surface:rgba(255,255,255,0.95); --surface-solid:#FFFFFF; --surface-2:#EFECE3; --tint:rgba(15,23,42,0.035);
+  --hairline:rgba(15,23,42,0.09); --hairline-2:rgba(15,23,42,0.045); --rule:#0F172A;
+  --ink:#0F172A; --ink-2:#475569; --ink-3:#94A3B8;
+  --blue:#0284C7; --gold:#D97706; --breaking:#E11D48; --breaking-bg:rgba(225,29,72,0.08);
+  --shadow:0 4px 20px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.02);
+  --shadow-hover:0 12px 32px -4px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+  --inner-glow:inset 0 1px 1px rgba(255,255,255,0.9);
+  --nav:rgba(248,246,240,0.94); --live:#10B981; --live-halo:rgba(16,185,129,0.18);
+  --up:#DC2626; --down:#2563EB;
 $SWATCH_LIGHT
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --ground:#0B0B0E; --surface:rgba(28,28,30,0.92); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
-    --hairline:rgba(255,255,255,0.12); --hairline-2:rgba(255,255,255,0.06); --rule:#E8E8E3;
-    --ink:#F5F5F7; --ink-2:#B0B0B5; --ink-3:#86868B;
-    --blue:#2997FF; --breaking:#FF453A; --breaking-bg:rgba(255,69,58,0.14);
-    --shadow:0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
-    --shadow-hover:0 12px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
-    --nav:rgba(11,11,14,0.92); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
-    --up:#FF453A; --down:#2997FF;
+    /* Deep Midnight & Sapphire Luxury (다크) */
+    --ground:#080D1A; --surface:rgba(15,23,42,0.92); --surface-solid:#0F172A; --surface-2:#1E293B; --tint:rgba(255,255,255,0.04);
+    --hairline:rgba(148,163,184,0.15); --hairline-2:rgba(148,163,184,0.08); --rule:#F8FAFC;
+    --ink:#F8FAFC; --ink-2:#94A3B8; --ink-3:#64748B;
+    --blue:#38BDF8; --gold:#F59E0B; --breaking:#FB7185; --breaking-bg:rgba(251,113,133,0.14);
+    --shadow:0 8px 32px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
+    --shadow-hover:0 16px 44px -8px rgba(0,0,0,0.8), 0 0 24px rgba(56,189,248,0.12);
+    --inner-glow:inset 0 1px 1px rgba(255,255,255,0.08);
+    --nav:rgba(8,13,26,0.92); --live:#34D399; --live-halo:rgba(52,211,153,0.2);
+    --up:#F87171; --down:#60A5FA;
 $SWATCH_DARK
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0B0B0E; --surface:rgba(28,28,30,0.92); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
-  --hairline:rgba(255,255,255,0.12); --hairline-2:rgba(255,255,255,0.06); --rule:#E8E8E3;
-  --ink:#F5F5F7; --ink-2:#B0B0B5; --ink-3:#86868B;
-  --blue:#2997FF; --breaking:#FF453A; --breaking-bg:rgba(255,69,58,0.14);
-  --shadow:0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
-  --shadow-hover:0 12px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
-  --nav:rgba(11,11,14,0.92); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
-  --up:#FF453A; --down:#2997FF;
+  --ground:#080D1A; --surface:rgba(15,23,42,0.92); --surface-solid:#0F172A; --surface-2:#1E293B; --tint:rgba(255,255,255,0.04);
+  --hairline:rgba(148,163,184,0.15); --hairline-2:rgba(148,163,184,0.08); --rule:#F8FAFC;
+  --ink:#F8FAFC; --ink-2:#94A3B8; --ink-3:#64748B;
+  --blue:#38BDF8; --gold:#F59E0B; --breaking:#FB7185; --breaking-bg:rgba(251,113,133,0.14);
+  --shadow:0 8px 32px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
+  --shadow-hover:0 16px 44px -8px rgba(0,0,0,0.8), 0 0 24px rgba(56,189,248,0.12);
+  --inner-glow:inset 0 1px 1px rgba(255,255,255,0.08);
+  --nav:rgba(8,13,26,0.92); --live:#34D399; --live-halo:rgba(52,211,153,0.2);
+  --up:#F87171; --down:#60A5FA;
 $SWATCH_DARK
 }
 :root[data-theme="light"]{
-  --ground:#FAF9F6; --surface:rgba(255,255,255,0.92); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
-  --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
-  --ink:#1D1D1F; --ink-2:#555558; --ink-3:#86868B;
-  --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
-  --shadow:0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
-  --shadow-hover:0 8px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
-  --nav:rgba(250,249,246,0.92); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
-  --up:#FF3B30; --down:#0071E3;
+  --ground:#F8F6F0; --surface:rgba(255,255,255,0.95); --surface-solid:#FFFFFF; --surface-2:#EFECE3; --tint:rgba(15,23,42,0.035);
+  --hairline:rgba(15,23,42,0.09); --hairline-2:rgba(15,23,42,0.045); --rule:#0F172A;
+  --ink:#0F172A; --ink-2:#475569; --ink-3:#94A3B8;
+  --blue:#0284C7; --gold:#D97706; --breaking:#E11D48; --breaking-bg:rgba(225,29,72,0.08);
+  --shadow:0 4px 20px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.02);
+  --shadow-hover:0 12px 32px -4px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+  --inner-glow:inset 0 1px 1px rgba(255,255,255,0.9);
+  --nav:rgba(248,246,240,0.94); --live:#10B981; --live-halo:rgba(16,185,129,0.18);
+  --up:#DC2626; --down:#2563EB;
 $SWATCH_LIGHT
 }
 $TOPIC_CLASSES
@@ -181,31 +187,35 @@ main{max-width:1180px; margin:0 auto; padding:0 24px calc(76px + env(safe-area-i
 .zone-note{font-size:12px; color:var(--ink-3)}
 .stack{display:flex; flex-direction:column; gap:28px}
 
-/* ---------- 카드 공통 (Apple 스타일) ---------- */
-.card{background:var(--surface); border:1px solid var(--hairline); border-radius:18px;
-  box-shadow:var(--shadow); overflow:hidden; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+/* ---------- 카드 공통 (Financial Luxury 스타일) ---------- */
+.card{background:var(--surface); border:1px solid var(--hairline); border-radius:20px;
+  box-shadow:var(--shadow), var(--inner-glow); overflow:hidden; backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
   transition:all .2s cubic-bezier(0.16, 1, 0.3, 1)}
-.card-head{display:flex; align-items:center; gap:10px; padding:13px 20px; border-bottom:1px solid var(--hairline)}
+.card-head{display:flex; align-items:center; gap:10px; padding:14px 22px; border-bottom:1px solid var(--hairline)}
 .eyebrow{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
 
 /* ---------- 오늘의 3줄 브리핑 카드 ---------- */
 .brief-card{background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
-  border:1px solid var(--hairline); border-radius:18px; padding:18px 22px; box-shadow:var(--shadow)}
+  border:1px solid var(--hairline); border-radius:20px; padding:20px 24px; box-shadow:var(--shadow), var(--inner-glow)}
 .brief-head{display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap}
-.brief-pill{display:inline-flex; align-items:center; gap:6px; background:var(--ink); color:var(--ground);
-  font-size:11px; font-weight:600; letter-spacing:.05em; padding:4px 10px; border-radius:980px}
+.brief-pill{display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg, #B45309, #D97706); color:#FFFFFF;
+  font-size:11px; font-weight:700; letter-spacing:.05em; padding:4px 11px; border-radius:980px; box-shadow:0 2px 8px rgba(180,83,9,0.25)}
 .brief-sub{font-size:12px; color:var(--ink-2)}
 .brief-copy{margin-left:auto; display:inline-flex; align-items:center; gap:5px; font-size:11.5px;
   font-weight:600; color:var(--ink-2); background:var(--surface); border:1px solid var(--hairline);
   padding:4px 11px; border-radius:980px; cursor:pointer; transition:all .15s ease}
 .brief-copy:hover{background:var(--surface-solid); color:var(--ink); transform:scale(1.02)}
 .brief-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px}
-.brief-item{background:var(--surface); border:1px solid var(--hairline-2); border-radius:14px; padding:13px 16px;
-  display:flex; flex-direction:column; gap:7px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
+.brief-item{background:var(--surface); border:1px solid var(--hairline-2); border-radius:14px; padding:14px 18px;
+  box-shadow:var(--inner-glow); display:flex; flex-direction:column; gap:8px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
 .brief-item:hover{background:var(--surface-solid); border-color:var(--hairline); transform:translateY(-2px); box-shadow:var(--shadow-hover)}
 .brief-tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:var(--accent)}
-.brief-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
+.brief-tag .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent)}
 .brief-title{font-size:14.5px; font-weight:600; line-height:1.45; color:var(--ink)}
+
+/* ---------- 메뉴판 (보드) ---------- */
+.board{list-style:none; margin:0; padding:0; background:var(--surface);
+  border:1px solid var(--hairline); border-radius:20px; box-shadow:var(--shadow), var(--inner-glow); overflow:hidden}
 
 /* ---------- 속보 카드 ---------- */
 .b-list{list-style:none; margin:0; padding:0}

@@ -20,44 +20,42 @@ TOPICS = [
     # 순서 = 색 배치 순서이자 중복 제거 우선순위 (앞 주제가 기사를 먼저 가져간다).
     # 색은 dataviz 스킬 검증 팔레트 8슬롯. 이 배열 순서로 라이트/다크 모두 검증했다.
     {
-        "id": "mideast", "name": "중동전쟁", "accent": "#e34948", "accent_dark": "#e66767",
+        "id": "mideast", "name": "중동전쟁", "accent": "#E11D48", "accent_dark": "#FB7185",
         "queries": ["중동 전쟁", "이스라엘 가자", "이란 이스라엘", "중동 정세 유가"],
     },
     {
-        "id": "semi", "name": "반도체", "accent": "#2a78d6", "accent_dark": "#3987e5",
+        "id": "semi", "name": "반도체", "accent": "#2563EB", "accent_dark": "#60A5FA",
         "queries": ["반도체", "HBM 메모리", "TSMC 파운드리", "삼성전자 SK하이닉스 반도체"],
     },
     {
-        "id": "display", "name": "디스플레이", "accent": "#e87ba4", "accent_dark": "#d55181",
+        "id": "display", "name": "디스플레이", "accent": "#DB2777", "accent_dark": "#F472B6",
         "queries": ["디스플레이 패널", "OLED", "LG디스플레이 삼성디스플레이", "마이크로LED 디스플레이"],
     },
     {
-        "id": "stock", "name": "주식", "accent": "#008300", "accent_dark": "#008300",
+        "id": "stock", "name": "주식", "accent": "#059669", "accent_dark": "#34D399",
         "queries": ["코스피 코스닥", "뉴욕증시", "주식 시장 전망", "기업 실적 발표"],
     },
     {
-        "id": "ai", "name": "AI", "accent": "#4a3aa7", "accent_dark": "#9085e9",
+        "id": "ai", "name": "AI", "accent": "#7C3AED", "accent_dark": "#A78BFA",
         "queries": ["인공지능 AI", "생성형 AI", "엔비디아 AI", "AI 데이터센터",
-                    # 구글이 "전력 수요"만 보고 일반 전력 기사를 딸려 보내므로
-                    # 이 두 질의는 AI·데이터센터가 제목에 있어야 통과시킨다
                     ("AI 데이터센터 전력", r"AI|인공지능|데이터센터"),
                     ("데이터센터 전력 수요", r"AI|인공지능|데이터센터")],
     },
     {
-        "id": "battery", "name": "배터리·전기차", "accent": "#1baf7a", "accent_dark": "#199e70",
+        "id": "battery", "name": "배터리·전기차", "accent": "#0D9488", "accent_dark": "#2DD4BF",
         "queries": ["배터리", "전기차", "이차전지", "테슬라 전기차"],
     },
     {
-        "id": "econ", "name": "세계 경제", "accent": "#eb6834", "accent_dark": "#d95926",
+        "id": "econ", "name": "세계 경제", "accent": "#EA580C", "accent_dark": "#FB923C",
         "queries": ["세계 경제", "미국 연준 금리", "환율 원달러", "글로벌 인플레이션",
                     "비트코인 시세 전망", "이더리움 가상자산"],
     },
     {
-        "id": "stablecoin", "name": "스테이블코인", "accent": "#008d96", "accent_dark": "#14b8a6",
+        "id": "stablecoin", "name": "스테이블코인", "accent": "#0891B2", "accent_dark": "#22D3EE",
         "queries": ["스테이블코인", "테더 USDT USDC", "원화 스테이블코인", "스테이블코인 법안", "디지털화폐 CBDC 스테이블코인"],
     },
     {
-        "id": "realestate", "name": "부동산", "accent": "#a86c2e", "accent_dark": "#d4944d",
+        "id": "realestate", "name": "부동산", "accent": "#B45309", "accent_dark": "#FBBF24",
         "queries": ["아파트 매매 전세 시세", "부동산 시장 전망 정책", "부동산 청약 분양가", "재건축 재개발 부동산", "주택담보대출 금리 부동산"],
     },
 ]
