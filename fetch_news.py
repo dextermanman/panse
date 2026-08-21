@@ -56,6 +56,10 @@ TOPICS = [
         "id": "stablecoin", "name": "스테이블코인", "accent": "#008d96", "accent_dark": "#14b8a6",
         "queries": ["스테이블코인", "테더 USDT USDC", "원화 스테이블코인", "스테이블코인 법안", "디지털화폐 CBDC 스테이블코인"],
     },
+    {
+        "id": "realestate", "name": "부동산", "accent": "#a86c2e", "accent_dark": "#d4944d",
+        "queries": ["아파트 매매 전세 시세", "부동산 시장 전망 정책", "부동산 청약 분양가", "재건축 재개발 부동산", "주택담보대출 금리 부동산"],
+    },
 ]
 
 STRIP_SOURCE = re.compile(r"\s+-\s+[^-]+$")
