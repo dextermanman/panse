@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""news.json -> dashboard.html (Apple 스타일 미니멀 프리미엄 뉴스 대시보드)."""
+"""news.json -> dashboard.html (세상돌아가는 판세 - Apple 스타일 프리미엄 대시보드)."""
 import html
 import json
 from datetime import datetime, timedelta, timezone
@@ -20,7 +20,7 @@ PAGE = Template(r"""<!DOCTYPE html>
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="세상돌아가는 판세">
 <meta name="theme-color" content="#FAF9F6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0B0B0D" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0B0B0E" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon.svg">
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
@@ -37,52 +37,55 @@ PAGE = Template(r"""<!DOCTYPE html>
 </script>
 <style>
 :root, :root[data-theme="light"]{
-  /* Apple 테마 & 종이 감성 결합 (라이트) */
-  --ground:#FAF9F6; --surface:rgba(255,255,255,0.86); --surface-solid:#FFFFFF; --surface-2:#F3F2EE; --tint:rgba(26,26,24,0.035);
+  --ground:#FAF9F6; --surface:rgba(255,255,255,0.88); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
   --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
-  --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
+  --ink:#1D1D1F; --ink-2:#555558; --ink-3:#86868B;
   --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
-  --shadow:0 4px 24px rgba(0,0,0,0.035), 0 1px 3px rgba(0,0,0,0.02);
-  --nav:rgba(250,249,246,0.84); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
+  --shadow:0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+  --shadow-hover:0 8px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
+  --nav:rgba(250,249,246,0.86); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
   --up:#FF3B30; --down:#0071E3;
 $SWATCH_LIGHT
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --ground:#0B0B0E; --surface:rgba(28,28,30,0.84); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
+    --ground:#0B0B0E; --surface:rgba(28,28,30,0.86); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
     --hairline:rgba(255,255,255,0.12); --hairline-2:rgba(255,255,255,0.06); --rule:#E8E8E3;
-    --ink:#F5F5F7; --ink-2:#A1A1A6; --ink-3:#86868B;
+    --ink:#F5F5F7; --ink-2:#B0B0B5; --ink-3:#86868B;
     --blue:#2997FF; --breaking:#FF453A; --breaking-bg:rgba(255,69,58,0.14);
     --shadow:0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
-    --nav:rgba(11,11,14,0.84); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
+    --shadow-hover:0 12px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
+    --nav:rgba(11,11,14,0.86); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
     --up:#FF453A; --down:#2997FF;
 $SWATCH_DARK
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0B0B0E; --surface:rgba(28,28,30,0.84); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
+  --ground:#0B0B0E; --surface:rgba(28,28,30,0.86); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
   --hairline:rgba(255,255,255,0.12); --hairline-2:rgba(255,255,255,0.06); --rule:#E8E8E3;
-  --ink:#F5F5F7; --ink-2:#A1A1A6; --ink-3:#86868B;
+  --ink:#F5F5F7; --ink-2:#B0B0B5; --ink-3:#86868B;
   --blue:#2997FF; --breaking:#FF453A; --breaking-bg:rgba(255,69,58,0.14);
   --shadow:0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
-  --nav:rgba(11,11,14,0.84); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
+  --shadow-hover:0 12px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
+  --nav:rgba(11,11,14,0.86); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
   --up:#FF453A; --down:#2997FF;
 $SWATCH_DARK
 }
 :root[data-theme="light"]{
-  --ground:#FAF9F6; --surface:rgba(255,255,255,0.86); --surface-solid:#FFFFFF; --surface-2:#F3F2EE; --tint:rgba(26,26,24,0.035);
+  --ground:#FAF9F6; --surface:rgba(255,255,255,0.88); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
   --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
-  --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
+  --ink:#1D1D1F; --ink-2:#555558; --ink-3:#86868B;
   --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
-  --shadow:0 4px 24px rgba(0,0,0,0.035), 0 1px 3px rgba(0,0,0,0.02);
-  --nav:rgba(250,249,246,0.84); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
+  --shadow:0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+  --shadow-hover:0 8px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
+  --nav:rgba(250,249,246,0.86); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
   --up:#FF3B30; --down:#0071E3;
 $SWATCH_LIGHT
 }
 $TOPIC_CLASSES
 
 *{box-sizing:border-box}
-body{margin:0; background:var(--ground); color:var(--ink); font-size:15px; line-height:1.5;
+body{margin:0; background:var(--ground); color:var(--ink); font-size:15px; line-height:1.55;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Pretendard","Apple SD Gothic Neo","Segoe UI",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   word-break:keep-all; overflow-wrap:anywhere}
@@ -99,11 +102,11 @@ button{font:inherit; color:inherit; border:0; background:transparent}
   backdrop-filter:saturate(190%) blur(24px); -webkit-backdrop-filter:saturate(190%) blur(24px);
   border-bottom:1px solid var(--hairline); transition:border-color .2s ease}
 .top-in{max-width:1180px; margin:0 auto; padding:10px 28px 0; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
-.brand{font-family:"Noto Serif KR",Georgia,serif; font-size:17.5px; font-weight:700; letter-spacing:-.015em}
+.brand{font-family:"Noto Serif KR",Georgia,serif; font-size:18px; font-weight:700; letter-spacing:-.015em}
 .nav-new{display:none; align-items:center; gap:6px; font-size:11.5px; font-weight:600;
   color:var(--breaking); background:var(--breaking-bg); padding:3px 10px; border-radius:980px}
 .nav-new.show{display:inline-flex}
-.top-right{margin-left:auto; display:flex; align-items:center; gap:11px;
+.top-right{margin-left:auto; display:flex; align-items:center; gap:10px;
   flex-wrap:wrap; row-gap:7px; justify-content:flex-end; min-width:0}
 .stamp{font-size:11.5px; color:var(--ink-2); font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:6px}
 .dot-live{width:6.5px; height:6.5px; border-radius:50%; background:var(--live); box-shadow:0 0 0 3px var(--live-halo)}
@@ -111,11 +114,11 @@ button{font:inherit; color:inherit; border:0; background:transparent}
   .dot-live{animation:pulse 2.8s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 }
-.metals{display:flex; flex-direction:column; align-items:flex-end; gap:3px;
-  font-variant-numeric:tabular-nums;
-  padding-right:12px; margin-right:-2px; border-right:1px solid var(--hairline)}
-.metal-row{display:flex; align-items:baseline; gap:12px}
-.metal{display:inline-flex; align-items:baseline; gap:5px; font-size:11.5px; white-space:nowrap}
+.metals{display:flex; align-items:center; gap:6px; font-variant-numeric:tabular-nums;
+  padding-right:12px; margin-right:-2px; border-right:1px solid var(--hairline); flex-wrap:wrap}
+.metal-row{display:flex; align-items:center; gap:6px}
+.metal{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; white-space:nowrap;
+  background:var(--surface-2); border:1px solid var(--hairline); padding:3px 8px; border-radius:980px}
 .m-label{color:var(--ink-3); font-weight:600}
 .m-value{color:var(--ink); font-weight:600; letter-spacing:-.01em}
 .m-chg{font-size:10.5px; font-weight:700}
@@ -127,12 +130,12 @@ button{font:inherit; color:inherit; border:0; background:transparent}
 .btn:hover{background:var(--surface-2); transform:scale(1.02)}
 .btn:active{transform:scale(0.98)}
 
-.menu-wrap{max-width:1180px; margin:0 auto; padding:10px 28px 12px}
-.menu{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
+.menu-wrap{max-width:1180px; margin:0 auto; padding:10px 28px 12px; display:flex; align-items:center; gap:12px}
+.menu{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; flex:1}
 .menu::-webkit-scrollbar{display:none}
 .m-btn{flex:none; display:inline-flex; align-items:center; gap:7px; cursor:pointer;
   border:1px solid var(--hairline); background:var(--surface); color:var(--ink-2);
-  font-size:14px; font-weight:500; padding:8px 16px; border-radius:980px;
+  font-size:13.5px; font-weight:500; padding:7px 15px; border-radius:980px;
   transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
 .m-btn:hover{background:var(--surface-2); color:var(--ink)}
 .m-btn:active{transform:scale(0.97)}
@@ -141,12 +144,11 @@ button{font:inherit; color:inherit; border:0; background:transparent}
 .m-btn[aria-selected="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink); font-weight:600}
 .m-btn[aria-selected="true"] .n{color:var(--ground); opacity:.75}
 .m-btn[aria-selected="true"] .swatch{box-shadow:0 0 0 2px var(--ground)}
-.m-btn .pin-icon{font-size:10px; margin-left:-2px; opacity:0.8}
 
 main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
 
-/* ---------- 제호 ---------- */
-.masthead{padding:34px 0 20px; border-bottom:2px solid var(--rule); margin-bottom:2px}
+/* ---------- 제호 & 검색바 ---------- */
+.masthead{padding:32px 0 18px; border-bottom:2px solid var(--rule); margin-bottom:2px}
 .masthead-in{display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap}
 .wordmark{font-family:"Noto Serif KR",Georgia,serif; font-size:40px; font-weight:700;
   letter-spacing:-.025em; line-height:1.05; margin:0}
@@ -154,7 +156,19 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
 .masthead-date{margin-left:auto; text-align:right; font-size:12px; color:var(--ink-2);
   font-variant-numeric:tabular-nums; line-height:1.6}
 .masthead-date b{display:block; font-size:13.5px; font-weight:600; color:var(--ink)}
-.rule-thin{height:1px; background:var(--hairline); margin-bottom:28px}
+.rule-thin{height:1px; background:var(--hairline); margin-bottom:24px}
+
+/* 검색창 */
+.search-bar{margin-bottom:24px; position:relative; display:flex; align-items:center}
+.search-in{width:100%; display:flex; align-items:center; background:var(--surface);
+  border:1px solid var(--hairline); border-radius:14px; padding:10px 16px; gap:10px;
+  box-shadow:var(--shadow); transition:all .18s ease}
+.search-in:focus-within{border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,113,227,0.15)}
+.search-icon{width:16px; height:16px; color:var(--ink-3); flex:none}
+.search-input{flex:1; border:0; background:transparent; font-size:14px; color:var(--ink); outline:none}
+.search-input::placeholder{color:var(--ink-3)}
+.search-clear{color:var(--ink-3); font-size:14px; cursor:pointer; padding:2px 6px; border-radius:50%}
+.search-clear:hover{color:var(--ink); background:var(--surface-2)}
 
 /* ---------- 섹션 라벨 ---------- */
 .zone-head{display:flex; align-items:center; gap:9px; margin:0 0 13px; flex-wrap:wrap}
@@ -167,69 +181,81 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
 /* ---------- 카드 공통 (Apple 스타일) ---------- */
 .card{background:var(--surface); border:1px solid var(--hairline); border-radius:18px;
   box-shadow:var(--shadow); overflow:hidden; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-  transition:border-color .2s ease, box-shadow .2s ease}
+  transition:all .2s cubic-bezier(0.16, 1, 0.3, 1)}
+.card-head{display:flex; align-items:center; gap:10px; padding:13px 22px; border-bottom:1px solid var(--hairline)}
+.eyebrow{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
 
 /* ---------- 오늘의 3줄 브리핑 카드 ---------- */
 .brief-card{background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
   border:1px solid var(--hairline); border-radius:18px; padding:20px 24px; box-shadow:var(--shadow)}
-.brief-head{display:flex; align-items:center; gap:8px; margin-bottom:14px}
+.brief-head{display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap}
 .brief-pill{display:inline-flex; align-items:center; gap:6px; background:var(--ink); color:var(--ground);
   font-size:11px; font-weight:600; letter-spacing:.05em; padding:4px 10px; border-radius:980px}
 .brief-sub{font-size:12px; color:var(--ink-2)}
+.brief-copy{margin-left:auto; display:inline-flex; align-items:center; gap:5px; font-size:11.5px;
+  font-weight:600; color:var(--ink-2); background:var(--surface); border:1px solid var(--hairline);
+  padding:4px 11px; border-radius:980px; cursor:pointer; transition:all .15s ease}
+.brief-copy:hover{background:var(--surface-solid); color:var(--ink); transform:scale(1.02)}
 .brief-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px}
-.brief-item{background:var(--surface); border:1px solid var(--hairline-2); border-radius:12px; padding:12px 16px;
-  display:flex; flex-direction:column; gap:6px; transition:all .18s ease}
-.brief-item:hover{background:var(--surface-solid); border-color:var(--hairline); transform:translateY(-2px)}
-.brief-tag{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:var(--accent)}
-.brief-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
-.brief-title{font-size:14px; font-weight:500; line-height:1.45; color:var(--ink)}
+.brief-item{background:var(--surface); border:1px solid var(--hairline-2); border-radius:14px; padding:14px 18px;
+  display:flex; flex-direction:column; gap:8px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
+.brief-item:hover{background:var(--surface-solid); border-color:var(--hairline); transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+.brief-tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:var(--accent)}
+.brief-tag .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent)}
+.brief-title{font-size:14.5px; font-weight:600; line-height:1.45; color:var(--ink)}
 
 /* ---------- 속보 카드 ---------- */
 .b-list{list-style:none; margin:0; padding:0}
 .b-list li + li{border-top:1px solid var(--hairline-2)}
-.b-item{display:flex; align-items:baseline; gap:14px; padding:14px 22px; transition:background .15s ease}
+.b-item{display:flex; align-items:center; gap:14px; padding:14px 22px; transition:background .15s ease}
 .b-item:hover{background:var(--tint)}
-.b-time{flex:none; width:50px; font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
-.b-title{flex:1; min-width:0; font-size:15.5px; font-weight:500; line-height:1.5}
+.b-time{flex:none; width:52px; font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.b-title{flex:1; min-width:0; font-size:15.5px; font-weight:550; line-height:1.5}
 .b-list li:first-child .b-item{padding:22px 22px 24px; align-items:flex-start}
 .b-list li:first-child .b-title{font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
-  font-size:22.5px; font-weight:600; line-height:1.45; letter-spacing:-.015em}
-.b-list li:first-child .b-time{padding-top:7px}
-.b-tag{flex:none; display:inline-flex; align-items:center; gap:6px; font-size:11px; color:var(--ink-2)}
-.b-tag .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent)}
+  font-size:22px; font-weight:600; line-height:1.45; letter-spacing:-.015em}
+.b-list li:first-child .b-time{padding-top:6px}
+.b-tag{flex:none; display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
+  color:var(--ink-2); background:var(--surface-2); padding:3px 8px; border-radius:6px}
+.b-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
 .b-src{flex:none; font-size:11px; color:var(--ink-3); width:82px; text-align:right;
   overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.bm-btn{flex:none; opacity:0.4; font-size:14px; cursor:pointer; padding:4px 6px; border-radius:6px; transition:all .15s ease}
+.bm-btn:hover{opacity:1; background:var(--surface-2)}
+.bm-btn.active{opacity:1; color:#FF9500}
 
-/* ---------- 메뉴판 (주제별 보드) ---------- */
+/* ---------- 메뉴판 (주제별 보드 & 스파크라인) ---------- */
 .board{list-style:none; margin:0; padding:0; background:var(--surface);
   border:1px solid var(--hairline); border-radius:18px; box-shadow:var(--shadow); overflow:hidden}
 .board li + li{border-top:1px solid var(--hairline-2)}
-.bd-row{display:grid; grid-template-columns:4px 135px 1fr auto 16px; align-items:center;
-  gap:0 18px; padding:0; cursor:pointer; width:100%; text-align:left;
+.bd-row{display:grid; grid-template-columns:4px 135px 1fr auto 60px 16px; align-items:center;
+  gap:0 16px; padding:0; cursor:pointer; width:100%; text-align:left;
   border:0; background:transparent; transition:background .15s ease}
 .bd-row:hover{background:var(--tint)}
 .bd-bar{align-self:stretch; background:var(--accent)}
 .bd-name{padding:15px 0; font-size:15.5px; font-weight:600; letter-spacing:-.015em; display:flex; align-items:center; gap:6px}
 .bd-teaser{font-size:13.5px; color:var(--ink-2); overflow:hidden;
   text-overflow:ellipsis; white-space:nowrap; padding:16px 0}
-.bd-nums{display:flex; align-items:center; gap:9px; padding:16px 0; white-space:nowrap}
+.bd-nums{display:flex; align-items:center; gap:8px; padding:16px 0; white-space:nowrap}
 .bd-new{font-size:11px; font-weight:700; color:var(--breaking);
   background:var(--breaking-bg); padding:3px 8px; border-radius:980px; font-variant-numeric:tabular-nums}
 .bd-total{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.sparkline{display:flex; align-items:flex-end; gap:1.5px; height:20px; padding:2px 0}
+.sp-bar{width:2px; background:var(--accent); border-radius:1px; opacity:0.75; min-height:2px}
 .bd-go{font-size:16px; color:var(--ink-3); padding-right:18px; transition:transform .15s ease, color .15s ease}
 .bd-row:hover .bd-go{color:var(--ink-2); transform:translateX(4px)}
 
 /* ---------- 전체 흐름 ---------- */
 .feed{list-style:none; margin:0; padding:0}
 .feed li + li{border-top:1px solid var(--hairline-2)}
-.f-row{display:grid; grid-template-columns:50px 115px 1fr 88px; gap:14px;
-  align-items:baseline; padding:10px 22px; transition:background .15s ease}
+.f-row{display:grid; grid-template-columns:52px 115px 1fr 88px 30px; gap:12px;
+  align-items:center; padding:11px 22px; transition:background .15s ease}
 .f-row:hover{background:var(--tint)}
 .f-time{font-size:11px; color:var(--ink-3); font-variant-numeric:tabular-nums}
-.f-tag{display:inline-flex; align-items:center; gap:6px; font-size:11px; color:var(--ink-2);
-  overflow:hidden; white-space:nowrap}
-.f-tag .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent); flex:none}
-.f-title{font-size:14.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.f-tag{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
+  color:var(--ink-2); background:var(--surface-2); padding:2px 8px; border-radius:6px; width:fit-content}
+.f-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent); flex:none}
+.f-title{font-size:14.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .f-row:hover .f-title{color:var(--blue)}
 .f-src{font-size:11px; color:var(--ink-3); text-align:right; overflow:hidden;
   text-overflow:ellipsis; white-space:nowrap}
@@ -238,7 +264,7 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
   cursor:pointer; transition:background .15s ease}
 .more:hover{background:var(--surface-2)}
 
-/* ---------- 주제 보기 (상세 페이지) ---------- */
+/* ---------- 주제 보기 & 스크랩 상세 ---------- */
 .detail{margin-top:30px}
 .detail-head{display:flex; align-items:center; gap:16px; padding:22px 24px 18px;
   border-bottom:2px solid var(--rule); flex-wrap:wrap}
@@ -256,16 +282,25 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
 .group{grid-column:1/-1; padding:16px 24px 6px; font-size:11px; font-weight:700;
   letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); border-top:1px solid var(--hairline-2)}
 .group:first-child{border-top:0; padding-top:14px}
-.d-item{border-top:1px solid var(--hairline-2)}
-.row{display:block; padding:14px 24px; height:100%; transition:background .15s ease}
+.d-item{border-top:1px solid var(--hairline-2); position:relative}
+.row{display:block; padding:15px 24px; height:100%; transition:background .15s ease}
 .row:hover{background:var(--tint)}
-.row-title{font-size:15.5px; font-weight:500; line-height:1.55;
+.row-title{font-size:15.5px; font-weight:550; line-height:1.55;
   display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
 .row:hover .row-title{color:var(--blue)}
-.row-meta{margin-top:6px; font-size:11px; color:var(--ink-3); display:flex; gap:6px;
-  align-items:center; font-variant-numeric:tabular-nums}
+.row-meta{margin-top:8px; font-size:11.5px; color:var(--ink-3); display:flex; gap:6px;
+  align-items:center; font-variant-numeric:tabular-nums; flex-wrap:wrap}
+.meta-chip{display:inline-flex; align-items:center; gap:4px; background:var(--surface-2);
+  padding:2px 7px; border-radius:6px; font-size:11px; font-weight:500; color:var(--ink-2)}
 .sep{opacity:.45}
-.badge{color:var(--breaking); font-weight:700; font-size:10px; letter-spacing:.05em}
+.badge{color:var(--breaking); font-weight:700; font-size:10.5px; letter-spacing:.05em}
+
+/* 토스트 알림 */
+.toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(100px);
+  background:var(--ink); color:var(--ground); font-size:13px; font-weight:600;
+  padding:10px 20px; border-radius:980px; box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  z-index:100; transition:transform .25s cubic-bezier(0.16, 1, 0.3, 1); pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
 
 footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   font-size:11.5px; color:var(--ink-3); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
@@ -275,23 +310,24 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .bd-name{padding:13px 0 2px; grid-column:2; font-size:16px}
   .bd-teaser{grid-column:2; padding:0 0 13px; font-size:12.5px; white-space:normal;
     display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical}
+  .sparkline{display:none}
   .bd-nums{grid-column:3; grid-row:1/3}
   .bd-go{grid-column:4; grid-row:1/3}
-  .f-row{grid-template-columns:46px 1fr; gap:3px 10px; padding:10px 20px}
+  .f-row{grid-template-columns:48px 1fr 30px; gap:4px 10px; padding:10px 18px}
   .f-tag{grid-column:2; order:3; font-size:10.5px}
   .f-title{grid-column:2; white-space:normal; line-height:1.5;
     display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
   .f-src{display:none}
 }
 @media (max-width:640px){
-  main{padding:0 18px 56px}
-  .top-in{padding:10px 18px 0}
-  .menu-wrap{padding:8px 18px 10px}
+  main{padding:0 16px 56px}
+  .top-in{padding:10px 16px 0}
+  .menu-wrap{padding:8px 16px 10px}
   .top-right{flex:1 1 100%; margin-left:0; justify-content:flex-start}
   .stamp-sfx{display:none}
   .metals{order:3; flex-basis:100%; align-items:flex-start;
     border-right:0; padding-right:0; margin-right:0; gap:4px}
-  .metal-row{gap:12px}
+  .metal-row{gap:6px}
   .stamp{font-size:11px}
   .btn{padding:5px 10px}
   .masthead{padding:24px 0 16px}
@@ -321,6 +357,7 @@ $METALS
   <div class="menu-wrap">
     <div class="menu" id="tabmenu" role="tablist" aria-label="주제 메뉴">
       <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
+      <button class="m-btn" type="button" role="tab" data-view="bookmarks" aria-selected="false">🔖 스크랩 <span class="n" id="bm-badge">0</span></button>
 $MENU
     </div>
   </div>
@@ -341,14 +378,34 @@ $MENU
   </header>
   <div class="rule-thin"></div>
 
+  <!-- 실시간 검색바 -->
+  <div class="search-bar">
+    <div class="search-in">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+      </svg>
+      <input id="search-input" class="search-input" type="search" placeholder="기사 검색 (예: 금리, 엔비디아, 아파트, 테더...)" autocomplete="off">
+      <button id="search-clear" class="search-clear hidden" type="button" aria-label="검색어 지우기">✕</button>
+    </div>
+  </div>
+
+  <!-- 검색 결과 영역 -->
+  <div id="search-section" class="card hidden" style="margin-bottom:28px;">
+    <div class="card-head">
+      <span class="eyebrow" id="search-count">검색 결과 0건</span>
+    </div>
+    <ul class="feed" id="search-list"></ul>
+  </div>
+
   <div id="overview" class="stack">
     <!-- 오늘의 판세 3줄 브리핑 -->
     <section class="brief-card" aria-label="오늘의 판세 브리핑">
       <div class="brief-head">
         <span class="brief-pill">✨ 오늘의 3줄 판세</span>
         <span class="brief-sub">현재 가장 주목받는 핵심 헤드라인</span>
+        <button class="brief-copy" id="copy-briefing" type="button">📋 브리핑 복사</button>
       </div>
-      <div class="brief-grid">
+      <div class="brief-grid" id="briefing-container">
 $BRIEFING
       </div>
     </section>
@@ -368,7 +425,7 @@ $BREAKING
     <section aria-labelledby="z1">
       <div class="zone-head">
         <span class="zone-title" id="z1">무엇을 볼까</span>
-        <span class="zone-note">빨간 숫자는 최근 1시간에 새로 들어온 기사</span>
+        <span class="zone-note">오른쪽 미니 차트는 24시간 기사 발생 추이</span>
       </div>
       <ul class="board">
 $BOARD
@@ -389,6 +446,15 @@ $FEED
     </section>
   </div>
 
+  <!-- 스크랩(북마크) 전용 상세 섹션 -->
+  <section class="detail card hidden" data-topic="bookmarks" aria-label="스크랩한 기사">
+    <div class="detail-head">
+      <span class="detail-name hl">🔖 스크랩한 기사</span>
+      <span class="detail-stat"><b id="bm-total">0</b>건 저장됨</span>
+    </div>
+    <ul class="feed" id="bm-list" style="min-height:80px;"></ul>
+  </section>
+
 $DETAILS
 
   <footer>
@@ -398,11 +464,21 @@ $DETAILS
   </footer>
 </main>
 
+<div class="toast" id="toast">알림</div>
+
 <script>
 (function(){
   var GEN = $GEN_TS * 1000, PERIOD = 30 * 60 * 1000;
   var DEADLINE = GEN + PERIOD + Math.floor(Math.random() * 120000);
   var NAMES = $NAMES;
+  NAMES["bookmarks"] = "스크랩";
+
+  function showToast(msg){
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(function(){ t.classList.remove("show"); }, 2000);
+  }
 
   function rel(ts){
     var m = Math.floor((Date.now() - ts * 1000) / 60000);
@@ -523,6 +599,188 @@ $DETAILS
     themeBtn.addEventListener("click", toggleTheme);
   }
 
+  /* 🔖 북마크(스크랩) 관리 */
+  var BM_KEY = "panse-bookmarks";
+  function getBookmarks(){
+    try { return JSON.parse(localStorage.getItem(BM_KEY)) || []; } catch(e){ return []; }
+  }
+  function toggleBookmark(item){
+    var bms = getBookmarks();
+    var idx = bms.findIndex(function(b){ return b.link === item.link; });
+    if (idx >= 0) {
+      bms.splice(idx, 1);
+      showToast("북마크가 해제되었습니다");
+    } else {
+      bms.unshift(item);
+      showToast("스크랩 탭에 저장되었습니다 🔖");
+    }
+    try { localStorage.setItem(BM_KEY, JSON.stringify(bms)); } catch(e){}
+    renderBookmarks();
+    updateBookmarkButtons();
+  }
+  function updateBookmarkButtons(){
+    var bms = getBookmarks();
+    var bmMap = {};
+    bms.forEach(function(b){ bmMap[b.link] = true; });
+    document.querySelectorAll(".bm-btn").forEach(function(btn){
+      var l = btn.dataset.link;
+      btn.classList.toggle("active", !!bmMap[l]);
+      btn.title = bmMap[l] ? "스크랩 취소" : "기사 스크랩";
+    });
+    var badge = document.getElementById("bm-badge");
+    var total = document.getElementById("bm-total");
+    if (badge) badge.textContent = bms.length;
+    if (total) total.textContent = bms.length;
+  }
+  function renderBookmarks(){
+    var bms = getBookmarks();
+    var list = document.getElementById("bm-list");
+    if (!list) return;
+    if (bms.length === 0) {
+      list.innerHTML = "<li style=\"padding:30px; text-align:center; color:var(--ink-3); font-size:14px;\">스크랩한 기사가 없습니다. 기사 옆 🔖 버튼을 눌러 저장해 보세요!</li>";
+      return;
+    }
+    list.innerHTML = bms.map(function(it){
+      return "<li class=\"f-item\" data-topic=\"" + it.topicId + "\">" +
+        "<a class=\"f-row t-" + it.topicId + "\" href=\"" + it.link + "\" target=\"_blank\" rel=\"noopener\">" +
+        "<span class=\"f-time\" data-ts=\"" + it.ts + "\">" + rel(it.ts) + "</span>" +
+        "<span class=\"f-tag\"><span class=\"swatch\"></span>" + (it.topicName || "기사") + "</span>" +
+        "<span class=\"f-title\">" + it.title + "</span>" +
+        "<span class=\"f-src\">" + it.src + "</span>" +
+        "<button class=\"bm-btn active\" data-link=\"" + it.link + "\" type=\"button\">🔖</button>" +
+        "</a></li>";
+    }).join("");
+    list.querySelectorAll(".bm-btn").forEach(function(btn){
+      btn.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation();
+        var l = btn.dataset.link;
+        var bms = getBookmarks();
+        var it = bms.find(function(b){ return b.link === l; });
+        if (it) toggleBookmark(it);
+      });
+    });
+  }
+  document.querySelectorAll(".bm-btn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      e.preventDefault(); e.stopPropagation();
+      var item = {
+        link: btn.dataset.link,
+        title: btn.dataset.title,
+        src: btn.dataset.src,
+        ts: Number(btn.dataset.ts),
+        topicId: btn.dataset.topic,
+        topicName: btn.dataset.topicname
+      };
+      toggleBookmark(item);
+    });
+  });
+  renderBookmarks();
+  updateBookmarkButtons();
+
+  /* 📋 오늘의 3줄 브리핑 복사 */
+  var copyBtn = document.getElementById("copy-briefing");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function(){
+      var items = [].slice.call(document.querySelectorAll(".brief-item"));
+      var text = "[세상돌아가는 판세 - 오늘의 핵심 요약]\n";
+      items.forEach(function(it){
+        var tag = it.querySelector(".brief-tag").textContent.trim();
+        var title = it.querySelector(".brief-title").textContent.trim();
+        text += "• [" + tag + "] " + title + "\n";
+      });
+      text += "\n🔗 https://daseot-news.surge.sh";
+      navigator.clipboard.writeText(text).then(function(){
+        showToast("✓ 오늘의 브리핑이 복사되었습니다!");
+      }).catch(function(){
+        showToast("복사에 실패했습니다.");
+      });
+    });
+  }
+
+  /* 🔍 실시간 기사 검색 */
+  var searchInput = document.getElementById("search-input");
+  var searchClear = document.getElementById("search-clear");
+  var searchSection = document.getElementById("search-section");
+  var searchList = document.getElementById("search-list");
+  var searchCount = document.getElementById("search-count");
+
+  var allArticles = [];
+  document.querySelectorAll(".feed .f-item, .d-list .d-item").forEach(function(el){
+    var a = el.querySelector("a");
+    if (!a) return;
+    var titleEl = el.querySelector(".f-title, .row-title");
+    var srcEl = el.querySelector(".f-src, .meta-chip");
+    var timeEl = el.querySelector("[data-ts]");
+    var topic = el.dataset.topic || el.closest("section")?.dataset.topic || "";
+    if (titleEl && a.href && !allArticles.some(function(x){ return x.link === a.href; })) {
+      allArticles.push({
+        title: titleEl.textContent.trim(),
+        link: a.href,
+        src: srcEl ? srcEl.textContent.trim() : "",
+        ts: timeEl ? Number(timeEl.dataset.ts) : 0,
+        topic: topic,
+        topicName: NAMES[topic] || "뉴스"
+      });
+    }
+  });
+
+  function doSearch(kw){
+    kw = (kw || "").trim().toLowerCase();
+    searchClear.classList.toggle("hidden", !kw);
+    if (!kw) {
+      searchSection.classList.add("hidden");
+      return;
+    }
+    var matches = allArticles.filter(function(it){
+      return it.title.toLowerCase().indexOf(kw) >= 0 ||
+             it.src.toLowerCase().indexOf(kw) >= 0 ||
+             it.topicName.toLowerCase().indexOf(kw) >= 0;
+    });
+    searchCount.textContent = "검색 결과 " + matches.length + "건";
+    searchSection.classList.remove("hidden");
+    if (matches.length === 0) {
+      searchList.innerHTML = "<li style=\"padding:30px; text-align:center; color:var(--ink-3); font-size:14px;\">검색 결과가 없습니다.</li>";
+      return;
+    }
+    searchList.innerHTML = matches.map(function(it){
+      return "<li class=\"f-item\" data-topic=\"" + it.topic + "\">" +
+        "<a class=\"f-row t-" + it.topic + "\" href=\"" + it.link + "\" target=\"_blank\" rel=\"noopener\">" +
+        "<span class=\"f-time\" data-ts=\"" + it.ts + "\">" + rel(it.ts) + "</span>" +
+        "<span class=\"f-tag\"><span class=\"swatch\"></span>" + it.topicName + "</span>" +
+        "<span class=\"f-title\">" + it.title + "</span>" +
+        "<span class=\"f-src\">" + it.src + "</span>" +
+        "<button class=\"bm-btn\" data-link=\"" + it.link + "\" data-title=\"" + it.title.replace(/\"/g, "&quot;") + "\" data-src=\"" + it.src + "\" data-ts=\"" + it.ts + "\" data-topic=\"" + it.topic + "\" data-topicname=\"" + it.topicName + "\" type=\"button\">🔖</button>" +
+        "</a></li>";
+    }).join("");
+    searchList.querySelectorAll(".bm-btn").forEach(function(btn){
+      btn.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggleBookmark({
+          link: btn.dataset.link, title: btn.dataset.title, src: btn.dataset.src,
+          ts: Number(btn.dataset.ts), topicId: btn.dataset.topic, topicName: btn.dataset.topicname
+        });
+      });
+    });
+    updateBookmarkButtons();
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function(){ doSearch(searchInput.value); });
+    searchInput.addEventListener("keydown", function(e){
+      if (e.key === "Escape") {
+        searchInput.value = "";
+        doSearch("");
+      }
+    });
+  }
+  if (searchClear) {
+    searchClear.addEventListener("click", function(){
+      searchInput.value = "";
+      doSearch("");
+      searchInput.focus();
+    });
+  }
+
   /* 화면 뷰 전환 */
   var overview = document.getElementById("overview");
   var details = [].slice.call(document.querySelectorAll(".detail"));
@@ -532,7 +790,8 @@ $DETAILS
     overview.classList.toggle("hidden", view !== "all");
     details.forEach(function(d){ d.classList.toggle("hidden", d.dataset.topic !== view); });
     menu.forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.view === view)); });
-    document.title = (view === "all" ? "세상돌아가는 판세" : NAMES[view] + " · 세상돌아가는 판세");
+    document.title = (view === "all" ? "세상돌아가는 판세" : (NAMES[view] || "주제") + " · 세상돌아가는 판세");
+    if (view === "bookmarks") renderBookmarks();
   }
   var cur = "all";
   try { cur = localStorage.getItem("news-view") || "all"; } catch (e) {}
@@ -606,6 +865,17 @@ def market_html(m):
     return f'      <span class="metals"{stale}>\n' + "\n".join(rows) + '\n      </span>'
 
 
+def render_sparkline(hist24):
+    if not hist24 or not any(hist24):
+        return ""
+    m = max(hist24) or 1
+    bars = []
+    for count in hist24:
+        pct = max(10, int(count / m * 100)) if count > 0 else 10
+        bars.append(f'<span class="sp-bar" style="height:{pct}%;" title="{count}건"></span>')
+    return f'<span class="sparkline" title="지난 24시간 기사 발생 추이">{"".join(bars)}</span>'
+
+
 WEEKDAYS = ["월", "화", "수", "목", "금", "토", "일"]
 
 
@@ -629,14 +899,17 @@ def build():
     used = {it["link"] for it, _ in picks}
 
     breaking = "\n".join(
-        f'        <li><a class="b-item t-{t["id"]}" href="{esc(it["link"])}" target="_blank" rel="noopener">'
-        f'<span class="b-time" data-ts="{it["ts"]}">–</span><span class="b-title">{esc(it["title"])}</span>'
+        f'        <li><div class="b-item t-{t["id"]}">'
+        f'<span class="b-time" data-ts="{it["ts"]}">–</span>'
+        f'<a class="b-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a>'
         f'<span class="b-tag"><span class="swatch"></span>{esc(t["name"])}</span>'
-        f'<span class="b-src">{esc(it["source"])}</span></a></li>'
+        f'<span class="b-src">{esc(it["source"])}</span>'
+        f'<button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button">🔖</button>'
+        f'</div></li>'
         for it, t in picks
     )
 
-    # 오늘의 3줄 브리핑 (서로 다른 주요 카테고리에서 1개씩 추출)
+    # 오늘의 3줄 브리핑
     brief_picks = []
     seen_brief_topics = set()
     for it, t in flat:
@@ -666,12 +939,14 @@ def build():
             used.add(teaser_item["link"])
         teaser = esc(teaser_item["title"]) if teaser_item else "새 기사 없음"
         new_tag = f'<span class="bd-new">+{n}</span>' if n else ""
+        spark = render_sparkline(t.get("hist24", []))
         board.append(
             f'        <li><button class="bd-row t-{t["id"]}" type="button" data-topic="{t["id"]}">\n'
             f'          <span class="bd-bar"></span>\n'
             f'          <span class="bd-name">{esc(t["name"])}</span>\n'
             f'          <span class="bd-teaser">{teaser}</span>\n'
             f'          <span class="bd-nums">{new_tag}<span class="bd-total">{t["total"]}건</span></span>\n'
+            f'          {spark}\n'
             f'          <span class="bd-go" aria-hidden="true">›</span>\n'
             f'        </button></li>'
         )
@@ -683,7 +958,9 @@ def build():
         f'<span class="f-time" data-ts="{it["ts"]}">–</span>'
         f'<span class="f-tag"><span class="swatch"></span>{esc(t["name"])}</span>'
         f'<span class="f-title">{esc(it["title"])}</span>'
-        f'<span class="f-src">{esc(it["source"])}</span></a></li>'
+        f'<span class="f-src">{esc(it["source"])}</span>'
+        f'<button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button">🔖</button>'
+        f'</a></li>'
         for it, t in rest
     )
 
@@ -711,8 +988,10 @@ def build():
             rows.append(
                 f'        <li class="d-item"><a class="row" href="{esc(it["link"])}" target="_blank" rel="noopener">'
                 f'<div class="row-title">{esc(it["title"])}</div>'
-                f'<div class="row-meta">{badge_html}<span>{esc(it["source"])}</span>'
-                f'<span class="sep">·</span><span data-ts="{it["ts"]}">–</span></div></a></li>'
+                f'<div class="row-meta">{badge_html}<span class="meta-chip">{esc(it["source"])}</span>'
+                f'<span class="sep">·</span><span data-ts="{it["ts"]}">–</span>'
+                f'<button class="bm-btn" style="margin-left:auto;" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button">🔖</button>'
+                f'</div></a></li>'
             )
         details.append(
             f'  <section class="detail card t-{t["id"]}" data-topic="{t["id"]}" aria-label="{esc(t["name"])}">\n'
