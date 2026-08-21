@@ -27,9 +27,17 @@ PAGE = Template(r"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap">
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem("panse-theme");
+    if (saved) document.documentElement.setAttribute("data-theme", saved);
+  } catch(e){}
+})();
+</script>
 <style>
-:root{
-  /* Apple 테마 & 종이 감성 결합 */
+:root, :root[data-theme="light"]{
+  /* Apple 테마 & 종이 감성 결합 (라이트) */
   --ground:#FAF9F6; --surface:rgba(255,255,255,0.86); --surface-solid:#FFFFFF; --surface-2:#F3F2EE; --tint:rgba(26,26,24,0.035);
   --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
   --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
@@ -60,6 +68,16 @@ $SWATCH_DARK
   --nav:rgba(11,11,14,0.84); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
   --up:#FF453A; --down:#2997FF;
 $SWATCH_DARK
+}
+:root[data-theme="light"]{
+  --ground:#FAF9F6; --surface:rgba(255,255,255,0.86); --surface-solid:#FFFFFF; --surface-2:#F3F2EE; --tint:rgba(26,26,24,0.035);
+  --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
+  --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
+  --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
+  --shadow:0 4px 24px rgba(0,0,0,0.035), 0 1px 3px rgba(0,0,0,0.02);
+  --nav:rgba(250,249,246,0.84); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
+  --up:#FF3B30; --down:#0071E3;
+$SWATCH_LIGHT
 }
 $TOPIC_CLASSES
 
@@ -296,6 +314,7 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
     <span class="top-right">
 $METALS
       <span class="stamp"><span class="dot-live"></span>$UPDATED_HM<span class="stamp-sfx"> 갱신 · 30분마다</span></span>
+      <button class="btn" id="theme-toggle" type="button" aria-label="테마 전환">🌓 모드</button>
       <button class="btn" id="refresh" type="button">새로고침</button>
     </span>
   </div>
@@ -480,6 +499,29 @@ $DETAILS
     btn.addEventListener("click", function(){ togglePin(btn.dataset.topic); });
   });
   applyPins();
+
+  /* 테마(다크/라이트) 토글 */
+  var themeBtn = document.getElementById("theme-toggle");
+  function getEffectiveTheme(){
+    var explicit = document.documentElement.getAttribute("data-theme");
+    if (explicit) return explicit;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function updateThemeButton(){
+    var curTheme = getEffectiveTheme();
+    themeBtn.textContent = curTheme === "dark" ? "☀️ 라이트" : "🌙 다크";
+  }
+  function toggleTheme(){
+    var curTheme = getEffectiveTheme();
+    var nextTheme = curTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    try { localStorage.setItem("panse-theme", nextTheme); } catch(e){}
+    updateThemeButton();
+  }
+  if (themeBtn) {
+    updateThemeButton();
+    themeBtn.addEventListener("click", toggleTheme);
+  }
 
   /* 화면 뷰 전환 */
   var overview = document.getElementById("overview");
