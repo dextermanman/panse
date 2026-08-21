@@ -2,12 +2,12 @@ name: 판세 갱신
 
 on:
   schedule:
-    # 30분마다 (GitHub 스케줄러는 UTC지만 30분 주기라 시간대와 무관)
-    - cron: "7,37 * * * *"
-  workflow_dispatch:        # 수동 실행 버튼
+    # 15분 간격 4회 시도 — GitHub 스케줄러 지연/드롭 대비 오버샘플링
+    - cron: "2,17,32,47 * * * *"
+  workflow_dispatch:  # 수동 실행 버튼
 
 permissions:
-  contents: write           # 시세 이력을 커밋해 두기 위해 필요
+  contents: write  # 시세 이력을 커밋해 두기 위해 필요
 
 concurrency:
   group: update
@@ -40,8 +40,6 @@ jobs:
           surge ./public --domain "$(cat public/CNAME)"
 
       - name: 시세 이력 보관
-        # 러너는 매번 새로 만들어지므로, 24시간 등락률 계산에 쓰는
-        # 이력을 저장소에 되돌려 놓아야 다음 실행에서 이어진다
         run: |
           git config user.name "판세 봇"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
