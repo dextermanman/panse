@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""news.json -> dashboard.html (세상돌아가는 판세 - Apple 스타일 프리미엄 대시보드)."""
+"""news.json -> dashboard.html (세상돌아가는 판세 - Apple 스타일 모바일/데스크톱 완벽 반응형 대시보드)."""
 import html
 import json
 from datetime import datetime, timedelta, timezone
@@ -14,8 +14,8 @@ PAGE = Template(r"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <title>세상돌아가는 판세</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="주요 9대 산업·경제 뉴스와 금·은 시세, 환율을 30분마다 모으는 대시보드">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+<meta name="description" content="주요 9대 산업·경제 뉴스와 금·은·비트코인 시세, 환율을 30분마다 모으는 대시보드">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="세상돌아가는 판세">
@@ -37,54 +37,54 @@ PAGE = Template(r"""<!DOCTYPE html>
 </script>
 <style>
 :root, :root[data-theme="light"]{
-  --ground:#FAF9F6; --surface:rgba(255,255,255,0.88); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
+  --ground:#FAF9F6; --surface:rgba(255,255,255,0.92); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
   --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
   --ink:#1D1D1F; --ink-2:#555558; --ink-3:#86868B;
   --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
   --shadow:0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
   --shadow-hover:0 8px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
-  --nav:rgba(250,249,246,0.86); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
+  --nav:rgba(250,249,246,0.92); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
   --up:#FF3B30; --down:#0071E3;
 $SWATCH_LIGHT
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --ground:#0B0B0E; --surface:rgba(28,28,30,0.86); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
+    --ground:#0B0B0E; --surface:rgba(28,28,30,0.92); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
     --hairline:rgba(255,255,255,0.12); --hairline-2:rgba(255,255,255,0.06); --rule:#E8E8E3;
     --ink:#F5F5F7; --ink-2:#B0B0B5; --ink-3:#86868B;
     --blue:#2997FF; --breaking:#FF453A; --breaking-bg:rgba(255,69,58,0.14);
     --shadow:0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
     --shadow-hover:0 12px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
-    --nav:rgba(11,11,14,0.86); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
+    --nav:rgba(11,11,14,0.92); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
     --up:#FF453A; --down:#2997FF;
 $SWATCH_DARK
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0B0B0E; --surface:rgba(28,28,30,0.86); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
+  --ground:#0B0B0E; --surface:rgba(28,28,30,0.92); --surface-solid:#1C1C1E; --surface-2:#2C2C2E; --tint:rgba(255,255,255,0.05);
   --hairline:rgba(255,255,255,0.12); --hairline-2:rgba(255,255,255,0.06); --rule:#E8E8E3;
   --ink:#F5F5F7; --ink-2:#B0B0B5; --ink-3:#86868B;
   --blue:#2997FF; --breaking:#FF453A; --breaking-bg:rgba(255,69,58,0.14);
   --shadow:0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
   --shadow-hover:0 12px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
-  --nav:rgba(11,11,14,0.86); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
+  --nav:rgba(11,11,14,0.92); --live:#30D158; --live-halo:rgba(48,209,88,0.2);
   --up:#FF453A; --down:#2997FF;
 $SWATCH_DARK
 }
 :root[data-theme="light"]{
-  --ground:#FAF9F6; --surface:rgba(255,255,255,0.88); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
+  --ground:#FAF9F6; --surface:rgba(255,255,255,0.92); --surface-solid:#FFFFFF; --surface-2:#F2F1EC; --tint:rgba(26,26,24,0.035);
   --hairline:rgba(26,26,24,0.08); --hairline-2:rgba(26,26,24,0.04); --rule:#1A1A18;
   --ink:#1D1D1F; --ink-2:#555558; --ink-3:#86868B;
   --blue:#0071E3; --breaking:#FF3B30; --breaking-bg:rgba(255,59,48,0.08);
   --shadow:0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
   --shadow-hover:0 8px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
-  --nav:rgba(250,249,246,0.86); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
+  --nav:rgba(250,249,246,0.92); --live:#34C759; --live-halo:rgba(52,199,89,0.16);
   --up:#FF3B30; --down:#0071E3;
 $SWATCH_LIGHT
 }
 $TOPIC_CLASSES
 
-*{box-sizing:border-box}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
 body{margin:0; background:var(--ground); color:var(--ink); font-size:15px; line-height:1.55;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Pretendard","Apple SD Gothic Neo","Segoe UI",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
@@ -101,93 +101,96 @@ button{font:inherit; color:inherit; border:0; background:transparent}
 .top{position:sticky; top:0; z-index:40; background:var(--nav);
   backdrop-filter:saturate(190%) blur(24px); -webkit-backdrop-filter:saturate(190%) blur(24px);
   border-bottom:1px solid var(--hairline); transition:border-color .2s ease}
-.top-in{max-width:1180px; margin:0 auto; padding:10px 28px 0; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
-.brand{font-family:"Noto Serif KR",Georgia,serif; font-size:18px; font-weight:700; letter-spacing:-.015em}
+.top-in{max-width:1180px; margin:0 auto; padding:10px 24px 0; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.brand{font-family:"Noto Serif KR",Georgia,serif; font-size:18px; font-weight:700; letter-spacing:-.015em; white-space:nowrap}
 .nav-new{display:none; align-items:center; gap:6px; font-size:11.5px; font-weight:600;
   color:var(--breaking); background:var(--breaking-bg); padding:3px 10px; border-radius:980px}
 .nav-new.show{display:inline-flex}
-.top-right{margin-left:auto; display:flex; align-items:center; gap:10px;
-  flex-wrap:wrap; row-gap:7px; justify-content:flex-end; min-width:0}
-.stamp{font-size:11.5px; color:var(--ink-2); font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:6px}
-.dot-live{width:6.5px; height:6.5px; border-radius:50%; background:var(--live); box-shadow:0 0 0 3px var(--live-halo)}
+.top-right{margin-left:auto; display:flex; align-items:center; gap:8px;
+  flex-wrap:wrap; justify-content:flex-end; min-width:0}
+.stamp{font-size:11.5px; color:var(--ink-2); font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:6px; white-space:nowrap}
+.dot-live{width:6.5px; height:6.5px; border-radius:50%; background:var(--live); box-shadow:0 0 0 3px var(--live-halo); flex:none}
 @media (prefers-reduced-motion: no-preference){
   .dot-live{animation:pulse 2.8s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 }
+
+/* 금융 시세 바 */
 .metals{display:flex; align-items:center; gap:6px; font-variant-numeric:tabular-nums;
-  padding-right:12px; margin-right:-2px; border-right:1px solid var(--hairline); flex-wrap:wrap}
+  padding-right:10px; margin-right:2px; border-right:1px solid var(--hairline); flex-wrap:wrap}
 .metal-row{display:flex; align-items:center; gap:6px}
 .metal{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; white-space:nowrap;
-  background:var(--surface-2); border:1px solid var(--hairline); padding:3px 8px; border-radius:980px}
+  background:var(--surface-2); border:1px solid var(--hairline); padding:3px 9px; border-radius:980px}
 .m-label{color:var(--ink-3); font-weight:600}
 .m-value{color:var(--ink); font-weight:600; letter-spacing:-.01em}
 .m-chg{font-size:10.5px; font-weight:700}
 .m-chg.up{color:var(--up)}
 .m-chg.down{color:var(--down)}
 .m-chg.flat{color:var(--ink-3)}
-.btn{border:1px solid var(--hairline); background:var(--surface); font-size:11.5px; font-weight:500;
-  padding:5px 12px; border-radius:980px; cursor:pointer; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
-.btn:hover{background:var(--surface-2); transform:scale(1.02)}
-.btn:active{transform:scale(0.98)}
 
-.menu-wrap{max-width:1180px; margin:0 auto; padding:10px 28px 12px; display:flex; align-items:center; gap:12px}
-.menu{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; flex:1}
+.btn{border:1px solid var(--hairline); background:var(--surface); font-size:11.5px; font-weight:500;
+  padding:5px 11px; border-radius:980px; cursor:pointer; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); white-space:nowrap}
+.btn:hover{background:var(--surface-2); transform:scale(1.02)}
+.btn:active{transform:scale(0.96)}
+
+.menu-wrap{max-width:1180px; margin:0 auto; padding:8px 24px 10px; display:flex; align-items:center; gap:10px}
+.menu{display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; flex:1; -webkit-overflow-scrolling:touch}
 .menu::-webkit-scrollbar{display:none}
-.m-btn{flex:none; display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+.m-btn{flex:none; display:inline-flex; align-items:center; gap:6px; cursor:pointer;
   border:1px solid var(--hairline); background:var(--surface); color:var(--ink-2);
-  font-size:13.5px; font-weight:500; padding:7px 15px; border-radius:980px;
-  transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
+  font-size:13.5px; font-weight:500; padding:6px 14px; border-radius:980px;
+  transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); white-space:nowrap}
 .m-btn:hover{background:var(--surface-2); color:var(--ink)}
-.m-btn:active{transform:scale(0.97)}
-.m-btn .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent); flex:none}
+.m-btn:active{transform:scale(0.96)}
+.m-btn .swatch{width:7.5px; height:7.5px; border-radius:50%; background:var(--accent); flex:none}
 .m-btn .n{font-size:11px; font-weight:700; color:var(--breaking); font-variant-numeric:tabular-nums}
 .m-btn[aria-selected="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink); font-weight:600}
-.m-btn[aria-selected="true"] .n{color:var(--ground); opacity:.75}
+.m-btn[aria-selected="true"] .n{color:var(--ground); opacity:.8}
 .m-btn[aria-selected="true"] .swatch{box-shadow:0 0 0 2px var(--ground)}
 
-main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
+main{max-width:1180px; margin:0 auto; padding:0 24px calc(76px + env(safe-area-inset-bottom))}
 
 /* ---------- 제호 & 검색바 ---------- */
-.masthead{padding:32px 0 18px; border-bottom:2px solid var(--rule); margin-bottom:2px}
+.masthead{padding:30px 0 16px; border-bottom:2px solid var(--rule); margin-bottom:2px}
 .masthead-in{display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap}
-.wordmark{font-family:"Noto Serif KR",Georgia,serif; font-size:40px; font-weight:700;
+.wordmark{font-family:"Noto Serif KR",Georgia,serif; font-size:38px; font-weight:700;
   letter-spacing:-.025em; line-height:1.05; margin:0}
-.wordmark-sub{font-size:12.5px; color:var(--ink-2); margin:9px 0 0 2px; letter-spacing:.01em}
+.wordmark-sub{font-size:12.5px; color:var(--ink-2); margin:8px 0 0 2px; letter-spacing:.01em}
 .masthead-date{margin-left:auto; text-align:right; font-size:12px; color:var(--ink-2);
   font-variant-numeric:tabular-nums; line-height:1.6}
 .masthead-date b{display:block; font-size:13.5px; font-weight:600; color:var(--ink)}
-.rule-thin{height:1px; background:var(--hairline); margin-bottom:24px}
+.rule-thin{height:1px; background:var(--hairline); margin-bottom:22px}
 
 /* 검색창 */
-.search-bar{margin-bottom:24px; position:relative; display:flex; align-items:center}
+.search-bar{margin-bottom:22px; position:relative; display:flex; align-items:center}
 .search-in{width:100%; display:flex; align-items:center; background:var(--surface);
   border:1px solid var(--hairline); border-radius:14px; padding:10px 16px; gap:10px;
   box-shadow:var(--shadow); transition:all .18s ease}
 .search-in:focus-within{border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,113,227,0.15)}
 .search-icon{width:16px; height:16px; color:var(--ink-3); flex:none}
-.search-input{flex:1; border:0; background:transparent; font-size:14px; color:var(--ink); outline:none}
+.search-input{flex:1; border:0; background:transparent; font-size:14.5px; color:var(--ink); outline:none}
 .search-input::placeholder{color:var(--ink-3)}
-.search-clear{color:var(--ink-3); font-size:14px; cursor:pointer; padding:2px 6px; border-radius:50%}
+.search-clear{color:var(--ink-3); font-size:14px; cursor:pointer; padding:3px 7px; border-radius:50%}
 .search-clear:hover{color:var(--ink); background:var(--surface-2)}
 
 /* ---------- 섹션 라벨 ---------- */
-.zone-head{display:flex; align-items:center; gap:9px; margin:0 0 13px; flex-wrap:wrap}
+.zone-head{display:flex; align-items:center; gap:9px; margin:0 0 12px; flex-wrap:wrap}
 .zone-title{display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700;
-  letter-spacing:.1em; text-transform:uppercase}
+  letter-spacing:.08em; text-transform:uppercase}
 .zone-title::before{content:""; width:12px; height:2px; background:var(--rule)}
 .zone-note{font-size:12px; color:var(--ink-3)}
-.stack{display:flex; flex-direction:column; gap:32px}
+.stack{display:flex; flex-direction:column; gap:28px}
 
 /* ---------- 카드 공통 (Apple 스타일) ---------- */
 .card{background:var(--surface); border:1px solid var(--hairline); border-radius:18px;
   box-shadow:var(--shadow); overflow:hidden; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
   transition:all .2s cubic-bezier(0.16, 1, 0.3, 1)}
-.card-head{display:flex; align-items:center; gap:10px; padding:13px 22px; border-bottom:1px solid var(--hairline)}
+.card-head{display:flex; align-items:center; gap:10px; padding:13px 20px; border-bottom:1px solid var(--hairline)}
 .eyebrow{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
 
 /* ---------- 오늘의 3줄 브리핑 카드 ---------- */
 .brief-card{background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
-  border:1px solid var(--hairline); border-radius:18px; padding:20px 24px; box-shadow:var(--shadow)}
+  border:1px solid var(--hairline); border-radius:18px; padding:18px 22px; box-shadow:var(--shadow)}
 .brief-head{display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap}
 .brief-pill{display:inline-flex; align-items:center; gap:6px; background:var(--ink); color:var(--ground);
   font-size:11px; font-weight:600; letter-spacing:.05em; padding:4px 10px; border-radius:980px}
@@ -196,31 +199,31 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
   font-weight:600; color:var(--ink-2); background:var(--surface); border:1px solid var(--hairline);
   padding:4px 11px; border-radius:980px; cursor:pointer; transition:all .15s ease}
 .brief-copy:hover{background:var(--surface-solid); color:var(--ink); transform:scale(1.02)}
-.brief-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px}
-.brief-item{background:var(--surface); border:1px solid var(--hairline-2); border-radius:14px; padding:14px 18px;
-  display:flex; flex-direction:column; gap:8px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
+.brief-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px}
+.brief-item{background:var(--surface); border:1px solid var(--hairline-2); border-radius:14px; padding:13px 16px;
+  display:flex; flex-direction:column; gap:7px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1)}
 .brief-item:hover{background:var(--surface-solid); border-color:var(--hairline); transform:translateY(-2px); box-shadow:var(--shadow-hover)}
 .brief-tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:var(--accent)}
-.brief-tag .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent)}
+.brief-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
 .brief-title{font-size:14.5px; font-weight:600; line-height:1.45; color:var(--ink)}
 
 /* ---------- 속보 카드 ---------- */
 .b-list{list-style:none; margin:0; padding:0}
 .b-list li + li{border-top:1px solid var(--hairline-2)}
-.b-item{display:flex; align-items:center; gap:14px; padding:14px 22px; transition:background .15s ease}
+.b-item{display:flex; align-items:center; gap:12px; padding:13px 20px; transition:background .15s ease}
 .b-item:hover{background:var(--tint)}
 .b-time{flex:none; width:52px; font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
 .b-title{flex:1; min-width:0; font-size:15.5px; font-weight:550; line-height:1.5}
-.b-list li:first-child .b-item{padding:22px 22px 24px; align-items:flex-start}
+.b-list li:first-child .b-item{padding:20px 20px 22px; align-items:flex-start}
 .b-list li:first-child .b-title{font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
-  font-size:22px; font-weight:600; line-height:1.45; letter-spacing:-.015em}
-.b-list li:first-child .b-time{padding-top:6px}
+  font-size:21px; font-weight:600; line-height:1.45; letter-spacing:-.015em}
+.b-list li:first-child .b-time{padding-top:5px}
 .b-tag{flex:none; display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
   color:var(--ink-2); background:var(--surface-2); padding:3px 8px; border-radius:6px}
 .b-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
 .b-src{flex:none; font-size:11px; color:var(--ink-3); width:82px; text-align:right;
   overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-.bm-btn{flex:none; opacity:0.4; font-size:14px; cursor:pointer; padding:4px 6px; border-radius:6px; transition:all .15s ease}
+.bm-btn{flex:none; opacity:0.4; font-size:15px; cursor:pointer; padding:6px 8px; border-radius:8px; transition:all .15s ease}
 .bm-btn:hover{opacity:1; background:var(--surface-2)}
 .bm-btn.active{opacity:1; color:#FF9500}
 
@@ -248,42 +251,42 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
 /* ---------- 전체 흐름 ---------- */
 .feed{list-style:none; margin:0; padding:0}
 .feed li + li{border-top:1px solid var(--hairline-2)}
-.f-row{display:grid; grid-template-columns:52px 115px 1fr 88px 30px; gap:12px;
-  align-items:center; padding:11px 22px; transition:background .15s ease}
+.f-row{display:grid; grid-template-columns:52px 115px 1fr 88px 32px; gap:12px;
+  align-items:center; padding:12px 20px; transition:background .15s ease}
 .f-row:hover{background:var(--tint)}
-.f-time{font-size:11px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.f-time{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
 .f-tag{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
   color:var(--ink-2); background:var(--surface-2); padding:2px 8px; border-radius:6px; width:fit-content}
 .f-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent); flex:none}
-.f-title{font-size:14.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.f-title{font-size:15px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .f-row:hover .f-title{color:var(--blue)}
-.f-src{font-size:11px; color:var(--ink-3); text-align:right; overflow:hidden;
+.f-src{font-size:11.5px; color:var(--ink-3); text-align:right; overflow:hidden;
   text-overflow:ellipsis; white-space:nowrap}
-.more{display:block; width:100%; padding:14px; border:0; border-top:1px solid var(--hairline);
-  background:var(--surface); color:var(--blue); font-size:13px; font-weight:500;
+.more{display:block; width:100%; padding:15px; border:0; border-top:1px solid var(--hairline);
+  background:var(--surface); color:var(--blue); font-size:13.5px; font-weight:500;
   cursor:pointer; transition:background .15s ease}
 .more:hover{background:var(--surface-2)}
 
 /* ---------- 주제 보기 & 스크랩 상세 ---------- */
-.detail{margin-top:30px}
-.detail-head{display:flex; align-items:center; gap:16px; padding:22px 24px 18px;
+.detail{margin-top:28px}
+.detail-head{display:flex; align-items:center; gap:14px; padding:20px 22px 16px;
   border-bottom:2px solid var(--rule); flex-wrap:wrap}
-.detail-name{display:flex; align-items:center; gap:11px; font-size:28px; font-weight:700; letter-spacing:-.025em}
-.detail-name .swatch{width:12px; height:12px; border-radius:50%; background:var(--accent)}
+.detail-name{display:flex; align-items:center; gap:11px; font-size:26px; font-weight:700; letter-spacing:-.025em}
+.detail-name .swatch{width:11px; height:11px; border-radius:50%; background:var(--accent)}
 .detail-stat{font-size:12px; color:var(--ink-2)}
-.detail-stat b{font-size:15.5px; font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums}
+.detail-stat b{font-size:15px; font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums}
 .pin-toggle{margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500;
   padding:5px 12px; border-radius:980px; border:1px solid var(--hairline); background:var(--surface); cursor:pointer;
   transition:all .15s ease}
 .pin-toggle:hover{background:var(--surface-2)}
 .pin-toggle.pinned{background:var(--ink); color:var(--ground); border-color:var(--ink)}
 .d-list{list-style:none; margin:0; padding:0; display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
-.group{grid-column:1/-1; padding:16px 24px 6px; font-size:11px; font-weight:700;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.group{grid-column:1/-1; padding:15px 22px 6px; font-size:11px; font-weight:700;
   letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); border-top:1px solid var(--hairline-2)}
-.group:first-child{border-top:0; padding-top:14px}
+.group:first-child{border-top:0; padding-top:12px}
 .d-item{border-top:1px solid var(--hairline-2); position:relative}
-.row{display:block; padding:15px 24px; height:100%; transition:background .15s ease}
+.row{display:block; padding:14px 22px; height:100%; transition:background .15s ease}
 .row:hover{background:var(--tint)}
 .row-title{font-size:15.5px; font-weight:550; line-height:1.55;
   display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
@@ -302,42 +305,85 @@ main{max-width:1180px; margin:0 auto; padding:0 28px 76px}
   z-index:100; transition:transform .25s cubic-bezier(0.16, 1, 0.3, 1); pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
+footer{border-top:1px solid var(--hairline); margin-top:36px; padding-top:18px;
   font-size:11.5px; color:var(--ink-3); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
 
-@media (max-width:760px){
-  .bd-row{grid-template-columns:4px 1fr auto 16px; gap:0 13px}
-  .bd-name{padding:13px 0 2px; grid-column:2; font-size:16px}
-  .bd-teaser{grid-column:2; padding:0 0 13px; font-size:12.5px; white-space:normal;
+/* ========================================================
+   📱 스마트폰 (모바일 화면) 최적화 스타일 (iOS / Android)
+   ======================================================== */
+@media (max-width:768px){
+  /* 상단 헤더 슬림화 & 시세 가로 스와이프 */
+  .top-in{padding:8px 14px 4px; gap:8px}
+  .brand{font-size:16.5px}
+  .top-right{gap:6px}
+  .stamp-sfx{display:none}
+  .stamp{font-size:11px}
+  
+  /* 시세 바: 2단 가로 스크롤바로 전환 */
+  .metals{order:3; flex-basis:100%; border-right:0; padding:4px 0 6px; margin:0;
+    overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; flex-wrap:nowrap; -webkit-overflow-scrolling:touch}
+  .metals::-webkit-scrollbar{display:none}
+  .metal-row{gap:5px; flex:none}
+  .metal{font-size:11px; padding:3px 8px}
+
+  /* 메뉴 탭바 */
+  .menu-wrap{padding:6px 14px 8px}
+  .m-btn{font-size:13px; padding:6px 12px}
+
+  main{padding:0 14px calc(60px + env(safe-area-inset-bottom))}
+
+  /* 제호 */
+  .masthead{padding:20px 0 14px}
+  .wordmark{font-size:30px}
+  .wordmark-sub{font-size:11.5px; margin-top:5px}
+  .masthead-date{margin-left:0; text-align:left; font-size:11.5px; margin-top:8px}
+
+  /* 검색바 */
+  .search-in{padding:8px 12px; border-radius:12px}
+  .search-input{font-size:13.5px}
+
+  /* 브리핑 */
+  .brief-card{padding:14px 16px; border-radius:16px}
+  .brief-item{padding:11px 13px; border-radius:12px}
+  .brief-title{font-size:14px}
+
+  /* 메뉴판 (보드) 모바일 뷰 */
+  .bd-row{grid-template-columns:4px 1fr auto 16px; gap:0 10px}
+  .bd-name{padding:12px 0 2px; grid-column:2; font-size:15.5px}
+  .bd-teaser{grid-column:2; padding:0 0 12px; font-size:12.5px; white-space:normal;
     display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical}
   .sparkline{display:none}
-  .bd-nums{grid-column:3; grid-row:1/3}
-  .bd-go{grid-column:4; grid-row:1/3}
-  .f-row{grid-template-columns:48px 1fr 30px; gap:4px 10px; padding:10px 18px}
-  .f-tag{grid-column:2; order:3; font-size:10.5px}
-  .f-title{grid-column:2; white-space:normal; line-height:1.5;
+  .bd-nums{grid-column:3; grid-row:1/3; padding:12px 0}
+  .bd-go{grid-column:4; grid-row:1/3; padding-right:12px}
+
+  /* 속보 & 피드: 모바일 맞춤 세로 배치 (제목 100% 확보) */
+  .b-item{display:grid; grid-template-columns:1fr 36px; grid-template-rows:auto auto;
+    gap:6px 8px; padding:12px 14px}
+  .b-title{grid-column:1; grid-row:1; font-size:15.5px; line-height:1.48; white-space:normal;
     display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
-  .f-src{display:none}
-}
-@media (max-width:640px){
-  main{padding:0 16px 56px}
-  .top-in{padding:10px 16px 0}
-  .menu-wrap{padding:8px 16px 10px}
-  .top-right{flex:1 1 100%; margin-left:0; justify-content:flex-start}
-  .stamp-sfx{display:none}
-  .metals{order:3; flex-basis:100%; align-items:flex-start;
-    border-right:0; padding-right:0; margin-right:0; gap:4px}
-  .metal-row{gap:6px}
-  .stamp{font-size:11px}
-  .btn{padding:5px 10px}
-  .masthead{padding:24px 0 16px}
-  .wordmark{font-size:32px}
-  .wordmark-sub{font-size:11.5px}
-  .masthead-date{margin-left:0; text-align:left}
-  .stack{gap:26px}
-  .b-list li:first-child .b-title{font-size:19.5px}
-  .b-src{display:none}
-  .detail-name{font-size:24px}
+  .b-time{display:none}
+  .b-list li:first-child .b-item{padding:16px 14px}
+  .b-list li:first-child .b-title{font-size:18px; line-height:1.45}
+  .b-item .bm-btn{grid-column:2; grid-row:1/3; align-self:center; font-size:18px;
+    padding:8px; opacity:0.55; border-radius:8px}
+  .b-tag-wrap{grid-column:1; grid-row:2; display:flex; align-items:center; gap:6px; font-size:11px}
+  .b-src{display:inline-block; font-size:11px; color:var(--ink-3)}
+
+  .f-row{display:grid; grid-template-columns:1fr 36px; grid-template-rows:auto auto;
+    gap:5px 8px; padding:11px 14px}
+  .f-title{grid-column:1; grid-row:1; font-size:15px; line-height:1.45; white-space:normal;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
+  .f-row .bm-btn{grid-column:2; grid-row:1/3; align-self:center; font-size:18px;
+    padding:8px; opacity:0.55; border-radius:8px}
+  .f-meta-wrap{grid-column:1; grid-row:2; display:flex; align-items:center; gap:6px; font-size:11px}
+  .f-time{font-size:11px}
+  .f-src{display:inline-block; font-size:11px; text-align:left; color:var(--ink-3)}
+
+  /* 주제 상세 */
+  .detail-head{padding:16px 14px 12px}
+  .detail-name{font-size:22px}
+  .row{padding:12px 14px}
+  .row-title{font-size:15px; line-height:1.5}
 }
 </style>
 </head>
@@ -348,11 +394,11 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
     <span class="brand">세상돌아가는 판세</span>
     <span class="nav-new" id="navnew"></span>
     <span class="top-right">
-$METALS
       <span class="stamp"><span class="dot-live"></span>$UPDATED_HM<span class="stamp-sfx"> 갱신 · 30분마다</span></span>
       <button class="btn" id="theme-toggle" type="button" aria-label="테마 전환">🌓 모드</button>
       <button class="btn" id="refresh" type="button">새로고침</button>
     </span>
+$METALS
   </div>
   <div class="menu-wrap">
     <div class="menu" id="tabmenu" role="tablist" aria-label="주제 메뉴">
@@ -390,7 +436,7 @@ $MENU
   </div>
 
   <!-- 검색 결과 영역 -->
-  <div id="search-section" class="card hidden" style="margin-bottom:28px;">
+  <div id="search-section" class="card hidden" style="margin-bottom:24px;">
     <div class="card-head">
       <span class="eyebrow" id="search-count">검색 결과 0건</span>
     </div>
@@ -402,7 +448,7 @@ $MENU
     <section class="brief-card" aria-label="오늘의 판세 브리핑">
       <div class="brief-head">
         <span class="brief-pill">✨ 오늘의 3줄 판세</span>
-        <span class="brief-sub">현재 가장 주목받는 핵심 헤드라인</span>
+        <span class="brief-sub">현재 주목받는 핵심 헤드라인</span>
         <button class="brief-copy" id="copy-briefing" type="button">📋 브리핑 복사</button>
       </div>
       <div class="brief-grid" id="briefing-container">
@@ -425,7 +471,7 @@ $BREAKING
     <section aria-labelledby="z1">
       <div class="zone-head">
         <span class="zone-title" id="z1">무엇을 볼까</span>
-        <span class="zone-note">오른쪽 미니 차트는 24시간 기사 발생 추이</span>
+        <span class="zone-note">주제별 주요 흐름</span>
       </div>
       <ul class="board">
 $BOARD
@@ -459,7 +505,7 @@ $DETAILS
 
   <footer>
     <span>구글 뉴스 RSS · 최근 3일</span><span>·</span>
-    <span>유사 기사와 홍보성 기사는 자동으로 걸러냅니다</span><span>·</span>
+    <span>유사·홍보성 기사는 자동 필터링</span><span>·</span>
     <span>다음 갱신 <span id="countdown">–</span></span>
   </footer>
 </main>
@@ -642,13 +688,15 @@ $DETAILS
     }
     list.innerHTML = bms.map(function(it){
       return "<li class=\"f-item\" data-topic=\"" + it.topicId + "\">" +
-        "<a class=\"f-row t-" + it.topicId + "\" href=\"" + it.link + "\" target=\"_blank\" rel=\"noopener\">" +
-        "<span class=\"f-time\" data-ts=\"" + it.ts + "\">" + rel(it.ts) + "</span>" +
+        "<div class=\"f-row t-" + it.topicId + "\">" +
+        "<a class=\"f-title\" href=\"" + it.link + "\" target=\"_blank\" rel=\"noopener\">" + it.title + "</a>" +
+        "<div class=\"f-meta-wrap\">" +
         "<span class=\"f-tag\"><span class=\"swatch\"></span>" + (it.topicName || "기사") + "</span>" +
-        "<span class=\"f-title\">" + it.title + "</span>" +
-        "<span class=\"f-src\">" + it.src + "</span>" +
-        "<button class=\"bm-btn active\" data-link=\"" + it.link + "\" type=\"button\">🔖</button>" +
-        "</a></li>";
+        "<span class=\"f-src\">" + it.src + "</span><span class=\"sep\">·</span>" +
+        "<span class=\"f-time\" data-ts=\"" + it.ts + "\">" + rel(it.ts) + "</span>" +
+        "</div>" +
+        "<button class=\"bm-btn active\" data-link=\"" + it.link + "\" type=\"button\" aria-label=\"북마크 토글\">🔖</button>" +
+        "</div></li>";
     }).join("");
     list.querySelectorAll(".bm-btn").forEach(function(btn){
       btn.addEventListener("click", function(e){
@@ -744,13 +792,15 @@ $DETAILS
     }
     searchList.innerHTML = matches.map(function(it){
       return "<li class=\"f-item\" data-topic=\"" + it.topic + "\">" +
-        "<a class=\"f-row t-" + it.topic + "\" href=\"" + it.link + "\" target=\"_blank\" rel=\"noopener\">" +
-        "<span class=\"f-time\" data-ts=\"" + it.ts + "\">" + rel(it.ts) + "</span>" +
+        "<div class=\"f-row t-" + it.topic + "\">" +
+        "<a class=\"f-title\" href=\"" + it.link + "\" target=\"_blank\" rel=\"noopener\">" + it.title + "</a>" +
+        "<div class=\"f-meta-wrap\">" +
         "<span class=\"f-tag\"><span class=\"swatch\"></span>" + it.topicName + "</span>" +
-        "<span class=\"f-title\">" + it.title + "</span>" +
-        "<span class=\"f-src\">" + it.src + "</span>" +
-        "<button class=\"bm-btn\" data-link=\"" + it.link + "\" data-title=\"" + it.title.replace(/\"/g, "&quot;") + "\" data-src=\"" + it.src + "\" data-ts=\"" + it.ts + "\" data-topic=\"" + it.topic + "\" data-topicname=\"" + it.topicName + "\" type=\"button\">🔖</button>" +
-        "</a></li>";
+        "<span class=\"f-src\">" + it.src + "</span><span class=\"sep\">·</span>" +
+        "<span class=\"f-time\" data-ts=\"" + it.ts + "\">" + rel(it.ts) + "</span>" +
+        "</div>" +
+        "<button class=\"bm-btn\" data-link=\"" + it.link + "\" data-title=\"" + it.title.replace(/\"/g, "&quot;") + "\" data-src=\"" + it.src + "\" data-ts=\"" + it.ts + "\" data-topic=\"" + it.topic + "\" data-topicname=\"" + it.topicName + "\" type=\"button\" aria-label=\"북마크\">🔖</button>" +
+        "</div></li>";
     }).join("");
     searchList.querySelectorAll(".bm-btn").forEach(function(btn){
       btn.addEventListener("click", function(e){
@@ -824,7 +874,7 @@ TICKER = (
     (
         ("gold",   "금",      "$", 0, "금 현물 · 미국 달러/트로이온스"),
         ("silver", "은",      "$", 2, "은 현물 · 미국 달러/트로이온스"),
-        ("btc",    "비트코인", "$", 0, "비트코인 (BTC/USDT) · 24시간 변동률"),
+        ("btc",    "비트코인", "$", 0, "비트코인 (BTC/USD) · 24시간 변동률"),
     ),
     (
         ("usdkrw", "달러",    "₩", 1, "원/달러 · 하나은행 매매기준율"),
@@ -863,7 +913,7 @@ def market_html(m):
     if not rows:
         return ""
     stale = ' title="시세를 새로 받지 못해 직전 값입니다"' if m.get("stale") else ""
-    return f'      <span class="metals"{stale}>\n' + "\n".join(rows) + '\n      </span>'
+    return f'    <div class="metals"{stale}>\n' + "\n".join(rows) + '\n    </div>'
 
 
 def render_sparkline(hist24):
@@ -901,11 +951,13 @@ def build():
 
     breaking = "\n".join(
         f'        <li><div class="b-item t-{t["id"]}">'
-        f'<span class="b-time" data-ts="{it["ts"]}">–</span>'
         f'<a class="b-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a>'
+        f'<div class="b-tag-wrap">'
         f'<span class="b-tag"><span class="swatch"></span>{esc(t["name"])}</span>'
-        f'<span class="b-src">{esc(it["source"])}</span>'
-        f'<button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button">🔖</button>'
+        f'<span class="b-src">{esc(it["source"])}</span><span class="sep">·</span>'
+        f'<span class="b-time" data-ts="{it["ts"]}">–</span>'
+        f'</div>'
+        f'<button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button" aria-label="북마크">🔖</button>'
         f'</div></li>'
         for it, t in picks
     )
@@ -955,13 +1007,15 @@ def build():
     rest = [(it, t) for it, t in flat if it["link"] not in used]
     feed = "\n".join(
         f'          <li class="f-item" data-topic="{t["id"]}">'
-        f'<a class="f-row t-{t["id"]}" href="{esc(it["link"])}" target="_blank" rel="noopener">'
-        f'<span class="f-time" data-ts="{it["ts"]}">–</span>'
+        f'<div class="f-row t-{t["id"]}">'
+        f'<a class="f-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a>'
+        f'<div class="f-meta-wrap">'
         f'<span class="f-tag"><span class="swatch"></span>{esc(t["name"])}</span>'
-        f'<span class="f-title">{esc(it["title"])}</span>'
-        f'<span class="f-src">{esc(it["source"])}</span>'
-        f'<button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button">🔖</button>'
-        f'</a></li>'
+        f'<span class="f-src">{esc(it["source"])}</span><span class="sep">·</span>'
+        f'<span class="f-time" data-ts="{it["ts"]}">–</span>'
+        f'</div>'
+        f'<button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button" aria-label="북마크">🔖</button>'
+        f'</div></li>'
         for it, t in rest
     )
 
@@ -987,12 +1041,12 @@ def build():
             is_new = now.timestamp() - it["ts"] <= 3600
             badge_html = '<span class="badge">NEW</span><span class="sep">·</span>' if is_new else ""
             rows.append(
-                f'        <li class="d-item"><a class="row" href="{esc(it["link"])}" target="_blank" rel="noopener">'
-                f'<div class="row-title">{esc(it["title"])}</div>'
+                f'        <li class="d-item"><div class="row">'
+                f'<a class="row-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a>'
                 f'<div class="row-meta">{badge_html}<span class="meta-chip">{esc(it["source"])}</span>'
                 f'<span class="sep">·</span><span data-ts="{it["ts"]}">–</span>'
-                f'<button class="bm-btn" style="margin-left:auto;" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button">🔖</button>'
-                f'</div></a></li>'
+                f'<button class="bm-btn" style="margin-left:auto;" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button" aria-label="북마크">🔖</button>'
+                f'</div></div></li>'
             )
         details.append(
             f'  <section class="detail card t-{t["id"]}" data-topic="{t["id"]}" aria-label="{esc(t["name"])}">\n'
