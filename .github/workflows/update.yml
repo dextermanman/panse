@@ -11,15 +11,15 @@ permissions:
 
 concurrency:
   group: update
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
@@ -29,6 +29,7 @@ jobs:
       - name: 페이지 렌더
         run: |
           python3 render.py
+          mkdir -p public
           cp dashboard.html public/index.html
 
       - name: surge 배포
@@ -36,13 +37,15 @@ jobs:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          npm install -g surge
-          surge ./public --domain "$(cat public/CNAME)"
+          npx --yes surge ./public --domain "$(cat public/CNAME)"
 
       - name: 시세 이력 보관
         run: |
           git config user.name "판세 봇"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add market_history.json
-          git diff --staged --quiet || git commit -m "시세 이력 갱신 [skip ci]"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "시세 이력 갱신 [skip ci]"
+            git pull --rebase origin main || true
+            git push
+          fi
