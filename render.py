@@ -13,12 +13,12 @@ PAGE = Template(r"""<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>돌아가는 판세</title>
+<title>세상돌아가는 판세</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="주요 8대 산업·경제 뉴스와 금·은 시세, 환율을 30분마다 모으는 대시보드">
+<meta name="description" content="주요 9대 산업·경제 뉴스와 금·은 시세, 환율을 30분마다 모으는 대시보드">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="판세">
+<meta name="apple-mobile-web-app-title" content="세상돌아가는 판세">
 <meta name="theme-color" content="#FAF9F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B0B0D" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="/manifest.json">
@@ -309,7 +309,7 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 
 <div class="top">
   <div class="top-in">
-    <span class="brand">돌아가는 판세</span>
+    <span class="brand">세상돌아가는 판세</span>
     <span class="nav-new" id="navnew"></span>
     <span class="top-right">
 $METALS
@@ -330,7 +330,7 @@ $MENU
   <header class="masthead">
     <div class="masthead-in">
       <div>
-        <h1 class="wordmark hl">돌아가는 판세</h1>
+        <h1 class="wordmark hl">세상돌아가는 판세</h1>
         <p class="wordmark-sub">$SUBTITLE</p>
       </div>
       <div class="masthead-date">
@@ -532,7 +532,7 @@ $DETAILS
     overview.classList.toggle("hidden", view !== "all");
     details.forEach(function(d){ d.classList.toggle("hidden", d.dataset.topic !== view); });
     menu.forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.view === view)); });
-    document.title = (view === "all" ? "돌아가는 판세" : NAMES[view] + " · 돌아가는 판세");
+    document.title = (view === "all" ? "세상돌아가는 판세" : NAMES[view] + " · 세상돌아가는 판세");
   }
   var cur = "all";
   try { cur = localStorage.getItem("news-view") || "all"; } catch (e) {}
