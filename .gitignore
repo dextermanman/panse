@@ -3,3 +3,5 @@ news.json
 update.log
 dashboard.html
 public/index.html
+__pycache__/
+*.pyc
