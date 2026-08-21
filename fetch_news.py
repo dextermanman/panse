@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Google 뉴스 RSS -> 주제별 뉴스 JSON 수집기."""
+import concurrent.futures
 import json
 import re
 from collections import Counter, defaultdict
@@ -139,16 +140,16 @@ def is_similar(a, b, rare=frozenset()):
     return bool(inter & rare) and ratio >= 0.25
 
 
-def fetch(url, retries=3):
+def fetch(url, retries=2, timeout=8):
     last = None
     for i in range(retries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=20) as r:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
                 return r.read()
         except Exception as e:  # noqa: BLE001
             last = e
-            time.sleep(1.5 * (i + 1))
+            time.sleep(1.0 * (i + 1))
     print(f"  ! 실패: {url} ({last})", file=sys.stderr)
     return None
 
@@ -352,21 +353,40 @@ def pick_balanced(items, limit):
     return [{k: v for k, v in it.items() if k != "_q"} for it in picked]
 
 
+def _fetch_one_query(args):
+    t_id, qi, q = args
+    require = None
+    if isinstance(q, tuple):
+        q, require = q[0], re.compile(q[1])
+    url = BASE.format(q=urllib.parse.quote(q))
+    raw = fetch(url, retries=2, timeout=8)
+    items = parse_items(raw)
+    return t_id, qi, require, items
+
+
 def collect():
     now = datetime.now(KST)
     cutoff = int((now - timedelta(days=3)).timestamp())
+
+    # 모든 쿼리를 병렬로 수집
+    query_tasks = []
+    for topic in TOPICS:
+        for qi, q in enumerate(topic["queries"]):
+            query_tasks.append((topic["id"], qi, q))
+
+    topic_items_map = defaultdict(list)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        for t_id, qi, require, items in executor.map(_fetch_one_query, query_tasks):
+            topic_items_map[t_id].append((qi, require, items))
+
     result = []
     seen_global = set()
     seen_tokens = []
     for topic in TOPICS:
         bucket = {}
         topic_block = TOPIC_BLOCK.get(topic["id"])
-        for qi, q in enumerate(topic["queries"]):
-            require = None
-            if isinstance(q, tuple):
-                q, require = q[0], re.compile(q[1])
-            url = BASE.format(q=urllib.parse.quote(q))
-            for it in parse_items(fetch(url)):
+        for qi, require, items in topic_items_map[topic["id"]]:
+            for it in items:
                 if it["ts"] < cutoff:
                     continue
                 if require and not require.search(it["title"]):
