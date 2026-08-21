@@ -95,16 +95,16 @@ body{word-break:keep-all; overflow-wrap:anywhere}
   padding:5px 11px; border-radius:980px; cursor:pointer; transition:background .15s ease}
 .btn:hover{background:var(--surface-2)}
 
-.menu-wrap{max-width:1180px; margin:0 auto; padding:10px 28px 11px}
-.menu{display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
+.menu-wrap{max-width:1180px; margin:0 auto; padding:11px 28px 13px}
+.menu{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
 .menu::-webkit-scrollbar{display:none}
-.m-btn{flex:none; display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+.m-btn{flex:none; display:inline-flex; align-items:center; gap:8px; cursor:pointer;
   border:1px solid var(--hairline); background:var(--surface); color:var(--ink-2);
-  font-size:12.5px; font-weight:500; padding:6px 13px; border-radius:980px;
+  font-size:14.5px; font-weight:520; padding:9px 17px; border-radius:980px;
   transition:background .15s ease, color .15s ease, border-color .15s ease}
 .m-btn:hover{background:var(--surface-2); color:var(--ink)}
-.m-btn .swatch{width:7px; height:7px; border-radius:2px; background:var(--accent); flex:none}
-.m-btn .n{font-size:10.5px; font-weight:700; color:var(--breaking); font-variant-numeric:tabular-nums}
+.m-btn .swatch{width:9px; height:9px; border-radius:2px; background:var(--accent); flex:none}
+.m-btn .n{font-size:11.5px; font-weight:700; color:var(--breaking); font-variant-numeric:tabular-nums}
 .m-btn[aria-selected="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink); font-weight:600}
 .m-btn[aria-selected="true"] .n{color:var(--ground); opacity:.72}
 .m-btn[aria-selected="true"] .swatch{box-shadow:0 0 0 1.5px var(--ground)}
