@@ -1,0 +1,16 @@
+{
+  "name": "돌아가는 판세",
+  "short_name": "판세",
+  "description": "주요 8대 산업·경제 뉴스와 금·은 시세, 환율을 한눈에 보는 대시보드",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#FAF9F6",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
