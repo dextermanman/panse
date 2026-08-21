@@ -82,8 +82,10 @@ body{word-break:keep-all; overflow-wrap:anywhere}
   .dot-live{animation:pulse 2.8s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 }
-.metals{display:flex; align-items:center; gap:14px; font-variant-numeric:tabular-nums;
+.metals{display:flex; flex-direction:column; align-items:flex-end; gap:4px;
+  font-variant-numeric:tabular-nums;
   padding-right:13px; margin-right:-2px; border-right:1px solid var(--hairline)}
+.metal-row{display:flex; align-items:baseline; gap:14px}
 .metal{display:inline-flex; align-items:baseline; gap:5px; font-size:11.5px; white-space:nowrap}
 .m-label{color:var(--ink-3); font-weight:600}
 .m-value{color:var(--ink); font-weight:600; letter-spacing:-.01em}
@@ -240,9 +242,9 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   /* 좁은 화면: 오른쪽 묶음이 한 줄을 통째로 쓰게 해서 버튼이 잘리지 않게 */
   .top-right{flex:1 1 100%; margin-left:0; justify-content:flex-start}
   .stamp-sfx{display:none}
-  .metals{order:3; flex-basis:100%; justify-content:flex-start;
-    border-right:0; padding-right:0; margin-right:0; gap:13px;
-    overflow-x:auto; scrollbar-width:none}
+  .metals{order:3; flex-basis:100%; align-items:flex-start;
+    border-right:0; padding-right:0; margin-right:0; gap:5px}
+  .metal-row{gap:13px}
   .metals::-webkit-scrollbar{display:none}
   .stamp{font-size:11px}
   .btn{padding:5px 10px}
@@ -433,12 +435,16 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-# (기호, 라벨, 접두, 소수점, 설명)
+# 윗줄은 금·은, 아랫줄은 환율. (기호, 라벨, 접두, 소수점, 설명)
 TICKER = (
-    ("gold",   "금",     "$", 0, "금 현물 · 미국 달러/트로이온스"),
-    ("silver", "은",     "$", 2, "은 현물 · 미국 달러/트로이온스"),
-    ("usdkrw", "달러",   "₩", 1, "원/달러 · 하나은행 매매기준율"),
-    ("jpykrw", "엔100",  "₩", 1, "원/100엔 · 하나은행 매매기준율"),
+    (
+        ("gold",   "금",     "$", 0, "금 현물 · 미국 달러/트로이온스"),
+        ("silver", "은",     "$", 2, "은 현물 · 미국 달러/트로이온스"),
+    ),
+    (
+        ("usdkrw", "달러",   "₩", 1, "원/달러 · 하나은행 매매기준율"),
+        ("jpykrw", "엔100",  "₩", 1, "원/100엔 · 하나은행 매매기준율"),
+    ),
 )
 
 
@@ -446,27 +452,32 @@ def market_html(m):
     """상단 시세 티커. 등락률은 이력이 24시간 쌓인 뒤부터 나온다."""
     if not m:
         return ""
-    rows = []
-    for key, label, prefix, digits, tip in TICKER:
-        val = m.get(key)
-        if val is None:
-            continue
-        tip = f"{tip} ({m['fx_time']} 고시)" if key.endswith("krw") and m.get("fx_time") else tip
-        chg = m.get(f"{key}_chg")
-        if chg is None:
-            tag = ""
-        elif chg > 0:
-            tag = f'<span class="m-chg up">▲{chg:.2f}%</span>'
-        elif chg < 0:
-            tag = f'<span class="m-chg down">▼{abs(chg):.2f}%</span>'
-        else:
-            tag = '<span class="m-chg flat">0.00%</span>'
-        rows.append(
-            '        <span class="metal" title="{tip}">'
-            '<span class="m-label">{label}</span>'
-            '<span class="m-value">{prefix}{val:,.{d}f}</span>{tag}</span>'.format(
-                tip=tip, label=label, prefix=prefix, val=val, d=digits, tag=tag)
-        )
+    lines = []
+    for group in TICKER:
+        cells = []
+        for key, label, prefix, digits, tip in group:
+            val = m.get(key)
+            if val is None:
+                continue
+            tip = f"{tip} ({m['fx_time']} 고시)" if key.endswith("krw") and m.get("fx_time") else tip
+            chg = m.get(f"{key}_chg")
+            if chg is None:
+                tag = ""
+            elif chg > 0:
+                tag = f'<span class="m-chg up">▲{chg:.2f}%</span>'
+            elif chg < 0:
+                tag = f'<span class="m-chg down">▼{abs(chg):.2f}%</span>'
+            else:
+                tag = '<span class="m-chg flat">0.00%</span>'
+            cells.append(
+                '<span class="metal" title="{tip}">'
+                '<span class="m-label">{label}</span>'
+                '<span class="m-value">{prefix}{val:,.{d}f}</span>{tag}</span>'.format(
+                    tip=tip, label=label, prefix=prefix, val=val, d=digits, tag=tag)
+            )
+        if cells:
+            lines.append('        <span class="metal-row">' + "".join(cells) + "</span>")
+    rows = lines
     if not rows:
         return ""
     stale = ' title="시세를 새로 받지 못해 직전 값입니다"' if m.get("stale") else ""
