@@ -728,20 +728,20 @@ $DETAILS
     var list = document.getElementById("bm-list");
     if (!list) return;
     if (bms.length === 0){
-      list.innerHTML = "<li style="padding:40px 20px; text-align:center; color:var(--ink-3); font-size:14.5px;">아직 스크랩한 기사가 없습니다.<br><span style="font-size:12px; opacity:0.75; margin-top:4px; display:inline-block;">기사 우측의 🔖 버튼을 눌러 관심 기사를 모아보세요.</span></li>";
+      list.innerHTML = '<li style="padding:40px 20px; text-align:center; color:var(--ink-3); font-size:14.5px;">아직 스크랩한 기사가 없습니다.<br><span style="font-size:12px; opacity:0.75; margin-top:4px; display:inline-block;">기사 우측의 🔖 버튼을 눌러 관심 기사를 모아보세요.</span></li>';
       return;
     }
     list.innerHTML = bms.map(function(it){
-      return "<li class="f-item" data-topic="" + it.topicId + "">" +
-        "<div class="f-row t-" + it.topicId + "">" +
-        "<a class="f-title" href="" + it.link + "" target="_blank" rel="noopener">" + it.title + "</a>" +
-        "<div class="f-meta-wrap">" +
-        "<span class="f-tag"><span class="swatch"></span>" + (it.topicName || "뉴스") + "</span>" +
-        "<span class="f-src">" + it.src + "</span><span class="sep">·</span>" +
-        "<span class="f-time" data-ts="" + it.ts + "">" + rel(it.ts) + "</span>" +
-        "</div>" +
-        "<button class="bm-btn active" data-link="" + it.link + "" data-title="" + it.title.replace(/"/g, "&quot;") + "" data-src="" + it.src + "" data-ts="" + it.ts + "" data-topic="" + it.topicId + "" data-topicname="" + it.topicName + "" type="button" aria-label="북마크 해제">🔖</button>" +
-        "</div></li>";
+      return '<li class="f-item" data-topic="' + it.topicId + '">' +
+        '<div class="f-row t-' + it.topicId + '">' +
+        '<a class="f-title" href="' + it.link + '" target="_blank" rel="noopener">' + it.title + '</a>' +
+        '<div class="f-meta-wrap">' +
+        '<span class="f-tag"><span class="swatch"></span>' + (it.topicName || "뉴스") + '</span>' +
+        '<span class="f-src">' + it.src + '</span><span class="sep">·</span>' +
+        '<span class="f-time" data-ts="' + it.ts + '">' + rel(it.ts) + '</span>' +
+        '</div>' +
+        '<button class="bm-btn active" data-link="' + it.link + '" data-title="' + it.title.replace(/"/g, '&quot;') + '" data-src="' + it.src + '" data-ts="' + it.ts + '" data-topic="' + it.topicId + '" data-topicname="' + it.topicName + '" type="button" aria-label="북마크 해제">🔖</button>' +
+        '</div></li>';
     }).join("");
     list.querySelectorAll(".bm-btn").forEach(function(btn){
       btn.addEventListener("click", function(e){
@@ -784,16 +784,13 @@ $DETAILS
   if (copyBtn) {
     copyBtn.addEventListener("click", function(){
       var items = [].slice.call(document.querySelectorAll(".brief-item"));
-      var text = "[세상돌아가는 판세 - 오늘의 핵심 요약]
-";
+      var text = "[세상돌아가는 판세 - 오늘의 핵심 요약]\n";
       items.forEach(function(it, idx){
         var tag = it.querySelector(".brief-tag").textContent.trim();
         var title = it.querySelector(".brief-title").textContent.trim();
-        text += (idx + 1) + ". [" + tag + "] " + title + "
-";
+        text += (idx + 1) + ". [" + tag + "] " + title + "\n";
       });
-      text += "
-🔗 https://daseot-news.surge.sh";
+      text += "\n🔗 https://daseot-news.surge.sh";
       navigator.clipboard.writeText(text).then(function(){
         showToast("✓ 오늘의 3줄 브리핑이 복사되었습니다!");
       }).catch(function(){
@@ -845,20 +842,20 @@ $DETAILS
     if (searchSection) searchSection.classList.remove("hidden");
     if (!searchList) return;
     if (matches.length === 0) {
-      searchList.innerHTML = "<li style="padding:30px; text-align:center; color:var(--ink-3); font-size:14px;">검색 결과가 없습니다.</li>";
+      searchList.innerHTML = '<li style="padding:30px; text-align:center; color:var(--ink-3); font-size:14px;">검색 결과가 없습니다.</li>';
       return;
     }
     searchList.innerHTML = matches.map(function(it){
-      return "<li class="f-item" data-topic="" + it.topic + "">" +
-        "<div class="f-row t-" + it.topic + "">" +
-        "<a class="f-title" href="" + it.link + "" target="_blank" rel="noopener">" + it.title + "</a>" +
-        "<div class="f-meta-wrap">" +
-        "<span class="f-tag"><span class="swatch"></span>" + it.topicName + "</span>" +
-        "<span class="f-src">" + it.src + "</span><span class="sep">·</span>" +
-        "<span class="f-time" data-ts="" + it.ts + "">" + rel(it.ts) + "</span>" +
-        "</div>" +
-        "<button class="bm-btn" data-link="" + it.link + "" data-title="" + it.title.replace(/"/g, "&quot;") + "" data-src="" + it.src + "" data-ts="" + it.ts + "" data-topic="" + it.topic + "" data-topicname="" + it.topicName + "" type="button" aria-label="북마크">🔖</button>" +
-        "</div></li>";
+      return '<li class="f-item" data-topic="' + it.topic + '">' +
+        '<div class="f-row t-' + it.topic + '">' +
+        '<a class="f-title" href="' + it.link + '" target="_blank" rel="noopener">' + it.title + '</a>' +
+        '<div class="f-meta-wrap">' +
+        '<span class="f-tag"><span class="swatch"></span>' + it.topicName + '</span>' +
+        '<span class="f-src">' + it.src + '</span><span class="sep">·</span>' +
+        '<span class="f-time" data-ts="' + it.ts + '">' + rel(it.ts) + '</span>' +
+        '</div>' +
+        '<button class="bm-btn" data-link="' + it.link + '" data-title="' + it.title.replace(/"/g, '&quot;') + '" data-src="' + it.src + '" data-ts="' + it.ts + '" data-topic="' + it.topic + '" data-topicname="' + it.topicName + '" type="button" aria-label="북마크">🔖</button>' +
+        '</div></li>';
     }).join("");
     searchList.querySelectorAll(".bm-btn").forEach(function(btn){
       btn.addEventListener("click", function(e){
@@ -1029,7 +1026,7 @@ def build():
 
     light = "\n".join(f"  --c-{t['id']}:{t['accent']};" for t in topics)
     dark = "\n".join(f"    --c-{t['id']}:{t['accent_dark']};" for t in topics)
-    classes = "\n".join(f".t-{t['id']}{{{{--accent:var(--c-{t['id']})}}}}" for t in topics)
+    classes = "\n".join(f".t-{t['id']} {{ --accent:var(--c-{t['id']}); }}" for t in topics)
 
     flat = sorted(((it, t) for t in topics for it in t["items"]), key=lambda p: -p[0]["ts"])
     fresh = [p for p in flat if now.timestamp() - p[0]["ts"] <= 90 * 60][:5]
