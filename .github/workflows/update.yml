@@ -1,0 +1,50 @@
+name: 판세 갱신
+
+on:
+  schedule:
+    # 30분마다 (GitHub 스케줄러는 UTC지만 30분 주기라 시간대와 무관)
+    - cron: "7,37 * * * *"
+  workflow_dispatch:        # 수동 실행 버튼
+
+permissions:
+  contents: write           # 시세 이력을 커밋해 두기 위해 필요
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 뉴스·시세 수집
+        run: python3 fetch_news.py
+
+      - name: 페이지 렌더
+        run: |
+          python3 render.py
+          cp dashboard.html public/index.html
+
+      - name: surge 배포
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          npm install -g surge
+          surge ./public --domain "$(cat public/CNAME)"
+
+      - name: 시세 이력 보관
+        # 러너는 매번 새로 만들어지므로, 24시간 등락률 계산에 쓰는
+        # 이력을 저장소에 되돌려 놓아야 다음 실행에서 이어진다
+        run: |
+          git config user.name "판세 봇"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add market_history.json
+          git diff --staged --quiet || git commit -m "시세 이력 갱신 [skip ci]"
+          git push
