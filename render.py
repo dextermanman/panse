@@ -282,7 +282,7 @@ $MENU
     <div class="masthead-in">
       <div>
         <h1 class="wordmark hl">돌아가는 판세</h1>
-        <p class="wordmark-sub">중동전쟁 · 반도체 · 디스플레이 · 주식 · AI · 배터리 · 세계 경제</p>
+        <p class="wordmark-sub">$SUBTITLE</p>
       </div>
       <div class="masthead-date">
         <b>$DATE_LONG</b>
@@ -318,7 +318,7 @@ $BOARD
     <section aria-labelledby="z3">
       <div class="zone-head">
         <span class="zone-title" id="z3">전체 흐름</span>
-        <span class="zone-note">일곱 갈래를 시간순으로</span>
+        <span class="zone-note">$TOPIC_COUNT를 시간순으로</span>
       </div>
       <div class="card">
         <ul class="feed">
@@ -377,16 +377,32 @@ $DETAILS
     localStorage.setItem("news-seen", String(Math.floor(Date.now() / 1000)));
   } catch (e) {}
 
-  /* 다음 갱신 카운트다운 */
+  /* 다음 갱신 카운트다운 & 스마트 리로드 */
   var cd = document.getElementById("countdown");
+  var reloading = false;
+  function doReload(){
+    if (reloading) return;
+    reloading = true;
+    var url = new URL(window.location.href);
+    url.searchParams.set("t", String(Date.now()));
+    window.location.replace(url.toString());
+  }
   function tick(){
     var left = DEADLINE - Date.now();
-    if (left <= 0){ location.reload(); return; }
+    if (left <= 0){
+      cd.textContent = "새 소식 확인 중...";
+      if (!window._reloadScheduled) {
+        window._reloadScheduled = true;
+        setTimeout(doReload, 3000);
+        setTimeout(function(){ window._reloadScheduled = false; }, 60000);
+      }
+      return;
+    }
     var m = Math.floor(left / 60000), s = Math.floor(left % 60000 / 1000);
     cd.textContent = m + "분 " + (s < 10 ? "0" : "") + s + "초";
   }
   tick(); setInterval(tick, 1000);
-  document.getElementById("refresh").addEventListener("click", function(){ location.reload(); });
+  document.getElementById("refresh").addEventListener("click", function(){ doReload(); });
 
   /* 전체 흐름은 기본 24건만 */
   var LIMIT = 18, expanded = false;
@@ -602,10 +618,15 @@ def build():
                 rows="\n".join(rows))
         )
 
+    subtitle = " · ".join(t["name"] for t in topics)
+    topic_count = f"{len(topics)}개 갈래"
+
     out = PAGE.substitute(
         SWATCH_LIGHT=light, SWATCH_DARK=dark, TOPIC_CLASSES=classes,
         UPDATED_HM=now.strftime("%H:%M"), DATE_LONG=date_long(now),
         METALS=market_html(data.get("market")),
+        SUBTITLE=subtitle,
+        TOPIC_COUNT=topic_count,
         MENU="\n".join(menu), BOARD="\n".join(board), BREAKING=breaking,
         BREAKING_LABEL=label, BREAKING_NOTE=note, FEED=feed, TOTAL=len(flat), REST=len(rest),
         DETAILS="\n".join(details),

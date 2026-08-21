@@ -51,6 +51,10 @@ TOPICS = [
         "queries": ["세계 경제", "미국 연준 금리", "환율 원달러", "글로벌 인플레이션",
                     "비트코인 시세 전망", "이더리움 가상자산"],
     },
+    {
+        "id": "stablecoin", "name": "스테이블코인", "accent": "#008d96", "accent_dark": "#14b8a6",
+        "queries": ["스테이블코인", "테더 USDT USDC", "원화 스테이블코인", "스테이블코인 법안", "디지털화폐 CBDC 스테이블코인"],
+    },
 ]
 
 STRIP_SOURCE = re.compile(r"\s+-\s+[^-]+$")
