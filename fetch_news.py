@@ -217,6 +217,24 @@ def _fx_block(text, code):
     return value, round(pct, 2)
 
 
+def _naver_gold_prev_close(text):
+    """네이버 '국제 금'에서 전일 종가를 계산한다."""
+    m = re.search(
+        r'<span class="blind">국제 금</span>.*?'
+        r'<span class="value">([\d,.]+)</span>.*?'
+        r'<span class="change">\s*([\d,.]+)</span>.*?'
+        r'<span class="blind">(상승|하락|보합)</span>',
+        text, re.S)
+    if not m:
+        return None
+    value = float(m.group(1).replace(",", ""))
+    delta = float(m.group(2).replace(",", ""))
+    way = m.group(3)
+    if way == "보합" or delta == 0:
+        return value
+    return value - delta if way == "상승" else value + delta
+
+
 def fetch_naver_fx():
     """하나은행 고시 환율(원/달러, 원/100엔)과 전일 대비 등락률."""
     raw = fetch(NAVER_FX, retries=2)
@@ -230,7 +248,8 @@ def fetch_naver_fx():
         return None
     stamp = re.search(r'<span class="time">([\d.]+ [\d:]+)</span>', text)
     return {"usdkrw": usd, "jpykrw": jpy, "usdkrw_chg": usd_chg,
-            "jpykrw_chg": jpy_chg, "fx_time": stamp.group(1) if stamp else None}
+            "jpykrw_chg": jpy_chg, "fx_time": stamp.group(1) if stamp else None,
+            "gold_prev_close": _naver_gold_prev_close(text)}
 HISTORY = Path(__file__).with_name("market_history.json")
 SERIES = ("gold", "silver", "usdkrw", "jpykrw")
 
@@ -296,6 +315,10 @@ def fetch_market():
     print(f"  금 ${out.get('gold')} · 은 ${out.get('silver')} · "
           f"달러 {out.get('usdkrw')}원 · 100엔 {out.get('jpykrw')}원")
     changes = {f"{k}_chg": (fx_chg[k] if k in fx_chg else chg(k)) for k in SERIES}
+    prev_gold = (fx or {}).get("gold_prev_close")
+    if prev_gold and out.get("gold"):
+        # 전일 종가는 고정값이라, 실시간 금값에 적용해도 전일 대비가 정확하다
+        changes["gold_chg"] = round((out["gold"] - prev_gold) / prev_gold * 100, 2)
     return {**{k: out.get(k) for k in SERIES}, **changes,
             "fx_time": fx_time, "stale": False}
 
