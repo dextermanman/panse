@@ -124,19 +124,20 @@ button{font:inherit; color:inherit; border:0; background:transparent}
   color:var(--breaking); background:var(--breaking-bg); padding:2px 8px; border-radius:980px}
 .nav-new.show{display:inline-flex}
 
-/* 주제 선택 — 가로 스크롤이면 폰에서 앞의 두세 개만 보인다. 줄바꿈으로 전부 노출. */
-.topic-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px}
-.m-btn{flex:none; display:inline-flex; align-items:center; gap:7px; cursor:pointer;
-  border:1px solid var(--hairline); background:var(--surface); color:var(--ink-2);
-  font-size:14px; font-weight:550;
-  padding:9px 15px; border-radius:980px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); white-space:nowrap}
-.m-btn:hover{color:var(--ink); background:var(--surface-2); border-color:var(--ink-3)}
-.m-btn:active{transform:scale(0.96)}
-.m-btn .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent); flex:none}
-.m-btn .n{font-size:10.5px; font-weight:700; color:var(--breaking); font-variant-numeric:tabular-nums}
-.m-btn[aria-selected="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink); font-weight:600; box-shadow:var(--shadow)}
-.m-btn[aria-selected="true"] .n{color:var(--ground); opacity:.85}
-.m-btn[aria-selected="true"] .swatch{box-shadow:0 0 0 2px var(--ground)}
+/* 주제 선택 — 알약 껍데기를 벗기고 글자만 남긴 언더라인 탭.
+   고른 항목의 밑줄에 그 주제의 색을 써서 색 구분을 유지한다. */
+.topic-nav{display:flex; flex-wrap:wrap; gap:2px 22px; margin:0 0 24px}
+.m-btn{flex:none; display:inline-flex; align-items:baseline; gap:5px; cursor:pointer;
+  border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent;
+  color:var(--ink-3); font-size:14.5px; font-weight:550; letter-spacing:-.01em;
+  padding:7px 0 6px; transition:color .15s ease, border-color .15s ease}
+.m-btn:hover{color:var(--ink)}
+.m-btn .swatch{display:none}
+.m-btn .n{font-size:10.5px; font-weight:700; color:var(--breaking);
+  font-variant-numeric:tabular-nums; position:relative; top:-4px}
+.m-btn[aria-selected="true"]{color:var(--ink); font-weight:700;
+  border-bottom-color:var(--accent, var(--ink))}
+.m-btn[aria-selected="true"] .n{color:var(--breaking)}
 
 .top-right{display:flex; align-items:center; gap:8px; flex:none}
 .stamp{font-size:11.5px; color:var(--ink-2); font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:4px; white-space:nowrap}
@@ -379,10 +380,8 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .masthead-meta{text-align:left}
 
   /* 브리핑 */
-  /* 주제 버튼: 11개가 네 줄을 잡아먹지 않도록 모바일에서 축소 */
-  .topic-nav{gap:6px; margin-bottom:18px}
-  .m-btn{font-size:12.5px; font-weight:600; padding:6px 11px; gap:5px}
-  .m-btn .swatch{width:6px; height:6px}
+  .topic-nav{gap:0 16px; margin-bottom:18px}
+  .m-btn{font-size:13.5px; padding:6px 0 5px}
   .m-btn .n{font-size:9.5px}
   .brief-card{padding:16px 16px; border-radius:16px; margin-bottom:22px}
   /* 가로로 늘어놓으면 좁은 폭에서 복사 버튼이 밀려 잘릴 수 있다 */
