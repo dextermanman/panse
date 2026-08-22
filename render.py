@@ -265,34 +265,23 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
   color:var(--ink-2); background:var(--surface-2); padding:3px 8px; border-radius:6px}
 .b-tag .swatch{width:6.5px; height:6.5px; border-radius:50%; background:var(--accent)}
 .b-src{font-size:11.5px; color:var(--ink-3); max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* 속보가 400px 사이드 칼럼에 들어가므로 한 줄 배치로는 좁다. 세로로 쌓는다. */
+.grid-side .b-item{display:grid; grid-template-columns:1fr 34px; gap:6px 8px;
+  align-items:start; padding:13px 16px}
+.grid-side .b-title{grid-column:1; white-space:normal; font-size:14.5px; line-height:1.5;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical}
+.grid-side .b-list li:first-child .b-item{padding:16px 16px 18px}
+.grid-side .b-list li:first-child .b-title{font-size:17px; line-height:1.45; -webkit-line-clamp:4}
+.grid-side .b-tag-wrap{grid-column:1; flex-wrap:wrap; gap:6px; font-size:11px}
+.grid-side .b-src{max-width:none}
+.grid-side .b-item .bm-btn{grid-column:2; grid-row:1/3; align-self:start; padding:4px 6px}
 .b-time{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums; white-space:nowrap}
 .bm-btn{flex:none; opacity:0.4; font-size:15px; cursor:pointer; padding:6px 8px; border-radius:8px; transition:all .15s ease}
 .bm-btn:hover{opacity:1; background:var(--surface-2)}
 .bm-btn.active{opacity:1; color:#FF9500}
 
 /* ---------- 9대 산업 실시간 보드 ---------- */
-.board{list-style:none; margin:0; padding:0; background:var(--surface);
-  border:1px solid var(--hairline); border-radius:20px; box-shadow:var(--shadow), var(--inner-glow); overflow:hidden}
-.board li + li{border-top:1px solid var(--hairline-2)}
-.bd-row{display:grid; grid-template-columns:4px 105px 1fr auto 48px 14px; align-items:center;
-  gap:0 12px; padding:0; cursor:pointer; width:100%; text-align:left;
-  border:0; background:transparent; transition:background .15s ease}
-.bd-row:hover{background:var(--tint)}
-.bd-bar{align-self:stretch; background:var(--accent)}
-.bd-name{padding:14px 0; font-size:15px; font-weight:600; letter-spacing:-.015em; display:flex; align-items:center; gap:6px}
-.bd-teaser{font-size:13px; color:var(--ink-2); overflow:hidden;
-  text-overflow:ellipsis; white-space:nowrap; padding:14px 0}
-.bd-nums{display:flex; align-items:center; gap:6px; padding:14px 0; white-space:nowrap}
-.bd-new{font-size:10.5px; font-weight:700; color:var(--breaking);
-  background:var(--breaking-bg); padding:2px 7px; border-radius:980px; font-variant-numeric:tabular-nums}
-.bd-total{font-size:11px; color:var(--ink-3); font-variant-numeric:tabular-nums}
-.sparkline{display:flex; align-items:flex-end; gap:.5px; height:18px; padding:2px 0}
-.sp-bar{flex:none; width:1.5px; background:var(--accent); border-radius:1px;
-  opacity:.75; min-height:2px}
-.bd-go{font-size:15px; color:var(--ink-3); padding-right:14px; transition:transform .15s ease, color .15s ease}
-.bd-row:hover .bd-go{color:var(--ink-2); transform:translateX(3px)}
-
-/* ---------- 전체 흐름 (피드) ---------- */
 .feed{list-style:none; margin:0; padding:0}
 .feed li + li{border-top:1px solid var(--hairline-2)}
 .f-row{display:flex; align-items:center; gap:14px; padding:13px 22px; transition:background .15s ease}
@@ -391,14 +380,7 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .brief-title{font-size:14.5px}
 
   /* 9대 산업 보드 모바일 뷰 */
-  .bd-row{grid-template-columns:4px 1fr auto 16px; gap:0 10px}
-  .bd-name{padding:12px 0 2px; grid-column:2; font-size:15px}
-  .bd-teaser{grid-column:2; padding:0 0 12px; font-size:12.5px; white-space:normal;
-    display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical}
-  .sparkline{display:none}
-  .bd-nums{grid-column:3; grid-row:1/3; padding:12px 0}
-  .bd-go{grid-column:4; grid-row:1/3; padding-right:12px}
-
+            
   /* 속보 & 피드 */
   .b-item{display:grid; grid-template-columns:1fr 38px; gap:6px 8px; padding:12px 14px}
   .b-title{grid-column:1; font-size:15.5px; line-height:1.48; white-space:normal;
@@ -509,20 +491,8 @@ $BRIEFING
 
     <!-- 2열 에디토리얼 그리드 레이아웃 -->
     <div class="editorial-grid">
-      <!-- 좌측 메인: 속보 & 실시간 전체 흐름 -->
+      <!-- 좌측 메인: 실시간 전체 흐름 -->
       <div class="grid-main">
-        <section aria-labelledby="z2" class="section-block">
-          <div class="zone-head">
-            <span class="zone-title" id="z2">$BREAKING_LABEL</span>
-            <span class="zone-note">$BREAKING_NOTE</span>
-          </div>
-          <div class="card">
-            <ul class="b-list">
-$BREAKING
-            </ul>
-          </div>
-        </section>
-
         <section aria-labelledby="z3" class="section-block">
           <div class="zone-head">
             <span class="zone-title" id="z3">실시간 전체 흐름</span>
@@ -537,16 +507,18 @@ $FEED
         </section>
       </div>
 
-      <!-- 우측 사이드: 9대 산업 실시간 판세 보드 -->
+      <!-- 우측 사이드: 속보 -->
       <div class="grid-side">
-        <section aria-labelledby="z1" class="section-block">
+        <section aria-labelledby="z2" class="section-block">
           <div class="zone-head">
-            <span class="zone-title" id="z1">9대 산업 실시간 판세</span>
-            <span class="zone-note">24시간 추이 & 보드</span>
+            <span class="zone-title" id="z2">$BREAKING_LABEL</span>
+            <span class="zone-note">$BREAKING_NOTE</span>
           </div>
-          <ul class="board">
-$BOARD
-          </ul>
+          <div class="card">
+            <ul class="b-list">
+$BREAKING
+            </ul>
+          </div>
         </section>
       </div>
     </div>
@@ -959,9 +931,6 @@ $DETAILS
     window.scrollTo({ top: 0, behavior: soft ? "auto" : "smooth" });
   }
   menu.forEach(function(b){ b.addEventListener("click", function(){ go(b.dataset.view); }); });
-  document.querySelectorAll(".bd-row").forEach(function(r){
-    r.addEventListener("click", function(){ go(r.dataset.topic); });
-  });
 })();
 </script>
 </body>
@@ -1019,17 +988,6 @@ def market_html(m):
     return f'    <div class="metals"{stale}>\n' + "\n".join(rows) + "\n    </div>"
 
 
-def render_sparkline(hist24):
-    if not hist24 or not any(hist24):
-        return ""
-    m = max(hist24) or 1
-    bars = []
-    for count in hist24:
-        pct = max(10, int(count / m * 100)) if count > 0 else 10
-        bars.append(f'<span class="sp-bar" style="height:{pct}%;" title="{count}건"></span>')
-    return f'<span class="sparkline" title="지난 24시간 기사 발생 추이">{"".join(bars)}</span>'
-
-
 WEEKDAYS = ["월", "화", "수", "목", "금", "토", "일"]
 
 
@@ -1070,21 +1028,12 @@ def build():
         for idx, (it, t) in enumerate(brief_picks)
     )
 
-    menu, board, details = [], [], []
+    menu, details = [], []
     for t in topics:
         n = t["fresh_1h"]
         badge = f'<span class="n">+{n}</span>' if n else ""
         menu.append(
             f'        <button class="m-btn t-{t["id"]}" type="button" role="tab" data-view="{t["id"]}" aria-selected="false"><span class="swatch"></span>{esc(t["name"])}{badge}</button>'
-        )
-        teaser_item = next((it for it in t["items"] if it["link"] not in used), None)
-        if teaser_item:
-            used.add(teaser_item["link"])
-        teaser = esc(teaser_item["title"]) if teaser_item else "새 기사 없음"
-        new_tag = f'<span class="bd-new">+{n}</span>' if n else ""
-        spark = render_sparkline(t.get("hist24", []))
-        board.append(
-            f'        <li><button class="bd-row t-{t["id"]}" type="button" data-topic="{t["id"]}"><span class="bd-bar"></span><span class="bd-name">{esc(t["name"])}</span><span class="bd-teaser">{teaser}</span><span class="bd-nums">{new_tag}<span class="bd-total">{t["total"]}건</span></span>{spark}<span class="bd-go" aria-hidden="true">›</span></button></li>'
         )
 
     rest = [(it, t) for it, t in flat if it["link"] not in used]
@@ -1131,7 +1080,7 @@ def build():
         SUBTITLE=subtitle,
         TOPIC_COUNT=topic_count,
         BRIEFING=briefing,
-        MENU="\n".join(menu), BOARD="\n".join(board), BREAKING=breaking,
+        MENU="\n".join(menu), BREAKING=breaking,
         BREAKING_LABEL=label, BREAKING_NOTE=note, FEED=feed, TOTAL=len(flat), REST=len(rest),
         DETAILS="\n".join(details),
         NAMES=json.dumps({t["id"]: t["name"] for t in topics}, ensure_ascii=False),
