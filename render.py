@@ -546,8 +546,29 @@ $DETAILS
 
 <script>
 (function(){
-  var GEN = $GEN_TS * 1000, PERIOD = 30 * 60 * 1000;
-  var DEADLINE = GEN + PERIOD + Math.floor(Math.random() * 120000);
+  var GEN = $GEN_TS * 1000;
+  var PERIOD = 20 * 60 * 1000;        // 배포가 대체로 이 간격 안에 온다
+  var MIN_GAP = 5 * 60 * 1000;        // 재확인 최소 간격
+  var MAX_GAP = 60 * 60 * 1000;
+
+  /* 갱신이 늦어지면 리로드해도 같은 페이지가 온다. 그대로 두면 3초마다
+     무한 리로드가 되므로, 내용이 안 바뀐 횟수만큼 확인 간격을 늘린다. */
+  var misses = 0;
+  try {
+    var seen = Number(sessionStorage.getItem("panse-gen") || 0);
+    if (seen && seen === GEN) {
+      misses = Math.min(Number(sessionStorage.getItem("panse-miss") || 0) + 1, 4);
+    } else {
+      sessionStorage.setItem("panse-gen", String(GEN));
+    }
+    sessionStorage.setItem("panse-miss", String(misses));
+  } catch (e) {}
+
+  var backoff = Math.min(MIN_GAP * Math.pow(2, misses), MAX_GAP);
+  var DEADLINE = Math.max(
+    GEN + PERIOD + Math.floor(Math.random() * 120000),
+    Date.now() + backoff
+  );
   var NAMES = $NAMES;
   NAMES["bookmarks"] = "스크랩";
 
@@ -605,10 +626,11 @@ $DETAILS
     var left = DEADLINE - Date.now();
     if (left <= 0){
       cd.textContent = "새 소식 확인 중...";
+      if (document.hidden) return;   // 보고 있지 않은 탭은 건드리지 않는다
       if (!window._reloadScheduled) {
         window._reloadScheduled = true;
+        DEADLINE = Date.now() + backoff;   // 다음 확인을 미리 미뤄 연쇄 리로드를 막는다
         setTimeout(doReload, 3000);
-        setTimeout(function(){ window._reloadScheduled = false; }, 60000);
       }
       return;
     }
