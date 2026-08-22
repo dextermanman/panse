@@ -124,6 +124,39 @@ def tokens(title):
     return {w.lower() for w in words if w not in STOPWORDS}
 
 
+# 글자 2-gram 포함도가 이 값을 넘으면 같은 사건으로 본다.
+# 실제 수집분으로 재본 결과 0.45 아래부터 서로 다른 기사가 섞이기 시작한다.
+SIM_THRESHOLD = 0.45
+
+
+# 신문 제목의 한자 약칭. 매체마다 "中"과 "중국"을 섞어 써서 같은 사건이 갈린다.
+HANJA_ABBR = {"中": "중국", "美": "미국", "日": "일본", "韓": "한국", "北": "북한",
+              "與": "여당", "野": "야당", "英": "영국", "獨": "독일", "佛": "프랑스"}
+
+
+def shingles(title):
+    """한국어 제목 비교용 글자 2-gram.
+
+    어절 단위 비교는 매체마다 표현이 조금만 달라도 같은 사건을 놓친다.
+    (예: "머스크가 고집한 '매립형 손잡이'…테슬라, 中서 300만대 리콜" 과
+         "\"매립형 손잡이가 화근\"…테슬라, 중국서 300만대 리콜")
+    """
+    t = title
+    for k, v in HANJA_ABBR.items():
+        t = t.replace(k, v)
+    # "300만 대"와 "298만대"처럼 수치만 다른 같은 사건을 묶기 위해 숫자를 지운다
+    t = re.sub(r"\d[\d,.]*", "#", t)
+    t = re.sub(r"[^가-힣A-Za-z0-9#]", "", t)
+    return {t[i:i + 2] for i in range(len(t) - 1)}
+
+
+def same_story(a, b):
+    """두 제목의 2-gram 포함도로 같은 사건인지 판단."""
+    if not a or not b:
+        return False
+    return len(a & b) / min(len(a), len(b)) >= SIM_THRESHOLD
+
+
 def is_similar(a, b, rare=frozenset()):
     """서로 다른 매체의 같은 사건 기사 걸러내기.
 
@@ -413,6 +446,7 @@ def collect():
     result = []
     seen_global = set()
     seen_tokens = []
+    seen_shingles = []
     for topic in TOPICS:
         bucket = {}
         topic_block = TOPIC_BLOCK.get(topic["id"])
@@ -448,8 +482,12 @@ def collect():
             tok = tokens(it["title"])
             if any(is_similar(tok, prev, rare) for prev in seen_tokens):
                 continue
+            sg = shingles(it["title"])
+            if any(same_story(sg, prev) for prev in seen_shingles):
+                continue
             seen_global.add(k)
             seen_tokens.append(tok)
+            seen_shingles.append(sg)
             deduped.append(it)
         # 최근 24시간 시간대별 기사 흐름 (한 칸 = 1시간, 마지막 칸이 현재 시각)
         hour0 = now.replace(minute=0, second=0, microsecond=0)
