@@ -946,7 +946,7 @@ TICKER = (
     (
         ("gold",   "금",      "$", 0, "금 현물 · 미국 달러/트로이온스"),
         ("silver", "은",      "$", 2, "은 현물 · 미국 달러/트로이온스"),
-        ("btc",    "비트코인", "$", 0, "비트코인 (BTC/USD) · 24시간 변동률"),
+        ("btc",    "비트코인", "$", 0, "비트코인 BTC/USD"),
     ),
     (
         ("usdkrw", "달러",    "₩", 1, "원/달러 · 하나은행 매매기준율"),
@@ -965,8 +965,20 @@ def market_html(m):
             val = m.get(key)
             if val is None:
                 continue
+            # 등락률이 어느 구간 기준인지 툴팁에 밝힌다 (소스마다 다르다)
             fx_t = m.get("fx_time")
-            tip_str = f"{tip} ({fx_t} 고시)" if key.endswith("krw") and fx_t else tip
+            win = m.get("window_h")
+            if key.endswith("krw") and fx_t:
+                tip_str = f"{tip} ({fx_t} 고시 · 전일 대비)"
+            elif key == "gold":
+                tip_str = f"{tip} · 전일 종가 대비"
+            elif key == "btc":
+                tip_str = f"{tip} · 24시간 대비"
+            elif key == "silver" and win:
+                # 이력이 24시간을 채우기 전에는 실제 비교 구간을 그대로 적는다
+                tip_str = f"{tip} · 최근 {min(win, 24)}시간 대비"
+            else:
+                tip_str = tip
             chg = m.get(f"{key}_chg")
             if chg is None:
                 tag = ""

@@ -323,28 +323,29 @@ def fetch_market():
             except Exception as e:  # noqa: BLE001
                 print(f"  ! 시세 파싱 실패 {sym}: {e}", file=sys.stderr)
 
-    # 비트코인 시세 (Coinbase & Upbit)
-    fx_chg = {}
-    btc_raw = fetch("https://api.coinbase.com/v2/prices/BTC-USD/spot", retries=2, timeout=6)
-    if btc_raw:
+    # 비트코인: CoinGecko가 24시간 변동률까지 주므로 우선 사용하고,
+    # 실패하면 Coinbase 현물가(변동률 없음)로 폴백한다.
+    btc_chg = None
+    cg = fetch("https://api.coingecko.com/api/v3/simple/price"
+               "?ids=bitcoin&vs_currencies=usd&include_24hr_change=true", retries=2, timeout=8)
+    if cg:
         try:
-            bdata = json.loads(btc_raw)
-            out["btc"] = round(float(bdata["data"]["amount"]), 0)
+            b = json.loads(cg)["bitcoin"]
+            out["btc"] = round(float(b["usd"]), 0)
+            if b.get("usd_24h_change") is not None:
+                btc_chg = round(float(b["usd_24h_change"]), 2)
         except Exception as e:  # noqa: BLE001
-            print(f"  ! 비트코인 파싱 실패 (Coinbase): {e}", file=sys.stderr)
+            print(f"  ! 비트코인 파싱 실패 (CoinGecko): {e}", file=sys.stderr)
     if not out.get("btc"):
-        upbit_raw = fetch("https://api.upbit.com/v1/ticker?markets=KRW-BTC", retries=2, timeout=6)
-        if upbit_raw:
+        btc_raw = fetch("https://api.coinbase.com/v2/prices/BTC-USD/spot", retries=2, timeout=6)
+        if btc_raw:
             try:
-                udata = json.loads(upbit_raw)[0]
-                krw_price = float(udata["trade_price"])
-                out["btc"] = round(krw_price / 1385.0, 0)
-                fx_chg["btc"] = round(float(udata["signed_change_rate"]) * 100, 2)
+                out["btc"] = round(float(json.loads(btc_raw)["data"]["amount"]), 0)
             except Exception as e:  # noqa: BLE001
-                print(f"  ! 비트코인 파싱 실패 (Upbit): {e}", file=sys.stderr)
+                print(f"  ! 비트코인 파싱 실패 (Coinbase): {e}", file=sys.stderr)
 
     fx = fetch_naver_fx()
-    fx_time = None
+    fx_chg, fx_time = {}, None
     if fx:
         for k in ("usdkrw", "jpykrw"):
             if fx.get(k) is not None:
@@ -373,23 +374,31 @@ def fetch_market():
     hist = [h for h in hist if h["ts"] >= now_ts - 8 * 24 * 3600]
     HISTORY.write_text(json.dumps(hist), encoding="utf-8")
 
+    # 24시간 전 표본이 있으면 그것을, 아직 안 찼으면 가장 오래된 표본을 쓴다.
+    # 실제 비교 구간은 window_h로 알려 화면 툴팁에 그대로 표시한다.
     target = now_ts - 24 * 3600
     old = min((h for h in hist if h["ts"] <= target), key=lambda h: target - h["ts"], default=None)
+    if old is None and hist:
+        old = hist[0]
+    window_h = round((now_ts - old["ts"]) / 3600) if old else None
 
     def chg(key):
-        if not old or not out.get(key) or not old.get(key):
+        # 구간이 너무 짧으면 등락률이 잡음이라 표시하지 않는다
+        if not old or not out.get(key) or not old.get(key) or (window_h or 0) < 6:
             return None
         return round((out[key] - old[key]) / old[key] * 100, 2)
 
     print(f"  금 ${out.get('gold')} · 은 ${out.get('silver')} · 비트코인 ${out.get('btc')} · "
           f"달러 {out.get('usdkrw')}원 · 100엔 {out.get('jpykrw')}원")
     changes = {f"{k}_chg": (fx_chg[k] if k in fx_chg else chg(k)) for k in SERIES}
+    if btc_chg is not None:
+        changes["btc_chg"] = btc_chg
     prev_gold = (fx or {}).get("gold_prev_close")
     if prev_gold and out.get("gold"):
         # 전일 종가는 고정값이라, 실시간 금값에 적용해도 전일 대비가 정확하다
         changes["gold_chg"] = round((out["gold"] - prev_gold) / prev_gold * 100, 2)
     return {**{k: out.get(k) for k in SERIES}, **changes,
-            "fx_time": fx_time, "stale": False}
+            "fx_time": fx_time, "window_h": window_h, "stale": False}
 
 
 def pick_balanced(items, limit):
