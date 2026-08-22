@@ -202,10 +202,10 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
   border:1px solid var(--hairline); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow), var(--inner-glow);
   margin-bottom:30px}
 .brief-head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; flex-wrap:wrap}
-.brief-title-wrap{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.brief-title-wrap{display:flex; align-items:center; gap:10px; flex-wrap:wrap; min-width:0}
 .brief-pill{display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg, #B45309, #D97706); color:#FFFFFF;
   font-size:11.5px; font-weight:700; letter-spacing:.04em; padding:4px 12px; border-radius:980px; box-shadow:0 2px 8px rgba(180,83,9,0.25)}
-.brief-sub{font-size:12.5px; color:var(--ink-2)}
+.brief-sub{font-size:12.5px; color:var(--ink-2); min-width:0}
 .brief-copy{display:inline-flex; align-items:center; gap:5px; font-size:11.5px;
   font-weight:600; color:var(--ink-2); background:var(--surface); border:1px solid var(--hairline);
   padding:5px 12px; border-radius:980px; cursor:pointer; transition:all .15s ease}
@@ -358,6 +358,9 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 /* ========================================================
    📱 스마트폰 (모바일 화면) 최적화 스타일
    ======================================================== */
+@media (max-width:420px){
+  .brief-sub{display:none}
+}
 @media (max-width:768px){
   .top-main{padding:8px 14px 4px; gap:8px}
   .brand{font-size:16.5px}
@@ -377,6 +380,9 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 
   /* 브리핑 */
   .brief-card{padding:16px 16px; border-radius:16px; margin-bottom:22px}
+  /* 가로로 늘어놓으면 좁은 폭에서 복사 버튼이 밀려 잘릴 수 있다 */
+  .brief-head{flex-direction:column; align-items:flex-start; gap:10px}
+  .brief-copy{align-self:flex-start}
   .brief-item{padding:12px 14px; border-radius:14px}
   .brief-title{font-size:14.5px}
 
