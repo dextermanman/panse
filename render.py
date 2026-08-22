@@ -124,19 +124,17 @@ button{font:inherit; color:inherit; border:0; background:transparent}
   color:var(--breaking); background:var(--breaking-bg); padding:2px 8px; border-radius:980px}
 .nav-new.show{display:inline-flex}
 
-/* 플로팅 캡슐 탭 메뉴 */
-.top-nav-wrap{flex:1; min-width:0; display:flex; justify-content:center}
-.capsule-nav{display:flex; gap:5px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;
-  padding:3px; background:var(--tint); border:1px solid var(--hairline); border-radius:980px; -webkit-overflow-scrolling:touch}
-.capsule-nav::-webkit-scrollbar{display:none}
-.m-btn{flex:none; display:inline-flex; align-items:center; gap:6px; cursor:pointer;
-  border:0; background:transparent; color:var(--ink-2); font-size:13px; font-weight:550;
-  padding:5px 12px; border-radius:980px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); white-space:nowrap}
-.m-btn:hover{color:var(--ink); background:var(--surface)}
+/* 주제 선택 — 가로 스크롤이면 폰에서 앞의 두세 개만 보인다. 줄바꿈으로 전부 노출. */
+.topic-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px}
+.m-btn{flex:none; display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  border:1px solid var(--hairline); background:var(--surface); color:var(--ink-2);
+  font-size:14px; font-weight:550;
+  padding:9px 15px; border-radius:980px; transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); white-space:nowrap}
+.m-btn:hover{color:var(--ink); background:var(--surface-2); border-color:var(--ink-3)}
 .m-btn:active{transform:scale(0.96)}
-.m-btn .swatch{width:7px; height:7px; border-radius:50%; background:var(--accent); flex:none}
+.m-btn .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent); flex:none}
 .m-btn .n{font-size:10.5px; font-weight:700; color:var(--breaking); font-variant-numeric:tabular-nums}
-.m-btn[aria-selected="true"]{background:var(--ink); color:var(--ground); font-weight:600; box-shadow:var(--shadow)}
+.m-btn[aria-selected="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink); font-weight:600; box-shadow:var(--shadow)}
 .m-btn[aria-selected="true"] .n{color:var(--ground); opacity:.85}
 .m-btn[aria-selected="true"] .swatch{box-shadow:0 0 0 2px var(--ground)}
 
@@ -429,15 +427,9 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
       </a>
       <span class="nav-new" id="navnew"></span>
     </div>
-    <div class="top-nav-wrap">
-      <nav class="capsule-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
-        <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
-        <button class="m-btn" type="button" role="tab" data-view="bookmarks" aria-selected="false">🔖 스크랩 <span class="n" id="bm-badge">0</span></button>
-$MENU
-      </nav>
-    </div>
     <div class="top-right">
       <span class="stamp"><span class="stamp-time">$UPDATED_HM</span><span class="stamp-sfx"> 갱신</span></span>
+      <button class="theme-btn" id="search-open" type="button" aria-label="기사 검색 (⌘K)" title="기사 검색 (⌘K)">🔍</button>
       <button class="theme-btn" id="theme-toggle" type="button" aria-label="테마 전환">🌓</button>
     </div>
   </div>
@@ -462,8 +454,16 @@ $METALS
     </div>
   </header>
 
+  <!-- 주제 선택: 이 페이지의 주 이동 수단이라 가장 잘 보이는 자리에 둔다 -->
+  <nav class="topic-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
+    <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
+    <button class="m-btn" type="button" role="tab" data-view="bookmarks" aria-selected="false">🔖 스크랩 <span class="n" id="bm-badge">0</span></button>
+$MENU
+  </nav>
+
+  <!-- 검색은 자주 쓰지 않으므로 접어두고 상단 돋보기 버튼으로 연다 -->
   <!-- 실시간 검색바 (Spotlight Style) -->
-  <div class="search-bar">
+  <div class="search-bar hidden" id="search-bar">
     <div class="search-in">
       <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
@@ -889,14 +889,19 @@ $DETAILS
     });
   }
 
-  /* 키보드 단축키 (⌘K / Ctrl+K) */
+  /* 검색창은 접어둔 상태가 기본. 돋보기 버튼이나 ⌘K로 펼친다. */
+  var searchBar = document.getElementById("search-bar");
+  function openSearch(){
+    if (searchBar) searchBar.classList.remove("hidden");
+    if (searchInput) { searchInput.focus(); searchInput.select(); }
+  }
+  var searchOpen = document.getElementById("search-open");
+  if (searchOpen) searchOpen.addEventListener("click", openSearch);
   window.addEventListener("keydown", function(e){
-    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-      e.preventDefault();
-      if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
-      }
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); openSearch(); }
+    if (e.key === "Escape" && searchBar && !searchBar.classList.contains("hidden")) {
+      if (searchInput) { searchInput.value = ""; searchInput.dispatchEvent(new Event("input")); }
+      searchBar.classList.add("hidden");
     }
   });
 
