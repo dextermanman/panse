@@ -379,6 +379,11 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .masthead-meta{text-align:left}
 
   /* 브리핑 */
+  /* 주제 버튼: 11개가 네 줄을 잡아먹지 않도록 모바일에서 축소 */
+  .topic-nav{gap:6px; margin-bottom:18px}
+  .m-btn{font-size:12.5px; font-weight:600; padding:6px 11px; gap:5px}
+  .m-btn .swatch{width:6px; height:6px}
+  .m-btn .n{font-size:9.5px}
   .brief-card{padding:16px 16px; border-radius:16px; margin-bottom:22px}
   /* 가로로 늘어놓으면 좁은 폭에서 복사 버튼이 밀려 잘릴 수 있다 */
   .brief-head{flex-direction:column; align-items:flex-start; gap:10px}
