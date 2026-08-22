@@ -142,6 +142,14 @@ button{font:inherit; color:inherit; border:0; background:transparent}
 .top-right{display:flex; align-items:center; gap:8px; flex:none}
 .stamp{font-size:11.5px; color:var(--ink-2); font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:4px; white-space:nowrap}
 .stamp-time{font-weight:600; color:var(--ink)}
+/* 갱신이 오래 멈추면 눈에 띄게 알린다 — 조용히 묵어 있으면 알 방법이 없다 */
+.stamp-late{display:none}
+.stamp.is-late{color:var(--breaking)}
+.stamp.is-late .stamp-time{color:var(--breaking)}
+.stamp.is-late .dot-live{background:var(--breaking); box-shadow:0 0 0 3px var(--breaking-bg); animation:none}
+.stamp.is-late .stamp-late{display:inline; font-weight:600}
+.brand-live.is-late{background:var(--breaking-bg); color:var(--breaking)}
+.brand-live.is-late .dot-live{background:var(--breaking); box-shadow:none; animation:none}
 .theme-btn{border:1px solid var(--hairline); background:var(--surface); font-size:13px;
   padding:5px 10px; border-radius:980px; cursor:pointer; transition:all .15s ease}
 .theme-btn:hover{background:var(--surface-2); transform:scale(1.05)}
@@ -420,7 +428,7 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
       <span class="nav-new" id="navnew"></span>
     </div>
     <div class="top-right">
-      <span class="stamp"><span class="stamp-time">$UPDATED_HM</span><span class="stamp-sfx"> 갱신</span></span>
+      <span class="stamp" id="stamp" title="마지막 갱신 시각"><span class="stamp-time">$UPDATED_HM</span><span class="stamp-sfx"> 갱신</span><span class="stamp-late" id="stamp-late"></span></span>
       <button class="theme-btn" id="search-open" type="button" aria-label="기사 검색 (⌘K)" title="기사 검색 (⌘K)">🔍</button>
       <button class="theme-btn" id="theme-toggle" type="button" aria-label="테마 전환">🌓</button>
     </div>
@@ -613,6 +621,27 @@ $DETAILS
   } catch (e) {}
 
   /* 다음 갱신 카운트다운 & 스마트 리로드 */
+  /* 갱신이 2시간 넘게 멈추면 시각 표시를 경고색으로 바꾼다 */
+  var stampEl = document.getElementById("stamp");
+  var stampLate = document.getElementById("stamp-late");
+  function paintStale(){
+    if (!stampEl) return;
+    var hrs = (Date.now() - GEN) / 3600000;
+    var late = hrs >= 2;
+    stampEl.classList.toggle("is-late", late);
+    // 갱신이 멈췄는데 초록 LIVE 배지가 켜져 있으면 모순이다
+    var liveEl = document.querySelector(".brand-live");
+    if (liveEl) liveEl.classList.toggle("is-late", late);
+    if (stampLate) {
+      stampLate.textContent = late
+        ? (hrs >= 24 ? " · " + Math.floor(hrs / 24) + "일째 갱신 없음" : " · " + Math.floor(hrs) + "시간째 갱신 없음")
+        : "";
+    }
+    if (late) stampEl.title = "자동 갱신이 멈춘 것 같습니다. 눌러서 새로고침하세요.";
+  }
+  paintStale(); setInterval(paintStale, 60000);
+  if (stampEl) stampEl.addEventListener("click", function(){ doReload(); });
+
   var cd = document.getElementById("countdown");
   var reloading = false;
   function doReload(){
