@@ -555,7 +555,7 @@ $DETAILS
 <script>
 (function(){
   var GEN = $GEN_TS * 1000;
-  var PERIOD = 20 * 60 * 1000;        // 배포가 대체로 이 간격 안에 온다
+  var PERIOD = 30 * 60 * 1000;        // 갱신 주기(30분)에 맞춘 카운트다운
   var MIN_GAP = 5 * 60 * 1000;        // 재확인 최소 간격
   var MAX_GAP = 60 * 60 * 1000;
 
