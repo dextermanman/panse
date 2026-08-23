@@ -4,9 +4,10 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # 30분 주기. 정시 직후는 GitHub Actions 혼잡 구간이라 예약 실행이
-    # 밀리므로, 문서 권고대로 정시에서 떨어뜨린 :08 / :38에 잡는다.
-    - cron: "8,38 * * * *"
+    # 평상시 30분 주기는 외부 스케줄러(cron-job.org)가 workflow_dispatch로
+    # 찔러서 돌린다. schedule 이벤트는 GitHub이 흘리는 일이 잦아
+    # (관측: 4회 예약 -> 실제 2회, 최대 81분 공백) 백업으로만 남긴다.
+    - cron: "20 * * * *"
   workflow_dispatch:  # 수동 실행 버튼
 
 permissions:
