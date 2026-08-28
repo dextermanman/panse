@@ -92,7 +92,7 @@ $SWATCH_LIGHT
 $TOPIC_CLASSES
 
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
-body{margin:0; background:var(--ground); color:var(--ink); font-size:15px; line-height:1.55;
+body{margin:0; background:var(--ground); background-image:var(--body-bg); background-attachment:fixed; color:var(--ink); font-size:15px; line-height:1.55; min-height:100vh;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Pretendard","Apple SD Gothic Neo","Segoe UI",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   word-break:keep-all; overflow-wrap:anywhere}
@@ -112,8 +112,9 @@ button{font:inherit; color:inherit; border:0; background:transparent}
   border-bottom:1px solid var(--hairline); transition:all .2s ease}
 .top-main{max-width:1240px; margin:0 auto; padding:8px 24px; display:flex; align-items:center; gap:14px}
 .top-left{display:flex; align-items:center; gap:8px; flex:none}
-.brand{display:inline-flex; align-items:center; gap:8px; font-family:"Noto Serif KR",Georgia,serif;
-  font-size:18px; font-weight:700; letter-spacing:-.02em; cursor:pointer; white-space:nowrap}
+.brand{display:inline-flex; align-items:center; gap:8px; cursor:pointer; white-space:nowrap; text-decoration:none}
+.brand-badge{font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif; font-size:15.5px; font-weight:850;
+  letter-spacing:.05em; color:var(--ink); display:flex; align-items:center; gap:4px}
 .brand-live{display:inline-flex; align-items:center; gap:4px; font-size:10.5px; font-weight:700;
   letter-spacing:.04em; color:var(--live); background:var(--live-halo); padding:2px 7px; border-radius:980px; font-family:system-ui}
 .dot-live{width:6px; height:6px; border-radius:50%; background:var(--live); box-shadow:0 0 0 2px var(--live-halo); flex:none}
@@ -559,8 +560,8 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 <div class="top">
   <div class="top-main">
     <div class="top-left">
-      <a class="brand" href="/" id="brand-refresh" title="세상돌아가는 판세 (새로고침)">
-        <span class="brand-title">세상돌아가는 판세</span>
+      <a class="brand" href="/" id="brand-refresh" title="PANSE 판세 (새로고침)">
+        <span class="brand-badge">◈ PANSE</span>
         <span class="brand-live"><span class="dot-live"></span>LIVE</span>
       </a>
       <span class="nav-new" id="navnew"></span>
