@@ -3,22 +3,25 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # 정각 직후는 GitHub Actions 혼잡 구간이라 예약이 밀린다.
-    # (문서: High load times include the start of every hour)
-    # 15분 간격 4회로 오버샘플링해 드롭을 흡수한다.
-    - cron: "2,17,32,47 * * * *"
+    # 비혼잡 분(8, 23, 38, 53분)으로 분산 배치하여 깃허브 스케줄러 큐 지연/드롭 방지
+    - cron: "8,23,38,53 * * * *"
   workflow_dispatch:  # 수동 실행 버튼
+  repository_dispatch: # 외부 무료 웹훅 트리거 지원 (cron-job.org / UptimeRobot 등)
+    types: [ update, refresh ]
+
 permissions:
-  contents: write  # 시세 이력을 커밋해 두기 위해 필요
+  contents: write  # 시세 이력 보관 및 keepalive 커밋 권한
+
 concurrency:
   group: update
-  cancel-in-progress: false  # 배포 도중 잘리면 그 주기 갱신이 통째로 누락된다
+  cancel-in-progress: false  # 배포 도중 잘리면 그 주기 갱신이 통째로 누락되므로 false 유지
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: 뉴스·시세 수집
@@ -67,3 +70,6 @@ jobs:
           PYEOF
           done
           echo "이력 저장 실패 — 다음 실행에서 재시도"
+
+      - name: 스케줄러 자동 중단 방지 (Keepalive)
+        uses: gautamkrishnar/keepalive-workflow@v2
