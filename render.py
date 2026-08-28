@@ -183,16 +183,16 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
   letter-spacing:-.025em; line-height:1.08; margin:0}
 .wordmark a{cursor:pointer; transition:opacity .15s ease}
 .wordmark a:hover{opacity:0.85}
-.wordmark-sub{font-size:12.5px; color:var(--ink-2); margin:8px 0 0 2px; letter-spacing:.01em}
-.masthead-meta{display:flex; flex-direction:column; align-items:flex-end; gap:6px; font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums; line-height:1.4}
+.masthead-meta{display:flex; align-items:center; gap:18px; font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums; line-height:1.4}
+.masthead-date-block{text-align:right}
 .masthead-date b{font-size:13.5px; font-weight:600; color:var(--ink)}
 .masthead-stat b{color:var(--gold)}
 
-/* 🔮 상단 띠별 운세 배너 버튼 */
+/* 🔮 상단 띠별 운세 배너 버튼 (날짜 왼쪽 배치) */
 .fortune-banner-btn{display:inline-flex; align-items:center; gap:9px;
   background:linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(217,119,6,0.08) 100%);
   border:1px solid rgba(124,58,237,0.24); border-radius:12px; padding:6px 13px; cursor:pointer;
-  transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); text-align:left; box-shadow:var(--shadow); margin-bottom:2px}
+  transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); text-align:left; box-shadow:var(--shadow)}
 .fortune-banner-btn:hover{background:linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(217,119,6,0.15) 100%);
   border-color:rgba(124,58,237,0.45); transform:translateY(-1px); box-shadow:var(--shadow-hover)}
 .fortune-banner-btn:active{transform:scale(0.97)}
@@ -392,12 +392,12 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   /* 본문 여백 및 제호 */
   main{padding:0 14px calc(76px + env(safe-area-inset-bottom))}
   .masthead{padding:18px 0 12px; margin-bottom:14px}
-  .wordmark{font-size:26px}
   .masthead-in{flex-direction:column; align-items:flex-start; gap:10px}
-  .masthead-meta{align-items:flex-start; width:100%; gap:6px}
-  .fortune-banner-btn{width:100%; box-sizing:border-box; justify-content:flex-start; padding:9px 13px; border-radius:14px}
-  .fb-title{font-size:13px}
-  .fb-sub{font-size:11.5px}
+  .masthead-meta{display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; gap:10px; flex-wrap:wrap}
+  .masthead-date-block{text-align:right}
+  .fortune-banner-btn{flex:1; min-width:180px; box-sizing:border-box; justify-content:flex-start; padding:8px 12px; border-radius:12px}
+  .fb-title{font-size:12.5px}
+  .fb-sub{font-size:11px}
 
   /* 주제 네비게이션 탭 */
   .topic-nav{gap:0 14px; margin-bottom:16px; padding:2px 0}
@@ -593,8 +593,10 @@ $METALS
             <span class="fb-sub">나의 투자 처세술 보기 ›</span>
           </div>
         </button>
-        <div class="masthead-date"><b>$DATE_LONG</b></div>
-        <div class="masthead-stat">9대 산업 핵심 뉴스 <b>$TOTAL건</b> 선별</div>
+        <div class="masthead-date-block">
+          <div class="masthead-date"><b>$DATE_LONG</b></div>
+          <div class="masthead-stat">9대 산업 핵심 뉴스 <b>$TOTAL건</b> 선별</div>
+        </div>
       </div>
     </div>
   </header>
