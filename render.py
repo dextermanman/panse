@@ -502,6 +502,35 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .zodiacs-grid{padding:14px; gap:14px}
 }
 
+
+/* ========================================================
+   🔥 실시간 인기 검색 종목 TOP 10 위젯 스타일 (포털 실검 느낌)
+   ======================================================== */
+.stocks-card{background:var(--surface); border:1px solid var(--hairline); border-radius:20px;
+  box-shadow:var(--shadow), var(--inner-glow); overflow:hidden}
+.stocks-tabs{display:flex; border-bottom:1px solid var(--hairline); background:var(--tint); padding:4px; gap:4px}
+.s-tab-btn{flex:1; padding:7px 10px; font-size:12px; font-weight:600; color:var(--ink-2);
+  border-radius:10px; cursor:pointer; text-align:center; transition:all .15s ease; border:0; background:transparent}
+.s-tab-btn:hover{color:var(--ink); background:var(--surface)}
+.s-tab-btn.active{background:var(--surface-solid); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.stocks-list{list-style:none; margin:0; padding:0}
+.stocks-list li + li{border-top:1px solid var(--hairline-2)}
+.stock-item{transition:background .15s ease}
+.stock-item:hover{background:var(--tint)}
+.stock-link{display:flex; align-items:center; gap:10px; padding:11px 16px; font-size:13.5px; line-height:1}
+.stock-rank{font-size:12px; font-weight:800; color:var(--ink-3); font-variant-numeric:tabular-nums;
+  width:20px; text-align:center; font-family:system-ui; flex:none}
+.stock-rank.r-1{color:#EAB308; font-weight:900}
+.stock-rank.r-2{color:#94A3B8; font-weight:900}
+.stock-rank.r-3{color:#B45309; font-weight:900}
+.stock-name{flex:1; min-width:0; font-weight:600; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.stock-link:hover .stock-name{color:var(--blue)}
+.stock-price{font-size:13px; font-weight:650; color:var(--ink); font-variant-numeric:tabular-nums; margin-right:4px; white-space:nowrap; flex:none}
+.stock-chg{font-size:11.5px; font-weight:700; font-variant-numeric:tabular-nums; padding:3px 6px; border-radius:6px; min-width:55px; text-align:right; white-space:nowrap; flex:none}
+.stock-chg.up{color:var(--up); background:rgba(220,38,38,0.08)}
+.stock-chg.down{color:var(--down); background:rgba(37,99,235,0.08)}
+.stock-chg.flat{color:var(--ink-3); background:var(--surface-2)}
+
 </style>
 </head>
 <body>
@@ -610,8 +639,27 @@ $FEED
         </section>
       </div>
 
-      <!-- 우측 사이드: 속보 -->
+      <!-- 우측 사이드: 인기 종목 & 속보 -->
       <div class="grid-side">
+        <!-- 🔥 실시간 인기 검색 종목 TOP 10 -->
+        <section aria-labelledby="z-stocks" class="section-block">
+          <div class="zone-head">
+            <span class="zone-title" id="z-stocks">실시간 인기 종목 순위</span>
+            <span class="zone-note">증시 검색 TOP 10</span>
+          </div>
+          <div class="card stocks-card">
+            <div class="stocks-tabs">
+              <button class="s-tab-btn active" type="button" data-stock-view="domestic">🇰🇷 국내 인기</button>
+              <button class="s-tab-btn" type="button" data-stock-view="overseas">🇺🇸 해외 빅테크</button>
+            </div>
+            <ul class="stocks-list" id="stocks-domestic">
+$STOCKS_DOMESTIC
+            </ul>
+            <ul class="stocks-list hidden" id="stocks-overseas">
+$STOCKS_OVERSEAS
+            </ul>
+          </div>
+        </section>
         <section aria-labelledby="z2" class="section-block">
           <div class="zone-head">
             <span class="zone-title" id="z2">$BREAKING_LABEL</span>
@@ -1187,6 +1235,19 @@ $DETAILS
     });
   }
 
+
+  /* 🔥 실시간 인기 종목 탭 전환 */
+  document.querySelectorAll(".s-tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var view = btn.dataset.stockView;
+      document.querySelectorAll(".s-tab-btn").forEach(function(b){ b.classList.toggle("active", b === btn); });
+      var domList = document.getElementById("stocks-domestic");
+      var ovsList = document.getElementById("stocks-overseas");
+      if (domList) domList.classList.toggle("hidden", view !== "domestic");
+      if (ovsList) ovsList.classList.toggle("hidden", view !== "overseas");
+    });
+  });
+
   menu.forEach(function(b){ b.addEventListener("click", function(){ go(b.dataset.view); }); });
 })();
 </script>
@@ -1341,6 +1402,36 @@ def build():
 
     details.append(render_fortune_html(now))
 
+    popular_stocks = data.get("popular_stocks", {})
+    domestic_stocks = popular_stocks.get("domestic", [])
+    overseas_stocks = popular_stocks.get("overseas", [])
+
+    def render_stock_list(stocks):
+        if not stocks:
+            return '        <li style="padding:24px; text-align:center; color:var(--ink-3); font-size:13px;">시세 정보를 불러오는 중입니다.</li>'
+        rows = []
+        for it in stocks:
+            r = it["rank"]
+            r_cls = f" r-{r}" if r <= 3 else ""
+            r_str = f"0{r}" if r < 10 else str(r)
+            chg_cls = "up" if it.get("is_up") else ("down" if it.get("is_down") else "flat")
+            sign = "▲" if it.get("is_up") else ("▼" if it.get("is_down") else "")
+            chg_text = it["chg"].replace("+", "").replace("-", "")
+            chg_display = f"{sign}{chg_text}" if sign else chg_text
+            rows.append(
+                f'        <li class="stock-item"><a class="stock-link" href="{esc(it["link"])}" target="_blank" rel="noopener">'
+                f'<span class="stock-rank{r_cls}">{r_str}</span>'
+                f'<span class="stock-name">{esc(it["name"])}</span>'
+                f'<span class="stock-price">{esc(it["price"])}</span>'
+                f'<span class="stock-chg {chg_cls}">{esc(chg_display)}</span>'
+                f'</a></li>'
+            )
+        return "\n".join(rows)
+
+    stocks_domestic_html = render_stock_list(domestic_stocks)
+    stocks_overseas_html = render_stock_list(overseas_stocks)
+
+
     subtitle = " · ".join(t["name"] for t in topics)
     topic_count = f"{len(topics)}개 갈래"
 
@@ -1353,6 +1444,7 @@ def build():
         BRIEFING=briefing,
         MENU="\n".join(menu), BREAKING=breaking,
         BREAKING_LABEL=label, BREAKING_NOTE=note, FEED=feed, TOTAL=len(flat), REST=len(rest),
+        STOCKS_DOMESTIC=stocks_domestic_html, STOCKS_OVERSEAS=stocks_overseas_html,
         DETAILS="\n".join(details),
         NAMES=json.dumps({t["id"]: t["name"] for t in topics}, ensure_ascii=False),
         GEN_TS=int(now.timestamp()),

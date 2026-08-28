@@ -401,6 +401,92 @@ def fetch_market():
             "fx_time": fx_time, "window_h": window_h, "stale": False}
 
 
+def fetch_popular_domestic():
+    """네이버 증권 실시간 검색 상위 인기 종목 TOP 10."""
+    req = urllib.request.Request(
+        "https://finance.naver.com/sise/lastsearch2.naver",
+        headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=5) as res:
+            raw = res.read().decode("euc-kr", errors="ignore")
+            tr_matches = re.findall(
+                r"<tr>\s*<td class=\"no\">(\d+)</td>\s*<td><a href=\"/item/main\.naver\?code=(\d+)\" class=\"tltle\">(.*?)</a></td>.*?<td class=\"number\">([0-9,]+)</td>\s*<td class=\"number\">.*?</td>\s*<td class=\"number\">\s*<span class=\"tah p11 (nv01|red02|red01|nv02|)\">\s*([+\-0-9.,%]+)\s*</span>",
+                raw, re.DOTALL
+            )
+            result = []
+            for rank, code, name, price, color, chg in tr_matches[:10]:
+                is_up = "red" in color or "+" in chg
+                is_down = "nv" in color or "-" in chg
+                chg_clean = chg.strip().replace("%", "")
+                try:
+                    chg_val = float(chg_clean)
+                    chg_str = f"{chg_val:+.2f}%"
+                except Exception:
+                    chg_str = chg
+                result.append({
+                    "rank": int(rank),
+                    "code": code,
+                    "name": name.strip(),
+                    "price": price.strip() + "원",
+                    "chg": chg_str,
+                    "is_up": is_up,
+                    "is_down": is_down,
+                    "link": f"https://finance.naver.com/item/main.naver?code={code}"
+                })
+            return result
+    except Exception as e:
+        print(f"  ! 국내 인기 종목 수집 실패: {e}", file=sys.stderr)
+        return []
+
+
+def fetch_popular_overseas():
+    """해외 주요 빅테크 및 핫 종목 TOP 10."""
+    US_TOP = [
+        ("NVDA", "엔비디아"),
+        ("TSLA", "테슬라"),
+        ("AAPL", "애플"),
+        ("MSFT", "마이크로소프트"),
+        ("GOOGL", "알파벳"),
+        ("AMZN", "아마존"),
+        ("META", "메타"),
+        ("PLTR", "팔란티어"),
+        ("AMD", "AMD"),
+        ("COIN", "코인베이스"),
+    ]
+    result = []
+    for idx, (sym, name) in enumerate(US_TOP, 1):
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=4) as res:
+                data = json.loads(res.read().decode("utf-8"))
+                meta = data["chart"]["result"][0]["meta"]
+                price = meta["regularMarketPrice"]
+                prev = meta.get("chartPreviousClose") or meta.get("previousClose") or price
+                chg = (price - prev) / prev * 100
+                result.append({
+                    "rank": idx,
+                    "code": sym,
+                    "name": f"{name} ({sym})",
+                    "price": f"${price:,.2f}",
+                    "chg": f"{chg:+.2f}%",
+                    "is_up": chg > 0,
+                    "is_down": chg < 0,
+                    "link": f"https://finance.yahoo.com/quote/{sym}"
+                })
+        except Exception:
+            pass
+    return result
+
+
+def fetch_popular_stocks():
+    return {
+        "domestic": fetch_popular_domestic(),
+        "overseas": fetch_popular_overseas(),
+    }
+
+
 def pick_balanced(items, limit):
     """검색어별로 한 건씩 돌아가며 채운 뒤 시간순으로 되돌린다.
 
@@ -522,12 +608,13 @@ def collect():
                 "items": picked,
             }
         )
+    stocks = fetch_popular_stocks()
     return {"updated": now.isoformat(), "updated_ts": int(now.timestamp()),
-            "market": fetch_market(), "topics": result}
+            "market": fetch_market(), "popular_stocks": stocks, "topics": result}
 
 
 if __name__ == "__main__":
-    print("구글 뉴스 수집 중...")
+    print("구글 뉴스 및 인기 종목 수집 중...")
     data = collect()
     out = Path(__file__).with_name("news.json")
     out.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
