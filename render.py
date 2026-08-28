@@ -248,7 +248,12 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 /* ========================================================
    🏛️ 2열 에디토리얼 그리드 (데스크톱 & 모바일 반응형)
    ======================================================== */
-.editorial-grid{display:grid; grid-template-columns:1fr; gap:28px}
+.editorial-grid{display:grid; grid-template-columns:1fr; gap:24px}
+@media (max-width:959px){
+  .editorial-grid{display:flex; flex-direction:column; gap:24px}
+  .grid-side{order:1}
+  .grid-main{order:2}
+}
 @media (min-width:960px){
   .editorial-grid{grid-template-columns:1fr 400px; gap:28px; align-items:start}
   .grid-side{position:sticky; top:90px}
@@ -377,58 +382,74 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 }
 @media (max-width:768px){
   .top-main{padding:8px 14px 4px; gap:8px}
-  .brand{font-size:16.5px}
+  .brand{font-size:16px}
   .top-right{gap:6px}
   .stamp-sfx{display:none}
   .stamp{font-size:11px}
   .metals-in{padding:4px 14px}
   .search-kbd{display:none}
 
-  /* 본문 여백 */
+  /* 본문 여백 및 제호 */
   main{padding:0 14px calc(76px + env(safe-area-inset-bottom))}
-  .masthead{padding:20px 0 12px}
-  .wordmark{font-size:28px}
+  .masthead{padding:18px 0 12px; margin-bottom:14px}
+  .wordmark{font-size:26px}
   .masthead-in{flex-direction:column; align-items:flex-start; gap:10px}
   .masthead-meta{align-items:flex-start; width:100%; gap:6px}
-  .fortune-banner-btn{width:100%; box-sizing:border-box; justify-content:flex-start; padding:8px 12px}
+  .fortune-banner-btn{width:100%; box-sizing:border-box; justify-content:flex-start; padding:9px 13px; border-radius:14px}
+  .fb-title{font-size:13px}
+  .fb-sub{font-size:11.5px}
 
-  /* 브리핑 */
-  .topic-nav{gap:0 16px; margin-bottom:18px}
-  .m-btn{font-size:13.5px; padding:6px 0 5px}
-  .m-btn .n{font-size:9.5px}
-  .brief-card{padding:16px 16px; border-radius:16px; margin-bottom:22px}
-  /* 가로로 늘어놓으면 좁은 폭에서 복사 버튼이 밀려 잘릴 수 있다 */
-  .brief-head{flex-direction:column; align-items:flex-start; gap:10px}
-  .brief-copy{align-self:flex-start}
-  .brief-item{padding:12px 14px; border-radius:14px}
-  .brief-title{font-size:14.5px}
+  /* 주제 네비게이션 탭 */
+  .topic-nav{gap:0 14px; margin-bottom:16px; padding:2px 0}
+  .m-btn{font-size:14px; padding:7px 0 6px}
+  .m-btn .n{font-size:10px}
 
-  /* 9대 산업 보드 모바일 뷰 */
-            
-  /* 속보 & 피드 */
-  .b-item{display:grid; grid-template-columns:1fr 38px; gap:6px 8px; padding:12px 14px}
-  .b-title{grid-column:1; font-size:15.5px; line-height:1.48; white-space:normal;
+  /* 3줄 브리핑 카드 */
+  .brief-card{padding:16px 14px; border-radius:18px; margin-bottom:18px}
+  .brief-head{flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:12px}
+  .brief-pill{font-size:11px; padding:3px 10px}
+  .brief-copy{align-self:flex-start; padding:5px 12px; font-size:11.5px}
+  .brief-grid{grid-template-columns:1fr; gap:10px}
+  .brief-item{padding:13px 14px; border-radius:14px}
+  .brief-meta{gap:6px}
+  .brief-num{font-size:12px}
+  .brief-title{font-size:15px; line-height:1.48; font-weight:600}
+
+  /* 실시간 인기 종목 순위 카드 */
+  .stocks-card{border-radius:18px}
+  .stocks-tabs{padding:3px; gap:3px}
+  .s-tab-btn{font-size:12.5px; padding:8px 6px}
+  .stock-link{padding:12px 14px; gap:8px}
+  .stock-rank{font-size:12.5px; width:20px}
+  .stock-name{font-size:14.5px; font-weight:600}
+  .stock-price{font-size:13.5px}
+  .stock-chg{font-size:12px; padding:3px 6px; min-width:52px}
+
+  /* 속보 리스트 */
+  .b-item{display:grid; grid-template-columns:1fr 36px; gap:5px 8px; padding:12px 14px}
+  .b-title{grid-column:1; font-size:15px; line-height:1.46; font-weight:600; white-space:normal;
     display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
-  .b-list li:first-child .b-item{padding:16px 14px}
-  .b-list li:first-child .b-title{font-size:18px; line-height:1.45}
+  .b-list li:first-child .b-item{padding:15px 14px}
+  .b-list li:first-child .b-title{font-size:17.5px; line-height:1.44}
   .b-item .bm-btn{grid-column:2; grid-row:1/3; align-self:center; font-size:18px;
-    padding:8px; opacity:0.55; border-radius:8px}
+    padding:6px; opacity:0.6; border-radius:8px}
   .b-tag-wrap{grid-column:1; display:flex; align-items:center; gap:6px; font-size:11px}
   .b-src{display:inline-block; font-size:11px; color:var(--ink-3); max-width:none}
 
-  .f-row{display:grid; grid-template-columns:1fr 38px; gap:5px 8px; padding:11px 14px}
-  .f-title{grid-column:1; font-size:15px; line-height:1.45; white-space:normal;
+  /* 실시간 전체 흐름 (피드) */
+  .f-row{display:grid; grid-template-columns:1fr 36px; gap:5px 8px; padding:12px 14px}
+  .f-title{grid-column:1; font-size:15px; line-height:1.46; font-weight:600; white-space:normal;
     display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
   .f-row .bm-btn{grid-column:2; grid-row:1/3; align-self:center; font-size:18px;
-    padding:8px; opacity:0.55; border-radius:8px}
+    padding:6px; opacity:0.6; border-radius:8px}
   .f-meta-wrap{grid-column:1; display:flex; align-items:center; gap:6px; font-size:11px}
   .f-src{display:inline-block; font-size:11px; text-align:left; color:var(--ink-3); max-width:none}
 
   /* 주제 상세 */
-  .detail-head{padding:16px 14px 12px}
+  .detail-head{padding:15px 14px 12px}
   .detail-name{font-size:22px}
   .row{padding:12px 14px}
-  .row-title{font-size:15px; line-height:1.5}
+  .row-title{font-size:15px; line-height:1.5; font-weight:600}
 }
 
 /* ========================================================
