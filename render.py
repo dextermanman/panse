@@ -184,9 +184,24 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .wordmark a{cursor:pointer; transition:opacity .15s ease}
 .wordmark a:hover{opacity:0.85}
 .wordmark-sub{font-size:12.5px; color:var(--ink-2); margin:8px 0 0 2px; letter-spacing:.01em}
-.masthead-meta{text-align:right; font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums; line-height:1.6}
+.masthead-meta{display:flex; flex-direction:column; align-items:flex-end; gap:6px; font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums; line-height:1.4}
 .masthead-date b{font-size:13.5px; font-weight:600; color:var(--ink)}
 .masthead-stat b{color:var(--gold)}
+
+/* 🔮 상단 띠별 운세 배너 버튼 */
+.fortune-banner-btn{display:inline-flex; align-items:center; gap:9px;
+  background:linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(217,119,6,0.08) 100%);
+  border:1px solid rgba(124,58,237,0.24); border-radius:12px; padding:6px 13px; cursor:pointer;
+  transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); text-align:left; box-shadow:var(--shadow); margin-bottom:2px}
+.fortune-banner-btn:hover{background:linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(217,119,6,0.15) 100%);
+  border-color:rgba(124,58,237,0.45); transform:translateY(-1px); box-shadow:var(--shadow-hover)}
+.fortune-banner-btn:active{transform:scale(0.97)}
+.fb-icon{font-size:20px; line-height:1; flex:none}
+.fb-text{display:flex; flex-direction:column; gap:1px}
+.fb-title{font-size:12.5px; font-weight:750; color:var(--ink); letter-spacing:-.015em; display:flex; align-items:center; gap:5px}
+.fb-title::after{content:"운세"; font-size:9.5px; font-weight:800; color:#FFFFFF; background:linear-gradient(135deg, #7C3AED, #9333EA);
+  padding:1px 5px; border-radius:4px; letter-spacing:0}
+.fb-sub{font-size:11px; color:var(--ink-2); font-weight:500}
 
 /* 실시간 스마트 검색창 (Spotlight Style) */
 .search-bar{margin-bottom:26px; position:relative}
@@ -373,9 +388,9 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   main{padding:0 14px calc(76px + env(safe-area-inset-bottom))}
   .masthead{padding:20px 0 12px}
   .wordmark{font-size:28px}
-  .wordmark-sub{display:none}
-  .masthead-in{flex-direction:column; align-items:flex-start; gap:8px}
-  .masthead-meta{text-align:left}
+  .masthead-in{flex-direction:column; align-items:flex-start; gap:10px}
+  .masthead-meta{align-items:flex-start; width:100%; gap:6px}
+  .fortune-banner-btn{width:100%; box-sizing:border-box; justify-content:flex-start; padding:8px 12px}
 
   /* 브리핑 */
   .topic-nav{gap:0 16px; margin-bottom:18px}
@@ -521,6 +536,13 @@ $METALS
         <p class="wordmark-sub">$SUBTITLE</p>
       </div>
       <div class="masthead-meta">
+        <button class="fortune-banner-btn" type="button" id="fortune-banner-btn" title="오늘의 12간지 띠별 재물·투자 운세 보기">
+          <span class="fb-icon">🔮</span>
+          <div class="fb-text">
+            <span class="fb-title">오늘의 띠별 재물운</span>
+            <span class="fb-sub">나의 투자 처세술 보기 ›</span>
+          </div>
+        </button>
         <div class="masthead-date"><b>$DATE_LONG</b></div>
         <div class="masthead-stat">9대 산업 핵심 뉴스 <b>$TOTAL건</b> 선별</div>
       </div>
@@ -531,7 +553,6 @@ $METALS
   <nav class="topic-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
     <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
     <button class="m-btn" type="button" role="tab" data-view="bookmarks" aria-selected="false">🔖 스크랩 <span class="n" id="bm-badge">0</span></button>
-    <button class="m-btn" type="button" role="tab" data-view="fortune" aria-selected="false">🔮 띠별 운세</button>
 $MENU
   </nav>
 
@@ -1157,6 +1178,14 @@ $DETAILS
     });
   });
   syncMyZodiacUI();
+
+  var fortuneBannerBtn = document.getElementById("fortune-banner-btn");
+  if (fortuneBannerBtn) {
+    fortuneBannerBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      go("fortune");
+    });
+  }
 
   menu.forEach(function(b){ b.addEventListener("click", function(){ go(b.dataset.view); }); });
 })();
