@@ -656,8 +656,13 @@ def collect():
 
 if __name__ == "__main__":
     print("구글 뉴스 및 인기 종목 수집 중...")
-    data = collect()
     out = Path(__file__).with_name("news.json")
-    out.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    total = sum(len(t["items"]) for t in data["topics"])
-    print(f"완료: 총 {total}건 -> {out}")
+    try:
+        data = collect()
+        out.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        total = sum(len(t["items"]) for t in data["topics"])
+        print(f"완료: 총 {total}건 -> {out}")
+    except Exception as e:
+        print(f"! 수집 중 예외 발생 (기존 데이터 유지): {e}", file=sys.stderr)
+        if not out.exists():
+            raise

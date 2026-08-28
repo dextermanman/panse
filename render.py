@@ -1514,4 +1514,10 @@ def build():
 
 
 if __name__ == "__main__":
-    build()
+    try:
+        build()
+    except Exception as e:
+        print(f"! 렌더 중 오류 발생: {e}", file=sys.stderr)
+        out = HERE / "dashboard.html"
+        if not out.exists():
+            raise

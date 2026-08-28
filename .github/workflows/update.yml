@@ -3,55 +3,65 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # 비혼잡 분(8, 23, 38, 53분)으로 분산 배치하여 깃허브 스케줄러 큐 지연/드롭 방지
-    - cron: "8,23,38,53 * * * *"
+    # 15분 주기 다중 크론 트리거 (스케줄러 큐 지연 및 누락 방지)
+    - cron: "*/15 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:  # 수동 실행 버튼
-  repository_dispatch: # 외부 무료 웹훅 트리거 지원 (cron-job.org / UptimeRobot 등)
+  repository_dispatch: # 외부 웹훅 트리거 (cron-job.org 등)
     types: [ update, refresh ]
 
 permissions:
-  contents: write  # 시세 이력 보관 및 keepalive 커밋 권한
+  contents: write
 
 concurrency:
   group: update
-  cancel-in-progress: false  # 배포 도중 잘리면 그 주기 갱신이 통째로 누락되므로 false 유지
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      
       - name: 뉴스·시세 수집
         run: python3 fetch_news.py
+      
       - name: 페이지 렌더
         run: |
           python3 render.py
           mkdir -p public
           cp dashboard.html public/index.html
-      - name: surge 배포
+      
+      - name: surge 배포 (최대 3회 재시도)
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          npx --yes surge ./public --domain "$(cat public/CNAME)"
-      - name: 시세 이력 보관
-        # 러너는 매번 새로 만들어지므로 24시간 등락률 계산용 이력을
-        # 저장소에 되돌려 놓는다. 실행이 겹치면 같은 JSON에 서로 다른
-        # 표본이 붙어 rebase가 충돌하므로, 충돌 시 두 이력을 ts 기준으로
-        # 합쳐서 다시 시도한다. 끝내 실패해도 배포는 이미 끝났으므로
-        # 워크플로를 실패로 만들지 않는다.
+          for i in 1 2 3; do
+            if npx --yes surge ./public --domain "$(cat public/CNAME)"; then
+              echo "Surge 배포 성공"
+              exit 0
+            fi
+            echo "Surge 배포 재시도 ($i)..."
+            sleep 3
+          done
+          exit 1
+
+      - name: 저장소 활성 상태 유지 및 시세 이력 보관
         continue-on-error: true
         run: |
           git config user.name "판세 봇"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          cp market_history.json /tmp/mine.json
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .last_heartbeat
+          cp market_history.json /tmp/mine.json 2>/dev/null || true
           for i in 1 2 3; do
-            git add market_history.json
+            git add .last_heartbeat market_history.json
             if git diff --staged --quiet; then echo "변경 없음"; exit 0; fi
-            git commit -q -m "시세 이력 갱신 [skip ci]"
+            git commit -q -m "판세 자동 갱신 및 시세 이력 보관 [skip ci]"
             if git push -q origin HEAD:main 2>/dev/null; then echo "저장 완료"; exit 0; fi
             echo "원격이 앞섬 — 이력 병합 후 재시도 ($i)"
             git fetch -q origin main
@@ -68,5 +78,5 @@ jobs:
           with open("market_history.json", "w") as f:
               json.dump([merged[k] for k in sorted(merged)], f)
           PYEOF
+            date -u +"%Y-%m-%dT%H:%M:%SZ" > .last_heartbeat
           done
-          echo "이력 저장 실패 — 다음 실행에서 재시도"
