@@ -70,6 +70,3 @@ jobs:
           PYEOF
           done
           echo "이력 저장 실패 — 다음 실행에서 재시도"
-
-      - name: 스케줄러 자동 중단 방지 (Keepalive)
-        uses: gautamkrishnar/keepalive-workflow@v2
