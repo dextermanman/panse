@@ -302,6 +302,49 @@ def fetch_naver_fx():
     return {"usdkrw": usd, "jpykrw": jpy, "usdkrw_chg": usd_chg,
             "jpykrw_chg": jpy_chg, "fx_time": stamp.group(1) if stamp else None,
             "gold_prev_close": _naver_gold_prev_close(text)}
+def fetch_metals():
+    """금(Gold), 은(Silver) 선물/현물 시세 (USD/oz) 및 전일 대비 변동률 (Yahoo Finance + Naver Finance)."""
+    gold, gold_chg = None, None
+    silver, silver_chg = None, None
+
+    # 1. Yahoo Finance (GC=F: Gold, SI=F: Silver)
+    for sym, key in (("GC=F", "gold"), ("SI=F", "silver")):
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=4) as res:
+                data = json.loads(res.read().decode())
+                meta = data["chart"]["result"][0]["meta"]
+                price = meta["regularMarketPrice"]
+                prev = meta.get("chartPreviousClose") or meta.get("previousClose") or price
+                chg = (price - prev) / prev * 100
+                if key == "gold":
+                    gold, gold_chg = round(price, 2), round(chg, 2)
+                else:
+                    silver, silver_chg = round(price, 2), round(chg, 2)
+        except Exception:
+            pass
+
+    # 2. Naver Finance 폴백 (국제 금)
+    if gold is None:
+        try:
+            req = urllib.request.Request("https://finance.naver.com/marketindex/", headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=4) as res:
+                raw = res.read().decode("euc-kr", errors="ignore")
+                m = re.search(r'class="head gold_inter".*?<span class="value">([\d,.]+)</span>.*?<span class="change">\s*([\d,.]+)\s*</span>.*?<span class="blind">(상승|하락|보합)</span>', raw, re.DOTALL)
+                if m:
+                    val = float(m.group(1).replace(",", ""))
+                    delta = float(m.group(2).replace(",", ""))
+                    way = m.group(3)
+                    prev = val - delta if way == "상승" else (val + delta if way == "하락" else val)
+                    gold = round(val, 2)
+                    gold_chg = round((val - prev) / prev * 100, 2)
+        except Exception:
+            pass
+
+    return {"gold": gold, "gold_chg": gold_chg, "silver": silver, "silver_chg": silver_chg}
+
+
 HISTORY = Path(__file__).with_name("market_history.json")
 SERIES = ("gold", "silver", "btc", "usdkrw", "jpykrw")
 
@@ -315,13 +358,11 @@ def fetch_market():
         hist = []
 
     out = {}
-    for key, sym in (("gold", "XAU"), ("silver", "XAG")):
-        raw = fetch(METALS_API.format(sym=sym), retries=2)
-        if raw:
-            try:
-                out[key] = round(float(json.loads(raw)["price"]), 2)
-            except Exception as e:  # noqa: BLE001
-                print(f"  ! 시세 파싱 실패 {sym}: {e}", file=sys.stderr)
+    metals = fetch_metals()
+    if metals.get("gold") is not None:
+        out["gold"] = metals["gold"]
+    if metals.get("silver") is not None:
+        out["silver"] = metals["silver"]
 
     # 비트코인: CoinGecko가 24시간 변동률까지 주므로 우선 사용하고,
     # 실패하면 Coinbase 현물가(변동률 없음)로 폴백한다.
@@ -391,12 +432,12 @@ def fetch_market():
     print(f"  금 ${out.get('gold')} · 은 ${out.get('silver')} · 비트코인 ${out.get('btc')} · "
           f"달러 {out.get('usdkrw')}원 · 100엔 {out.get('jpykrw')}원")
     changes = {f"{k}_chg": (fx_chg[k] if k in fx_chg else chg(k)) for k in SERIES}
+    if metals.get("gold_chg") is not None:
+        changes["gold_chg"] = metals["gold_chg"]
+    if metals.get("silver_chg") is not None:
+        changes["silver_chg"] = metals["silver_chg"]
     if btc_chg is not None:
         changes["btc_chg"] = btc_chg
-    prev_gold = (fx or {}).get("gold_prev_close")
-    if prev_gold and out.get("gold"):
-        # 전일 종가는 고정값이라, 실시간 금값에 적용해도 전일 대비가 정확하다
-        changes["gold_chg"] = round((out["gold"] - prev_gold) / prev_gold * 100, 2)
     return {**{k: out.get(k) for k in SERIES}, **changes,
             "fx_time": fx_time, "window_h": window_h, "stale": False}
 
