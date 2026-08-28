@@ -1,6 +1,9 @@
 .surge-env
 news.json
 update.log
+updater.log
+updater.err
+trigger_update.sh
 dashboard.html
 public/index.html
 __pycache__/
