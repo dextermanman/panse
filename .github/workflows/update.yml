@@ -1,48 +1,39 @@
 name: 판세 갱신
-
 on:
   push:
     branches: [ main ]
   schedule:
-    # 매시 정각과 30분에 갱신되도록 3분 앞당겨 잡는다.
-    # 정각 직후는 GitHub Actions 혼잡 구간이라 예약이 밀리므로
-    # (문서: High load times include the start of every hour) 정각을 피한다.
-    -     - cron: "2,17,32,47 * * * *"
+    # 정각 직후는 GitHub Actions 혼잡 구간이라 예약이 밀린다.
+    # (문서: High load times include the start of every hour)
+    # 15분 간격 4회로 오버샘플링해 드롭을 흡수한다.
+    - cron: "2,17,32,47 * * * *"
   workflow_dispatch:  # 수동 실행 버튼
-
 permissions:
   contents: write  # 시세 이력을 커밋해 두기 위해 필요
-
 concurrency:
   group: update
   cancel-in-progress: false  # 배포 도중 잘리면 그 주기 갱신이 통째로 누락된다
-
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-
       - name: 뉴스·시세 수집
         run: python3 fetch_news.py
-
       - name: 페이지 렌더
         run: |
           python3 render.py
           mkdir -p public
           cp dashboard.html public/index.html
-
       - name: surge 배포
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
           npx --yes surge ./public --domain "$(cat public/CNAME)"
-
       - name: 시세 이력 보관
         # 러너는 매번 새로 만들어지므로 24시간 등락률 계산용 이력을
         # 저장소에 되돌려 놓는다. 실행이 겹치면 같은 JSON에 서로 다른
