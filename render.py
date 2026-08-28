@@ -5,6 +5,7 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from string import Template
+from fortune import render_fortune_html
 
 KST = timezone(timedelta(hours=9))
 HERE = Path(__file__).parent
@@ -414,6 +415,78 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .row{padding:12px 14px}
   .row-title{font-size:15px; line-height:1.5}
 }
+
+/* ========================================================
+   🔮 12간지 띠별 운세 섹션 스타일
+   ======================================================== */
+.fortune-hero{padding:24px 24px 18px; border-bottom:1px solid var(--hairline);
+  background:linear-gradient(180deg, var(--tint) 0%, transparent 100%)}
+.fortune-hero-in{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:18px}
+.fortune-title-wrap{flex:1; min-width:260px}
+.fortune-pill{display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg, #7C3AED, #9333EA); color:#FFFFFF;
+  font-size:11px; font-weight:700; letter-spacing:.04em; padding:3px 10px; border-radius:980px; margin-bottom:8px}
+.fortune-main-title{font-size:24px; font-weight:700; margin:0 0 6px; letter-spacing:-.02em}
+.fortune-sub{font-size:13px; color:var(--ink-2); margin:0}
+.my-zodiac-banner{display:inline-flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--hairline);
+  padding:6px 14px; border-radius:980px; box-shadow:var(--shadow)}
+.my-z-tag{font-size:11px; font-weight:700; color:var(--gold)}
+.my-z-text{font-size:12.5px; font-weight:600; color:var(--ink)}
+.my-z-jump{font-size:12px; font-weight:700; color:var(--blue); cursor:pointer; padding:2px 6px}
+.z-chips-scroll{overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; margin:0 -24px; padding:0 24px}
+.z-chips-scroll::-webkit-scrollbar{display:none}
+.z-chips-in{display:flex; gap:6px; width:max-content}
+.z-chip-btn{font-size:12.5px; font-weight:600; color:var(--ink-2); background:var(--surface); border:1px solid var(--hairline);
+  padding:6px 12px; border-radius:980px; cursor:pointer; transition:all .15s ease; white-space:nowrap}
+.z-chip-btn:hover{color:var(--ink); background:var(--surface-2); transform:translateY(-1px)}
+.z-chip-btn.active{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+
+.zodiacs-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; padding:24px}
+.z-card{background:var(--surface); border:1px solid var(--hairline); border-radius:18px; overflow:hidden;
+  box-shadow:var(--shadow), var(--inner-glow); transition:all .2s ease; display:flex; flex-direction:column}
+.z-card:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:var(--hairline-2)}
+.z-card.is-my-zodiac{border-color:var(--gold); box-shadow:0 0 0 2px var(--gold), var(--shadow)}
+.z-card-head{padding:16px 20px; background:var(--tint); border-bottom:1px solid var(--hairline);
+  display:flex; justify-content:space-between; align-items:center; gap:12px}
+.z-badge-wrap{display:flex; align-items:center; gap:12px}
+.z-emoji{font-size:32px; line-height:1}
+.z-name-block{display:flex; flex-direction:column; gap:2px}
+.z-name{font-size:18px; font-weight:700; margin:0; letter-spacing:-.015em}
+.z-hanja{font-size:13px; font-weight:500; opacity:0.65}
+.z-keyword{font-size:11.5px; color:var(--ink-2)}
+.z-keyword b{color:var(--ink); font-weight:650}
+.z-score-block{text-align:right; flex:none}
+.z-score-label{font-size:11px; color:var(--ink-3); font-weight:600; display:block}
+.z-score-val{font-size:14px; font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:4px}
+.z-stars{color:var(--gold); font-size:13px; letter-spacing:-1px}
+.z-score-val b{font-size:15px; color:var(--gold); font-weight:750}
+
+.z-body{padding:18px 20px; display:flex; flex-direction:column; gap:16px; flex:1}
+.z-section{display:flex; flex-direction:column; gap:6px}
+.z-sec-title{font-size:12px; font-weight:700; color:var(--ink-2); letter-spacing:.02em}
+.z-desc{font-size:14px; line-height:1.6; color:var(--ink); margin:0}
+.z-advice{color:var(--blue); font-weight:550; background:var(--surface-2); padding:10px 12px; border-radius:10px}
+.z-years-grid{display:flex; flex-direction:column; gap:6px; background:var(--tint); padding:10px 12px; border-radius:12px; border:1px solid var(--hairline-2)}
+.z-year-row{display:flex; align-items:baseline; gap:8px; font-size:12.5px; line-height:1.5}
+.z-yr{font-weight:700; color:var(--ink); white-space:nowrap; flex:none; font-variant-numeric:tabular-nums}
+.z-yr-tip{color:var(--ink-2); flex:1}
+.z-lucky-bar{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-2);
+  padding:10px 12px; background:var(--surface-2); border-radius:10px; margin-top:auto}
+.z-lucky-item b{color:var(--ink); font-weight:600}
+.z-lucky-sep{opacity:0.4}
+.z-card-foot{display:flex; align-items:center; gap:8px; padding-top:4px}
+.z-copy-btn, .z-pin-btn{flex:1; font-size:12px; font-weight:600; padding:8px 10px; border-radius:10px;
+  cursor:pointer; transition:all .15s ease; text-align:center; border:1px solid var(--hairline); background:var(--surface)}
+.z-copy-btn:hover, .z-pin-btn:hover{background:var(--surface-2); transform:translateY(-1px)}
+.z-pin-btn.active{background:var(--gold); color:#FFFFFF; border-color:var(--gold)}
+
+@media (max-width:768px){
+  .fortune-hero{padding:18px 14px 14px}
+  .fortune-main-title{font-size:20px}
+  .z-card-head{padding:14px 16px}
+  .z-body{padding:16px 14px}
+  .zodiacs-grid{padding:14px; gap:14px}
+}
+
 </style>
 </head>
 <body>
@@ -458,6 +531,7 @@ $METALS
   <nav class="topic-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
     <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
     <button class="m-btn" type="button" role="tab" data-view="bookmarks" aria-selected="false">🔖 스크랩 <span class="n" id="bm-badge">0</span></button>
+    <button class="m-btn" type="button" role="tab" data-view="fortune" aria-selected="false">🔮 띠별 운세</button>
 $MENU
   </nav>
 
@@ -579,6 +653,7 @@ $DETAILS
   );
   var NAMES = $NAMES;
   NAMES["bookmarks"] = "스크랩";
+  NAMES["fortune"] = "운세";
 
   function showToast(msg){
     var t = document.getElementById("toast");
@@ -953,6 +1028,12 @@ $DETAILS
         d.classList.toggle("hidden", d.dataset.topic !== "bookmarks");
       });
       renderBookmarks();
+    } else if (view === "fortune") {
+      if (overview) overview.classList.add("hidden");
+      details.forEach(function(d){
+        d.classList.toggle("hidden", d.dataset.topic !== "fortune");
+      });
+      syncMyZodiacUI();
     } else {
       if (overview) overview.classList.add("hidden");
       details.forEach(function(d){
@@ -981,6 +1062,102 @@ $DETAILS
     var soft = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: soft ? "auto" : "smooth" });
   }
+
+  /* 🔮 12간지 띠별 운세 인터랙션 */
+  var MY_ZODIAC_KEY = "panse-my-zodiac";
+  function getMyZodiac(){
+    try { return localStorage.getItem(MY_ZODIAC_KEY) || ""; } catch(e){ return ""; }
+  }
+  function setMyZodiac(zId){
+    try { localStorage.setItem(MY_ZODIAC_KEY, zId); } catch(e){}
+  }
+  function syncMyZodiacUI(){
+    var myZ = getMyZodiac();
+    var banner = document.getElementById("my-zodiac-banner");
+    var textEl = document.getElementById("my-z-text");
+    var jumpBtn = document.getElementById("my-z-jump");
+    
+    document.querySelectorAll(".z-card").forEach(function(card){
+      var isMine = card.dataset.zodiac === myZ;
+      card.classList.toggle("is-my-zodiac", isMine);
+      var pinBtn = card.querySelector(".z-pin-btn");
+      if (pinBtn) {
+        pinBtn.classList.toggle("active", isMine);
+        pinBtn.textContent = isMine ? "⭐ 내 띠로 설정됨" : "⭐ 내 띠로 설정";
+      }
+    });
+
+    if (myZ && banner && textEl) {
+      var targetCard = document.getElementById("zodiac-" + myZ);
+      var zName = targetCard ? targetCard.querySelector(".z-name").textContent.split(" ")[0] : myZ;
+      banner.style.display = "inline-flex";
+      textEl.textContent = zName + " 운세가 등록되어 있습니다.";
+      if (jumpBtn) {
+        jumpBtn.onclick = function(){
+          if (targetCard) {
+            targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+            targetCard.classList.add("is-my-zodiac");
+          }
+        };
+      }
+    } else if (banner) {
+      banner.style.display = "none";
+    }
+  }
+
+  document.querySelectorAll(".z-chip-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var targetId = btn.dataset.target;
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        document.querySelectorAll(".z-chip-btn").forEach(function(b){ b.classList.toggle("active", b === btn); });
+        targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+        targetEl.style.transition = "box-shadow 0.3s ease";
+        targetEl.style.boxShadow = "0 0 0 3px var(--blue), var(--shadow)";
+        setTimeout(function(){ targetEl.style.boxShadow = ""; }, 1800);
+      }
+    });
+  });
+
+  document.querySelectorAll(".z-pin-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var zId = btn.dataset.setMyZodiac;
+      var zName = btn.dataset.name;
+      var current = getMyZodiac();
+      if (current === zId) {
+        setMyZodiac("");
+        showToast("내 띠 설정이 해제되었습니다.");
+      } else {
+        setMyZodiac(zId);
+        showToast("⭐ " + zName + "가 내 띠로 저장되었습니다!");
+      }
+      syncMyZodiacUI();
+    });
+  });
+
+  document.querySelectorAll(".z-copy-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var zId = btn.dataset.copyZodiac;
+      var zName = btn.dataset.name;
+      var card = document.getElementById("zodiac-" + zId);
+      if (!card) return;
+      var title = "[세상돌아가는 판세 - 오늘의 " + zName + " 재물운]\n";
+      var kw = card.querySelector(".z-keyword").textContent.trim();
+      var score = card.querySelector(".z-score-val").textContent.trim();
+      var overview = card.querySelector(".z-section:nth-of-type(1) .z-desc").textContent.trim();
+      var advice = card.querySelector(".z-section:nth-of-type(2) .z-desc").textContent.trim();
+      var lucky = card.querySelector(".z-lucky-bar").textContent.trim();
+      
+      var fullText = title + "🎯 " + kw + "\n💰 재물운: " + score + "\n\n📜 총평: " + overview + "\n💡 조언: " + advice + "\n✨ " + lucky + "\n\n🔗 https://daseot-news.surge.sh";
+      navigator.clipboard.writeText(fullText).then(function(){
+        showToast("✓ " + zName + " 오늘의 운세가 복사되었습니다!");
+      }).catch(function(){
+        showToast("복사에 실패했습니다.");
+      });
+    });
+  });
+  syncMyZodiacUI();
+
   menu.forEach(function(b){ b.addEventListener("click", function(){ go(b.dataset.view); }); });
 })();
 </script>
@@ -1132,6 +1309,8 @@ def build():
         details.append(
             f'  <section class="detail card t-{t["id"]}" data-topic="{t["id"]}" aria-label="{esc(t["name"])}">\n    <div class="detail-head">\n      <span class="detail-name hl"><span class="swatch"></span>{esc(t["name"])}</span>\n      <span class="detail-stat"><b>{t["fresh_1h"]}</b>건 최근 1시간</span>\n      <span class="detail-stat"><b>{t["total"]}</b>건 오늘 수집</span>\n      <button class="pin-toggle" data-topic="{t["id"]}" type="button">☆ 핀 고정</button>\n    </div>\n    <ul class="d-list">\n' + "\n".join(rows) + "\n    </ul>\n  </section>"
         )
+
+    details.append(render_fortune_html(now))
 
     subtitle = " · ".join(t["name"] for t in topics)
     topic_count = f"{len(topics)}개 갈래"
