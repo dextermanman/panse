@@ -484,14 +484,14 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 .z-card.is-my-zodiac{border-color:var(--gold); box-shadow:0 0 0 2px var(--gold), var(--shadow)}
 .z-card-head{padding:16px 20px; background:var(--tint); border-bottom:1px solid var(--hairline);
   display:flex; justify-content:space-between; align-items:center; gap:12px}
-.z-badge-wrap{display:flex; align-items:center; gap:12px}
-.z-emoji{font-size:32px; line-height:1}
-.z-name-block{display:flex; flex-direction:column; gap:2px}
+.z-badge-wrap{display:flex; align-items:center; gap:12px; min-width:0; flex:1}
+.z-emoji{font-size:32px; line-height:1; flex:none}
+.z-name-block{display:flex; flex-direction:column; gap:2px; min-width:0; flex:1}
 .z-name{font-size:18px; font-weight:700; margin:0; letter-spacing:-.015em}
 .z-hanja{font-size:13px; font-weight:500; opacity:0.65}
-.z-keyword{font-size:11.5px; color:var(--ink-2)}
+.z-keyword{font-size:11.5px; color:var(--ink-2); overflow-wrap:anywhere}
 .z-keyword b{color:var(--ink); font-weight:650}
-.z-score-block{text-align:right; flex:none}
+.z-score-block{text-align:right; flex:none; margin-left:6px}
 .z-score-label{font-size:11px; color:var(--ink-3); font-weight:600; display:block}
 .z-score-val{font-size:14px; font-variant-numeric:tabular-nums; display:flex; align-items:center; gap:4px}
 .z-stars{color:var(--gold); font-size:13px; letter-spacing:-1px}
@@ -518,10 +518,44 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 
 @media (max-width:768px){
   .fortune-hero{padding:18px 14px 14px}
-  .fortune-main-title{font-size:20px}
-  .z-card-head{padding:14px 16px}
-  .z-body{padding:16px 14px}
-  .zodiacs-grid{padding:14px; gap:14px}
+  .fortune-hero-in{flex-direction:column; align-items:flex-start; gap:12px; margin-bottom:14px}
+  .fortune-title-wrap{min-width:0; width:100%}
+  .fortune-main-title{font-size:19px; line-height:1.35; margin-bottom:4px}
+  .fortune-sub{font-size:12px; line-height:1.45}
+  .my-zodiac-banner{width:100%; box-sizing:border-box; justify-content:space-between; padding:8px 12px; font-size:12px}
+  
+  .z-chips-scroll{margin:0 -14px; padding:0 14px; -webkit-overflow-scrolling:touch}
+  .z-chip-btn{font-size:12px; padding:6px 10px}
+
+  .zodiacs-grid{grid-template-columns:1fr; padding:12px 14px; gap:14px}
+  .z-card-head{display:flex; flex-direction:row; align-items:flex-start; justify-content:space-between; padding:14px 14px; gap:10px}
+  .z-badge-wrap{display:flex; align-items:flex-start; gap:10px; min-width:0; flex:1}
+  .z-emoji{font-size:26px; line-height:1.1; flex:none}
+  .z-name-block{min-width:0; flex:1}
+  .z-name{font-size:16px; line-height:1.2; margin:0 0 2px}
+  .z-keyword{font-size:11px; color:var(--ink-2); display:block; word-break:break-all}
+  .z-score-block{text-align:right; flex:none}
+  .z-score-label{font-size:10px}
+  .z-score-val{font-size:12.5px}
+  .z-score-val b{font-size:14px}
+  .z-stars{font-size:11px}
+
+  .z-body{padding:14px 14px; gap:14px}
+  .z-sec-title{font-size:11.5px}
+  .z-desc{font-size:13.5px; line-height:1.55}
+  .z-advice{padding:8px 10px; font-size:13px}
+
+  .z-years-grid{padding:8px 10px; gap:6px}
+  .z-year-row{display:flex; flex-direction:column; gap:2px; padding:4px 0; font-size:12px}
+  .z-year-row + .z-year-row{border-top:1px dashed var(--hairline-2)}
+  .z-yr{color:var(--gold); font-weight:750; font-size:11.5px}
+  .z-yr-tip{color:var(--ink); font-size:12.5px; line-height:1.45}
+
+  .z-lucky-bar{display:flex; flex-direction:column; gap:4px; font-size:11.5px; padding:8px 10px}
+  .z-lucky-sep{display:none}
+
+  .z-card-foot{gap:6px}
+  .z-copy-btn, .z-pin-btn{font-size:11.5px; padding:8px 6px}
 }
 
 
