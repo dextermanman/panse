@@ -560,6 +560,48 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
 
 
 /* ========================================================
+   🅿️ 실시간 공영주차장 잔여 현황 위젯
+   ======================================================== */
+.parking-card{background:var(--surface); border:1px solid var(--hairline); border-radius:20px;
+  box-shadow:var(--shadow), var(--inner-glow); overflow:hidden}
+.parking-tabs{display:flex; border-bottom:1px solid var(--hairline); background:var(--tint); padding:4px; gap:4px}
+.pk-tab-btn{flex:1; padding:7px 10px; font-size:12px; font-weight:600; color:var(--ink-2);
+  border-radius:10px; cursor:pointer; text-align:center; transition:all .15s ease; border:0; background:transparent}
+.pk-tab-btn:hover{color:var(--ink); background:var(--surface)}
+.pk-tab-btn.active{background:var(--surface-solid); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.parking-list{list-style:none; margin:0; padding:0}
+.parking-list li + li{border-top:1px solid var(--hairline-2)}
+.pk-item{display:flex; align-items:center; gap:10px; padding:10px 16px; transition:background .15s ease}
+.pk-item:hover{background:var(--tint)}
+.pk-name{flex:1; min-width:0; font-size:13.5px; font-weight:600; color:var(--ink);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pk-addr{font-size:11px; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:120px}
+.pk-avail{font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pk-avail.plenty{color:var(--live)}
+.pk-avail.moderate{color:var(--gold)}
+.pk-avail.scarce{color:var(--breaking)}
+.pk-avail.full{color:var(--ink-3)}
+.pk-gauge{width:48px; height:6px; background:var(--hairline); border-radius:3px; overflow:hidden; flex:none}
+.pk-gauge-fill{height:100%; border-radius:3px; transition:width .3s ease}
+.pk-gauge-fill.plenty{background:var(--live)}
+.pk-gauge-fill.moderate{background:var(--gold)}
+.pk-gauge-fill.scarce{background:var(--breaking)}
+.pk-gauge-fill.full{background:var(--ink-3)}
+.pk-summary{display:flex; align-items:center; gap:10px; padding:12px 16px; background:var(--tint); border-bottom:1px solid var(--hairline)}
+.pk-summary-stat{font-size:12px; color:var(--ink-2)}
+.pk-summary-stat b{color:var(--ink); font-weight:700}
+.pk-empty{padding:24px; text-align:center; color:var(--ink-3); font-size:13px}
+@media (max-width:768px){
+  .parking-card{border-radius:18px}
+  .parking-tabs{padding:3px; gap:3px}
+  .pk-tab-btn{font-size:12.5px; padding:8px 6px}
+  .pk-item{padding:10px 14px; gap:8px}
+  .pk-name{font-size:13px}
+  .pk-addr{display:none}
+  .pk-gauge{width:40px}
+}
+
+/* ========================================================
    🔥 실시간 인기 검색 종목 TOP 10 위젯 스타일 (포털 실검 느낌)
    ======================================================== */
 .stocks-card{background:var(--surface); border:1px solid var(--hairline); border-radius:20px;
@@ -718,6 +760,8 @@ $STOCKS_OVERSEAS
             </ul>
           </div>
         </section>
+        <!-- 🅿️ 실시간 공영주차장 잔여 현황 -->
+        $PARKING_SECTION
         <section aria-labelledby="z2" class="section-block">
           <div class="zone-head">
             <span class="zone-title" id="z2">$BREAKING_LABEL</span>
@@ -1306,6 +1350,17 @@ $DETAILS
     });
   });
 
+  /* 🅿️ 공영주차장 지역 탭 전환 */
+  document.querySelectorAll(".pk-tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var view = btn.dataset.pkView;
+      document.querySelectorAll(".pk-tab-btn").forEach(function(b){ b.classList.toggle("active", b === btn); });
+      document.querySelectorAll("[data-pk-panel]").forEach(function(p){
+        p.classList.toggle("hidden", p.dataset.pkPanel !== view);
+      });
+    });
+  });
+
   menu.forEach(function(b){ b.addEventListener("click", function(){ go(b.dataset.view); }); });
 })();
 </script>
@@ -1374,6 +1429,80 @@ def market_html(m):
         return ""
     stale = ' title="시세를 새로 받지 못해 직전 값입니다"' if m.get("stale") else ""
     return f'    <div class="metals"{stale}>\n' + "\n".join(rows) + "\n    </div>"
+
+
+def _pk_level(pct):
+    if pct >= 50:
+        return "plenty"
+    if pct >= 20:
+        return "moderate"
+    if pct > 0:
+        return "scarce"
+    return "full"
+
+
+def render_parking_html(parking_data):
+    if not parking_data or not parking_data.get("regions"):
+        return ""
+
+    regions = parking_data["regions"]
+    if not regions:
+        return ""
+
+    tabs = []
+    panels = []
+    for i, r in enumerate(regions):
+        rid = r["region"].replace(" ", "-")
+        active = " active" if i == 0 else ""
+        hidden = "" if i == 0 else " hidden"
+        tabs.append(
+            f'<button class="pk-tab-btn{active}" type="button" data-pk-view="{rid}">{esc(r["region"].split()[-1])}</button>'
+        )
+
+        lvl = _pk_level(r["availability_pct"])
+        summary = (
+            f'<div class="pk-summary">'
+            f'<span class="pk-summary-stat">공영주차장 <b>{r["lot_count"]}</b>개소</span>'
+            f'<span class="pk-summary-stat">총 <b>{r["total_capacity"]:,}</b>면</span>'
+            f'<span class="pk-summary-stat">잔여 <b class="pk-avail {lvl}">{r["total_available"]:,}</b>면</span>'
+            f'</div>'
+        )
+
+        rows = []
+        for lot in r.get("top_available", [])[:5]:
+            lot_lvl = _pk_level(lot["pct"])
+            fee_text = f'{lot["basic_fee"]:,}원/{lot["basic_min"]}분' if lot["basic_fee"] > 0 else "무료"
+            rows.append(
+                f'<li><div class="pk-item">'
+                f'<span class="pk-name" title="{esc(lot["addr"])}">{esc(lot["name"])}</span>'
+                f'<span class="pk-addr">{esc(fee_text)}</span>'
+                f'<span class="pk-gauge"><span class="pk-gauge-fill {lot_lvl}" style="width:{lot["pct"]}%"></span></span>'
+                f'<span class="pk-avail {lot_lvl}">{lot["available"]:,}/{lot["total"]:,}</span>'
+                f'</div></li>'
+            )
+
+        if not rows:
+            rows.append('<li><div class="pk-empty">주차장 정보가 없습니다</div></li>')
+
+        panels.append(
+            f'<div data-pk-panel="{rid}"{hidden}>'
+            f'{summary}'
+            f'<ul class="parking-list">{"".join(rows)}</ul>'
+            f'</div>'
+        )
+
+    return (
+        f'<section aria-labelledby="z-parking" class="section-block">\n'
+        f'  <div class="zone-head">\n'
+        f'    <span class="zone-title" id="z-parking">🅿️ 공영주차장 현황</span>\n'
+        f'    <span class="zone-note">실시간 잔여</span>\n'
+        f'  </div>\n'
+        f'  <div class="parking-card">\n'
+        f'    <div class="parking-tabs">{"".join(tabs)}</div>\n'
+        f'    {"".join(panels)}\n'
+        f'  </div>\n'
+        f'</section>'
+    )
 
 
 WEEKDAYS = ["월", "화", "수", "목", "금", "토", "일"]
@@ -1489,6 +1618,7 @@ def build():
     stocks_domestic_html = render_stock_list(domestic_stocks)
     stocks_overseas_html = render_stock_list(overseas_stocks)
 
+    parking_html = render_parking_html(data.get("parking"))
 
     subtitle = " · ".join(t["name"] for t in topics)
     topic_count = f"{len(topics)}개 갈래"
@@ -1503,6 +1633,7 @@ def build():
         MENU="\n".join(menu), BREAKING=breaking,
         BREAKING_LABEL=label, BREAKING_NOTE=note, FEED=feed, TOTAL=len(flat), REST=len(rest),
         STOCKS_DOMESTIC=stocks_domestic_html, STOCKS_OVERSEAS=stocks_overseas_html,
+        PARKING_SECTION=parking_html,
         DETAILS="\n".join(details),
         NAMES=json.dumps({t["id"]: t["name"] for t in topics}, ensure_ascii=False),
         GEN_TS=int(now.timestamp()),

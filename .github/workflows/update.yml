@@ -27,7 +27,9 @@ jobs:
         with:
           python-version: "3.12"
       
-      - name: 뉴스·시세 수집
+      - name: 뉴스·시세·주차 수집
+        env:
+          PARKING_API_KEY: ${{ secrets.PARKING_API_KEY }}
         run: python3 fetch_news.py
       
       - name: 페이지 렌더

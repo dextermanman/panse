@@ -11,6 +11,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from fetch_parking import fetch_parking
 
 KST = timezone(timedelta(hours=9))
 BASE = "https://news.google.com/rss/search?q={q}&hl=ko&gl=KR&ceid=KR:ko"
@@ -650,8 +651,14 @@ def collect():
             }
         )
     stocks = fetch_popular_stocks()
+    parking = None
+    try:
+        parking = fetch_parking()
+    except Exception as e:
+        print(f"  ! 주차 데이터 수집 실패: {e}", file=sys.stderr)
     return {"updated": now.isoformat(), "updated_ts": int(now.timestamp()),
-            "market": fetch_market(), "popular_stocks": stocks, "topics": result}
+            "market": fetch_market(), "popular_stocks": stocks,
+            "parking": parking, "topics": result}
 
 
 if __name__ == "__main__":
