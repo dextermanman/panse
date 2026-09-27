@@ -58,6 +58,10 @@ TOPICS = [
         "id": "realestate", "name": "부동산", "accent": "#B45309", "accent_dark": "#D97706",
         "queries": ["아파트 매매 전세 시세", "부동산 시장 전망 정책", "부동산 청약 분양가", "재건축 재개발 부동산", "주택담보대출 금리 부동산"],
     },
+    {
+        "id": "dongtan", "name": "동탄 소식", "accent": "#4F46E5", "accent_dark": "#6366F1",
+        "queries": ["화성 동탄", "동탄 신도시", "동탄 아파트", "동탄역 GTX", "동탄 상권"],
+    },
 ]
 
 STRIP_SOURCE = re.compile(r"\s+-\s+[^-]+$")
