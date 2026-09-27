@@ -1320,13 +1320,15 @@ def esc(s):
 
 TICKER = (
     (
-        ("gold",   "금",      "$", 0, "금 현물 · 미국 달러/트로이온스"),
-        ("silver", "은",      "$", 2, "은 현물 · 미국 달러/트로이온스"),
-        ("btc",    "비트코인", "$", 0, "비트코인 BTC/USD"),
+        ("gold",   "금",      "$", "", 0, "금 현물 · 미국 달러/트로이온스"),
+        ("silver", "은",      "$", "", 2, "은 현물 · 미국 달러/트로이온스"),
+        ("oil",    "원유",    "$", "", 2, "WTI 원유 선물 · USD/배럴"),
+        ("btc",    "비트코인", "$", "", 0, "비트코인 BTC/USD"),
     ),
     (
-        ("usdkrw", "달러",    "₩", 1, "원/달러 · 하나은행 매매기준율"),
-        ("jpykrw", "엔100",   "₩", 1, "원/100엔 · 하나은행 매매기준율"),
+        ("bond",   "미국채10년", "", "%", 3, "미국 10년물 국채 금리"),
+        ("usdkrw", "달러",    "₩", "", 1, "원/달러 · 하나은행 매매기준율"),
+        ("jpykrw", "엔100",   "₩", "", 1, "원/100엔 · 하나은행 매매기준율"),
     ),
 )
 
@@ -1337,7 +1339,7 @@ def market_html(m):
     lines = []
     for group in TICKER:
         cells = []
-        for key, label, prefix, digits, tip in group:
+        for key, label, prefix, suffix, digits, tip in group:
             val = m.get(key)
             if val is None:
                 continue
@@ -1365,7 +1367,7 @@ def market_html(m):
             else:
                 tag = '<span class="m-chg flat">0.00%</span>'
             cells.append(
-                f'<span class="metal" title="{tip_str}"><span class="m-label">{label}</span><span class="m-value">{prefix}{val:,.{digits}f}</span>{tag}</span>'
+                f'<span class="metal" title="{tip_str}"><span class="m-label">{label}</span><span class="m-value">{prefix}{val:,.{digits}f}{suffix}</span>{tag}</span>'
             )
         if cells:
             lines.append("        <span class=\"metal-row\">" + "".join(cells) + "</span>")

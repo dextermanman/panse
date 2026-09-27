@@ -303,12 +303,14 @@ def fetch_naver_fx():
             "jpykrw_chg": jpy_chg, "fx_time": stamp.group(1) if stamp else None,
             "gold_prev_close": _naver_gold_prev_close(text)}
 def fetch_metals():
-    """금(Gold), 은(Silver) 선물/현물 시세 (USD/oz) 및 전일 대비 변동률 (Yahoo Finance + Naver Finance)."""
+    """금, 은, 원유, 채권 금리 시세 및 전일 대비 변동률 (Yahoo Finance + Naver Finance)."""
     gold, gold_chg = None, None
     silver, silver_chg = None, None
+    oil, oil_chg = None, None
+    bond, bond_chg = None, None
 
-    # 1. Yahoo Finance (GC=F: Gold, SI=F: Silver)
-    for sym, key in (("GC=F", "gold"), ("SI=F", "silver")):
+    # 1. Yahoo Finance (GC=F: Gold, SI=F: Silver, CL=F: WTI Crude Oil, ^TNX: US 10-Yr Bond)
+    for sym, key in (("GC=F", "gold"), ("SI=F", "silver"), ("CL=F", "oil"), ("^TNX", "bond")):
         try:
             url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -320,8 +322,12 @@ def fetch_metals():
                 chg = (price - prev) / prev * 100
                 if key == "gold":
                     gold, gold_chg = round(price, 2), round(chg, 2)
-                else:
+                elif key == "silver":
                     silver, silver_chg = round(price, 2), round(chg, 2)
+                elif key == "oil":
+                    oil, oil_chg = round(price, 2), round(chg, 2)
+                elif key == "bond":
+                    bond, bond_chg = round(price, 3), round(chg, 2)
         except Exception:
             pass
 
@@ -342,11 +348,14 @@ def fetch_metals():
         except Exception:
             pass
 
-    return {"gold": gold, "gold_chg": gold_chg, "silver": silver, "silver_chg": silver_chg}
+    return {"gold": gold, "gold_chg": gold_chg, 
+            "silver": silver, "silver_chg": silver_chg,
+            "oil": oil, "oil_chg": oil_chg,
+            "bond": bond, "bond_chg": bond_chg}
 
 
 HISTORY = Path(__file__).with_name("market_history.json")
-SERIES = ("gold", "silver", "btc", "usdkrw", "jpykrw")
+SERIES = ("gold", "silver", "oil", "bond", "btc", "usdkrw", "jpykrw")
 
 
 def fetch_market():
@@ -363,6 +372,10 @@ def fetch_market():
         out["gold"] = metals["gold"]
     if metals.get("silver") is not None:
         out["silver"] = metals["silver"]
+    if metals.get("oil") is not None:
+        out["oil"] = metals["oil"]
+    if metals.get("bond") is not None:
+        out["bond"] = metals["bond"]
 
     # 비트코인: CoinGecko가 24시간 변동률까지 주므로 우선 사용하고,
     # 실패하면 Coinbase 현물가(변동률 없음)로 폴백한다.
@@ -436,6 +449,10 @@ def fetch_market():
         changes["gold_chg"] = metals["gold_chg"]
     if metals.get("silver_chg") is not None:
         changes["silver_chg"] = metals["silver_chg"]
+    if metals.get("oil_chg") is not None:
+        changes["oil_chg"] = metals["oil_chg"]
+    if metals.get("bond_chg") is not None:
+        changes["bond_chg"] = metals["bond_chg"]
     if btc_chg is not None:
         changes["btc_chg"] = btc_chg
     return {**{k: out.get(k) for k in SERIES}, **changes,
