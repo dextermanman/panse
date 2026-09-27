@@ -639,7 +639,6 @@ $METALS
   <!-- 주제 선택: 이 페이지의 주 이동 수단이라 가장 잘 보이는 자리에 둔다 -->
   <nav class="topic-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
     <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
-    <button class="m-btn" type="button" role="tab" data-view="bookmarks" aria-selected="false">🔖 스크랩 <span class="n" id="bm-badge">0</span></button>
 $MENU
   </nav>
 
@@ -733,14 +732,7 @@ $BREAKING
     </div>
   </div>
 
-  <!-- 스크랩(북마크) 전용 상세 섹션 -->
-  <section class="detail card hidden" data-topic="bookmarks" aria-label="스크랩한 기사">
-    <div class="detail-head">
-      <span class="detail-name hl">🔖 스크랩한 기사</span>
-      <span class="detail-stat"><b id="bm-total">0</b>건 저장됨</span>
-    </div>
-    <ul class="feed" id="bm-list" style="min-height:80px;"></ul>
-  </section>
+
 
 $DETAILS
 
@@ -1092,19 +1084,8 @@ $DETAILS
         '<span class="f-src">' + it.src + '</span><span class="sep">·</span>' +
         '<span class="f-time" data-ts="' + it.ts + '">' + rel(it.ts) + '</span>' +
         '</div>' +
-        '<button class="bm-btn" data-link="' + it.link + '" data-title="' + it.title.replace(/"/g, '&quot;') + '" data-src="' + it.src + '" data-ts="' + it.ts + '" data-topic="' + it.topic + '" data-topicname="' + it.topicName + '" type="button" aria-label="북마크">🔖</button>' +
         '</div></li>';
     }).join("");
-    searchList.querySelectorAll(".bm-btn").forEach(function(btn){
-      btn.addEventListener("click", function(e){
-        e.preventDefault(); e.stopPropagation();
-        toggleBookmark({
-          link: btn.dataset.link, title: btn.dataset.title, src: btn.dataset.src,
-          ts: Number(btn.dataset.ts), topicId: btn.dataset.topic, topicName: btn.dataset.topicname
-        });
-      });
-    });
-    updateBookmarkButtons();
   }
 
   if (searchInput) {
@@ -1400,7 +1381,7 @@ def build():
     used = {it["link"] for it, _ in picks}
 
     breaking = "\n".join(
-        f'        <li><div class="b-item t-{t["id"]}"><a class="b-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a><div class="b-tag-wrap"><span class="b-tag"><span class="swatch"></span>{esc(t["name"])}</span><span class="b-src">{esc(it["source"])}</span><span class="sep">·</span><span class="b-time" data-ts="{it["ts"]}">–</span></div><button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button" aria-label="북마크">🔖</button></div></li>'
+        f'        <li><div class="b-item t-{t["id"]}"><a class="b-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a><div class="b-tag-wrap"><span class="b-tag"><span class="swatch"></span>{esc(t["name"])}</span><span class="b-src">{esc(it["source"])}</span><span class="sep">·</span><span class="b-time" data-ts="{it["ts"]}">–</span></div></div></li>'
         for it, t in picks
     )
 
@@ -1428,7 +1409,7 @@ def build():
 
     rest = [(it, t) for it, t in flat if it["link"] not in used]
     feed = "\n".join(
-        f'          <li class="f-item" data-topic="{t["id"]}"><div class="f-row t-{t["id"]}"><a class="f-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a><div class="f-meta-wrap"><span class="f-tag"><span class="swatch"></span>{esc(t["name"])}</span><span class="f-src">{esc(it["source"])}</span><span class="sep">·</span><span class="f-time" data-ts="{it["ts"]}">–</span></div><button class="bm-btn" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button" aria-label="북마크">🔖</button></div></li>'
+        f'          <li class="f-item" data-topic="{t["id"]}"><div class="f-row t-{t["id"]}"><a class="f-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a><div class="f-meta-wrap"><span class="f-tag"><span class="swatch"></span>{esc(t["name"])}</span><span class="f-src">{esc(it["source"])}</span><span class="sep">·</span><span class="f-time" data-ts="{it["ts"]}">–</span></div></div></li>'
         for it, t in rest
     )
 
@@ -1454,7 +1435,7 @@ def build():
             is_new = now.timestamp() - it["ts"] <= 3600
             badge_html = '<span class="badge">NEW</span><span class="sep">·</span>' if is_new else ""
             rows.append(
-                f'        <li class="d-item"><div class="row"><a class="row-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a><div class="row-meta">{badge_html}<span class="meta-chip">{esc(it["source"])}</span><span class="sep">·</span><span data-ts="{it["ts"]}">–</span><button class="bm-btn" style="margin-left:auto;" data-link="{esc(it["link"])}" data-title="{esc(it["title"])}" data-src="{esc(it["source"])}" data-ts="{it["ts"]}" data-topic="{t["id"]}" data-topicname="{esc(t["name"])}" type="button" aria-label="북마크">🔖</button></div></div></li>'
+                f'        <li class="d-item"><div class="row"><a class="row-title" href="{esc(it["link"])}" target="_blank" rel="noopener">{esc(it["title"])}</a><div class="row-meta">{badge_html}<span class="meta-chip">{esc(it["source"])}</span><span class="sep">·</span><span data-ts="{it["ts"]}">–</span></div></div></li>'
             )
         details.append(
             f'  <section class="detail card t-{t["id"]}" data-topic="{t["id"]}" aria-label="{esc(t["name"])}">\n    <div class="detail-head">\n      <span class="detail-name hl"><span class="swatch"></span>{esc(t["name"])}</span>\n      <span class="detail-stat"><b>{t["fresh_1h"]}</b>건 최근 1시간</span>\n      <span class="detail-stat"><b>{t["total"]}</b>건 오늘 수집</span>\n      <button class="pin-toggle" data-topic="{t["id"]}" type="button">☆ 핀 고정</button>\n    </div>\n    <ul class="d-list">\n' + "\n".join(rows) + "\n    </ul>\n  </section>"
