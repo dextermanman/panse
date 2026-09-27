@@ -443,42 +443,47 @@ def fetch_market():
 
 
 def fetch_popular_domestic():
-    """네이버 증권 실시간 검색 상위 인기 종목 TOP 10."""
-    req = urllib.request.Request(
-        "https://finance.naver.com/sise/lastsearch2.naver",
-        headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=5) as res:
-            raw = res.read().decode("euc-kr", errors="ignore")
-            tr_matches = re.findall(
-                r"<tr>\s*<td class=\"no\">(\d+)</td>\s*<td><a href=\"/item/main\.naver\?code=(\d+)\" class=\"tltle\">(.*?)</a></td>.*?<td class=\"number\">([0-9,]+)</td>\s*<td class=\"number\">.*?</td>\s*<td class=\"number\">\s*<span class=\"tah p11 (nv01|red02|red01|nv02|)\">\s*([+\-0-9.,%]+)\s*</span>",
-                raw, re.DOTALL
+    """국내 핵심 대형주 및 인기 종목 TOP 10 실시간 시세."""
+    DOMESTIC_TOP = [
+        ("005930.KS", "삼성전자"),
+        ("000660.KS", "SK하이닉스"),
+        ("373220.KS", "LG에너지솔루션"),
+        ("207940.KS", "삼성바이오로직스"),
+        ("005380.KS", "현대차"),
+        ("068270.KS", "셀트리온"),
+        ("196170.KQ", "알테오젠"),
+        ("000270.KS", "기아"),
+        ("105560.KS", "KB금융"),
+        ("035420.KS", "NAVER"),
+    ]
+    result = []
+    for idx, (sym, name) in enumerate(DOMESTIC_TOP, 1):
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d"
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
             )
-            result = []
-            for rank, code, name, price, color, chg in tr_matches[:10]:
-                is_up = "red" in color or "+" in chg
-                is_down = "nv" in color or "-" in chg
-                chg_clean = chg.strip().replace("%", "")
-                try:
-                    chg_val = float(chg_clean)
-                    chg_str = f"{chg_val:+.2f}%"
-                except Exception:
-                    chg_str = chg
+            with urllib.request.urlopen(req, timeout=4) as res:
+                data = json.loads(res.read().decode("utf-8"))
+                meta = data["chart"]["result"][0]["meta"]
+                price = meta["regularMarketPrice"]
+                prev = meta.get("chartPreviousClose") or meta.get("previousClose") or price
+                chg = (price - prev) / prev * 100
+                code_num = sym.split(".")[0]
                 result.append({
-                    "rank": int(rank),
-                    "code": code,
-                    "name": name.strip(),
-                    "price": price.strip() + "원",
-                    "chg": chg_str,
-                    "is_up": is_up,
-                    "is_down": is_down,
-                    "link": f"https://finance.naver.com/item/main.naver?code={code}"
+                    "rank": idx,
+                    "code": code_num,
+                    "name": name,
+                    "price": f"{int(price):,}원",
+                    "chg": f"{chg:+.2f}%",
+                    "is_up": chg > 0,
+                    "is_down": chg < 0,
+                    "link": f"https://finance.naver.com/item/main.naver?code={code_num}"
                 })
-            return result
-    except Exception as e:
-        print(f"  ! 국내 인기 종목 수집 실패: {e}", file=sys.stderr)
-        return []
+        except Exception as e:
+            print(f"  ! {name}({sym}) 시세 수집 실패: {e}", file=sys.stderr)
+    return result
 
 
 def fetch_popular_overseas():
