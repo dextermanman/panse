@@ -92,7 +92,8 @@ $SWATCH_LIGHT
 $TOPIC_CLASSES
 
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
-body{margin:0; background:var(--ground); background-image:var(--body-bg); background-attachment:fixed; color:var(--ink); font-size:15px; line-height:1.55; min-height:100vh;
+body{margin:0; background:var(--ground); color:var(--ink); font-size:15px; line-height:1.55; min-height:100vh;
+  background-image: radial-gradient(var(--hairline) 1px, transparent 1px); background-size: 22px 22px; background-attachment:fixed;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Pretendard","Apple SD Gothic Neo","Segoe UI",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   word-break:keep-all; overflow-wrap:anywhere}
