@@ -222,7 +222,7 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 #search-section{margin-bottom:28px}
 
 /* ========================================================
-   ✨ 오늘의 3줄 브리핑 (히어로 카드)
+   ✨ 오늘의 6줄 브리핑 (히어로 카드)
    ======================================================== */
 .brief-card{background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
   border:1px solid var(--hairline); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow), var(--inner-glow);
@@ -405,7 +405,7 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .m-btn{font-size:14px; padding:7px 0 6px}
   .m-btn .n{font-size:10px}
 
-  /* 3줄 브리핑 카드 */
+  /* 6줄 브리핑 카드 */
   .brief-card{padding:16px 14px; border-radius:18px; margin-bottom:18px}
   .brief-head{flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:12px}
   .brief-pill{font-size:11px; padding:3px 10px}
@@ -664,11 +664,11 @@ $MENU
   </div>
 
   <div id="overview">
-    <!-- 오늘의 판세 3줄 브리핑 (히어로 카드) -->
+    <!-- 오늘의 판세 6줄 브리핑 (히어로 카드) -->
     <section class="brief-card" aria-label="오늘의 판세 브리핑">
       <div class="brief-head">
         <div class="brief-title-wrap">
-          <span class="brief-pill">✨ 오늘의 3줄 핵심 판세</span>
+          <span class="brief-pill">✨ 오늘의 6줄 핵심 판세</span>
           <span class="brief-sub">지금 가장 뜨거운 글로벌·국내 동향</span>
         </div>
         <button class="brief-copy" id="copy-briefing" type="button">📋 브리핑 복사</button>
@@ -1009,7 +1009,7 @@ $DETAILS
   });
   updateBookmarkButtons();
 
-  /* 📋 오늘의 3줄 브리핑 복사 */
+  /* 📋 오늘의 6줄 브리핑 복사 */
   var copyBtn = document.getElementById("copy-briefing");
   if (copyBtn) {
     copyBtn.addEventListener("click", function(){
@@ -1022,7 +1022,7 @@ $DETAILS
       });
       text += "\n🔗 https://daseot-news.surge.sh";
       navigator.clipboard.writeText(text).then(function(){
-        showToast("✓ 오늘의 3줄 브리핑이 복사되었습니다!");
+        showToast("✓ 오늘의 6줄 브리핑이 복사되었습니다!");
       }).catch(function(){
         showToast("복사에 실패했습니다.");
       });
@@ -1385,14 +1385,14 @@ def build():
         for it, t in picks
     )
 
-    # 오늘의 3줄 브리핑 (01, 02, 03 골드 넘버링 적용)
+    # 오늘의 6줄 브리핑 (01, 02, 03 골드 넘버링 적용)
     brief_picks = []
     seen_brief_topics = set()
     for it, t in flat:
         if t["id"] not in seen_brief_topics and it["link"] not in used:
             brief_picks.append((it, t))
             seen_brief_topics.add(t["id"])
-            if len(brief_picks) >= 3:
+            if len(brief_picks) >= 6:
                 break
     briefing = "\n".join(
         f'        <a class="brief-item t-{t["id"]}" href="{esc(it["link"])}" target="_blank" rel="noopener"><div class="brief-meta"><span class="brief-num">0{idx+1}</span><span class="brief-tag"><span class="swatch"></span>{esc(t["name"])}</span></div><span class="brief-title">{esc(it["title"])}</span></a>'
