@@ -8,3 +8,6 @@ dashboard.html
 public/index.html
 __pycache__/
 *.pyc
+apt/apt.json
+apt/preview.html
+apt/client_secret*.json

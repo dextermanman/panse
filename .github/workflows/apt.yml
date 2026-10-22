@@ -1,0 +1,58 @@
+name: 청약 블로그 갱신
+on:
+  schedule:
+    # KST 07:10 · 12:10 · 18:10
+    - cron: "10 22,3,9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apt-blog
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 청약홈 분양정보 수집
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: python3 apt/fetch_apt.py
+
+      - name: Blogger 게시
+        env:
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+          BLOGGER_CLIENT_ID: ${{ secrets.BLOGGER_CLIENT_ID }}
+          BLOGGER_CLIENT_SECRET: ${{ secrets.BLOGGER_CLIENT_SECRET }}
+          BLOGGER_REFRESH_TOKEN: ${{ secrets.BLOGGER_REFRESH_TOKEN }}
+          BLOGGER_DRAFT: ${{ vars.BLOGGER_DRAFT }}
+        run: |
+          cd apt
+          [ -f apt.json ] || { echo "수집된 데이터 없음 — 건너뜀"; exit 0; }
+          if [ -z "$BLOGGER_REFRESH_TOKEN" ]; then
+            echo "Blogger 시크릿이 없어 미리보기만 합니다."
+            DRY_RUN=1 python3 publish_blogger.py
+          else
+            python3 publish_blogger.py
+          fi
+
+      - name: 게시 기록 저장
+        run: |
+          git config user.name "판세 봇"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apt/posts_state.json 2>/dev/null || exit 0
+          git diff --staged --quiet && exit 0
+          git commit -q -m "청약 블로그 게시 기록 갱신 [skip ci]"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep 3
+          done
+          exit 1
