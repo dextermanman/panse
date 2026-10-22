@@ -1,0 +1,42 @@
+name: 청약 정보 수집
+on:
+  schedule:
+    # KST 06:50 · 11:50 · 17:50 — 수집 후 다음 판세 갱신 때 페이지에 반영
+    - cron: "50 21,2,8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apt-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 청약홈 분양정보 수집
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: python3 apt/fetch_apt.py
+
+      - name: 수집 결과 저장
+        run: |
+          [ -f apt/apt.json ] || exit 0
+          git config user.name "판세 봇"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apt/apt.json
+          git diff --staged --quiet && exit 0
+          git commit -q -m "청약 정보 수집 [skip ci]"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1

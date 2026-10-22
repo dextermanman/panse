@@ -135,6 +135,7 @@ button{font:inherit; color:inherit; border:0; background:transparent}
   color:var(--ink-3); font-size:14.5px; font-weight:550; letter-spacing:-.01em;
   padding:7px 0 6px; transition:color .15s ease, border-color .15s ease}
 .m-btn:hover{color:var(--ink)}
+.m-link{color:var(--ink-2); font-weight:650}
 .m-btn .swatch{display:none}
 .m-btn .n{font-size:10.5px; font-weight:700; color:var(--breaking);
   font-variant-numeric:tabular-nums; position:relative; top:-4px}
@@ -641,6 +642,7 @@ $METALS
   <nav class="topic-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
     <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
 $MENU
+    <a class="m-btn m-link" href="/apt/" title="아파트 청약 일정·분양가">🏠 청약</a>
   </nav>
 
   <!-- 검색은 자주 쓰지 않으므로 접어두고 상단 돋보기 버튼으로 연다 -->
@@ -1125,7 +1127,7 @@ $DETAILS
   /* 화면 뷰 전환 */
   var overview = document.getElementById("overview");
   var details = [].slice.call(document.querySelectorAll(".detail"));
-  var menu = [].slice.call(document.querySelectorAll(".m-btn"));
+  var menu = [].slice.call(document.querySelectorAll(".m-btn[data-view]"));
 
   function show(view){
     if (view === "all"){

@@ -6,6 +6,7 @@ echo "===== $(date '+%Y-%m-%d %H:%M:%S') ====="
 
 /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 fetch_news.py && /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 render.py || exit 1
 cp dashboard.html public/index.html
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 apt/render_apt.py || true
 
 # 로그인 후 생성되는 .surge-env 가 있으면 자동 배포
 if [ -f .surge-env ]; then

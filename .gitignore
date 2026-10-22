@@ -8,3 +8,4 @@ dashboard.html
 public/index.html
 __pycache__/
 *.pyc
+public/apt/

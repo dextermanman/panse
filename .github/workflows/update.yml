@@ -35,6 +35,7 @@ jobs:
           python3 render.py
           mkdir -p public
           cp dashboard.html public/index.html
+          python3 apt/render_apt.py || echo "청약 페이지 렌더 실패 — 건너뜀"
       
       - name: surge 배포 (최대 3회 재시도)
         env:
