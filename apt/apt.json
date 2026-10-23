@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T10:00+09:00",
+ "updated": "2026-10-23T11:03+09:00",
  "complexes": [
   {
    "id": "2026000496",
@@ -88,42 +88,88 @@
      "supply_area": "122.2119",
      "supply": "58",
      "special": "190",
-     "top_price": "92070"
+     "top_price": "92070",
+     "special_by": {
+      "다자녀": "24",
+      "신혼부부": "42",
+      "생애최초": "45",
+      "신생아": "26",
+      "노부모부양": "8",
+      "기관추천": "19",
+      "기타": "26"
+     }
     },
     {
      "type": "084.9210B",
      "supply_area": "121.6639",
      "supply": "40",
      "special": "84",
-     "top_price": "90050"
+     "top_price": "90050",
+     "special_by": {
+      "다자녀": "12",
+      "신혼부부": "14",
+      "생애최초": "18",
+      "신생아": "12",
+      "노부모부양": "4",
+      "기관추천": "13",
+      "기타": "11"
+     }
     },
     {
      "type": "084.8592C",
      "supply_area": "120.2914",
      "supply": "26",
      "special": "98",
-     "top_price": "90880"
+     "top_price": "90880",
+     "special_by": {
+      "다자녀": "12",
+      "신혼부부": "20",
+      "생애최초": "22",
+      "신생아": "12",
+      "노부모부양": "4",
+      "기관추천": "15",
+      "기타": "13"
+     }
     },
     {
      "type": "084.9540D",
      "supply_area": "121.9069",
      "supply": "36",
      "special": "88",
-     "top_price": "90520"
+     "top_price": "90520",
+     "special_by": {
+      "다자녀": "12",
+      "신혼부부": "17",
+      "생애최초": "20",
+      "신생아": "10",
+      "노부모부양": "4",
+      "기관추천": "13",
+      "기타": "12"
+     }
     },
     {
      "type": "103.8518A",
      "supply_area": "147.0448",
      "supply": "95",
      "special": "29",
-     "top_price": "117100"
+     "top_price": "117100",
+     "special_by": {
+      "다자녀": "12",
+      "노부모부양": "4",
+      "기타": "13"
+     }
     },
     {
      "type": "103.9916B",
      "supply_area": "148.2000",
      "supply": "99",
      "special": "25",
-     "top_price": "116340"
+     "top_price": "116340",
+     "special_by": {
+      "다자녀": "12",
+      "노부모부양": "2",
+      "기타": "11"
+     }
     }
    ],
    "competition": []
@@ -215,70 +261,138 @@
      "supply_area": "109.7246",
      "supply": "132",
      "special": "159",
-     "top_price": "53600"
+     "top_price": "53600",
+     "special_by": {
+      "다자녀": "29",
+      "신혼부부": "43",
+      "생애최초": "20",
+      "신생아": "29",
+      "노부모부양": "9",
+      "기관추천": "29"
+     }
     },
     {
      "type": "084.4355B",
      "supply_area": "110.1662",
      "supply": "64",
      "special": "72",
-     "top_price": "54300"
+     "top_price": "54300",
+     "special_by": {
+      "다자녀": "13",
+      "신혼부부": "20",
+      "생애최초": "9",
+      "신생아": "13",
+      "노부모부양": "4",
+      "기관추천": "13"
+     }
     },
     {
      "type": "084.1443C",
      "supply_area": "109.6685",
      "supply": "187",
      "special": "225",
-     "top_price": "53500"
+     "top_price": "53500",
+     "special_by": {
+      "다자녀": "41",
+      "신혼부부": "62",
+      "생애최초": "28",
+      "신생아": "41",
+      "노부모부양": "12",
+      "기관추천": "41"
+     }
     },
     {
      "type": "084.4447D",
      "supply_area": "110.4100",
      "supply": "40",
      "special": "49",
-     "top_price": "53900"
+     "top_price": "53900",
+     "special_by": {
+      "다자녀": "9",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "3",
+      "기관추천": "9"
+     }
     },
     {
      "type": "084.5473E",
      "supply_area": "111.0317",
      "supply": "136",
      "special": "165",
-     "top_price": "54200"
+     "top_price": "54200",
+     "special_by": {
+      "다자녀": "30",
+      "신혼부부": "45",
+      "생애최초": "21",
+      "신생아": "30",
+      "노부모부양": "9",
+      "기관추천": "30"
+     }
     },
     {
      "type": "084.8194F",
      "supply_area": "111.7563",
      "supply": "38",
      "special": "45",
-     "top_price": "54600"
+     "top_price": "54600",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "8",
+      "노부모부양": "2",
+      "기관추천": "8"
+     }
     },
     {
      "type": "084.3216G",
      "supply_area": "111.2509",
      "supply": "8",
      "special": "11",
-     "top_price": "53200"
+     "top_price": "53200",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "102.6403",
      "supply_area": "134.7897",
      "supply": "49",
      "special": "7",
-     "top_price": "64000"
+     "top_price": "64000",
+     "special_by": {
+      "다자녀": "5",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "112.1044",
      "supply_area": "144.8816",
      "supply": "69",
      "special": "9",
-     "top_price": "67800"
+     "top_price": "67800",
+     "special_by": {
+      "다자녀": "7",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "120.3418",
      "supply_area": "156.6758",
      "supply": "68",
      "special": "9",
-     "top_price": "72700"
+     "top_price": "72700",
+     "special_by": {
+      "다자녀": "7",
+      "노부모부양": "2"
+     }
     }
    ],
    "competition": []
@@ -363,140 +477,257 @@
      "supply_area": "72.5400",
      "supply": "5",
      "special": "18",
-     "top_price": "30800"
+     "top_price": "30800",
+     "special_by": {
+      "신혼부부": "3",
+      "생애최초": "3",
+      "신생아": "9",
+      "청년": "3"
+     }
     },
     {
      "type": "049.0000B",
      "supply_area": "72.5600",
      "supply": "2",
      "special": "6",
-     "top_price": "30800"
+     "top_price": "30800",
+     "special_by": {
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "3",
+      "청년": "1"
+     }
     },
     {
      "type": "049.0000C",
      "supply_area": "72.1900",
      "supply": "19",
      "special": "74",
-     "top_price": "31416"
+     "top_price": "31416",
+     "special_by": {
+      "신혼부부": "14",
+      "생애최초": "14",
+      "신생아": "32",
+      "청년": "14"
+     }
     },
     {
      "type": "049.0000D",
      "supply_area": "72.2100",
      "supply": "3",
      "special": "10",
-     "top_price": "30800"
+     "top_price": "30800",
+     "special_by": {
+      "신혼부부": "2",
+      "생애최초": "2",
+      "신생아": "4",
+      "청년": "2"
+     }
     },
     {
      "type": "049.0000E",
      "supply_area": "72.3200",
      "supply": "4",
      "special": "20",
-     "top_price": "30800"
+     "top_price": "30800",
+     "special_by": {
+      "신혼부부": "4",
+      "생애최초": "4",
+      "신생아": "8",
+      "청년": "4"
+     }
     },
     {
      "type": "049.0000F",
      "supply_area": "72.6400",
      "supply": "14",
      "special": "58",
-     "top_price": "31724"
+     "top_price": "31724",
+     "special_by": {
+      "신혼부부": "11",
+      "생애최초": "11",
+      "신생아": "25",
+      "청년": "11"
+     }
     },
     {
      "type": "049.0000G",
      "supply_area": "72.0500",
      "supply": "2",
      "special": "5",
-     "top_price": "31724"
+     "top_price": "31724",
+     "special_by": {
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "2",
+      "청년": "1"
+     }
     },
     {
      "type": "049.0000H",
      "supply_area": "73.5000",
      "supply": "8",
      "special": "31",
-     "top_price": "29567"
+     "top_price": "29567",
+     "special_by": {
+      "신혼부부": "6",
+      "생애최초": "6",
+      "신생아": "13",
+      "청년": "6"
+     }
     },
     {
      "type": "049.0000I",
      "supply_area": "73.2600",
      "supply": "2",
      "special": "7",
-     "top_price": "31416"
+     "top_price": "31416",
+     "special_by": {
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "4",
+      "청년": "1"
+     }
     },
     {
      "type": "049.0000J",
      "supply_area": "72.3800",
      "supply": "2",
      "special": "5",
-     "top_price": "31416"
+     "top_price": "31416",
+     "special_by": {
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "2",
+      "청년": "1"
+     }
     },
     {
      "type": "049.0000K",
      "supply_area": "72.2400",
      "supply": "3",
      "special": "11",
-     "top_price": "30184"
+     "top_price": "30184",
+     "special_by": {
+      "신혼부부": "2",
+      "생애최초": "2",
+      "신생아": "5",
+      "청년": "2"
+     }
     },
     {
      "type": "059.0000A",
      "supply_area": "86.5400",
      "supply": "6",
      "special": "18",
-     "top_price": "38670"
+     "top_price": "38670",
+     "special_by": {
+      "신혼부부": "3",
+      "생애최초": "3",
+      "신생아": "9",
+      "청년": "3"
+     }
     },
     {
      "type": "059.0000B",
      "supply_area": "86.7600",
      "supply": "12",
      "special": "48",
-     "top_price": "39050"
+     "top_price": "39050",
+     "special_by": {
+      "신혼부부": "9",
+      "생애최초": "9",
+      "신생아": "21",
+      "청년": "9"
+     }
     },
     {
      "type": "059.0000C",
      "supply_area": "87.1900",
      "supply": "1",
      "special": "2",
-     "top_price": "38670"
+     "top_price": "38670",
+     "special_by": {
+      "신생아": "2"
+     }
     },
     {
      "type": "059.0000D",
      "supply_area": "87.1900",
      "supply": "16",
      "special": "60",
-     "top_price": "39050"
+     "top_price": "39050",
+     "special_by": {
+      "신혼부부": "11",
+      "생애최초": "11",
+      "신생아": "27",
+      "청년": "11"
+     }
     },
     {
      "type": "059.0000E",
      "supply_area": "87.1500",
      "supply": "9",
      "special": "35",
-     "top_price": "38670"
+     "top_price": "38670",
+     "special_by": {
+      "신혼부부": "7",
+      "생애최초": "7",
+      "신생아": "14",
+      "청년": "7"
+     }
     },
     {
      "type": "059.0000F",
      "supply_area": "86.6600",
      "supply": "9",
      "special": "37",
-     "top_price": "37154"
+     "top_price": "37154",
+     "special_by": {
+      "신혼부부": "7",
+      "생애최초": "7",
+      "신생아": "16",
+      "청년": "7"
+     }
     },
     {
      "type": "059.0000G",
      "supply_area": "86.9400",
      "supply": "25",
      "special": "95",
-     "top_price": "37912"
+     "top_price": "37912",
+     "special_by": {
+      "신혼부부": "18",
+      "생애최초": "18",
+      "신생아": "41",
+      "청년": "18"
+     }
     },
     {
      "type": "059.0000H",
      "supply_area": "86.5600",
      "supply": "4",
      "special": "20",
-     "top_price": "37154"
+     "top_price": "37154",
+     "special_by": {
+      "신혼부부": "4",
+      "생애최초": "4",
+      "신생아": "8",
+      "청년": "4"
+     }
     },
     {
      "type": "059.0000I",
      "supply_area": "88.6100",
      "supply": "1",
      "special": "6",
-     "top_price": "39050"
+     "top_price": "39050",
+     "special_by": {
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "3",
+      "청년": "1"
+     }
     }
    ],
    "competition": []
@@ -588,49 +819,97 @@
      "supply_area": "86.1272",
      "supply": "114",
      "special": "142",
-     "top_price": "39590"
+     "top_price": "39590",
+     "special_by": {
+      "다자녀": "26",
+      "신혼부부": "38",
+      "생애최초": "18",
+      "신생아": "26",
+      "노부모부양": "8",
+      "기관추천": "26"
+     }
     },
     {
      "type": "059.9960B",
      "supply_area": "85.3075",
      "supply": "12",
      "special": "17",
-     "top_price": "39290"
+     "top_price": "39290",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "4",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "2",
+      "기관추천": "3"
+     }
     },
     {
      "type": "075.7230A",
      "supply_area": "102.4451",
      "supply": "19",
      "special": "30",
-     "top_price": "46090"
+     "top_price": "46090",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "7",
+      "생애최초": "3",
+      "신생아": "5",
+      "노부모부양": "5",
+      "기관추천": "5"
+     }
     },
     {
      "type": "075.8917B",
      "supply_area": "102.2496",
      "supply": "24",
      "special": "27",
-     "top_price": "45790"
+     "top_price": "45790",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "8",
+      "생애최초": "4",
+      "신생아": "5",
+      "기관추천": "5"
+     }
     },
     {
      "type": "084.9568A",
      "supply_area": "112.1578",
      "supply": "165",
      "special": "180",
-     "top_price": "50090"
+     "top_price": "50090",
+     "special_by": {
+      "다자녀": "35",
+      "신혼부부": "52",
+      "생애최초": "24",
+      "신생아": "35",
+      "기관추천": "34"
+     }
     },
     {
      "type": "084.9882B",
      "supply_area": "111.6549",
      "supply": "87",
      "special": "87",
-     "top_price": "49890"
+     "top_price": "49890",
+     "special_by": {
+      "다자녀": "16",
+      "신혼부부": "26",
+      "생애최초": "12",
+      "신생아": "16",
+      "기관추천": "17"
+     }
     },
     {
      "type": "112.8127",
      "supply_area": "140.1584",
      "supply": "80",
      "special": "8",
-     "top_price": "65890"
+     "top_price": "65890",
+     "special_by": {
+      "다자녀": "8"
+     }
     }
    ],
    "competition": []
@@ -694,28 +973,32 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "89100"
+     "top_price": "89100",
+     "special_by": {}
     },
     {
      "type": "084.9600B",
      "supply_area": "",
      "supply": "3",
      "special": "0",
-     "top_price": "89200"
+     "top_price": "89200",
+     "special_by": {}
     },
     {
      "type": "084.9900C",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "87700"
+     "top_price": "87700",
+     "special_by": {}
     },
     {
      "type": "109.9900A",
      "supply_area": "",
      "supply": "3",
      "special": "0",
-     "top_price": "108200"
+     "top_price": "108200",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -779,7 +1062,8 @@
      "supply_area": "",
      "supply": "9",
      "special": "0",
-     "top_price": "243300"
+     "top_price": "243300",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -871,35 +1155,71 @@
      "supply_area": "96.8511",
      "supply": "27",
      "special": "38",
-     "top_price": "69280"
+     "top_price": "69280",
+     "special_by": {
+      "다자녀": "7",
+      "신혼부부": "10",
+      "생애최초": "5",
+      "신생아": "7",
+      "노부모부양": "2",
+      "기관추천": "7"
+     }
     },
     {
      "type": "084.8860A",
      "supply_area": "107.7959",
      "supply": "171",
      "special": "214",
-     "top_price": "77200"
+     "top_price": "77200",
+     "special_by": {
+      "다자녀": "39",
+      "신혼부부": "58",
+      "생애최초": "27",
+      "신생아": "39",
+      "노부모부양": "12",
+      "기관추천": "39"
+     }
     },
     {
      "type": "084.9724B",
      "supply_area": "109.5602",
      "supply": "70",
      "special": "84",
-     "top_price": "75930"
+     "top_price": "75930",
+     "special_by": {
+      "다자녀": "15",
+      "신혼부부": "23",
+      "생애최초": "11",
+      "신생아": "15",
+      "노부모부양": "5",
+      "기관추천": "15"
+     }
     },
     {
      "type": "084.7773C",
      "supply_area": "109.0587",
      "supply": "11",
      "special": "13",
-     "top_price": "76090"
+     "top_price": "76090",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "4",
+      "생애최초": "2",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "114.9763",
      "supply_area": "144.3693",
      "supply": "143",
      "special": "21",
-     "top_price": "101830"
+     "top_price": "101830",
+     "special_by": {
+      "다자녀": "16",
+      "노부모부양": "5"
+     }
     }
    ],
    "competition": []
@@ -991,35 +1311,71 @@
      "supply_area": "97.1181",
      "supply": "35",
      "special": "44",
-     "top_price": "68940"
+     "top_price": "68940",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "12",
+      "생애최초": "6",
+      "신생아": "8",
+      "노부모부양": "2",
+      "기관추천": "8"
+     }
     },
     {
      "type": "084.8860A",
      "supply_area": "108.0943",
      "supply": "196",
      "special": "237",
-     "top_price": "77970"
+     "top_price": "77970",
+     "special_by": {
+      "다자녀": "43",
+      "신혼부부": "65",
+      "생애최초": "30",
+      "신생아": "43",
+      "노부모부양": "13",
+      "기관추천": "43"
+     }
     },
     {
      "type": "084.9724B",
      "supply_area": "109.8590",
      "supply": "69",
      "special": "87",
-     "top_price": "75930"
+     "top_price": "75930",
+     "special_by": {
+      "다자녀": "16",
+      "신혼부부": "23",
+      "생애최초": "11",
+      "신생아": "16",
+      "노부모부양": "5",
+      "기관추천": "16"
+     }
     },
     {
      "type": "084.7773C",
      "supply_area": "109.3568",
      "supply": "12",
      "special": "16",
-     "top_price": "76460"
+     "top_price": "76460",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "4",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "3"
+     }
     },
     {
      "type": "114.9763",
      "supply_area": "144.7735",
      "supply": "135",
      "special": "21",
-     "top_price": "102850"
+     "top_price": "102850",
+     "special_by": {
+      "다자녀": "16",
+      "노부모부양": "5"
+     }
     }
    ],
    "competition": []
@@ -1125,63 +1481,110 @@
      "supply_area": "124.1106",
      "supply": "149",
      "special": "185",
-     "top_price": "171420"
+     "top_price": "171420",
+     "special_by": {
+      "다자녀": "34",
+      "신혼부부": "50",
+      "생애최초": "23",
+      "신생아": "34",
+      "노부모부양": "10",
+      "기관추천": "34"
+     }
     },
     {
      "type": "084.9979B",
      "supply_area": "124.5750",
      "supply": "39",
      "special": "45",
-     "top_price": "171680"
+     "top_price": "171680",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "8",
+      "노부모부양": "2",
+      "기관추천": "8"
+     }
     },
     {
      "type": "084.9970C",
      "supply_area": "123.3468",
      "supply": "73",
      "special": "93",
-     "top_price": "171320"
+     "top_price": "171320",
+     "special_by": {
+      "다자녀": "17",
+      "신혼부부": "25",
+      "생애최초": "12",
+      "신생아": "17",
+      "노부모부양": "5",
+      "기관추천": "17"
+     }
     },
     {
      "type": "084.9948D",
      "supply_area": "124.0810",
      "supply": "76",
      "special": "88",
-     "top_price": "171380"
+     "top_price": "171380",
+     "special_by": {
+      "다자녀": "16",
+      "신혼부부": "24",
+      "생애최초": "11",
+      "신생아": "16",
+      "노부모부양": "5",
+      "기관추천": "16"
+     }
     },
     {
      "type": "084.9975E",
      "supply_area": "124.8977",
      "supply": "76",
      "special": "88",
-     "top_price": "171520"
+     "top_price": "171520",
+     "special_by": {
+      "다자녀": "16",
+      "신혼부부": "24",
+      "생애최초": "11",
+      "신생아": "16",
+      "노부모부양": "5",
+      "기관추천": "16"
+     }
     },
     {
      "type": "099.9965A",
      "supply_area": "146.2861",
      "supply": "68",
      "special": "10",
-     "top_price": "191440"
+     "top_price": "191440",
+     "special_by": {
+      "다자녀": "8",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "148.9945E",
      "supply_area": "219.7294",
      "supply": "1",
      "special": "0",
-     "top_price": "316460"
+     "top_price": "316460",
+     "special_by": {}
     },
     {
      "type": "158.9937D",
      "supply_area": "234.3860",
      "supply": "1",
      "special": "0",
-     "top_price": "337600"
+     "top_price": "337600",
+     "special_by": {}
     },
     {
      "type": "162.9999C",
      "supply_area": "241.1932",
      "supply": "4",
      "special": "0",
-     "top_price": "347450"
+     "top_price": "347450",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1287,56 +1690,90 @@
      "supply_area": "115.5180",
      "supply": "82",
      "special": "98",
-     "top_price": "171210"
+     "top_price": "171210",
+     "special_by": {
+      "다자녀": "18",
+      "신혼부부": "27",
+      "생애최초": "12",
+      "신생아": "18",
+      "노부모부양": "5",
+      "기관추천": "18"
+     }
     },
     {
      "type": "084.9998F",
      "supply_area": "117.1346",
      "supply": "41",
      "special": "49",
-     "top_price": "171530"
+     "top_price": "171530",
+     "special_by": {
+      "다자녀": "9",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "3",
+      "기관추천": "9"
+     }
     },
     {
      "type": "116.9981A",
      "supply_area": "156.6146",
      "supply": "80",
      "special": "12",
-     "top_price": "218670"
+     "top_price": "218670",
+     "special_by": {
+      "다자녀": "9",
+      "노부모부양": "3"
+     }
     },
     {
      "type": "116.9987B",
      "supply_area": "158.6444",
      "supply": "157",
      "special": "23",
-     "top_price": "221350"
+     "top_price": "221350",
+     "special_by": {
+      "다자녀": "18",
+      "노부모부양": "5"
+     }
     },
     {
      "type": "128.9983A",
      "supply_area": "174.3807",
      "supply": "78",
      "special": "12",
-     "top_price": "243610"
+     "top_price": "243610",
+     "special_by": {
+      "다자녀": "9",
+      "노부모부양": "3"
+     }
     },
     {
      "type": "129.9995B",
      "supply_area": "177.3078",
      "supply": "153",
      "special": "23",
-     "top_price": "248290"
+     "top_price": "248290",
+     "special_by": {
+      "다자녀": "18",
+      "노부모부양": "5"
+     }
     },
     {
      "type": "184.9968B",
      "supply_area": "253.7585",
      "supply": "2",
      "special": "0",
-     "top_price": "391150"
+     "top_price": "391150",
+     "special_by": {}
     },
     {
      "type": "188.9949A",
      "supply_area": "260.2614",
      "supply": "2",
      "special": "0",
-     "top_price": "401320"
+     "top_price": "401320",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1421,28 +1858,32 @@
      "supply_area": "82.4838",
      "supply": "13",
      "special": "0",
-     "top_price": "67400"
+     "top_price": "67400",
+     "special_by": {}
     },
     {
      "type": "059.9782C",
      "supply_area": "83.0467",
      "supply": "5",
      "special": "0",
-     "top_price": "66100"
+     "top_price": "66100",
+     "special_by": {}
     },
     {
      "type": "084.9620A",
      "supply_area": "115.0768",
      "supply": "17",
      "special": "0",
-     "top_price": "91400"
+     "top_price": "91400",
+     "special_by": {}
     },
     {
      "type": "084.9413B",
      "supply_area": "115.8499",
      "supply": "4",
      "special": "0",
-     "top_price": "86700"
+     "top_price": "86700",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1534,42 +1975,88 @@
      "supply_area": "79.6190",
      "supply": "9",
      "special": "7",
-     "top_price": "42316"
+     "top_price": "42316",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "066.8011A",
      "supply_area": "88.7711",
      "supply": "8",
      "special": "7",
-     "top_price": "48792"
+     "top_price": "48792",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "066.9574B",
      "supply_area": "89.6554",
      "supply": "12",
      "special": "17",
-     "top_price": "49278"
+     "top_price": "49278",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "5",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "3"
+     }
     },
     {
      "type": "066.9292C",
      "supply_area": "90.1721",
      "supply": "16",
      "special": "21",
-     "top_price": "46016"
+     "top_price": "46016",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "5",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     },
     {
      "type": "073.6558",
      "supply_area": "99.4263",
      "supply": "14",
      "special": "15",
-     "top_price": "55250"
+     "top_price": "55250",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "3",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "3"
+     }
     },
     {
      "type": "082.9237",
      "supply_area": "109.6955",
      "supply": "7",
      "special": "11",
-     "top_price": "61620"
+     "top_price": "61620",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     }
    ],
    "competition": []
@@ -1640,7 +2127,8 @@
      "supply_area": "94.9824",
      "supply": "0",
      "special": "1",
-     "top_price": "51220"
+     "top_price": "51220",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1704,35 +2192,40 @@
      "supply_area": "",
      "supply": "3",
      "special": "0",
-     "top_price": "68060"
+     "top_price": "68060",
+     "special_by": {}
     },
     {
      "type": "084.0616D",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "67190"
+     "top_price": "67190",
+     "special_by": {}
     },
     {
      "type": "084.5859E",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "64630"
+     "top_price": "64630",
+     "special_by": {}
     },
     {
      "type": "111.6914A",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "84430"
+     "top_price": "84430",
+     "special_by": {}
     },
     {
      "type": "111.9114B",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "81000"
+     "top_price": "81000",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1796,21 +2289,24 @@
      "supply_area": "",
      "supply": "17",
      "special": "0",
-     "top_price": "65500"
+     "top_price": "65500",
+     "special_by": {}
     },
     {
      "type": "068.4720B",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "62400"
+     "top_price": "62400",
+     "special_by": {}
     },
     {
      "type": "084.9937A",
      "supply_area": "",
      "supply": "311",
      "special": "0",
-     "top_price": "83200"
+     "top_price": "83200",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1874,7 +2370,8 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "57600"
+     "top_price": "57600",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1966,21 +2463,45 @@
      "supply_area": "84.1857",
      "supply": "17",
      "special": "66",
-     "top_price": "7200"
+     "top_price": "7200",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "8",
+      "생애최초": "13",
+      "신생아": "17",
+      "노부모부양": "4",
+      "기관추천": "16"
+     }
     },
     {
      "type": "059.3359B",
      "supply_area": "83.9663",
      "supply": "15",
      "special": "60",
-     "top_price": "7200"
+     "top_price": "7200",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "8",
+      "생애최초": "11",
+      "신생아": "15",
+      "노부모부양": "4",
+      "기관추천": "14"
+     }
     },
     {
      "type": "059.9793C",
      "supply_area": "84.5018",
      "supply": "28",
      "special": "114",
-     "top_price": "7200"
+     "top_price": "7200",
+     "special_by": {
+      "다자녀": "14",
+      "신혼부부": "14",
+      "생애최초": "21",
+      "신생아": "28",
+      "노부모부양": "7",
+      "기관추천": "30"
+     }
     }
    ],
    "competition": []
@@ -2044,28 +2565,32 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "37900"
+     "top_price": "37900",
+     "special_by": {}
     },
     {
      "type": "052.1850A",
      "supply_area": "",
      "supply": "10",
      "special": "0",
-     "top_price": "42500"
+     "top_price": "42500",
+     "special_by": {}
     },
     {
      "type": "059.6120A",
      "supply_area": "",
      "supply": "3",
      "special": "0",
-     "top_price": "48500"
+     "top_price": "48500",
+     "special_by": {}
     },
     {
      "type": "059.0570C",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "45900"
+     "top_price": "45900",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -2129,42 +2654,48 @@
      "supply_area": "",
      "supply": "189",
      "special": "0",
-     "top_price": "87000"
+     "top_price": "87000",
+     "special_by": {}
     },
     {
      "type": "084.9479B",
      "supply_area": "",
      "supply": "256",
      "special": "0",
-     "top_price": "87000"
+     "top_price": "87000",
+     "special_by": {}
     },
     {
      "type": "103.0590A",
      "supply_area": "",
      "supply": "117",
      "special": "0",
-     "top_price": "105300"
+     "top_price": "105300",
+     "special_by": {}
     },
     {
      "type": "112.3407A",
      "supply_area": "",
      "supply": "89",
      "special": "0",
-     "top_price": "119500"
+     "top_price": "119500",
+     "special_by": {}
     },
     {
      "type": "128.5318A",
      "supply_area": "",
      "supply": "77",
      "special": "0",
-     "top_price": "135500"
+     "top_price": "135500",
+     "special_by": {}
     },
     {
      "type": "214.8717D",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "313000"
+     "top_price": "313000",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -2256,28 +2787,52 @@
      "supply_area": "107.4568",
      "supply": "33",
      "special": "37",
-     "top_price": "54110"
+     "top_price": "54110",
+     "special_by": {
+      "다자녀": "7",
+      "신혼부부": "10",
+      "생애최초": "4",
+      "신생아": "7",
+      "노부모부양": "2",
+      "기관추천": "7"
+     }
     },
     {
      "type": "084.9400B",
      "supply_area": "108.5596",
      "supply": "107",
      "special": "125",
-     "top_price": "52460"
+     "top_price": "52460",
+     "special_by": {
+      "다자녀": "23",
+      "신혼부부": "34",
+      "생애최초": "16",
+      "신생아": "23",
+      "노부모부양": "6",
+      "기관추천": "23"
+     }
     },
     {
      "type": "102.8500",
      "supply_area": "129.2246",
      "supply": "270",
      "special": "39",
-     "top_price": "64170"
+     "top_price": "64170",
+     "special_by": {
+      "다자녀": "30",
+      "노부모부양": "9"
+     }
     },
     {
      "type": "116.7300",
      "supply_area": "148.1594",
      "supply": "451",
      "special": "66",
-     "top_price": "73580"
+     "top_price": "73580",
+     "special_by": {
+      "다자녀": "51",
+      "노부모부양": "15"
+     }
     }
    ],
    "competition": []
@@ -2369,28 +2924,52 @@
      "supply_area": "111.2772",
      "supply": "34",
      "special": "57",
-     "top_price": "54110"
+     "top_price": "54110",
+     "special_by": {
+      "다자녀": "9",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "2",
+      "기관추천": "18"
+     }
     },
     {
      "type": "084.9400B",
      "supply_area": "112.3782",
      "supply": "43",
      "special": "70",
-     "top_price": "52460"
+     "top_price": "52460",
+     "special_by": {
+      "다자녀": "11",
+      "신혼부부": "16",
+      "생애최초": "7",
+      "신생아": "11",
+      "노부모부양": "3",
+      "기관추천": "22"
+     }
     },
     {
      "type": "102.8500",
      "supply_area": "133.8484",
      "supply": "198",
      "special": "28",
-     "top_price": "64170"
+     "top_price": "64170",
+     "special_by": {
+      "다자녀": "22",
+      "노부모부양": "6"
+     }
     },
     {
      "type": "116.7300",
      "supply_area": "153.4072",
      "supply": "99",
      "special": "14",
-     "top_price": "73580"
+     "top_price": "73580",
+     "special_by": {
+      "다자녀": "11",
+      "노부모부양": "3"
+     }
     }
    ],
    "competition": []
@@ -2475,35 +3054,40 @@
      "supply_area": "111.0148",
      "supply": "3",
      "special": "0",
-     "top_price": "49900"
+     "top_price": "49900",
+     "special_by": {}
     },
     {
      "type": "084.8642B",
      "supply_area": "109.8683",
      "supply": "9",
      "special": "0",
-     "top_price": "49500"
+     "top_price": "49500",
+     "special_by": {}
     },
     {
      "type": "084.9904C",
      "supply_area": "110.5586",
      "supply": "1",
      "special": "0",
-     "top_price": "48500"
+     "top_price": "48500",
+     "special_by": {}
     },
     {
      "type": "084.9636D",
      "supply_area": "110.1456",
      "supply": "5",
      "special": "0",
-     "top_price": "55800"
+     "top_price": "55800",
+     "special_by": {}
     },
     {
      "type": "089.5130A",
      "supply_area": "116.5228",
      "supply": "1",
      "special": "0",
-     "top_price": "51700"
+     "top_price": "51700",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -2595,28 +3179,60 @@
      "supply_area": "114.0039",
      "supply": "51",
      "special": "52",
-     "top_price": "91560"
+     "top_price": "91560",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "15",
+      "생애최초": "7",
+      "신생아": "10",
+      "노부모부양": "3",
+      "기관추천": "9"
+     }
     },
     {
      "type": "084.9052B",
      "supply_area": "112.6844",
      "supply": "53",
      "special": "53",
-     "top_price": "89160"
+     "top_price": "89160",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "16",
+      "생애최초": "7",
+      "신생아": "10",
+      "노부모부양": "3",
+      "기관추천": "9"
+     }
     },
     {
      "type": "084.8780C",
      "supply_area": "113.4921",
      "supply": "16",
      "special": "21",
-     "top_price": "90250"
+     "top_price": "90250",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "5",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "2",
+      "기관추천": "4"
+     }
     },
     {
      "type": "084.7933D",
      "supply_area": "113.2030",
      "supply": "107",
      "special": "106",
-     "top_price": "90020"
+     "top_price": "90020",
+     "special_by": {
+      "다자녀": "16",
+      "신혼부부": "31",
+      "생애최초": "13",
+      "신생아": "20",
+      "노부모부양": "6",
+      "기관추천": "20"
+     }
     }
    ],
    "competition": []
@@ -2708,42 +3324,67 @@
      "supply_area": "112.6062",
      "supply": "101",
      "special": "126",
-     "top_price": "58800"
+     "top_price": "58800",
+     "special_by": {
+      "다자녀": "23",
+      "신혼부부": "34",
+      "생애최초": "16",
+      "신생아": "23",
+      "노부모부양": "7",
+      "기관추천": "23"
+     }
     },
     {
      "type": "084.9469B",
      "supply_area": "113.4918",
      "supply": "42",
      "special": "55",
-     "top_price": "58660"
+     "top_price": "58660",
+     "special_by": {
+      "다자녀": "10",
+      "신혼부부": "15",
+      "생애최초": "7",
+      "신생아": "10",
+      "노부모부양": "3",
+      "기관추천": "10"
+     }
     },
     {
      "type": "112.9922A",
      "supply_area": "148.1817",
      "supply": "14",
      "special": "3",
-     "top_price": "79750"
+     "top_price": "79750",
+     "special_by": {
+      "다자녀": "2",
+      "노부모부양": "1"
+     }
     },
     {
      "type": "132.9820A",
      "supply_area": "173.5633",
      "supply": "12",
      "special": "1",
-     "top_price": "93870"
+     "top_price": "93870",
+     "special_by": {
+      "다자녀": "1"
+     }
     },
     {
      "type": "138.9652P",
      "supply_area": "186.0835",
      "supply": "1",
      "special": "0",
-     "top_price": "138820"
+     "top_price": "138820",
+     "special_by": {}
     },
     {
      "type": "165.9676P",
      "supply_area": "222.4498",
      "supply": "1",
      "special": "0",
-     "top_price": "165950"
+     "top_price": "165950",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -2835,63 +3476,134 @@
      "supply_area": "68.2700",
      "supply": "54",
      "special": "58",
-     "top_price": "55600"
+     "top_price": "55600",
+     "special_by": {
+      "다자녀": "10",
+      "신혼부부": "16",
+      "생애최초": "7",
+      "신생아": "11",
+      "노부모부양": "3",
+      "기관추천": "11"
+     }
     },
     {
      "type": "050.2600B",
      "supply_area": "68.2600",
      "supply": "22",
      "special": "22",
-     "top_price": "56000"
+     "top_price": "56000",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "6",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     },
     {
      "type": "059.9500A",
      "supply_area": "81.3900",
      "supply": "140",
      "special": "167",
-     "top_price": "74600"
+     "top_price": "74600",
+     "special_by": {
+      "다자녀": "30",
+      "신혼부부": "46",
+      "생애최초": "21",
+      "신생아": "30",
+      "노부모부양": "9",
+      "기관추천": "31"
+     }
     },
     {
      "type": "059.9900B",
      "supply_area": "81.6500",
      "supply": "153",
      "special": "181",
-     "top_price": "78000"
+     "top_price": "78000",
+     "special_by": {
+      "다자녀": "32",
+      "신혼부부": "50",
+      "생애최초": "23",
+      "신생아": "33",
+      "노부모부양": "10",
+      "기관추천": "33"
+     }
     },
     {
      "type": "059.9300C",
      "supply_area": "82.0700",
      "supply": "99",
      "special": "114",
-     "top_price": "73400"
+     "top_price": "73400",
+     "special_by": {
+      "다자녀": "20",
+      "신혼부부": "31",
+      "생애최초": "14",
+      "신생아": "21",
+      "노부모부양": "6",
+      "기관추천": "22"
+     }
     },
     {
      "type": "075.5600A",
      "supply_area": "102.3600",
      "supply": "66",
      "special": "70",
-     "top_price": "91000"
+     "top_price": "91000",
+     "special_by": {
+      "다자녀": "12",
+      "신혼부부": "20",
+      "생애최초": "9",
+      "신생아": "13",
+      "노부모부양": "4",
+      "기관추천": "12"
+     }
     },
     {
      "type": "075.6200B",
      "supply_area": "101.5400",
      "supply": "29",
      "special": "31",
-     "top_price": "93000"
+     "top_price": "93000",
+     "special_by": {
+      "다자녀": "6",
+      "신혼부부": "9",
+      "생애최초": "4",
+      "신생아": "6",
+      "노부모부양": "1",
+      "기관추천": "5"
+     }
     },
     {
      "type": "084.9200A",
      "supply_area": "114.7300",
      "supply": "11",
      "special": "9",
-     "top_price": "94100"
+     "top_price": "94100",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "기관추천": "1"
+     }
     },
     {
      "type": "084.9800B",
      "supply_area": "113.7100",
      "supply": "30",
      "special": "33",
-     "top_price": "103200"
+     "top_price": "103200",
+     "special_by": {
+      "다자녀": "6",
+      "신혼부부": "9",
+      "생애최초": "4",
+      "신생아": "6",
+      "노부모부양": "1",
+      "기관추천": "7"
+     }
     }
    ],
    "competition": []
@@ -2983,42 +3695,82 @@
      "supply_area": "113.7053",
      "supply": "249",
      "special": "309",
-     "top_price": "48060"
+     "top_price": "48060",
+     "special_by": {
+      "다자녀": "57",
+      "신혼부부": "84",
+      "생애최초": "39",
+      "신생아": "56",
+      "노부모부양": "17",
+      "기관추천": "56"
+     }
     },
     {
      "type": "084.9394B",
      "supply_area": "112.1241",
      "supply": "111",
      "special": "133",
-     "top_price": "48290"
+     "top_price": "48290",
+     "special_by": {
+      "다자녀": "24",
+      "신혼부부": "37",
+      "생애최초": "17",
+      "신생아": "24",
+      "노부모부양": "7",
+      "기관추천": "24"
+     }
     },
     {
      "type": "084.8936C",
      "supply_area": "115.4173",
      "supply": "111",
      "special": "132",
-     "top_price": "47840"
+     "top_price": "47840",
+     "special_by": {
+      "다자녀": "24",
+      "신혼부부": "36",
+      "생애최초": "17",
+      "신생아": "24",
+      "노부모부양": "7",
+      "기관추천": "24"
+     }
     },
     {
      "type": "084.9855D",
      "supply_area": "115.7507",
      "supply": "108",
      "special": "129",
-     "top_price": "47930"
+     "top_price": "47930",
+     "special_by": {
+      "다자녀": "23",
+      "신혼부부": "35",
+      "생애최초": "16",
+      "신생아": "24",
+      "노부모부양": "7",
+      "기관추천": "24"
+     }
     },
     {
      "type": "103.9572A",
      "supply_area": "137.7130",
      "supply": "44",
      "special": "7",
-     "top_price": "62230"
+     "top_price": "62230",
+     "special_by": {
+      "다자녀": "5",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "103.9213B",
      "supply_area": "135.3774",
      "supply": "41",
      "special": "6",
-     "top_price": "62440"
+     "top_price": "62440",
+     "special_by": {
+      "다자녀": "5",
+      "노부모부양": "1"
+     }
     }
    ],
    "competition": []
@@ -3103,21 +3855,24 @@
      "supply_area": "79.1587",
      "supply": "0",
      "special": "78",
-     "top_price": "50844"
+     "top_price": "50844",
+     "special_by": {}
     },
     {
      "type": "055.8800B",
      "supply_area": "79.1304",
      "supply": "0",
      "special": "56",
-     "top_price": "50826"
+     "top_price": "50826",
+     "special_by": {}
     },
     {
      "type": "055.7600C",
      "supply_area": "78.9605",
      "supply": "0",
      "special": "42",
-     "top_price": "50717"
+     "top_price": "50717",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3181,28 +3936,32 @@
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "48220"
+     "top_price": "48220",
+     "special_by": {}
     },
     {
      "type": "084.5993C",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "46700"
+     "top_price": "46700",
+     "special_by": {}
     },
     {
      "type": "090.9392",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "54030"
+     "top_price": "54030",
+     "special_by": {}
     },
     {
      "type": "123.0091",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "76810"
+     "top_price": "76810",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3266,14 +4025,16 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "53600"
+     "top_price": "53600",
+     "special_by": {}
     },
     {
      "type": "059.9700C",
      "supply_area": "",
      "supply": "17",
      "special": "0",
-     "top_price": "56600"
+     "top_price": "56600",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3337,7 +4098,8 @@
      "supply_area": "",
      "supply": "10",
      "special": "0",
-     "top_price": "76112"
+     "top_price": "76112",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3401,14 +4163,16 @@
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "70000"
+     "top_price": "70000",
+     "special_by": {}
     },
     {
      "type": "084.9861B",
      "supply_area": "",
      "supply": "6",
      "special": "0",
-     "top_price": "94000"
+     "top_price": "94000",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3472,7 +4236,8 @@
      "supply_area": "",
      "supply": "68",
      "special": "0",
-     "top_price": "60090"
+     "top_price": "60090",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3536,7 +4301,8 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "47770"
+     "top_price": "47770",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3600,7 +4366,8 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "48400"
+     "top_price": "48400",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -3692,14 +4459,29 @@
      "supply_area": "111.6030",
      "supply": "24",
      "special": "23",
-     "top_price": "37800"
+     "top_price": "37800",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "7",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     },
     {
      "type": "084.9376B",
      "supply_area": "113.4280",
      "supply": "6",
      "special": "5",
-     "top_price": "37800"
+     "top_price": "37800",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     }
    ],
    "competition": []
@@ -3791,14 +4573,30 @@
      "supply_area": "113.1200",
      "supply": "16",
      "special": "21",
-     "top_price": "57020"
+     "top_price": "57020",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "5",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     },
     {
      "type": "084.9700B",
      "supply_area": "114.2400",
      "supply": "12",
      "special": "12",
-     "top_price": "55630"
+     "top_price": "55630",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "4",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     }
    ],
    "competition": []
@@ -3890,28 +4688,60 @@
      "supply_area": "115.3736",
      "supply": "35",
      "special": "49",
-     "top_price": "84433"
+     "top_price": "84433",
+     "special_by": {
+      "다자녀": "9",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "3",
+      "기관추천": "9"
+     }
     },
     {
      "type": "084.8158B",
      "supply_area": "116.3866",
      "supply": "38",
      "special": "54",
-     "top_price": "86878"
+     "top_price": "86878",
+     "special_by": {
+      "다자녀": "10",
+      "신혼부부": "14",
+      "생애최초": "7",
+      "신생아": "10",
+      "노부모부양": "3",
+      "기관추천": "10"
+     }
     },
     {
      "type": "084.6092C",
      "supply_area": "116.2937",
      "supply": "18",
      "special": "28",
-     "top_price": "82553"
+     "top_price": "82553",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "7",
+      "생애최초": "4",
+      "신생아": "5",
+      "노부모부양": "2",
+      "기관추천": "5"
+     }
     },
     {
      "type": "084.3643D",
      "supply_area": "115.8208",
      "supply": "38",
      "special": "54",
-     "top_price": "86456"
+     "top_price": "86456",
+     "special_by": {
+      "다자녀": "10",
+      "신혼부부": "14",
+      "생애최초": "7",
+      "신생아": "10",
+      "노부모부양": "3",
+      "기관추천": "10"
+     }
     }
    ],
    "competition": []
@@ -4003,42 +4833,79 @@
      "supply_area": "100.3061",
      "supply": "32",
      "special": "38",
-     "top_price": "61400"
+     "top_price": "61400",
+     "special_by": {
+      "다자녀": "7",
+      "신혼부부": "10",
+      "생애최초": "5",
+      "신생아": "7",
+      "노부모부양": "2",
+      "기관추천": "7"
+     }
     },
     {
      "type": "084.9947A",
      "supply_area": "113.9648",
      "supply": "69",
      "special": "80",
-     "top_price": "74800"
+     "top_price": "74800",
+     "special_by": {
+      "다자녀": "14",
+      "신혼부부": "22",
+      "생애최초": "10",
+      "신생아": "15",
+      "노부모부양": "4",
+      "기관추천": "15"
+     }
     },
     {
      "type": "084.8542B",
      "supply_area": "114.5454",
      "supply": "18",
      "special": "22",
-     "top_price": "74600"
+     "top_price": "74600",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "6",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     },
     {
      "type": "084.8894C",
      "supply_area": "113.6177",
      "supply": "18",
      "special": "19",
-     "top_price": "67800"
+     "top_price": "67800",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "6",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "3"
+     }
     },
     {
      "type": "123.7781",
      "supply_area": "164.6002",
      "supply": "30",
      "special": "5",
-     "top_price": "109500"
+     "top_price": "109500",
+     "special_by": {
+      "다자녀": "4",
+      "노부모부양": "1"
+     }
     },
     {
      "type": "146.8598P",
      "supply_area": "197.3056",
      "supply": "2",
      "special": "0",
-     "top_price": "165000"
+     "top_price": "165000",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4130,56 +4997,105 @@
      "supply_area": "93.4493",
      "supply": "21",
      "special": "28",
-     "top_price": "47030"
+     "top_price": "47030",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "8",
+      "생애최초": "4",
+      "신생아": "5",
+      "노부모부양": "1",
+      "기관추천": "5"
+     }
     },
     {
      "type": "084.9592A",
      "supply_area": "109.7877",
      "supply": "164",
      "special": "207",
-     "top_price": "55750"
+     "top_price": "55750",
+     "special_by": {
+      "다자녀": "38",
+      "신혼부부": "56",
+      "생애최초": "26",
+      "신생아": "38",
+      "노부모부양": "11",
+      "기관추천": "38"
+     }
     },
     {
      "type": "084.9767B",
      "supply_area": "110.1318",
      "supply": "61",
      "special": "77",
-     "top_price": "55720"
+     "top_price": "55720",
+     "special_by": {
+      "다자녀": "14",
+      "신혼부부": "21",
+      "생애최초": "10",
+      "신생아": "14",
+      "노부모부양": "4",
+      "기관추천": "14"
+     }
     },
     {
      "type": "084.9221C",
      "supply_area": "110.8140",
      "supply": "61",
      "special": "77",
-     "top_price": "55970"
+     "top_price": "55970",
+     "special_by": {
+      "다자녀": "14",
+      "신혼부부": "21",
+      "생애최초": "10",
+      "신생아": "14",
+      "노부모부양": "4",
+      "기관추천": "14"
+     }
     },
     {
      "type": "084.9140D",
      "supply_area": "109.7898",
      "supply": "54",
      "special": "71",
-     "top_price": "55450"
+     "top_price": "55450",
+     "special_by": {
+      "다자녀": "13",
+      "신혼부부": "19",
+      "생애최초": "9",
+      "신생아": "13",
+      "노부모부양": "4",
+      "기관추천": "13"
+     }
     },
     {
      "type": "107.9722A",
      "supply_area": "139.4518",
      "supply": "50",
      "special": "8",
-     "top_price": "67850"
+     "top_price": "67850",
+     "special_by": {
+      "다자녀": "6",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "107.8263B",
      "supply_area": "138.2513",
      "supply": "45",
      "special": "7",
-     "top_price": "67903"
+     "top_price": "67903",
+     "special_by": {
+      "다자녀": "5",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "147.9931P",
      "supply_area": "193.4147",
      "supply": "2",
      "special": "0",
-     "top_price": "124758"
+     "top_price": "124758",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4264,35 +5180,40 @@
      "supply_area": "109.3566",
      "supply": "9",
      "special": "0",
-     "top_price": "63900"
+     "top_price": "63900",
+     "special_by": {}
     },
     {
      "type": "084.1200B",
      "supply_area": "108.2899",
      "supply": "9",
      "special": "0",
-     "top_price": "62800"
+     "top_price": "62800",
+     "special_by": {}
     },
     {
      "type": "084.1100C",
      "supply_area": "107.9679",
      "supply": "9",
      "special": "0",
-     "top_price": "64800"
+     "top_price": "64800",
+     "special_by": {}
     },
     {
      "type": "084.4800D",
      "supply_area": "108.2145",
      "supply": "9",
      "special": "0",
-     "top_price": "64800"
+     "top_price": "64800",
+     "special_by": {}
     },
     {
      "type": "084.1200E",
      "supply_area": "109.2199",
      "supply": "9",
      "special": "0",
-     "top_price": "63800"
+     "top_price": "63800",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4384,56 +5305,88 @@
      "supply_area": "82.4639",
      "supply": "7",
      "special": "6",
-     "top_price": "44500"
+     "top_price": "44500",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "059.9960B",
      "supply_area": "83.0805",
      "supply": "2",
      "special": "4",
-     "top_price": "42900"
+     "top_price": "42900",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "059.9759C",
      "supply_area": "83.3100",
      "supply": "3",
      "special": "4",
-     "top_price": "44000"
+     "top_price": "44000",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "069.9865A",
      "supply_area": "95.6338",
      "supply": "5",
      "special": "6",
-     "top_price": "49000"
+     "top_price": "49000",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "074.9936A",
      "supply_area": "102.5345",
      "supply": "3",
      "special": "0",
-     "top_price": "53200"
+     "top_price": "53200",
+     "special_by": {}
     },
     {
      "type": "074.9980B",
      "supply_area": "102.7434",
      "supply": "3",
      "special": "1",
-     "top_price": "50900"
+     "top_price": "50900",
+     "special_by": {
+      "신혼부부": "1"
+     }
     },
     {
      "type": "084.9999A",
      "supply_area": "115.7877",
      "supply": "3",
      "special": "0",
-     "top_price": "57900"
+     "top_price": "57900",
+     "special_by": {}
     },
     {
      "type": "084.9989B",
      "supply_area": "115.8004",
      "supply": "1",
      "special": "0",
-     "top_price": "55300"
+     "top_price": "55300",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4504,7 +5457,8 @@
      "supply_area": "112.6937",
      "supply": "0",
      "special": "1",
-     "top_price": "34320"
+     "top_price": "34320",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4582,21 +5536,24 @@
      "supply_area": "78.2407",
      "supply": "1",
      "special": "0",
-     "top_price": "53200"
+     "top_price": "53200",
+     "special_by": {}
     },
     {
      "type": "084.9400A",
      "supply_area": "109.0930",
      "supply": "0",
      "special": "1",
-     "top_price": "73300"
+     "top_price": "73300",
+     "special_by": {}
     },
     {
      "type": "124.0000",
      "supply_area": "158.7075",
      "supply": "2",
      "special": "0",
-     "top_price": "101100"
+     "top_price": "101100",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4674,14 +5631,16 @@
      "supply_area": "136.9746",
      "supply": "0",
      "special": "1",
-     "top_price": "95400"
+     "top_price": "95400",
+     "special_by": {}
     },
     {
      "type": "124.0000",
      "supply_area": "157.4460",
      "supply": "2",
      "special": "0",
-     "top_price": "106900"
+     "top_price": "106900",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4745,49 +5704,56 @@
      "supply_area": "",
      "supply": "112",
      "special": "0",
-     "top_price": "162200"
+     "top_price": "162200",
+     "special_by": {}
     },
     {
      "type": "084.7123B",
      "supply_area": "",
      "supply": "45",
      "special": "0",
-     "top_price": "149900"
+     "top_price": "149900",
+     "special_by": {}
     },
     {
      "type": "084.9874C",
      "supply_area": "",
      "supply": "267",
      "special": "0",
-     "top_price": "159800"
+     "top_price": "159800",
+     "special_by": {}
     },
     {
      "type": "084.9074D",
      "supply_area": "",
      "supply": "62",
      "special": "0",
-     "top_price": "159900"
+     "top_price": "159900",
+     "special_by": {}
     },
     {
      "type": "084.9872E",
      "supply_area": "",
      "supply": "36",
      "special": "0",
-     "top_price": "161300"
+     "top_price": "161300",
+     "special_by": {}
     },
     {
      "type": "084.9928F",
      "supply_area": "",
      "supply": "262",
      "special": "0",
-     "top_price": "159900"
+     "top_price": "159900",
+     "special_by": {}
     },
     {
      "type": "187.5097P",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "572700"
+     "top_price": "572700",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4858,14 +5824,16 @@
      "supply_area": "80.4521",
      "supply": "0",
      "special": "2",
-     "top_price": "31000"
+     "top_price": "31000",
+     "special_by": {}
     },
     {
      "type": "074.8177A",
      "supply_area": "98.5998",
      "supply": "0",
      "special": "1",
-     "top_price": "38500"
+     "top_price": "38500",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -4943,14 +5911,16 @@
      "supply_area": "109.3125",
      "supply": "1",
      "special": "3",
-     "top_price": "66303"
+     "top_price": "66303",
+     "special_by": {}
     },
     {
      "type": "084.9478B",
      "supply_area": "109.9698",
      "supply": "1",
      "special": "1",
-     "top_price": "66034"
+     "top_price": "66034",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5014,7 +5984,8 @@
      "supply_area": "",
      "supply": "12",
      "special": "0",
-     "top_price": "71900"
+     "top_price": "71900",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5078,21 +6049,24 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "45000"
+     "top_price": "45000",
+     "special_by": {}
     },
     {
      "type": "038.3400",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "45000"
+     "top_price": "45000",
+     "special_by": {}
     },
     {
      "type": "056.4500",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "59900"
+     "top_price": "59900",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5156,21 +6130,24 @@
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "63600"
+     "top_price": "63600",
+     "special_by": {}
     },
     {
      "type": "084.9418D",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "57550"
+     "top_price": "57550",
+     "special_by": {}
     },
     {
      "type": "084.9942E",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "60000"
+     "top_price": "60000",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5234,14 +6211,16 @@
      "supply_area": "",
      "supply": "21",
      "special": "0",
-     "top_price": "243300"
+     "top_price": "243300",
+     "special_by": {}
     },
     {
      "type": "084.9965B",
      "supply_area": "",
      "supply": "14",
      "special": "0",
-     "top_price": "229500"
+     "top_price": "229500",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5312,7 +6291,8 @@
      "supply_area": "105.8939",
      "supply": "1",
      "special": "0",
-     "top_price": "122202"
+     "top_price": "122202",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5404,49 +6384,105 @@
      "supply_area": "78.5038",
      "supply": "10",
      "special": "11",
-     "top_price": "87900"
+     "top_price": "87900",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "059.7421B",
      "supply_area": "78.3014",
      "supply": "42",
      "special": "45",
-     "top_price": "87700"
+     "top_price": "87700",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "8",
+      "노부모부양": "2",
+      "기관추천": "8"
+     }
     },
     {
      "type": "084.8481A",
      "supply_area": "109.1804",
      "supply": "36",
      "special": "50",
-     "top_price": "118500"
+     "top_price": "118500",
+     "special_by": {
+      "다자녀": "9",
+      "신혼부부": "13",
+      "생애최초": "7",
+      "신생아": "9",
+      "노부모부양": "3",
+      "기관추천": "9"
+     }
     },
     {
      "type": "084.9648B",
      "supply_area": "109.1521",
      "supply": "10",
      "special": "11",
-     "top_price": "119700"
+     "top_price": "119700",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "084.9558C",
      "supply_area": "109.1838",
      "supply": "44",
      "special": "61",
-     "top_price": "118000"
+     "top_price": "118000",
+     "special_by": {
+      "다자녀": "11",
+      "신혼부부": "16",
+      "생애최초": "8",
+      "신생아": "11",
+      "노부모부양": "3",
+      "기관추천": "12"
+     }
     },
     {
      "type": "084.9796D",
      "supply_area": "109.5564",
      "supply": "10",
      "special": "11",
-     "top_price": "119800"
+     "top_price": "119800",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "084.9149E",
      "supply_area": "110.2750",
      "supply": "38",
      "special": "47",
-     "top_price": "118000"
+     "top_price": "118000",
+     "special_by": {
+      "다자녀": "9",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "2",
+      "기관추천": "8"
+     }
     }
    ],
    "competition": []
@@ -5531,14 +6567,16 @@
      "supply_area": "84.0121",
      "supply": "0",
      "special": "1",
-     "top_price": "36707"
+     "top_price": "36707",
+     "special_by": {}
     },
     {
      "type": "056.0000O",
      "supply_area": "85.5745",
      "supply": "0",
      "special": "60",
-     "top_price": "39358"
+     "top_price": "39358",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5630,14 +6668,29 @@
      "supply_area": "100.3750",
      "supply": "6",
      "special": "7",
-     "top_price": "57874"
+     "top_price": "57874",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "2",
+      "기관추천": "1"
+     }
     },
     {
      "type": "084.9818",
      "supply_area": "124.4806",
      "supply": "10",
      "special": "12",
-     "top_price": "73237"
+     "top_price": "73237",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "2",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     }
    ],
    "competition": []
@@ -5729,35 +6782,64 @@
      "supply_area": "101.2645",
      "supply": "58",
      "special": "72",
-     "top_price": "50300"
+     "top_price": "50300",
+     "special_by": {
+      "다자녀": "13",
+      "신혼부부": "20",
+      "생애최초": "9",
+      "신생아": "13",
+      "노부모부양": "4",
+      "기관추천": "13"
+     }
     },
     {
      "type": "084.9115A",
      "supply_area": "111.1935",
      "supply": "91",
      "special": "112",
-     "top_price": "55600"
+     "top_price": "55600",
+     "special_by": {
+      "다자녀": "20",
+      "신혼부부": "31",
+      "생애최초": "14",
+      "신생아": "21",
+      "노부모부양": "6",
+      "기관추천": "20"
+     }
     },
     {
      "type": "084.9519B",
      "supply_area": "113.1335",
      "supply": "125",
      "special": "152",
-     "top_price": "55300"
+     "top_price": "55300",
+     "special_by": {
+      "다자녀": "28",
+      "신혼부부": "42",
+      "생애최초": "19",
+      "신생아": "28",
+      "노부모부양": "8",
+      "기관추천": "27"
+     }
     },
     {
      "type": "119.6206",
      "supply_area": "145.2968",
      "supply": "66",
      "special": "10",
-     "top_price": "72200"
+     "top_price": "72200",
+     "special_by": {
+      "다자녀": "8",
+      "노부모부양": "2"
+     }
     },
     {
      "type": "182.9263",
      "supply_area": "236.6537",
      "supply": "4",
      "special": "0",
-     "top_price": "139500"
+     "top_price": "139500",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -5849,21 +6931,38 @@
      "supply_area": "79.6228",
      "supply": "31",
      "special": "39",
-     "top_price": "38827"
+     "top_price": "38827",
+     "special_by": {
+      "다자녀": "7",
+      "신혼부부": "11",
+      "생애최초": "5",
+      "신생아": "7",
+      "노부모부양": "2",
+      "기관추천": "7"
+     }
     },
     {
      "type": "074.9225A",
      "supply_area": "99.1134",
      "supply": "1",
      "special": "0",
-     "top_price": "49307"
+     "top_price": "49307",
+     "special_by": {}
     },
     {
      "type": "074.9823B",
      "supply_area": "100.2759",
      "supply": "19",
      "special": "26",
-     "top_price": "49392"
+     "top_price": "49392",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "7",
+      "생애최초": "3",
+      "신생아": "5",
+      "노부모부양": "1",
+      "기관추천": "5"
+     }
     }
    ],
    "competition": []
@@ -5955,14 +7054,30 @@
      "supply_area": "83.9158",
      "supply": "64",
      "special": "119",
-     "top_price": "51100"
+     "top_price": "51100",
+     "special_by": {
+      "다자녀": "18",
+      "신혼부부": "28",
+      "생애최초": "31",
+      "신생아": "18",
+      "노부모부양": "5",
+      "기관추천": "19"
+     }
     },
     {
      "type": "059.9992B",
      "supply_area": "84.4484",
      "supply": "63",
      "special": "112",
-     "top_price": "53200"
+     "top_price": "53200",
+     "special_by": {
+      "다자녀": "17",
+      "신혼부부": "26",
+      "생애최초": "30",
+      "신생아": "18",
+      "노부모부양": "5",
+      "기관추천": "16"
+     }
     }
    ],
    "competition": []
@@ -6054,35 +7169,57 @@
      "supply_area": "103.4214",
      "supply": "1",
      "special": "0",
-     "top_price": "68400"
+     "top_price": "68400",
+     "special_by": {}
     },
     {
      "type": "075.9849",
      "supply_area": "105.7979",
      "supply": "1",
      "special": "0",
-     "top_price": "68600"
+     "top_price": "68600",
+     "special_by": {}
     },
     {
      "type": "084.9630A",
      "supply_area": "108.4411",
      "supply": "6",
      "special": "8",
-     "top_price": "74900"
+     "top_price": "74900",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "1",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "084.9650B",
      "supply_area": "108.7147",
      "supply": "2",
      "special": "3",
-     "top_price": "75100"
+     "top_price": "75100",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1"
+     }
     },
     {
      "type": "084.8968C",
      "supply_area": "109.3721",
      "supply": "3",
      "special": "5",
-     "top_price": "74000"
+     "top_price": "74000",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     }
    ],
    "competition": []
@@ -6174,28 +7311,39 @@
      "supply_area": "85.9124",
      "supply": "5",
      "special": "0",
-     "top_price": "93820"
+     "top_price": "93820",
+     "special_by": {}
     },
     {
      "type": "063.0513B",
      "supply_area": "86.5401",
      "supply": "2",
      "special": "0",
-     "top_price": "91630"
+     "top_price": "91630",
+     "special_by": {}
     },
     {
      "type": "074.3998B",
      "supply_area": "101.2013",
      "supply": "3",
      "special": "0",
-     "top_price": "110210"
+     "top_price": "110210",
+     "special_by": {}
     },
     {
      "type": "084.0948",
      "supply_area": "113.4211",
      "supply": "21",
      "special": "22",
-     "top_price": "132100"
+     "top_price": "132100",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "6",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     }
    ],
    "competition": []
@@ -6280,21 +7428,24 @@
      "supply_area": "109.4722",
      "supply": "5",
      "special": "0",
-     "top_price": "45050"
+     "top_price": "45050",
+     "special_by": {}
     },
     {
      "type": "084.9740B",
      "supply_area": "110.4235",
      "supply": "1",
      "special": "0",
-     "top_price": "45550"
+     "top_price": "45550",
+     "special_by": {}
     },
     {
      "type": "114.8419",
      "supply_area": "147.4613",
      "supply": "1",
      "special": "0",
-     "top_price": "61100"
+     "top_price": "61100",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6365,7 +7516,8 @@
      "supply_area": "129.9614",
      "supply": "1",
      "special": "0",
-     "top_price": "95218"
+     "top_price": "95218",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6436,7 +7588,8 @@
      "supply_area": "110.3239",
      "supply": "0",
      "special": "2",
-     "top_price": "80338"
+     "top_price": "80338",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6500,7 +7653,8 @@
      "supply_area": "",
      "supply": "3",
      "special": "0",
-     "top_price": "492800"
+     "top_price": "492800",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6564,14 +7718,16 @@
      "supply_area": "",
      "supply": "167",
      "special": "0",
-     "top_price": "51800"
+     "top_price": "51800",
+     "special_by": {}
     },
     {
      "type": "084.9900B",
      "supply_area": "",
      "supply": "20",
      "special": "0",
-     "top_price": "51460"
+     "top_price": "51460",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6642,14 +7798,16 @@
      "supply_area": "112.9908",
      "supply": "0",
      "special": "1",
-     "top_price": "35550"
+     "top_price": "35550",
+     "special_by": {}
     },
     {
      "type": "099.8624A",
      "supply_area": "132.2281",
      "supply": "0",
      "special": "1",
-     "top_price": "37708"
+     "top_price": "37708",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6713,14 +7871,16 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "35400"
+     "top_price": "35400",
+     "special_by": {}
     },
     {
      "type": "099.8624A",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "39338"
+     "top_price": "39338",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6791,7 +7951,8 @@
      "supply_area": "109.2769",
      "supply": "1",
      "special": "0",
-     "top_price": "54780"
+     "top_price": "54780",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6855,35 +8016,40 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "66460"
+     "top_price": "66460",
+     "special_by": {}
     },
     {
      "type": "084.7324C",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "68060"
+     "top_price": "68060",
+     "special_by": {}
     },
     {
      "type": "084.0616D",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "67190"
+     "top_price": "67190",
+     "special_by": {}
     },
     {
      "type": "111.6914A",
      "supply_area": "",
      "supply": "4",
      "special": "0",
-     "top_price": "84430"
+     "top_price": "84430",
+     "special_by": {}
     },
     {
      "type": "111.9114B",
      "supply_area": "",
      "supply": "6",
      "special": "0",
-     "top_price": "85290"
+     "top_price": "85290",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -6961,14 +8127,16 @@
      "supply_area": "81.3053",
      "supply": "0",
      "special": "1",
-     "top_price": "80170"
+     "top_price": "80170",
+     "special_by": {}
     },
     {
      "type": "059.9960B",
      "supply_area": "80.9982",
      "supply": "1",
      "special": "0",
-     "top_price": "86670"
+     "top_price": "86670",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -7032,14 +8200,16 @@
      "supply_area": "",
      "supply": "3",
      "special": "0",
-     "top_price": "80800"
+     "top_price": "80800",
+     "special_by": {}
     },
     {
      "type": "059.9353",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "75700"
+     "top_price": "75700",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -7103,7 +8273,8 @@
      "supply_area": "",
      "supply": "14",
      "special": "0",
-     "top_price": "95300"
+     "top_price": "95300",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -7195,56 +8366,106 @@
      "supply_area": "110.3043",
      "supply": "11",
      "special": "16",
-     "top_price": "89800"
+     "top_price": "89800",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "4",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "3"
+     }
     },
     {
      "type": "084.8508B",
      "supply_area": "109.5720",
      "supply": "39",
      "special": "45",
-     "top_price": "89300"
+     "top_price": "89300",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "12",
+      "생애최초": "6",
+      "신생아": "8",
+      "노부모부양": "3",
+      "기관추천": "8"
+     }
     },
     {
      "type": "084.6391C",
      "supply_area": "109.4560",
      "supply": "18",
      "special": "21",
-     "top_price": "89300"
+     "top_price": "89300",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "6",
+      "생애최초": "2",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
     },
     {
      "type": "084.9663D",
      "supply_area": "110.3141",
      "supply": "33",
      "special": "37",
-     "top_price": "89300"
+     "top_price": "89300",
+     "special_by": {
+      "다자녀": "7",
+      "신혼부부": "10",
+      "생애최초": "4",
+      "신생아": "7",
+      "노부모부양": "2",
+      "기관추천": "7"
+     }
     },
     {
      "type": "084.9739E",
      "supply_area": "110.0074",
      "supply": "8",
      "special": "6",
-     "top_price": "89300"
+     "top_price": "89300",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "094.9503A",
      "supply_area": "122.4832",
      "supply": "129",
      "special": "18",
-     "top_price": "90400"
+     "top_price": "90400",
+     "special_by": {
+      "다자녀": "14",
+      "노부모부양": "4"
+     }
     },
     {
      "type": "094.9610B",
      "supply_area": "122.8089",
      "supply": "13",
      "special": "1",
-     "top_price": "90400"
+     "top_price": "90400",
+     "special_by": {
+      "다자녀": "1"
+     }
     },
     {
      "type": "099.6774A",
      "supply_area": "127.9532",
      "supply": "72",
      "special": "9",
-     "top_price": "91100"
+     "top_price": "91100",
+     "special_by": {
+      "다자녀": "7",
+      "노부모부양": "2"
+     }
     }
    ],
    "competition": []
@@ -7336,28 +8557,53 @@
      "supply_area": "91.5397",
      "supply": "38",
      "special": "48",
-     "top_price": "65900"
+     "top_price": "65900",
+     "special_by": {
+      "다자녀": "13",
+      "신혼부부": "9",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "3",
+      "기관추천": "8"
+     }
     },
     {
      "type": "068.4720B",
      "supply_area": "91.6032",
      "supply": "1",
      "special": "0",
-     "top_price": "62400"
+     "top_price": "62400",
+     "special_by": {}
     },
     {
      "type": "084.9937A",
      "supply_area": "113.3337",
      "supply": "183",
      "special": "221",
-     "top_price": "83200"
+     "top_price": "83200",
+     "special_by": {
+      "다자녀": "61",
+      "신혼부부": "40",
+      "생애최초": "28",
+      "신생아": "40",
+      "노부모부양": "12",
+      "기관추천": "40"
+     }
     },
     {
      "type": "084.9890B",
      "supply_area": "113.4247",
      "supply": "95",
      "special": "114",
-     "top_price": "81600"
+     "top_price": "81600",
+     "special_by": {
+      "다자녀": "31",
+      "신혼부부": "21",
+      "생애최초": "15",
+      "신생아": "21",
+      "노부모부양": "6",
+      "기관추천": "20"
+     }
     }
    ],
    "competition": []
@@ -7463,14 +8709,32 @@
      "supply_area": "109.4815",
      "supply": "97",
      "special": "558",
-     "top_price": "56617"
+     "top_price": "56617",
+     "special_by": {
+      "다자녀": "66",
+      "신혼부부": "66",
+      "생애최초": "98",
+      "신생아": "131",
+      "노부모부양": "33",
+      "기관추천": "98",
+      "기타": "66"
+     }
     },
     {
      "type": "084.0000B",
      "supply_area": "109.8332",
      "supply": "28",
      "special": "154",
-     "top_price": "55973"
+     "top_price": "55973",
+     "special_by": {
+      "다자녀": "18",
+      "신혼부부": "18",
+      "생애최초": "28",
+      "신생아": "36",
+      "노부모부양": "9",
+      "기관추천": "27",
+      "기타": "18"
+     }
     }
    ],
    "competition": []
@@ -7576,21 +8840,48 @@
      "supply_area": "108.9879",
      "supply": "87",
      "special": "490",
-     "top_price": "58420"
+     "top_price": "58420",
+     "special_by": {
+      "다자녀": "58",
+      "신혼부부": "58",
+      "생애최초": "86",
+      "신생아": "116",
+      "노부모부양": "29",
+      "기관추천": "85",
+      "기타": "58"
+     }
     },
     {
      "type": "084.0000B",
      "supply_area": "109.3401",
      "supply": "30",
      "special": "171",
-     "top_price": "57755"
+     "top_price": "57755",
+     "special_by": {
+      "다자녀": "20",
+      "신혼부부": "20",
+      "생애최초": "30",
+      "신생아": "40",
+      "노부모부양": "10",
+      "기관추천": "31",
+      "기타": "20"
+     }
     },
     {
      "type": "084.9500C",
      "supply_area": "109.6677",
      "supply": "24",
      "special": "140",
-     "top_price": "57440"
+     "top_price": "57440",
+     "special_by": {
+      "다자녀": "16",
+      "신혼부부": "16",
+      "생애최초": "25",
+      "신생아": "33",
+      "노부모부양": "8",
+      "기관추천": "26",
+      "기타": "16"
+     }
     }
    ],
    "competition": []
@@ -7682,91 +8973,155 @@
      "supply_area": "91.6600",
      "supply": "28",
      "special": "24",
-     "top_price": "216300"
+     "top_price": "216300",
+     "special_by": {
+      "신혼부부": "8",
+      "생애최초": "4",
+      "신생아": "5",
+      "노부모부양": "1",
+      "기관추천": "6"
+     }
     },
     {
      "type": "074.0000A",
      "supply_area": "102.0400",
      "supply": "3",
      "special": "5",
-     "top_price": "238200"
+     "top_price": "238200",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "074.0000B",
      "supply_area": "102.7000",
      "supply": "3",
      "special": "3",
-     "top_price": "238200"
+     "top_price": "238200",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1"
+     }
     },
     {
      "type": "074.0000C",
      "supply_area": "101.8400",
      "supply": "2",
      "special": "0",
-     "top_price": "240200"
+     "top_price": "240200",
+     "special_by": {}
     },
     {
      "type": "074.4400D",
      "supply_area": "102.3000",
      "supply": "3",
      "special": "0",
-     "top_price": "235200"
+     "top_price": "235200",
+     "special_by": {}
     },
     {
      "type": "084.0000A",
      "supply_area": "116.4400",
      "supply": "8",
      "special": "13",
-     "top_price": "298100"
+     "top_price": "298100",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "4",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "084.0000B",
      "supply_area": "116.3700",
      "supply": "4",
      "special": "5",
-     "top_price": "295800"
+     "top_price": "295800",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "084.0000C",
      "supply_area": "116.1100",
      "supply": "2",
      "special": "0",
-     "top_price": "273900"
+     "top_price": "273900",
+     "special_by": {}
     },
     {
      "type": "084.0900D",
      "supply_area": "115.5600",
      "supply": "3",
      "special": "3",
-     "top_price": "276200"
+     "top_price": "276200",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1"
+     }
     },
     {
      "type": "084.0000E",
      "supply_area": "116.0100",
      "supply": "4",
      "special": "10",
-     "top_price": "291100"
+     "top_price": "291100",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "1",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "084.7200F",
      "supply_area": "116.4300",
      "supply": "3",
      "special": "3",
-     "top_price": "290100"
+     "top_price": "290100",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1"
+     }
     },
     {
      "type": "084.6400G",
      "supply_area": "116.3200",
      "supply": "2",
      "special": "11",
-     "top_price": "292000"
+     "top_price": "292000",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "2",
+      "생애최초": "2",
+      "신생아": "1",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
     },
     {
      "type": "084.7800H",
      "supply_area": "116.5100",
      "supply": "1",
      "special": "0",
-     "top_price": "290600"
+     "top_price": "290600",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -7858,42 +9213,73 @@
      "supply_area": "73.4647",
      "supply": "3",
      "special": "4",
-     "top_price": "54900"
+     "top_price": "54900",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "059.9935B",
      "supply_area": "81.5363",
      "supply": "3",
      "special": "1",
-     "top_price": "61000"
+     "top_price": "61000",
+     "special_by": {
+      "신혼부부": "1"
+     }
     },
     {
      "type": "060.7403",
      "supply_area": "81.7324",
      "supply": "3",
      "special": "5",
-     "top_price": "61200"
+     "top_price": "61200",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "084.9888A",
      "supply_area": "112.4623",
      "supply": "2",
      "special": "0",
-     "top_price": "75300"
+     "top_price": "75300",
+     "special_by": {}
     },
     {
      "type": "084.9933B",
      "supply_area": "112.4677",
      "supply": "2",
      "special": "5",
-     "top_price": "79300"
+     "top_price": "79300",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "1",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     },
     {
      "type": "084.9894C",
      "supply_area": "112.8753",
      "supply": "5",
      "special": "6",
-     "top_price": "79600"
+     "top_price": "79600",
+     "special_by": {
+      "다자녀": "1",
+      "신혼부부": "2",
+      "생애최초": "1",
+      "신생아": "1",
+      "기관추천": "1"
+     }
     }
    ],
    "competition": []
@@ -7985,28 +9371,48 @@
      "supply_area": "84.1528",
      "supply": "33",
      "special": "35",
-     "top_price": "53400"
+     "top_price": "53400",
+     "special_by": {
+      "다자녀": "6",
+      "신혼부부": "10",
+      "생애최초": "4",
+      "신생아": "7",
+      "노부모부양": "2",
+      "기관추천": "6"
+     }
     },
     {
      "type": "059.9642B",
      "supply_area": "85.1890",
      "supply": "29",
      "special": "28",
-     "top_price": "52800"
+     "top_price": "52800",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "8",
+      "생애최초": "4",
+      "신생아": "5",
+      "노부모부양": "1",
+      "기관추천": "5"
+     }
     },
     {
      "type": "075.4603",
      "supply_area": "105.0792",
      "supply": "4",
      "special": "1",
-     "top_price": "64900"
+     "top_price": "64900",
+     "special_by": {
+      "신혼부부": "1"
+     }
     },
     {
      "type": "084.9596",
      "supply_area": "118.2130",
      "supply": "3",
      "special": "0",
-     "top_price": "70900"
+     "top_price": "70900",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8070,35 +9476,40 @@
      "supply_area": "",
      "supply": "38",
      "special": "0",
-     "top_price": "41600"
+     "top_price": "41600",
+     "special_by": {}
     },
     {
      "type": "059.5027C",
      "supply_area": "",
      "supply": "12",
      "special": "0",
-     "top_price": "39700"
+     "top_price": "39700",
+     "special_by": {}
     },
     {
      "type": "071.2889A",
      "supply_area": "",
      "supply": "15",
      "special": "0",
-     "top_price": "47800"
+     "top_price": "47800",
+     "special_by": {}
     },
     {
      "type": "071.8211B",
      "supply_area": "",
      "supply": "38",
      "special": "0",
-     "top_price": "47600"
+     "top_price": "47600",
+     "special_by": {}
     },
     {
      "type": "084.7577A",
      "supply_area": "",
      "supply": "23",
      "special": "0",
-     "top_price": "53400"
+     "top_price": "53400",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8162,7 +9573,8 @@
      "supply_area": "",
      "supply": "229",
      "special": "0",
-     "top_price": "87500"
+     "top_price": "87500",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8226,14 +9638,16 @@
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "36460"
+     "top_price": "36460",
+     "special_by": {}
     },
     {
      "type": "084.9235B",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "38570"
+     "top_price": "38570",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8297,7 +9711,8 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "78400"
+     "top_price": "78400",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8361,14 +9776,16 @@
      "supply_area": "",
      "supply": "7",
      "special": "0",
-     "top_price": "74300"
+     "top_price": "74300",
+     "special_by": {}
     },
     {
      "type": "084.4817",
      "supply_area": "",
      "supply": "21",
      "special": "0",
-     "top_price": "84900"
+     "top_price": "84900",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8432,7 +9849,8 @@
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "148640"
+     "top_price": "148640",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8496,28 +9914,32 @@
      "supply_area": "",
      "supply": "8",
      "special": "0",
-     "top_price": "73650"
+     "top_price": "73650",
+     "special_by": {}
     },
     {
      "type": "074.9500A",
      "supply_area": "",
      "supply": "36",
      "special": "0",
-     "top_price": "95920"
+     "top_price": "95920",
+     "special_by": {}
     },
     {
      "type": "084.8500A",
      "supply_area": "",
      "supply": "15",
      "special": "0",
-     "top_price": "109378"
+     "top_price": "109378",
+     "special_by": {}
     },
     {
      "type": "084.9800B",
      "supply_area": "",
      "supply": "48",
      "special": "0",
-     "top_price": "109367"
+     "top_price": "109367",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8581,21 +10003,24 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "45700"
+     "top_price": "45700",
+     "special_by": {}
     },
     {
      "type": "074.9988A",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "58700"
+     "top_price": "58700",
+     "special_by": {}
     },
     {
      "type": "084.9956B",
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "65500"
+     "top_price": "65500",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8659,28 +10084,32 @@
      "supply_area": "",
      "supply": "705",
      "special": "0",
-     "top_price": "77300"
+     "top_price": "77300",
+     "special_by": {}
     },
     {
      "type": "084.7060E",
      "supply_area": "",
      "supply": "70",
      "special": "0",
-     "top_price": "75200"
+     "top_price": "75200",
+     "special_by": {}
     },
     {
      "type": "106.9778B",
      "supply_area": "",
      "supply": "55",
      "special": "0",
-     "top_price": "93700"
+     "top_price": "93700",
+     "special_by": {}
     },
     {
      "type": "180.9387B",
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "292200"
+     "top_price": "292200",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8744,7 +10173,8 @@
      "supply_area": "",
      "supply": "1",
      "special": "0",
-     "top_price": "67800"
+     "top_price": "67800",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8808,7 +10238,8 @@
      "supply_area": "",
      "supply": "13",
      "special": "0",
-     "top_price": "76112"
+     "top_price": "76112",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -8872,14 +10303,16 @@
      "supply_area": "",
      "supply": "2",
      "special": "0",
-     "top_price": "266000"
+     "top_price": "266000",
+     "special_by": {}
     },
     {
      "type": "109.8652A",
      "supply_area": "",
      "supply": "5",
      "special": "0",
-     "top_price": "306000"
+     "top_price": "306000",
+     "special_by": {}
     }
    ],
    "competition": []

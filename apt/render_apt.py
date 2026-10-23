@@ -11,10 +11,17 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from string import Template
 
+from eligibility import eligibility_html
+
 KST = timezone(timedelta(hours=9))
 HERE = Path(__file__).parent
 ROOT = HERE.parent
 FAV_CITIES = ("화성", "아산")  # 관심지역: 동탄(화성·화성특례시)·아산 — 시 이름 앞부분으로 비교
+REGION_GROUPS = [
+    ("수도권", ["서울", "경기", "인천"]),
+    ("광역시", ["부산", "대구", "광주", "대전", "울산", "세종"]),
+    ("도", ["강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"]),
+]
 STATUS_ORDER = ["접수중", "접수예정", "발표대기", "마감", "공고"]
 FLAG_NOTE = "투기과열지구·분양가상한제 여부에 따라 재당첨 제한, 전매제한, 실거주 의무가 달라집니다. 정확한 조건은 모집공고문에서 확인하세요."
 
@@ -171,6 +178,7 @@ def detail_html(c, today):
   <section><h4>청약 일정</h4><table class="kv sched">{"".join(sched)}</table></section>
 </div>
 <h4>주택형별 분양가</h4>{models_html}
+{eligibility_html(c)}
 <h4>규제·지구 지정</h4><p>{flags_html}</p><p class="note">{FLAG_NOTE}</p>
 {comp_html}
 <p class="links">{" · ".join(links)}</p>"""
@@ -273,10 +281,19 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .f-btn:hover{color:var(--ink)}
 .f-btn[aria-pressed="true"]{color:var(--ink); font-weight:700; border-bottom-color:var(--ink)}
 .f-btn .n{font-size:10.5px; font-weight:700; color:var(--ink-3); position:relative; top:-4px; margin-left:3px}
-.areas{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 20px}
-.a-btn{font-size:12.5px; font-weight:600; padding:4px 11px; border-radius:980px; border:1px solid var(--hairline);
-  background:var(--surface); color:var(--ink-2)}
-.a-btn[aria-pressed="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+.areas{display:flex; flex-direction:column; gap:0; margin:6px 0 22px;
+  padding:4px 14px; background:var(--surface); border:1px solid var(--hairline); border-radius:14px}
+.a-group{display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:9px 0}
+.a-group + .a-group{border-top:1px solid var(--hairline)}
+.a-label{font-size:11px; font-weight:700; color:var(--ink-3); letter-spacing:.04em; min-width:46px}
+.a-btn{font-size:12.5px; font-weight:600; padding:4px 10px; border-radius:980px; border:1px solid var(--hairline);
+  background:var(--ground); color:var(--ink-2); white-space:nowrap}
+.a-btn .n{font-size:10.5px; font-weight:700; margin-left:4px; color:var(--blue); font-variant-numeric:tabular-nums}
+.a-btn.zero{color:var(--ink-3); opacity:.55}
+.a-btn.zero .n{display:none}
+.a-btn.fav{color:var(--gold); border-color:var(--gold-bg); background:var(--gold-bg)}
+.a-btn[aria-pressed="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink); opacity:1}
+.a-btn[aria-pressed="true"] .n{color:inherit; opacity:.75}
 
 .list{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap:14px; align-items:start}
 .apt-card{min-width:0; background:var(--surface); border:1px solid var(--hairline); border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
@@ -300,6 +317,7 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .ac-more{position:absolute; right:16px; bottom:14px; font-size:12px; color:var(--ink-3)}
 .apt-card[open] .ac-more{visibility:hidden}
 .ac-body{padding:4px 18px 18px; border-top:1px solid var(--hairline)}
+.ac-body h5{font-size:13px; margin:14px 0 4px; color:var(--ink-2)}
 .ac-body h4{font-size:14px; margin:18px 0 6px; padding-left:8px; border-left:3px solid var(--blue)}
 .detail-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0 28px}
 .kv,.tbl{width:100%; border-collapse:collapse; font-size:13.5px}
@@ -322,6 +340,10 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
   .wordmark{font-size:26px}
   .stats{gap:14px} .stats b{font-size:19px}
   .filters{gap:0 14px}
+  .areas{padding:2px 12px}
+  .a-group{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .a-group::-webkit-scrollbar{display:none}
+  .a-label{min-width:40px; flex:none}
   .list{grid-template-columns:1fr}
   .detail-grid{grid-template-columns:minmax(0,1fr)}
   .masthead .sub{font-size:13px}
@@ -393,6 +415,15 @@ $CARDS
     sBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.s === state.status ? "true" : "false"); });
     aBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.a === state.area ? "true" : "false"); });
     document.getElementById("empty").hidden = shown > 0;
+    aBtns.forEach(function(b){
+      var key = b.dataset.a, n = 0;
+      cards.forEach(function(c){
+        if (!okStatus(c)) return;
+        if (key === "all" || (key === "fav" ? c.dataset.fav === "1" : c.dataset.area === key)) n++;
+      });
+      b.querySelector(".n").textContent = n;
+      b.classList.toggle("zero", n === 0);
+    });
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
   }
   sBtns.forEach(function(b){ b.addEventListener("click", function(){ state.status = b.dataset.s; apply(); }); });
@@ -441,8 +472,19 @@ def build(src=HERE / "apt.json", out=ROOT / "public" / "apt" / "index.html"):
 
     status_btns = [("live", "진행·예정", count["접수중"] + count["접수예정"]), ("발표대기", "발표 대기", count["발표대기"]),
                    ("마감", "마감", count["마감"]), ("all", "전체", len(cs))]
-    areas = sorted({c.get("area") for c in cs if c.get("area")}, key=lambda a: (a not in ("서울", "경기", "인천", "충남"), a))
-    area_btns = [("all", "전국"), ("fav", "⭐ 동탄·아산")] + [(a, a) for a in areas]
+    def a_btn(key, label, cls="a-btn"):
+        return (f'<button class="{cls}" type="button" data-a="{e(key)}" aria-pressed="false">'
+                f'{e(label)}<span class="n"></span></button>')
+
+    known = {a for _, g in REGION_GROUPS for a in g}
+    extra = sorted({c.get("area") for c in cs if c.get("area")} - known)  # 혹시 모를 새 지역명
+    groups = [("빠른 선택", [a_btn("all", "전국"), a_btn("fav", "⭐ 동탄·아산", "a-btn fav")])]
+    groups += [(name, [a_btn(a, a) for a in g]) for name, g in REGION_GROUPS]
+    if extra:
+        groups.append(("기타", [a_btn(a, a) for a in extra]))
+    area_html = "\n".join(
+        f'    <div class="a-group">{f"<span class=a-label>{name}</span>" if name else ""}{"".join(btns)}</div>'
+        for name, btns in groups)
 
     updated = data.get("updated", "")
     page = PAGE.substitute(
@@ -451,8 +493,7 @@ def build(src=HERE / "apt.json", out=ROOT / "public" / "apt" / "index.html"):
         STATUS_BTNS="\n".join(
             f'    <button class="f-btn" type="button" data-s="{k}" aria-pressed="false">{v}<span class="n">{n}</span></button>'
             for k, v, n in status_btns),
-        AREA_BTNS="\n".join(f'    <button class="a-btn" type="button" data-a="{e(k)}" aria-pressed="false">{e(v)}</button>'
-                            for k, v in area_btns),
+        AREA_BTNS=area_html,
         CARDS="\n".join(card_html(c, today) for c in cs),
         EMPTY="조건에 맞는 청약이 없습니다." if cs else "청약 데이터를 준비 중입니다.",
     )

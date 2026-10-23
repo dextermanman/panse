@@ -112,6 +112,14 @@ def normalize(kind, row):
     }
 
 
+# 특별공급 유형별 세대수 필드
+SPECIAL_FIELDS = [
+    ("다자녀", "MNYCH_HSHLDCO"), ("신혼부부", "NWWDS_HSHLDCO"), ("생애최초", "LFE_FRST_HSHLDCO"),
+    ("신생아", "NWBB_HSHLDCO"), ("청년", "YGMN_HSHLDCO"), ("노부모부양", "OLD_PARNTS_SUPORT_HSHLDCO"),
+    ("기관추천", "INSTT_RECOMEND_HSHLDCO"), ("이전기관", "TRANSR_INSTT_ENFSN_HSHLDCO"), ("기타", "ETC_HSHLDCO"),
+]
+
+
 def norm_model(row):
     return {
         "type": pick(row, "HOUSE_TY"),
@@ -119,6 +127,7 @@ def norm_model(row):
         "supply": pick(row, "SUPLY_HSHLDCO"),
         "special": pick(row, "SPSPLY_HSHLDCO"),
         "top_price": pick(row, "LTTOT_TOP_AMOUNT"),  # 만원
+        "special_by": {k: n for k, f in SPECIAL_FIELDS if (n := pick(row, f)) not in ("", "0")},
     }
 
 

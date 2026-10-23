@@ -2,6 +2,7 @@
 """news.json -> dashboard.html (세상돌아가는 판세 - 파이낸셜 럭셔리 & 모던 에디토리얼 대시보드)."""
 import html
 import json
+import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from string import Template
@@ -205,6 +206,18 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .fb-title::after{content:"운세"; font-size:9.5px; font-weight:800; color:#FFFFFF; background:linear-gradient(135deg, #7C3AED, #9333EA);
   padding:1px 5px; border-radius:4px; letter-spacing:0}
 .fb-sub{font-size:11px; color:var(--ink-2); font-weight:500}
+/* 🏠 청약 캘린더 배너 — 운세 배너와 짝을 이루는 별도 페이지 바로가기 */
+.apt-banner-btn{display:inline-flex; align-items:center; gap:9px;
+  background:linear-gradient(135deg, rgba(2,132,199,0.08) 0%, rgba(16,185,129,0.08) 100%);
+  border:1px solid rgba(2,132,199,0.24); border-radius:12px; padding:6px 13px;
+  transition:all .18s cubic-bezier(0.16, 1, 0.3, 1); box-shadow:var(--shadow)}
+.apt-banner-btn:hover{background:linear-gradient(135deg, rgba(2,132,199,0.15) 0%, rgba(16,185,129,0.15) 100%);
+  border-color:rgba(2,132,199,0.45); transform:translateY(-1px); box-shadow:var(--shadow-hover)}
+.apt-banner-btn:active{transform:scale(0.97)}
+.ab-title{font-size:12.5px; font-weight:750; color:var(--ink); letter-spacing:-.015em; display:flex; align-items:center; gap:5px}
+.ab-title::after{content:"청약"; font-size:9.5px; font-weight:800; color:#FFFFFF; background:linear-gradient(135deg, #0284C7, #0EA5E9);
+  padding:1px 5px; border-radius:4px; letter-spacing:0}
+.apt-banner-btn .fb-sub b{color:var(--breaking); font-weight:700}
 
 /* 실시간 스마트 검색창 (Spotlight Style) */
 .search-bar{margin-bottom:26px; position:relative}
@@ -398,7 +411,8 @@ footer{border-top:1px solid var(--hairline); margin-top:40px; padding-top:20px;
   .masthead-in{flex-direction:column; align-items:flex-start; gap:10px}
   .masthead-meta{display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; gap:10px; flex-wrap:wrap}
   .masthead-date-block{text-align:right}
-  .fortune-banner-btn{flex:1; min-width:180px; box-sizing:border-box; justify-content:flex-start; padding:8px 12px; border-radius:12px}
+  .fortune-banner-btn,.apt-banner-btn{flex:1; min-width:150px; box-sizing:border-box; justify-content:flex-start; padding:8px 12px; border-radius:12px}
+  .masthead-date-block{flex-basis:100%; text-align:left}
   .fb-title{font-size:12.5px}
   .fb-sub{font-size:11px}
 
@@ -630,6 +644,13 @@ $METALS
             <span class="fb-sub">나의 투자 처세술 보기 ›</span>
           </div>
         </button>
+        <a class="apt-banner-btn" href="/apt/" title="아파트 청약 일정·분양가·자격 보기">
+          <span class="fb-icon">🏠</span>
+          <div class="fb-text">
+            <span class="ab-title">아파트 청약 캘린더</span>
+            <span class="fb-sub">$APT_SUB</span>
+          </div>
+        </a>
         <div class="masthead-date-block">
           <div class="masthead-date"><b>$DATE_LONG</b></div>
           <div class="masthead-stat">9대 산업 핵심 뉴스 <b>$TOTAL건</b> 선별</div>
@@ -642,7 +663,6 @@ $METALS
   <nav class="topic-nav" id="tabmenu" role="tablist" aria-label="주제 메뉴">
     <button class="m-btn" type="button" role="tab" data-view="all" aria-selected="true">전체</button>
 $MENU
-    <a class="m-btn m-link" href="/apt/" title="아파트 청약 일정·분양가">🏠 청약</a>
   </nav>
 
   <!-- 검색은 자주 쓰지 않으므로 접어두고 상단 돋보기 버튼으로 연다 -->
@@ -1369,6 +1389,22 @@ def date_long(now):
     return f"{now.year}년 {now.month}월 {now.day}일 {WEEKDAYS[now.weekday()]}요일"
 
 
+def apt_summary(now):
+    """청약 배너 부제: 접수 중·7일 내 접수 단지 수 (apt/apt.json 기준, 실패해도 기본 문구)."""
+    try:
+        sys.path.insert(0, str(HERE / "apt"))
+        from render_apt import d, status
+        cs = json.loads((HERE / "apt" / "apt.json").read_text(encoding="utf-8"))["complexes"]
+        today = now.date()
+        live = sum(status(c, today) == "접수중" for c in cs)
+        soon = sum(1 for c in cs if status(c, today) == "접수예정" and (d(c["receipt"][0]) - today).days <= 7)
+        if live or soon:
+            return f"접수 중 <b>{live}</b> · 7일 내 {soon}곳 ›"
+    except Exception:
+        pass
+    return "일정·분양가·자격 보기 ›"
+
+
 def build():
     data = json.loads((HERE / "news.json").read_text(encoding="utf-8"))
     now = datetime.now(KST)
@@ -1403,12 +1439,17 @@ def build():
     )
 
     menu, details = [], []
+    apt_link = '        <a class="m-btn m-link" href="/apt/" title="아파트 청약 일정·분양가·자격">🏠 청약</a>'
     for t in topics:
         n = t["fresh_1h"]
         badge = f'<span class="n">+{n}</span>' if n else ""
         menu.append(
             f'        <button class="m-btn t-{t["id"]}" type="button" role="tab" data-view="{t["id"]}" aria-selected="false"><span class="swatch"></span>{esc(t["name"])}{badge}</button>'
         )
+        if t["name"] == "부동산":
+            menu.append(apt_link)
+    if apt_link not in menu:
+        menu.append(apt_link)
 
     rest = [(it, t) for it, t in flat if it["link"] not in used]
     feed = "\n".join(
@@ -1486,7 +1527,7 @@ def build():
         SUBTITLE=subtitle,
         TOPIC_COUNT=topic_count,
         BRIEFING=briefing,
-        MENU="\n".join(menu), BREAKING=breaking,
+        MENU="\n".join(menu), BREAKING=breaking, APT_SUB=apt_summary(now),
         BREAKING_LABEL=label, BREAKING_NOTE=note, FEED=feed, TOTAL=len(flat), REST=len(rest),
         STOCKS_DOMESTIC=stocks_domestic_html, STOCKS_OVERSEAS=stocks_overseas_html,
         DETAILS="\n".join(details),
