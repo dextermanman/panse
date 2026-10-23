@@ -14,7 +14,7 @@ from string import Template
 KST = timezone(timedelta(hours=9))
 HERE = Path(__file__).parent
 ROOT = HERE.parent
-FAV_CITIES = {"화성시", "아산시"}  # 관심지역: 동탄(화성)·아산
+FAV_CITIES = ("화성", "아산")  # 관심지역: 동탄(화성·화성특례시)·아산 — 시 이름 앞부분으로 비교
 STATUS_ORDER = ["접수중", "접수예정", "발표대기", "마감", "공고"]
 FLAG_NOTE = "투기과열지구·분양가상한제 여부에 따라 재당첨 제한, 전매제한, 실거주 의무가 달라집니다. 정확한 조건은 모집공고문에서 확인하세요."
 
@@ -88,8 +88,20 @@ def dday(c, st, today):
 
 
 def short_area(c):
-    city = (c.get("city") or "").removesuffix("시").removesuffix("군")
+    city = (c.get("city") or "").removesuffix("특례시").removesuffix("시").removesuffix("군")
     return f"{c.get('area') or ''} {city}".strip()
+
+
+def phone(p):
+    """'0328348890' -> '032-834-8890', '15516881' -> '1551-6881'."""
+    p = "".join(ch for ch in (p or "") if ch.isdigit())
+    if len(p) == 8:
+        return f"{p[:4]}-{p[4:]}"
+    if p.startswith("02") and len(p) in (9, 10):
+        return f"02-{p[2:-4]}-{p[-4:]}"
+    if len(p) in (10, 11):
+        return f"{p[:3]}-{p[3:-4]}-{p[-4:]}"
+    return p
 
 
 def price_range(c):
@@ -142,7 +154,7 @@ def detail_html(c, today):
     flags_html = "".join(f'<span class="chip flag">{e(f)}</span>' for f in flags) or '<span class="muted">해당 없음</span>'
 
     info = [("위치", c.get("address")), ("주택 구분", c.get("type_name")), ("시공사", c.get("builder")),
-            ("시행사", c.get("developer")), ("모집공고일", md(c.get("notice_date"))), ("문의", c.get("phone"))]
+            ("시행사", c.get("developer")), ("모집공고일", md(c.get("notice_date"))), ("문의", phone(c.get("phone")))]
     info_html = "".join(f'<tr><th>{k}</th><td>{e(v)}</td></tr>' for k, v in info if v)
 
     links = []
@@ -166,7 +178,7 @@ def detail_html(c, today):
 
 def card_html(c, today):
     st = status(c, today)
-    fav = c.get("city") in FAV_CITIES
+    fav = (c.get("city") or "").startswith(FAV_CITIES)
     dd = dday(c, st, today)
     meta = " · ".join(x for x in [
         f'{c["households"]}세대' if c.get("households") else "",
