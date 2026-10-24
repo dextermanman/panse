@@ -6,6 +6,8 @@
 """
 import json
 import os
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -32,8 +34,16 @@ def call(base, op, key, cond=None, page=1, per_page=100):
         q[f"cond[{k}]"] = v
     url = base + op + "?" + urllib.parse.urlencode(q)
     req = urllib.request.Request(url, headers={"User-Agent": "panse-apt/1.0"})
-    with urllib.request.urlopen(req, timeout=15) as r:
-        return json.load(r)
+    for attempt in range(3):  # odcloud 가 가끔 연결을 끊는다
+        try:
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return json.load(r)
+        except urllib.error.HTTPError:
+            raise
+        except OSError:
+            if attempt == 2:
+                raise
+            time.sleep(2 * (attempt + 1))
 
 
 def call_all(base, op, key, cond=None):

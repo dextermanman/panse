@@ -126,6 +126,33 @@ def per_pyeong(m):
         return "-"
 
 
+def rate_txt(rate):
+    """'13.89' -> '13.89 : 1', '(△30)' -> '미달 30' (공급보다 접수가 30세대 적음)."""
+    rate = (rate or "").strip()
+    if rate.startswith("(△"):
+        return f'<span class="short">미달 {e(rate[2:].rstrip(")"))}</span>'
+    try:
+        return f"<b>{float(rate):,.2f}</b> : 1"
+    except ValueError:
+        return e(rate) or "-"
+
+
+def best_rate(c):
+    """1순위 해당지역 기준 최고 경쟁률 요약 (마감 이후 카드에 표시)."""
+    rows = [r for r in c.get("competition", []) if str(r.get("rank")) == "1" and r.get("reside") == "해당지역"]
+    if not rows:
+        return ""
+    nums = []
+    for r in rows:
+        try:
+            nums.append(float(r["rate"]))
+        except (TypeError, ValueError):
+            pass
+    if nums:
+        return f"1순위 최고 <b>{max(nums):,.2f} : 1</b>"
+    return '1순위 <span class="short">미달</span>'
+
+
 def detail_html(c, today):
     sched = []
     for label, sp in c.get("schedule", []):
@@ -149,13 +176,15 @@ def detail_html(c, today):
 
     comp = [r for r in c.get("competition", []) if r.get("rate") or r.get("requests")]
     comp_html = ""
-    if comp:
+    if comp and status(c, today) != "접수예정":
+        comp.sort(key=lambda r: (len(house_type(r["type"])), house_type(r["type"]), str(r["rank"]), r["reside"] != "해당지역"))
         rows = "".join(
             f'<tr><th>{e(house_type(r["type"]))}</th><td>{e(r["rank"])}순위 {e(r["reside"])}</td>'
             f'<td class="r">{e(r["supply"])}</td><td class="r">{e(r["requests"])}</td>'
-            f'<td class="r"><b>{e(r["rate"])}</b></td></tr>' for r in comp)
+            f'<td class="r">{rate_txt(r["rate"])}</td></tr>' for r in comp)
         comp_html = ('<h4>청약 경쟁률</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>주택형</th><th>구분</th>'
-                     f'<th class="r">공급</th><th class="r">접수</th><th class="r">경쟁률</th></tr></thead><tbody>{rows}</tbody></table></div>')
+                     f'<th class="r">공급</th><th class="r">접수</th><th class="r">경쟁률</th></tr></thead><tbody>{rows}</tbody></table></div>'
+                     '<p class="note">미달 N = 공급 세대보다 접수가 N건 적음. 일반공급 기준이며 특별공급은 포함하지 않습니다.</p>')
 
     flags = [k for k, v in c.get("flags", {}).items() if v]
     flags_html = "".join(f'<span class="chip flag">{e(f)}</span>' for f in flags) or '<span class="muted">해당 없음</span>'
@@ -178,9 +207,9 @@ def detail_html(c, today):
   <section><h4>청약 일정</h4><table class="kv sched">{"".join(sched)}</table></section>
 </div>
 <h4>주택형별 분양가</h4>{models_html}
+{comp_html}
 {eligibility_html(c)}
 <h4>규제·지구 지정</h4><p>{flags_html}</p><p class="note">{FLAG_NOTE}</p>
-{comp_html}
 <p class="links">{" · ".join(links)}</p>"""
 
 
@@ -193,6 +222,7 @@ def card_html(c, today):
         f"접수 {span_txt(c['receipt'])}" if c.get("receipt") else f"공고 {md(c.get('notice_date'))}",
     ] if x)
     price = price_range(c)
+    comp = best_rate(c) if st in ("접수중", "발표대기", "마감") else ""
     return f"""<details class="apt-card" data-status="{st}" data-area="{e(c.get('area'))}" data-fav="{1 if fav else 0}">
   <summary>
     <div class="ac-top">
@@ -202,6 +232,7 @@ def card_html(c, today):
     <div class="ac-name hl">{e(c["name"])}</div>
     <div class="ac-meta">{meta}</div>
     {f'<div class="ac-price">최고 분양가 <b>{price}</b></div>' if price else ""}
+    {f'<div class="ac-price">{comp}</div>' if comp else ""}
     <span class="ac-more" aria-hidden="true">상세 ▾</span>
   </summary>
   <div class="ac-body">{detail_html(c, today)}</div>
@@ -329,6 +360,7 @@ main{max-width:1240px; margin:0 auto; padding:0 24px calc(80px + env(safe-area-i
 .sched tr.past{color:var(--ink-3)}
 .sched tr.now th,.sched tr.now td{color:var(--red); font-weight:700}
 .sched tr.now td::after{content:" ◀ 오늘"}
+.short{color:var(--blue); font-weight:700}
 .note{font-size:12px; color:var(--ink-3); margin:6px 0 0}
 .links{margin:18px 0 0; font-size:13.5px; font-weight:600; color:var(--blue)}
 .empty{padding:40px 0; text-align:center; color:var(--ink-3)}
