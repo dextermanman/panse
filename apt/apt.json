@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T12:07+09:00",
+ "updated": "2026-11-04T01:40+09:00",
  "complexes": [
   {
    "id": "2026820013",
@@ -327,6 +327,259 @@
       "신생아": "8",
       "청년": "4"
      }
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026000554",
+   "pblanc_no": "2026000554",
+   "kind": "APT",
+   "type_name": "민영",
+   "name": "리첼 에듀포레 경산역",
+   "area": "경북",
+   "city": "경산시",
+   "address": "경상북도 경산시 사정동 301-22번지 일원",
+   "households": "201",
+   "notice_date": "2026-11-03",
+   "receipt": [
+    "2026-11-13",
+    "2026-11-17"
+   ],
+   "schedule": [
+    [
+     "특별공급",
+     [
+      "2026-11-13",
+      "2026-11-13"
+     ]
+    ],
+    [
+     "1순위 해당지역",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "1순위 기타지역",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "2순위 해당지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "2순위 기타지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-23",
+      "2026-11-23"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-12-04",
+      "2026-12-06"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-23",
+   "move_in": "202909",
+   "builder": "에쓰와이이앤씨",
+   "developer": "강변사정동지역주택조합",
+   "phone": "0538132010",
+   "homepage": "https://richelledufore.co.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000554&pblancNo=2026000554",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "062.2537",
+     "supply_area": "83.1444",
+     "supply": "16",
+     "special": "26",
+     "top_price": "48070",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "6",
+      "생애최초": "3",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "8"
+     }
+    },
+    {
+     "type": "084.9417A",
+     "supply_area": "111.5450",
+     "supply": "36",
+     "special": "41",
+     "top_price": "63363",
+     "special_by": {
+      "다자녀": "8",
+      "신혼부부": "12",
+      "생애최초": "6",
+      "신생아": "8",
+      "노부모부양": "2",
+      "기관추천": "5"
+     }
+    },
+    {
+     "type": "084.8838B",
+     "supply_area": "112.2603",
+     "supply": "20",
+     "special": "27",
+     "top_price": "63811",
+     "special_by": {
+      "다자녀": "5",
+      "신혼부부": "7",
+      "생애최초": "3",
+      "신생아": "5",
+      "노부모부양": "2",
+      "기관추천": "5"
+     }
+    },
+    {
+     "type": "084.9417C",
+     "supply_area": "111.4114",
+     "supply": "19",
+     "special": "16",
+     "top_price": "61063",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "5",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026820014",
+   "pblanc_no": "2026820014",
+   "kind": "APT",
+   "type_name": "국민",
+   "name": "남양주왕숙 A-2블록 신혼희망타운(공공분양) 잔여세대 추가입주자모집공고",
+   "area": "경기",
+   "city": "남양주시",
+   "address": "경기도 남양주시 진접읍, 진건읍, 퇴계원읍 일원, 남양주왕숙 공공주택지구 내 A-2블록",
+   "households": "32",
+   "notice_date": "2026-11-03",
+   "receipt": [
+    "2026-11-11",
+    "2026-11-12"
+   ],
+   "schedule": [
+    [
+     "1순위 해당지역",
+     [
+      "2026-11-11",
+      "2026-11-11"
+     ]
+    ],
+    [
+     "1순위 경기",
+     [
+      "2026-11-11",
+      "2026-11-11"
+     ]
+    ],
+    [
+     "1순위 기타지역",
+     [
+      "2026-11-11",
+      "2026-11-11"
+     ]
+    ],
+    [
+     "2순위 해당지역",
+     [
+      "2026-11-12",
+      "2026-11-12"
+     ]
+    ],
+    [
+     "2순위 경기",
+     [
+      "2026-11-12",
+      "2026-11-12"
+     ]
+    ],
+    [
+     "2순위 기타지역",
+     [
+      "2026-11-12",
+      "2026-11-12"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-19",
+      "2026-11-19"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2027-02-01",
+      "2027-02-02"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-19",
+   "move_in": "202808",
+   "builder": "계룡건설산업(주), 미래이앤시(주), (주)오스코",
+   "developer": "한국토지주택공사 경기북부지역본부",
+   "phone": "16001004",
+   "homepage": "https://apply.lh.or.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820014&pblancNo=2026820014",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": true,
+    "정비사업": false,
+    "공공주택지구": true,
+    "대규모택지": true
+   },
+   "models": [
+    {
+     "type": "046.0000O",
+     "supply_area": "67.1669",
+     "supply": "0",
+     "special": "18",
+     "top_price": "35276",
+     "special_by": {}
+    },
+    {
+     "type": "055.0000O",
+     "supply_area": "79.7936",
+     "supply": "0",
+     "special": "14",
+     "top_price": "41908",
+     "special_by": {}
     }
    ],
    "competition": []
@@ -1908,6 +2161,209 @@
    "competition": []
   },
   {
+   "id": "2026910274",
+   "pblanc_no": "2026910274",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "천안 롯데캐슬 더 청당",
+   "area": "충남",
+   "city": "천안시",
+   "address": "충청남도 천안시 동남구 청당4로 20",
+   "households": "2",
+   "notice_date": "2026-11-03",
+   "receipt": [
+    "2026-11-09",
+    "2026-11-09"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-09",
+      "2026-11-09"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-12",
+      "2026-11-12"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-20",
+      "2026-11-20"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-12",
+   "move_in": "202612",
+   "builder": "",
+   "developer": "롯데건설(주)",
+   "phone": "0317177188",
+   "homepage": "https://www.lottecastle.co.kr/APT/AT00385/main/index.do",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910274&pblancNo=2026910274",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "059.9948A",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "28460",
+     "special_by": {}
+    },
+    {
+     "type": "084.9962A",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "42550",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910273",
+   "pblanc_no": "2026910273",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "캐슬앤파밀리에 디아트(4-1생활권 P1구역 L2블록 수루배마을2단지)",
+   "area": "세종",
+   "city": "반곡1길",
+   "address": "세종특별자치시 반곡1길 9 (반곡동, 수루배마을2단지)",
+   "households": "1",
+   "notice_date": "2026-11-03",
+   "receipt": [
+    "2026-11-09",
+    "2026-11-09"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-09",
+      "2026-11-09"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-12",
+      "2026-11-12"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-19",
+      "2026-11-19"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-12",
+   "move_in": "202612",
+   "builder": "",
+   "developer": "롯데건설(주)",
+   "phone": "0317177188",
+   "homepage": "https://www.lottecastle.co.kr/APT/AT00172/main/index.do",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910273&pblancNo=2026910273",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "059.2240",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "24579",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910272",
+   "pblanc_no": "2026910272",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "캐슬앤파밀리에 디아트(4-1생활권 P1구역 M1블록 수루배마을1단지)",
+   "area": "세종",
+   "city": "반곡로",
+   "address": "세종특별자치시 반곡로 14 (반곡동, 수루배마을1단지)",
+   "households": "1",
+   "notice_date": "2026-11-03",
+   "receipt": [
+    "2026-11-09",
+    "2026-11-09"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-09",
+      "2026-11-09"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-12",
+      "2026-11-12"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-19",
+      "2026-11-19"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-12",
+   "move_in": "202612",
+   "builder": "",
+   "developer": "롯데건설(주)",
+   "phone": "0317177188",
+   "homepage": "https://www.lottecastle.co.kr/APT/AT00172/main/index.do",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910272&pblancNo=2026910272",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "096.7880",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "34731",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
    "id": "2026910281",
    "pblanc_no": "2026910281",
    "kind": "무순위",
@@ -2332,7 +2788,120 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "084.3473A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "116",
+     "requests": "119",
+     "rate": "2.05"
+    },
+    {
+     "type": "084.3473A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "116",
+     "requests": "66",
+     "rate": "2.19"
+    },
+    {
+     "type": "084.6971B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "75",
+     "requests": "13",
+     "rate": "(△25)"
+    },
+    {
+     "type": "084.6971B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "75",
+     "requests": "9",
+     "rate": "(△53)"
+    },
+    {
+     "type": "084.8175C",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "25",
+     "requests": "0",
+     "rate": "(△13)"
+    },
+    {
+     "type": "084.8175C",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "25",
+     "requests": "2",
+     "rate": "(△23)"
+    },
+    {
+     "type": "084.5968D",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "71",
+     "requests": "19",
+     "rate": "(△17)"
+    },
+    {
+     "type": "084.5968D",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "71",
+     "requests": "13",
+     "rate": "(△39)"
+    },
+    {
+     "type": "084.9714E",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "9",
+     "requests": "10",
+     "rate": "2.00"
+    },
+    {
+     "type": "084.9714E",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "9",
+     "requests": "5",
+     "rate": "2.50"
+    },
+    {
+     "type": "093.7413A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "51",
+     "requests": "9",
+     "rate": "(△17)"
+    },
+    {
+     "type": "093.7413A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "51",
+     "requests": "6",
+     "rate": "(△36)"
+    },
+    {
+     "type": "093.8537B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "45",
+     "requests": "25",
+     "rate": "1.09"
+    },
+    {
+     "type": "093.8537B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "45",
+     "requests": "8",
+     "rate": "(△12)"
+    }
+   ]
   },
   {
    "id": "2026000531",
@@ -2667,7 +3236,136 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "084.3473A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "137",
+     "requests": "149",
+     "rate": "2.16"
+    },
+    {
+     "type": "084.3473A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "137",
+     "requests": "72",
+     "rate": "2.24"
+    },
+    {
+     "type": "084.6971B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "72",
+     "requests": "16",
+     "rate": "(△20)"
+    },
+    {
+     "type": "084.6971B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "72",
+     "requests": "3",
+     "rate": "(△53)"
+    },
+    {
+     "type": "084.8175C",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "26",
+     "requests": "2",
+     "rate": "(△11)"
+    },
+    {
+     "type": "084.8175C",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "26",
+     "requests": "0",
+     "rate": "(△24)"
+    },
+    {
+     "type": "084.5968D",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "102",
+     "requests": "22",
+     "rate": "(△29)"
+    },
+    {
+     "type": "084.5968D",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "102",
+     "requests": "23",
+     "rate": "(△57)"
+    },
+    {
+     "type": "084.9714E",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "17",
+     "requests": "13",
+     "rate": "1.44"
+    },
+    {
+     "type": "084.9714E",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "17",
+     "requests": "4",
+     "rate": "1.00"
+    },
+    {
+     "type": "092.1964A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "34",
+     "requests": "12",
+     "rate": "(△5)"
+    },
+    {
+     "type": "092.1964A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "34",
+     "requests": "10",
+     "rate": "(△12)"
+    },
+    {
+     "type": "093.7413A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "35",
+     "requests": "7",
+     "rate": "(△11)"
+    },
+    {
+     "type": "093.7413A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "35",
+     "requests": "2",
+     "rate": "(△26)"
+    },
+    {
+     "type": "093.8537B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "51",
+     "requests": "13",
+     "rate": "(△13)"
+    },
+    {
+     "type": "093.8537B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "51",
+     "requests": "4",
+     "rate": "(△34)"
+    }
+   ]
   },
   {
    "id": "2026000518",
@@ -2796,7 +3494,56 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "060.9995",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "33",
+     "requests": "1099",
+     "rate": "109.90"
+    },
+    {
+     "type": "060.9995",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "33",
+     "requests": "593",
+     "rate": "150.19"
+    },
+    {
+     "type": "060.9995",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "33",
+     "requests": "728",
+     "rate": "259.57"
+    },
+    {
+     "type": "084.9594",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "95",
+     "requests": "2670",
+     "rate": "92.07"
+    },
+    {
+     "type": "084.9594",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "95",
+     "requests": "563",
+     "rate": "88.43"
+    },
+    {
+     "type": "084.9594",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "95",
+     "requests": "971",
+     "rate": "190.11"
+    }
+   ]
   },
   {
    "id": "2026000517",
@@ -2962,7 +3709,128 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "060.9995",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "12",
+     "requests": "999",
+     "rate": "249.75"
+    },
+    {
+     "type": "060.9995",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "12",
+     "requests": "562",
+     "rate": "376.33"
+    },
+    {
+     "type": "060.9995",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "12",
+     "requests": "703",
+     "rate": "849.00"
+    },
+    {
+     "type": "084.9594",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "29",
+     "requests": "1072",
+     "rate": "119.11"
+    },
+    {
+     "type": "084.9594",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "29",
+     "requests": "251",
+     "rate": "123.29"
+    },
+    {
+     "type": "084.9594",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "29",
+     "requests": "418",
+     "rate": "246.83"
+    },
+    {
+     "type": "084.4998",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "31",
+     "requests": "381",
+     "rate": "42.33"
+    },
+    {
+     "type": "084.4998",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "31",
+     "requests": "124",
+     "rate": "42.38"
+    },
+    {
+     "type": "084.4998",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "31",
+     "requests": "188",
+     "rate": "93.33"
+    },
+    {
+     "type": "088.5023",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "55",
+     "requests": "1175",
+     "rate": "69.12"
+    },
+    {
+     "type": "088.5023",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "55",
+     "requests": "212",
+     "rate": "65.22"
+    },
+    {
+     "type": "088.5023",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "55",
+     "requests": "402",
+     "rate": "141.82"
+    },
+    {
+     "type": "115.3141",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "69",
+     "requests": "452",
+     "rate": "21.52"
+    },
+    {
+     "type": "115.3141",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "69",
+     "requests": "56",
+     "rate": "18.47"
+    },
+    {
+     "type": "115.3141",
+     "rank": "1",
+     "reside": "기타경기",
+     "supply": "69",
+     "requests": "155",
+     "rate": "41.86"
+    }
+   ]
   },
   {
    "id": "2026000496",
@@ -3135,7 +4003,104 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "084.9443A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "91",
+     "requests": "594",
+     "rate": "12.91"
+    },
+    {
+     "type": "084.9443A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "91",
+     "requests": "107",
+     "rate": "14.56"
+    },
+    {
+     "type": "084.9210B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "82",
+     "requests": "225",
+     "rate": "5.49"
+    },
+    {
+     "type": "084.9210B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "82",
+     "requests": "26",
+     "rate": "5.12"
+    },
+    {
+     "type": "084.8592C",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "87",
+     "requests": "72",
+     "rate": "1.64"
+    },
+    {
+     "type": "084.8592C",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "87",
+     "requests": "15",
+     "rate": "1.00"
+    },
+    {
+     "type": "084.9540D",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "106",
+     "requests": "68",
+     "rate": "1.28"
+    },
+    {
+     "type": "084.9540D",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "106",
+     "requests": "11",
+     "rate": "(△27)"
+    },
+    {
+     "type": "103.8518A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "114",
+     "requests": "177",
+     "rate": "3.11"
+    },
+    {
+     "type": "103.8518A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "114",
+     "requests": "27",
+     "rate": "2.58"
+    },
+    {
+     "type": "103.9916B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "124",
+     "requests": "17",
+     "rate": "(△45)"
+    },
+    {
+     "type": "103.9916B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "124",
+     "requests": "9",
+     "rate": "(△98)"
+    }
+   ]
   },
   {
    "id": "2026000502",
@@ -3358,7 +4323,168 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "084.3522A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "284",
+     "requests": "19",
+     "rate": "(△265)"
+    },
+    {
+     "type": "084.3522A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "284",
+     "requests": "13",
+     "rate": "(△252)"
+    },
+    {
+     "type": "084.4355B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "124",
+     "requests": "24",
+     "rate": "(△100)"
+    },
+    {
+     "type": "084.4355B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "124",
+     "requests": "8",
+     "rate": "(△92)"
+    },
+    {
+     "type": "084.1443C",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "390",
+     "requests": "96",
+     "rate": "(△294)"
+    },
+    {
+     "type": "084.1443C",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "390",
+     "requests": "16",
+     "rate": "(△278)"
+    },
+    {
+     "type": "084.4447D",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "68",
+     "requests": "54",
+     "rate": "(△14)"
+    },
+    {
+     "type": "084.4447D",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "68",
+     "requests": "8",
+     "rate": "(△6)"
+    },
+    {
+     "type": "084.5473E",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "295",
+     "requests": "16",
+     "rate": "(△279)"
+    },
+    {
+     "type": "084.5473E",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "295",
+     "requests": "3",
+     "rate": "(△276)"
+    },
+    {
+     "type": "084.8194F",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "76",
+     "requests": "38",
+     "rate": "(△38)"
+    },
+    {
+     "type": "084.8194F",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "76",
+     "requests": "10",
+     "rate": "(△28)"
+    },
+    {
+     "type": "084.3216G",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "18",
+     "requests": "3",
+     "rate": "(△15)"
+    },
+    {
+     "type": "084.3216G",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "18",
+     "requests": "1",
+     "rate": "(△14)"
+    },
+    {
+     "type": "102.6403",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "55",
+     "requests": "6",
+     "rate": "(△49)"
+    },
+    {
+     "type": "102.6403",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "55",
+     "requests": "2",
+     "rate": "(△47)"
+    },
+    {
+     "type": "112.1044",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "78",
+     "requests": "13",
+     "rate": "(△65)"
+    },
+    {
+     "type": "112.1044",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "78",
+     "requests": "6",
+     "rate": "(△59)"
+    },
+    {
+     "type": "120.3418",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "77",
+     "requests": "16",
+     "rate": "(△61)"
+    },
+    {
+     "type": "120.3418",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "77",
+     "requests": "2",
+     "rate": "(△59)"
+    }
+   ]
   },
   {
    "id": "2026930043",
