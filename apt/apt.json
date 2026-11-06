@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T18:55+09:00",
+ "updated": "2026-11-06T10:51+09:00",
  "complexes": [
   {
    "id": "2026820013",
@@ -579,6 +579,152 @@
      "supply": "0",
      "special": "14",
      "top_price": "41908",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910282",
+   "pblanc_no": "2026910282",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "광명 시티프라디움 에듀하임",
+   "area": "경기",
+   "city": "광명시",
+   "address": "경기도 광명시 소하동 광명 구름산지구 도시개발사업지구 A6BL",
+   "households": "21",
+   "notice_date": "2026-11-05",
+   "receipt": [
+    "2026-11-10",
+    "2026-11-10"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-10",
+      "2026-11-10"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-13",
+      "2026-11-13"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-20",
+      "2026-11-20"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-13",
+   "move_in": "202903",
+   "builder": "",
+   "developer": "(주)시티글로벌",
+   "phone": "18996851",
+   "homepage": "https://광명시티프라디움.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910282&pblancNo=2026910282",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "059.7421B",
+     "supply_area": "",
+     "supply": "4",
+     "special": "0",
+     "top_price": "82700",
+     "special_by": {}
+    },
+    {
+     "type": "084.9796D",
+     "supply_area": "",
+     "supply": "17",
+     "special": "0",
+     "top_price": "119800",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910279",
+   "pblanc_no": "2026910279",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "봉담자이 프라이드시티",
+   "area": "경기",
+   "city": "화성특례시",
+   "address": "경기도 화성특례시 효행구 봉담읍 삼봉안길 30 (봉담내리지구 A1블록 봉담자이 프라이드시티)",
+   "households": "2",
+   "notice_date": "2026-11-05",
+   "receipt": [
+    "2026-11-10",
+    "2026-11-10"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-10",
+      "2026-11-10"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-13",
+      "2026-11-13"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-20",
+      "2026-11-20"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-13",
+   "move_in": "202612",
+   "builder": "",
+   "developer": "디에스디삼호(주)",
+   "phone": "0312784145",
+   "homepage": "https://www.idsd.co.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910279&pblancNo=2026910279",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "084.7822A",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "46220",
+     "special_by": {}
+    },
+    {
+     "type": "084.3879B",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "45770",
      "special_by": {}
     }
    ],
@@ -16180,159 +16326,6 @@
      "supply": "20",
      "special": "0",
      "top_price": "51460",
-     "special_by": {}
-    }
-   ],
-   "competition": []
-  },
-  {
-   "id": "2026930035",
-   "pblanc_no": "2026930035",
-   "kind": "무순위",
-   "type_name": "불법행위 재공급",
-   "name": "더샵 청주그리니티",
-   "area": "충북",
-   "city": "청주시",
-   "address": "충청북도 청주시 서원구 개신동 767번지",
-   "households": "2",
-   "notice_date": "2026-09-21",
-   "receipt": [
-    "2026-09-28",
-    "2026-09-28"
-   ],
-   "schedule": [
-    [
-     "특별공급",
-     [
-      "2026-09-28",
-      "2026-09-28"
-     ]
-    ],
-    [
-     "청약 접수",
-     [
-      "2026-09-28",
-      "2026-09-28"
-     ]
-    ],
-    [
-     "당첨자 발표",
-     [
-      "2026-10-06",
-      "2026-10-06"
-     ]
-    ],
-    [
-     "계약",
-     [
-      "2026-10-17",
-      "2026-10-17"
-     ]
-    ]
-   ],
-   "winner_date": "2026-10-06",
-   "move_in": "202612",
-   "builder": "",
-   "developer": "구룡개발(주)",
-   "phone": "07050763745",
-   "homepage": "https://www.thesharp.co.kr/pages/prj/prj_movein.aspx?hPROJECT_ID=P_257&type=movein",
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930035&pblancNo=2026930035",
-   "flags": {
-    "투기과열지구": false,
-    "조정대상지역": false,
-    "분양가상한제": false,
-    "정비사업": false,
-    "공공주택지구": false,
-    "대규모택지": false
-   },
-   "models": [
-    {
-     "type": "084.7621A",
-     "supply_area": "112.9908",
-     "supply": "0",
-     "special": "1",
-     "top_price": "35550",
-     "special_by": {}
-    },
-    {
-     "type": "099.8624A",
-     "supply_area": "132.2281",
-     "supply": "0",
-     "special": "1",
-     "top_price": "37708",
-     "special_by": {}
-    }
-   ],
-   "competition": []
-  },
-  {
-   "id": "2026910243",
-   "pblanc_no": "2026910243",
-   "kind": "무순위",
-   "type_name": "무순위",
-   "name": "더샵 청주그리니티",
-   "area": "충북",
-   "city": "청주시",
-   "address": "충청북도 청주시 서원구 개신동 767번지",
-   "households": "2",
-   "notice_date": "2026-09-21",
-   "receipt": [
-    "2026-09-28",
-    "2026-09-28"
-   ],
-   "schedule": [
-    [
-     "청약 접수",
-     [
-      "2026-09-28",
-      "2026-09-28"
-     ]
-    ],
-    [
-     "당첨자 발표",
-     [
-      "2026-10-06",
-      "2026-10-06"
-     ]
-    ],
-    [
-     "계약",
-     [
-      "2026-10-17",
-      "2026-10-17"
-     ]
-    ]
-   ],
-   "winner_date": "2026-10-06",
-   "move_in": "202612",
-   "builder": "",
-   "developer": "구룡개발(주)",
-   "phone": "07050763745",
-   "homepage": "",
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910243&pblancNo=2026910243",
-   "flags": {
-    "투기과열지구": false,
-    "조정대상지역": false,
-    "분양가상한제": false,
-    "정비사업": false,
-    "공공주택지구": false,
-    "대규모택지": false
-   },
-   "models": [
-    {
-     "type": "084.7214B",
-     "supply_area": "",
-     "supply": "1",
-     "special": "0",
-     "top_price": "35400",
-     "special_by": {}
-    },
-    {
-     "type": "099.8624A",
-     "supply_area": "",
-     "supply": "1",
-     "special": "0",
-     "top_price": "39338",
      "special_by": {}
     }
    ],
