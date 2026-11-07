@@ -1,6 +1,585 @@
 {
- "updated": "2026-11-06T18:57+09:00",
+ "updated": "2026-11-07T10:20+09:00",
  "complexes": [
+  {
+   "id": "2026820015",
+   "pblanc_no": "2026820015",
+   "kind": "APT",
+   "type_name": "국민",
+   "name": "시흥 거모 아테라(시흥거모 A-6BL) 신혼희망타운(공공분양)(본청약)",
+   "area": "경기",
+   "city": "시흥시",
+   "address": "경기도 시흥시 거모지구 내 A-6블록",
+   "households": "480",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-16",
+    "2026-11-27"
+   ],
+   "schedule": [
+    [
+     "1순위 해당지역",
+     [
+      "2026-11-16",
+      "2026-11-26"
+     ]
+    ],
+    [
+     "1순위 경기",
+     [
+      "2026-11-16",
+      "2026-11-26"
+     ]
+    ],
+    [
+     "1순위 기타지역",
+     [
+      "2026-11-16",
+      "2026-11-26"
+     ]
+    ],
+    [
+     "2순위 해당지역",
+     [
+      "2026-11-27",
+      "2026-11-27"
+     ]
+    ],
+    [
+     "2순위 경기",
+     [
+      "2026-11-27",
+      "2026-11-27"
+     ]
+    ],
+    [
+     "2순위 기타지역",
+     [
+      "2026-11-27",
+      "2026-11-27"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-12-08",
+      "2026-12-08"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2027-03-11",
+      "2027-03-14"
+     ]
+    ]
+   ],
+   "winner_date": "2026-12-08",
+   "move_in": "202909",
+   "builder": "금호건설 주식회사",
+   "developer": "한국토지주택공사경기남부지역본부",
+   "phone": "16615596",
+   "homepage": "https://apply.lh.or.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820015&pblancNo=2026820015",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": true,
+    "정비사업": false,
+    "공공주택지구": true,
+    "대규모택지": true
+   },
+   "models": [
+    {
+     "type": "055.0000A",
+     "supply_area": "79.0470",
+     "supply": "0",
+     "special": "277",
+     "top_price": "43390",
+     "special_by": {}
+    },
+    {
+     "type": "059.0000A",
+     "supply_area": "84.6567",
+     "supply": "0",
+     "special": "26",
+     "top_price": "46436",
+     "special_by": {}
+    },
+    {
+     "type": "059.0000B",
+     "supply_area": "84.6141",
+     "supply": "0",
+     "special": "24",
+     "top_price": "46359",
+     "special_by": {}
+    },
+    {
+     "type": "059.0000C",
+     "supply_area": "84.5005",
+     "supply": "0",
+     "special": "29",
+     "top_price": "46328",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026000557",
+   "pblanc_no": "2026000557",
+   "kind": "APT",
+   "type_name": "민영",
+   "name": "제일풍경채 광주 포에듀",
+   "area": "경기",
+   "city": "광주시",
+   "address": "경기도 광주시 탄벌동 203-4번지 일원 (탄벌A지구 A5블럭)",
+   "households": "572",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-16",
+    "2026-11-18"
+   ],
+   "schedule": [
+    [
+     "특별공급",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "1순위 해당지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "1순위 기타지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "2순위 해당지역",
+     [
+      "2026-11-18",
+      "2026-11-18"
+     ]
+    ],
+    [
+     "2순위 기타지역",
+     [
+      "2026-11-18",
+      "2026-11-18"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-24",
+      "2026-11-24"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-12-07",
+      "2026-12-09"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-24",
+   "move_in": "202911",
+   "builder": "제일건설 주식회사",
+   "developer": "주식회사 브랜드뉴탄벌",
+   "phone": "15337767",
+   "homepage": "http://jeil-foredu.co.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000557&pblancNo=2026000557",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "084.9904A",
+     "supply_area": "111.9429",
+     "supply": "193",
+     "special": "226",
+     "top_price": "69100",
+     "special_by": {
+      "다자녀": "41",
+      "신혼부부": "62",
+      "생애최초": "29",
+      "신생아": "41",
+      "노부모부양": "12",
+      "기관추천": "41"
+     }
+    },
+    {
+     "type": "084.9732B",
+     "supply_area": "113.0540",
+     "supply": "72",
+     "special": "81",
+     "top_price": "69100",
+     "special_by": {
+      "다자녀": "15",
+      "신혼부부": "22",
+      "생애최초": "10",
+      "신생아": "15",
+      "노부모부양": "4",
+      "기관추천": "15"
+     }
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026000553",
+   "pblanc_no": "2026000553",
+   "kind": "APT",
+   "type_name": "민영",
+   "name": "의정부역 펠리스타워 양우내안애",
+   "area": "경기",
+   "city": "의정부시",
+   "address": "경기도 의정부시 의정부동 424번지 일원",
+   "households": "414",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-16",
+    "2026-11-18"
+   ],
+   "schedule": [
+    [
+     "특별공급",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "1순위 해당지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "1순위 기타지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "2순위 해당지역",
+     [
+      "2026-11-18",
+      "2026-11-18"
+     ]
+    ],
+    [
+     "2순위 기타지역",
+     [
+      "2026-11-18",
+      "2026-11-18"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-24",
+      "2026-11-24"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-12-07",
+      "2026-12-09"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-24",
+   "move_in": "203101",
+   "builder": "양우건설(주)",
+   "developer": "의정부동지역주택조합,양우건설(주)",
+   "phone": "15773197",
+   "homepage": "https://feliztower-yangwoo.co.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000553&pblancNo=2026000553",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "059.9777",
+     "supply_area": "86.9194",
+     "supply": "6",
+     "special": "20",
+     "top_price": "63720",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "4",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "8"
+     }
+    },
+    {
+     "type": "084.7415A",
+     "supply_area": "119.5155",
+     "supply": "85",
+     "special": "92",
+     "top_price": "85692",
+     "special_by": {
+      "다자녀": "17",
+      "신혼부부": "26",
+      "생애최초": "12",
+      "신생아": "17",
+      "노부모부양": "5",
+      "기관추천": "15"
+     }
+    },
+    {
+     "type": "084.8836B",
+     "supply_area": "117.8963",
+     "supply": "58",
+     "special": "65",
+     "top_price": "83678",
+     "special_by": {
+      "다자녀": "12",
+      "신혼부부": "19",
+      "생애최초": "8",
+      "신생아": "12",
+      "노부모부양": "5",
+      "기관추천": "9"
+     }
+    },
+    {
+     "type": "084.9911C",
+     "supply_area": "118.8064",
+     "supply": "39",
+     "special": "49",
+     "top_price": "86314",
+     "special_by": {
+      "다자녀": "10",
+      "신혼부부": "13",
+      "생애최초": "6",
+      "신생아": "9",
+      "노부모부양": "2",
+      "기관추천": "9"
+     }
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026000497",
+   "pblanc_no": "2026000497",
+   "kind": "APT",
+   "type_name": "민영",
+   "name": "중화역 라온프라이빗 센트로",
+   "area": "서울",
+   "city": "중랑구",
+   "address": "서울특별시 중랑구 중화동 303-9번지 일원",
+   "households": "113",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-16",
+    "2026-11-19"
+   ],
+   "schedule": [
+    [
+     "특별공급",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "1순위 해당지역",
+     [
+      "2026-11-17",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "1순위 기타지역",
+     [
+      "2026-11-18",
+      "2026-11-18"
+     ]
+    ],
+    [
+     "2순위 해당지역",
+     [
+      "2026-11-19",
+      "2026-11-19"
+     ]
+    ],
+    [
+     "2순위 기타지역",
+     [
+      "2026-11-19",
+      "2026-11-19"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-25",
+      "2026-11-25"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-12-07",
+      "2026-12-09"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-25",
+   "move_in": "202902",
+   "builder": "라온건설(주)",
+   "developer": "중화3재정비촉진구역 도시환경정비사업 토지등소유자",
+   "phone": "15556223",
+   "homepage": "https://www.jh-raon.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000497&pblancNo=2026000497",
+   "flags": {
+    "투기과열지구": true,
+    "조정대상지역": true,
+    "분양가상한제": false,
+    "정비사업": true,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "045.0210",
+     "supply_area": "60.8010",
+     "supply": "4",
+     "special": "3",
+     "top_price": "65800",
+     "special_by": {
+      "신혼부부": "2",
+      "생애최초": "1"
+     }
+    },
+    {
+     "type": "058.3650",
+     "supply_area": "78.0460",
+     "supply": "7",
+     "special": "10",
+     "top_price": "86200",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "기관추천": "2"
+     }
+    },
+    {
+     "type": "059.9740",
+     "supply_area": "79.8710",
+     "supply": "9",
+     "special": "11",
+     "top_price": "95600",
+     "special_by": {
+      "다자녀": "2",
+      "신혼부부": "3",
+      "생애최초": "1",
+      "신생아": "2",
+      "노부모부양": "1",
+      "기관추천": "2"
+     }
+    },
+    {
+     "type": "070.9640",
+     "supply_area": "93.7800",
+     "supply": "10",
+     "special": "16",
+     "top_price": "110100",
+     "special_by": {
+      "다자녀": "3",
+      "신혼부부": "4",
+      "생애최초": "2",
+      "신생아": "3",
+      "노부모부양": "1",
+      "기관추천": "3"
+     }
+    },
+    {
+     "type": "073.4730T",
+     "supply_area": "99.7040",
+     "supply": "1",
+     "special": "0",
+     "top_price": "119200",
+     "special_by": {}
+    },
+    {
+     "type": "084.9940",
+     "supply_area": "112.1410",
+     "supply": "15",
+     "special": "20",
+     "top_price": "127700",
+     "special_by": {
+      "다자녀": "4",
+      "신혼부부": "5",
+      "생애최초": "2",
+      "신생아": "4",
+      "노부모부양": "1",
+      "기관추천": "4"
+     }
+    },
+    {
+     "type": "084.9400T",
+     "supply_area": "114.0180",
+     "supply": "2",
+     "special": "0",
+     "top_price": "139100",
+     "special_by": {}
+    },
+    {
+     "type": "093.5970T",
+     "supply_area": "125.9360",
+     "supply": "1",
+     "special": "0",
+     "top_price": "150600",
+     "special_by": {}
+    },
+    {
+     "type": "098.9000T",
+     "supply_area": "131.8730",
+     "supply": "2",
+     "special": "0",
+     "top_price": "160900",
+     "special_by": {}
+    },
+    {
+     "type": "126.8090T",
+     "supply_area": "168.9570",
+     "supply": "2",
+     "special": "0",
+     "top_price": "202100",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
   {
    "id": "2026820013",
    "pblanc_no": "2026820013",
@@ -579,6 +1158,209 @@
      "supply": "0",
      "special": "14",
      "top_price": "41908",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910283",
+   "pblanc_no": "2026910283",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "인천 영종하늘도시 A25블록 대성베르힐(5차)",
+   "area": "인천",
+   "city": "영종구",
+   "address": "인천광역시 영종구 운남동 1709-1번지(영종 A25블록)",
+   "households": "1",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-11",
+    "2026-11-11"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-11",
+      "2026-11-11"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-19",
+      "2026-11-19"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-16",
+   "move_in": "202612",
+   "builder": "",
+   "developer": "주식회사 인천영종피에프브이",
+   "phone": "0623652106",
+   "homepage": "http://www.yjd-verthill.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910283&pblancNo=2026910283",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "084.1579D",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "40040",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910280",
+   "pblanc_no": "2026910280",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "오남역 서희스타힐스 여의재 3단지 (조합원 취소분)",
+   "area": "경기",
+   "city": "남양주시",
+   "address": "경기도 남양주시 오남읍 양지리 186-10번지 일원",
+   "households": "6",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-11",
+    "2026-11-11"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-11",
+      "2026-11-11"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-18",
+      "2026-11-18"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-16",
+   "move_in": "202901",
+   "builder": "",
+   "developer": "양지7지구 3단지 지역주택조합",
+   "phone": "15550074",
+   "homepage": "https://www.오남역서희스타힐스여의재.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910280&pblancNo=2026910280",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "075.4603",
+     "supply_area": "",
+     "supply": "4",
+     "special": "0",
+     "top_price": "64900",
+     "special_by": {}
+    },
+    {
+     "type": "084.9596",
+     "supply_area": "",
+     "supply": "2",
+     "special": "0",
+     "top_price": "70900",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910276",
+   "pblanc_no": "2026910276",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "인천 검단신도시 AB20-2블록 중흥S-클래스 에듀파크",
+   "area": "인천",
+   "city": "검단지구",
+   "address": "인천광역시 검단지구 공동주택용지 AB20-2BL",
+   "households": "1",
+   "notice_date": "2026-11-06",
+   "receipt": [
+    "2026-11-11",
+    "2026-11-11"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-11",
+      "2026-11-11"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-16",
+      "2026-11-16"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-23",
+      "2026-11-23"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-16",
+   "move_in": "202706",
+   "builder": "",
+   "developer": "중흥건설(주)",
+   "phone": "0325621990",
+   "homepage": "http://www.geomdan-sclass.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910276&pblancNo=2026910276",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "084.8058B",
+     "supply_area": "",
+     "supply": "1",
+     "special": "0",
+     "top_price": "48400",
      "special_by": {}
     }
    ],
@@ -16253,79 +17035,6 @@
      "supply": "3",
      "special": "0",
      "top_price": "492800",
-     "special_by": {}
-    }
-   ],
-   "competition": []
-  },
-  {
-   "id": "2026910248",
-   "pblanc_no": "2026910248",
-   "kind": "무순위",
-   "type_name": "무순위",
-   "name": "제일풍경채 첨단3지구(A6BL)",
-   "area": "광주",
-   "city": "첨단3지구",
-   "address": "광주연구개발특구 첨단3지구 A6블록(전남광주통합특별시 북구 월출동)",
-   "households": "187",
-   "notice_date": "2026-09-22",
-   "receipt": [
-    "2026-09-28",
-    "2026-09-28"
-   ],
-   "schedule": [
-    [
-     "청약 접수",
-     [
-      "2026-09-28",
-      "2026-09-28"
-     ]
-    ],
-    [
-     "당첨자 발표",
-     [
-      "2026-10-01",
-      "2026-10-01"
-     ]
-    ],
-    [
-     "계약",
-     [
-      "2026-10-02",
-      "2026-10-02"
-     ]
-    ]
-   ],
-   "winner_date": "2026-10-01",
-   "move_in": "202908",
-   "builder": "",
-   "developer": "첨단678피에프브이 주식회사",
-   "phone": "16442344",
-   "homepage": "https://첨단3지구제일풍경채.com",
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910248&pblancNo=2026910248",
-   "flags": {
-    "투기과열지구": false,
-    "조정대상지역": false,
-    "분양가상한제": false,
-    "정비사업": false,
-    "공공주택지구": false,
-    "대규모택지": false
-   },
-   "models": [
-    {
-     "type": "084.9900A",
-     "supply_area": "",
-     "supply": "167",
-     "special": "0",
-     "top_price": "51800",
-     "special_by": {}
-    },
-    {
-     "type": "084.9900B",
-     "supply_area": "",
-     "supply": "20",
-     "special": "0",
-     "top_price": "51460",
      "special_by": {}
     }
    ],
