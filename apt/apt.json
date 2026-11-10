@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T19:26+09:00",
+ "updated": "2026-11-10T12:52+09:00",
  "complexes": [
   {
    "id": "2026820015",
@@ -906,6 +906,71 @@
       "신생아": "8",
       "청년": "4"
      }
+    }
+   ],
+   "competition": []
+  },
+  {
+   "id": "2026910290",
+   "pblanc_no": "2026910290",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "청계 노르웨이숲(14차)",
+   "area": "서울",
+   "city": "중구",
+   "address": "서울특별시 중구 황학동 1756번지 일원",
+   "households": "6",
+   "notice_date": "2026-11-09",
+   "receipt": [
+    "2026-11-16",
+    "2026-11-17"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-16",
+      "2026-11-17"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-11-20",
+      "2026-11-20"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-11-23",
+      "2026-11-25"
+     ]
+    ]
+   ],
+   "winner_date": "2026-11-20",
+   "move_in": "202807",
+   "builder": "",
+   "developer": "황학동청계지역주택조합",
+   "phone": "15550807",
+   "homepage": "https://청계노르웨이숲.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "039.6950",
+     "supply_area": "",
+     "supply": "6",
+     "special": "0",
+     "top_price": "73826",
+     "special_by": {}
     }
    ],
    "competition": []
