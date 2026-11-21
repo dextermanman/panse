@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T11:53+09:00",
+ "updated": "2026-11-22T01:26+09:00",
  "complexes": [
   {
    "id": "2026000598",
@@ -20370,78 +20370,6 @@
      "rate": "(△11)"
     }
    ]
-  },
-  {
-   "id": "2026930041",
-   "pblanc_no": "2026930041",
-   "kind": "무순위",
-   "type_name": "불법행위 재공급",
-   "name": "세종 리더스포레 나릿재마을 1단지",
-   "area": "세종",
-   "city": "나성동",
-   "address": "세종특별자치시 나성동 835",
-   "households": "1",
-   "notice_date": "2026-10-07",
-   "receipt": [
-    "2026-10-12",
-    "2026-10-12"
-   ],
-   "schedule": [
-    [
-     "특별공급",
-     [
-      "2026-10-12",
-      "2026-10-12"
-     ]
-    ],
-    [
-     "청약 접수",
-     [
-      "2026-10-12",
-      "2026-10-12"
-     ]
-    ],
-    [
-     "당첨자 발표",
-     [
-      "2026-10-15",
-      "2026-10-15"
-     ]
-    ],
-    [
-     "계약",
-     [
-      "2026-10-28",
-      "2026-10-28"
-     ]
-    ]
-   ],
-   "winner_date": "2026-10-15",
-   "move_in": "202612",
-   "builder": "",
-   "developer": "(주) 한화",
-   "phone": "0448658022",
-   "homepage": "https://blog.naver.com/dnjsgh1445",
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930041&pblancNo=2026930041",
-   "flags": {
-    "투기과열지구": false,
-    "조정대상지역": false,
-    "분양가상한제": false,
-    "정비사업": false,
-    "공공주택지구": false,
-    "대규모택지": false
-   },
-   "models": [
-    {
-     "type": "084.9649D",
-     "supply_area": "112.6937",
-     "supply": "0",
-     "special": "1",
-     "top_price": "34320",
-     "special_by": {}
-    }
-   ],
-   "competition": []
   }
  ]
 }
