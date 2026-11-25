@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T13:39+09:00",
+ "updated": "2026-11-26T03:52+09:00",
  "complexes": [
   {
    "id": "2026910302",
@@ -1430,6 +1430,95 @@
    "competition": []
   },
   {
+   "id": "2026910294",
+   "pblanc_no": "2026910294",
+   "kind": "무순위",
+   "type_name": "무순위",
+   "name": "신분평 에피트 더웨이시티",
+   "area": "충북",
+   "city": "청주시",
+   "address": "충청북도 청주시 서원구 장성동 135번지 일원(장성지구 A2블럭)",
+   "households": "395",
+   "notice_date": "2026-11-25",
+   "receipt": [
+    "2026-11-30",
+    "2026-11-30"
+   ],
+   "schedule": [
+    [
+     "청약 접수",
+     [
+      "2026-11-30",
+      "2026-11-30"
+     ]
+    ],
+    [
+     "당첨자 발표",
+     [
+      "2026-12-03",
+      "2026-12-03"
+     ]
+    ],
+    [
+     "계약",
+     [
+      "2026-12-04",
+      "2026-12-04"
+     ]
+    ]
+   ],
+   "winner_date": "2026-12-03",
+   "move_in": "202909",
+   "builder": "",
+   "developer": "유한회사 에이치엠서빈",
+   "phone": "15336700",
+   "homepage": "https://brand.hldni.com/thewaycity/",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910294&pblancNo=2026910294",
+   "flags": {
+    "투기과열지구": false,
+    "조정대상지역": false,
+    "분양가상한제": false,
+    "정비사업": false,
+    "공공주택지구": false,
+    "대규모택지": false
+   },
+   "models": [
+    {
+     "type": "059.9960B",
+     "supply_area": "",
+     "supply": "24",
+     "special": "0",
+     "top_price": "39290",
+     "special_by": {}
+    },
+    {
+     "type": "075.7230A",
+     "supply_area": "",
+     "supply": "41",
+     "special": "0",
+     "top_price": "46090",
+     "special_by": {}
+    },
+    {
+     "type": "084.9568A",
+     "supply_area": "",
+     "supply": "254",
+     "special": "0",
+     "top_price": "50090",
+     "special_by": {}
+    },
+    {
+     "type": "112.8127",
+     "supply_area": "",
+     "supply": "76",
+     "special": "0",
+     "top_price": "65890",
+     "special_by": {}
+    }
+   ],
+   "competition": []
+  },
+  {
    "id": "2026930048",
    "pblanc_no": "2026930048",
    "kind": "무순위",
@@ -2441,6 +2530,22 @@
      "rate": "(△5)"
     },
     {
+     "type": "059.8500A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "21",
+     "requests": "7",
+     "rate": "1.40"
+    },
+    {
+     "type": "059.8500A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "21",
+     "requests": "15",
+     "rate": ""
+    },
+    {
      "type": "059.8500B",
      "rank": "1",
      "reside": "해당지역",
@@ -2457,6 +2562,22 @@
      "rate": "(△43)"
     },
     {
+     "type": "059.8500B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "64",
+     "requests": "9",
+     "rate": "(△34)"
+    },
+    {
+     "type": "059.8500B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "64",
+     "requests": "3",
+     "rate": "(△31)"
+    },
+    {
      "type": "084.8800",
      "rank": "1",
      "reside": "해당지역",
@@ -2471,6 +2592,22 @@
      "supply": "145",
      "requests": "9",
      "rate": "(△76)"
+    },
+    {
+     "type": "084.8800",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "145",
+     "requests": "14",
+     "rate": "(△62)"
+    },
+    {
+     "type": "084.8800",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "145",
+     "requests": "2",
+     "rate": "(△60)"
     }
    ]
   },
@@ -2638,6 +2775,22 @@
      "rate": "(△156)"
     },
     {
+     "type": "084.7279A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "585",
+     "requests": "42",
+     "rate": "(△114)"
+    },
+    {
+     "type": "084.7279A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "585",
+     "requests": "4",
+     "rate": "(△110)"
+    },
+    {
      "type": "084.9950B",
      "rank": "1",
      "reside": "해당지역",
@@ -2652,6 +2805,22 @@
      "supply": "40",
      "requests": "0",
      "rate": "(△35)"
+    },
+    {
+     "type": "084.9950B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "40",
+     "requests": "1",
+     "rate": "(△34)"
+    },
+    {
+     "type": "084.9950B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "40",
+     "requests": "0",
+     "rate": "(△34)"
     },
     {
      "type": "098.9841A",
@@ -2670,6 +2839,22 @@
      "rate": "1.00"
     },
     {
+     "type": "098.9841A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "263",
+     "requests": "23",
+     "rate": ""
+    },
+    {
+     "type": "098.9841A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "263",
+     "requests": "6",
+     "rate": ""
+    },
+    {
      "type": "098.8582B",
      "rank": "1",
      "reside": "해당지역",
@@ -2686,6 +2871,22 @@
      "rate": "(△195)"
     },
     {
+     "type": "098.8582B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "200",
+     "requests": "3",
+     "rate": "(△192)"
+    },
+    {
+     "type": "098.8582B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "200",
+     "requests": "0",
+     "rate": "(△192)"
+    },
+    {
      "type": "110.7800",
      "rank": "1",
      "reside": "해당지역",
@@ -2700,6 +2901,22 @@
      "supply": "236",
      "requests": "3",
      "rate": "(△121)"
+    },
+    {
+     "type": "110.7800",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "236",
+     "requests": "8",
+     "rate": "(△113)"
+    },
+    {
+     "type": "110.7800",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "236",
+     "requests": "1",
+     "rate": "(△112)"
     }
    ]
   },
@@ -2864,6 +3081,22 @@
      "rate": ""
     },
     {
+     "type": "059.9445A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "37",
+     "requests": "19",
+     "rate": ""
+    },
+    {
+     "type": "059.9445A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "37",
+     "requests": "2",
+     "rate": ""
+    },
+    {
      "type": "059.9942B",
      "rank": "1",
      "reside": "해당지역",
@@ -2878,6 +3111,22 @@
      "supply": "36",
      "requests": "2",
      "rate": "(△23)"
+    },
+    {
+     "type": "059.9942B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "36",
+     "requests": "5",
+     "rate": "(△18)"
+    },
+    {
+     "type": "059.9942B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "36",
+     "requests": "0",
+     "rate": "(△18)"
     },
     {
      "type": "070.9993A",
@@ -2896,6 +3145,22 @@
      "rate": "(△12)"
     },
     {
+     "type": "070.9993A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "32",
+     "requests": "3",
+     "rate": "(△9)"
+    },
+    {
+     "type": "070.9993A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "32",
+     "requests": "1",
+     "rate": "(△8)"
+    },
+    {
      "type": "084.9763A",
      "rank": "1",
      "reside": "해당지역",
@@ -2910,6 +3175,22 @@
      "supply": "90",
      "requests": "2",
      "rate": "(△38)"
+    },
+    {
+     "type": "084.9763A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "90",
+     "requests": "13",
+     "rate": "(△25)"
+    },
+    {
+     "type": "084.9763A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "90",
+     "requests": "1",
+     "rate": "(△24)"
     }
    ]
   },
@@ -3059,6 +3340,22 @@
      "rate": ""
     },
     {
+     "type": "059.5981",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "26",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "059.5981",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "26",
+     "requests": "0",
+     "rate": ""
+    },
+    {
      "type": "075.4145",
      "rank": "1",
      "reside": "해당지역",
@@ -3075,6 +3372,22 @@
      "rate": ""
     },
     {
+     "type": "075.4145",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "9",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "075.4145",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "9",
+     "requests": "0",
+     "rate": ""
+    },
+    {
      "type": "084.4817",
      "rank": "1",
      "reside": "해당지역",
@@ -3088,6 +3401,22 @@
      "reside": "기타지역",
      "supply": "8",
      "requests": "10",
+     "rate": ""
+    },
+    {
+     "type": "084.4817",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "8",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "084.4817",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "8",
+     "requests": "0",
      "rate": ""
     }
    ]
@@ -3220,7 +3549,56 @@
      }
     }
    ],
-   "competition": []
+   "competition": [
+    {
+     "type": "084.9409A",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "51",
+     "requests": "707",
+     "rate": "13.86"
+    },
+    {
+     "type": "084.9409A",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "51",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "084.9708B",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "25",
+     "requests": "186",
+     "rate": "7.44"
+    },
+    {
+     "type": "084.9708B",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "25",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "084.9894C",
+     "rank": "1",
+     "reside": "해당지역",
+     "supply": "25",
+     "requests": "193",
+     "rate": "7.72"
+    },
+    {
+     "type": "084.9894C",
+     "rank": "1",
+     "reside": "기타지역",
+     "supply": "25",
+     "requests": "0",
+     "rate": ""
+    }
+   ]
   },
   {
    "id": "2026000558",
@@ -3405,6 +3783,22 @@
      "rate": ""
     },
     {
+     "type": "059.9860A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "26",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "059.9860A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "26",
+     "requests": "0",
+     "rate": ""
+    },
+    {
      "type": "084.9980A",
      "rank": "1",
      "reside": "해당지역",
@@ -3418,6 +3812,22 @@
      "reside": "기타지역",
      "supply": "413",
      "requests": "13",
+     "rate": ""
+    },
+    {
+     "type": "084.9980A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "413",
+     "requests": "151",
+     "rate": ""
+    },
+    {
+     "type": "084.9980A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "413",
+     "requests": "7",
      "rate": ""
     },
     {
@@ -3437,6 +3847,22 @@
      "rate": "(△31)"
     },
     {
+     "type": "084.9906B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "47",
+     "requests": "31",
+     "rate": "1.00"
+    },
+    {
+     "type": "084.9906B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "47",
+     "requests": "1",
+     "rate": ""
+    },
+    {
      "type": "084.9990C",
      "rank": "1",
      "reside": "해당지역",
@@ -3447,6 +3873,22 @@
     {
      "type": "084.9990C",
      "rank": "1",
+     "reside": "기타지역",
+     "supply": "40",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "084.9990C",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "40",
+     "requests": "17",
+     "rate": ""
+    },
+    {
+     "type": "084.9990C",
+     "rank": "2",
      "reside": "기타지역",
      "supply": "40",
      "requests": "0",
@@ -3469,6 +3911,22 @@
      "rate": ""
     },
     {
+     "type": "101.9938A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "136",
+     "requests": "58",
+     "rate": ""
+    },
+    {
+     "type": "101.9938A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "136",
+     "requests": "1",
+     "rate": ""
+    },
+    {
      "type": "101.9560T",
      "rank": "1",
      "reside": "해당지역",
@@ -3482,6 +3940,22 @@
      "reside": "기타지역",
      "supply": "5",
      "requests": "1",
+     "rate": ""
+    },
+    {
+     "type": "101.9560T",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "5",
+     "requests": "0",
+     "rate": ""
+    },
+    {
+     "type": "101.9560T",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "5",
+     "requests": "0",
      "rate": ""
     }
    ]
@@ -3632,6 +4106,22 @@
      "rate": "(△186)"
     },
     {
+     "type": "084.9946A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "353",
+     "requests": "45",
+     "rate": "(△141)"
+    },
+    {
+     "type": "084.9946A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "353",
+     "requests": "3",
+     "rate": "(△138)"
+    },
+    {
      "type": "084.9806B",
      "rank": "1",
      "reside": "해당지역",
@@ -3648,6 +4138,22 @@
      "rate": "(△63)"
     },
     {
+     "type": "084.9806B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "85",
+     "requests": "11",
+     "rate": "(△52)"
+    },
+    {
+     "type": "084.9806B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "85",
+     "requests": "0",
+     "rate": "(△52)"
+    },
+    {
      "type": "084.9680C",
      "rank": "1",
      "reside": "해당지역",
@@ -3662,6 +4168,22 @@
      "supply": "36",
      "requests": "0",
      "rate": "(△24)"
+    },
+    {
+     "type": "084.9680C",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "36",
+     "requests": "4",
+     "rate": "(△20)"
+    },
+    {
+     "type": "084.9680C",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "36",
+     "requests": "0",
+     "rate": "(△20)"
     }
    ]
   },
@@ -3844,6 +4366,22 @@
      "rate": "27.00"
     },
     {
+     "type": "084.8861A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "146",
+     "requests": "18",
+     "rate": ""
+    },
+    {
+     "type": "084.8861A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "146",
+     "requests": "17",
+     "rate": ""
+    },
+    {
      "type": "084.9580B",
      "rank": "1",
      "reside": "해당지역",
@@ -3858,6 +4396,22 @@
      "supply": "82",
      "requests": "10",
      "rate": "(△33)"
+    },
+    {
+     "type": "084.9580B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "82",
+     "requests": "5",
+     "rate": "(△28)"
+    },
+    {
+     "type": "084.9580B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "82",
+     "requests": "4",
+     "rate": "(△24)"
     },
     {
      "type": "084.8700C",
@@ -3876,6 +4430,22 @@
      "rate": "(△73)"
     },
     {
+     "type": "084.8700C",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "88",
+     "requests": "3",
+     "rate": "(△70)"
+    },
+    {
+     "type": "084.8700C",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "88",
+     "requests": "0",
+     "rate": "(△70)"
+    },
+    {
      "type": "099.9001A",
      "rank": "1",
      "reside": "해당지역",
@@ -3890,6 +4460,22 @@
      "supply": "179",
      "requests": "6",
      "rate": "(△88)"
+    },
+    {
+     "type": "099.9001A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "179",
+     "requests": "9",
+     "rate": "(△79)"
+    },
+    {
+     "type": "099.9001A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "179",
+     "requests": "4",
+     "rate": "(△75)"
     },
     {
      "type": "099.9015B",
@@ -3908,6 +4494,22 @@
      "rate": "(△229)"
     },
     {
+     "type": "099.9015B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "270",
+     "requests": "9",
+     "rate": "(△220)"
+    },
+    {
+     "type": "099.9015B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "270",
+     "requests": "1",
+     "rate": "(△219)"
+    },
+    {
      "type": "104.8286",
      "rank": "1",
      "reside": "해당지역",
@@ -3922,6 +4524,22 @@
      "supply": "172",
      "requests": "1",
      "rate": "(△125)"
+    },
+    {
+     "type": "104.8286",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "172",
+     "requests": "9",
+     "rate": "(△116)"
+    },
+    {
+     "type": "104.8286",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "172",
+     "requests": "2",
+     "rate": "(△114)"
     }
    ]
   },
@@ -4128,6 +4746,30 @@
      "rate": "317.29"
     },
     {
+     "type": "059.7100A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "37",
+     "requests": "85",
+     "rate": ""
+    },
+    {
+     "type": "059.7100A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "37",
+     "requests": "172",
+     "rate": ""
+    },
+    {
+     "type": "059.7100A",
+     "rank": "2",
+     "reside": "기타경기",
+     "supply": "37",
+     "requests": "60",
+     "rate": ""
+    },
+    {
      "type": "059.9900B",
      "rank": "1",
      "reside": "해당지역",
@@ -4150,6 +4792,30 @@
      "supply": "18",
      "requests": "483",
      "rate": "254.00"
+    },
+    {
+     "type": "059.9900B",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "18",
+     "requests": "25",
+     "rate": ""
+    },
+    {
+     "type": "059.9900B",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "18",
+     "requests": "55",
+     "rate": ""
+    },
+    {
+     "type": "059.9900B",
+     "rank": "2",
+     "reside": "기타경기",
+     "supply": "18",
+     "requests": "21",
+     "rate": ""
     },
     {
      "type": "059.9900C",
@@ -4176,6 +4842,30 @@
      "rate": "142.00"
     },
     {
+     "type": "059.9900C",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "3",
+     "requests": "13",
+     "rate": ""
+    },
+    {
+     "type": "059.9900C",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "3",
+     "requests": "13",
+     "rate": ""
+    },
+    {
+     "type": "059.9900C",
+     "rank": "2",
+     "reside": "기타경기",
+     "supply": "3",
+     "requests": "4",
+     "rate": ""
+    },
+    {
      "type": "074.9800A",
      "rank": "1",
      "reside": "해당지역",
@@ -4200,6 +4890,30 @@
      "rate": "319.00"
     },
     {
+     "type": "074.9800A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "8",
+     "requests": "20",
+     "rate": ""
+    },
+    {
+     "type": "074.9800A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "8",
+     "requests": "34",
+     "rate": ""
+    },
+    {
+     "type": "074.9800A",
+     "rank": "2",
+     "reside": "기타경기",
+     "supply": "8",
+     "requests": "10",
+     "rate": ""
+    },
+    {
      "type": "084.9500A",
      "rank": "1",
      "reside": "해당지역",
@@ -4222,6 +4936,30 @@
      "supply": "16",
      "requests": "539",
      "rate": "440.00"
+    },
+    {
+     "type": "084.9500A",
+     "rank": "2",
+     "reside": "해당지역",
+     "supply": "16",
+     "requests": "39",
+     "rate": ""
+    },
+    {
+     "type": "084.9500A",
+     "rank": "2",
+     "reside": "기타지역",
+     "supply": "16",
+     "requests": "51",
+     "rate": ""
+    },
+    {
+     "type": "084.9500A",
+     "rank": "2",
+     "reside": "기타경기",
+     "supply": "16",
+     "requests": "35",
+     "rate": ""
     }
    ]
   },
